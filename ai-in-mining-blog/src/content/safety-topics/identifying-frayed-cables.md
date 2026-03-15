@@ -2,7 +2,7 @@
 title: "Saturday: Identifying Frayed Cables"
 description: "A small nick in insulation can lead to a catastrophic short circuit."
 pubDate: 2026-03-21
-heroImage: "../../assets/hierarchy_of_controls.jpg"
+heroImage: "../../assets/blog-placeholder-4.jpg"
 ---
 
 Routine visual inspections govern safety. Take a few extra seconds to run your eyes along the lengths of extension cords, whip cables, and flexible conduits before use. Look for cracked rubber, exposed conductors, or crushed sections. A frayed cable isn't a nuisance—it's an ignition source and a shock hazard waiting to be touched.
