@@ -7,6 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import Comments from '../components/Comments.astro';
+import DefaultHeroImage from '../assets/Incident.jpg';
 
 type Props = CollectionEntry<'incidents'>['data'] & { hideMeta?: boolean };
 
@@ -81,7 +82,7 @@ const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } 
 					{heroImage ? (
 						<img src={typeof heroImage === 'string' ? heroImage : heroImage?.src || heroImage} alt="" />
 					) : (
-						<img src="/incident_occurrence.jpg" alt="Incident Occurrence" />
+						<Image src={DefaultHeroImage} alt="Incident Occurrence" />
 					)}
 				</div>
 				<div class="prose">
