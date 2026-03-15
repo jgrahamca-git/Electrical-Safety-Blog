@@ -79,11 +79,7 @@ const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } 
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage ? (
-						<img src={typeof heroImage === 'string' ? heroImage : heroImage?.src || heroImage} alt="" />
-					) : (
-						<Image src={DefaultHeroImage} alt="Incident Occurrence" />
-					)}
+					<Image src={DefaultHeroImage} alt="Incident Occurrence" />
 				</div>
 				<div class="prose">
 					<div class="title">
