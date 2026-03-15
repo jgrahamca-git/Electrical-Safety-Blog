@@ -1,0 +1,83 @@
+---
+---
+
+<div class="comments-section">
+	<div class="comments-header">
+		<h3>Community Discussion</h3>
+		<p>Join the conversation. What are your thoughts on this incident or safety topic?</p>
+	</div>
+	
+	<!-- 
+		This Giscus integration uses GitHub Discussions as a database.
+		You will need to replace the data-repo and data-repo-id with your actual public GitHub repository
+		once you connect the site to GitHub.
+	-->
+	<div class="giscus-wrapper">
+		<script src="https://giscus.app/client.js"
+			data-repo="[ENTER_YOUR_GITHUB_USER/REPO_NAME]"
+			data-repo-id="[ENTER_YOUR_REPO_ID]"
+			data-category="Announcements"
+			data-category-id="[ENTER_YOUR_CATEGORY_ID]"
+			data-mapping="pathname"
+			data-strict="0"
+			data-reactions-enabled="1"
+			data-emit-metadata="0"
+			data-input-position="top"
+			data-theme="light"
+			data-lang="en"
+			data-loading="lazy"
+			crossorigin="anonymous"
+			async>
+		</script>
+		
+		<div class="giscus-placeholder">
+			<p><em>Comments will appear here once the Giscus GitHub repository is linked.</em></p>
+		</div>
+	</div>
+</div>
+
+<style>
+	.comments-section {
+		margin-top: 4rem;
+		padding-top: 3rem;
+		border-top: 1px solid #e2e8f0;
+	}
+	.comments-header {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	.comments-header h3 {
+		font-size: 1.75rem;
+		color: #1e293b;
+		margin-bottom: 0.5rem;
+	}
+	.comments-header p {
+		color: #64748b;
+		margin: 0;
+	}
+	.giscus-wrapper {
+		background: #f8fafc;
+		border-radius: 12px;
+		padding: 2rem;
+		border: 1px dashed #cbd5e1;
+		min-height: 200px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.giscus-placeholder {
+		text-align: center;
+		color: #94a3b8;
+	}
+	
+	/* When Giscus actually loads an iframe, we hide our placeholder */
+	.giscus-wrapper:has(iframe) {
+		border: none;
+		background: transparent;
+		padding: 0;
+		display: block;
+	}
+	.giscus-wrapper:has(iframe) .giscus-placeholder {
+		display: none;
+	}
+</style>

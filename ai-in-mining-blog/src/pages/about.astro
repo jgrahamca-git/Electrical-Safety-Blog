@@ -1,0 +1,28 @@
+---
+import AboutHeroImage from '../assets/About-Me-Infograph.jpg';
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="About Me"
+	description="Lorem ipsum dolor sit amet"
+	pubDate={new Date('August 08 2021')}
+	heroImage={AboutHeroImage}
+	hideMeta={true}
+>
+	<p>
+		I work in the electrical, instrumentation, and controls field with a strong focus on safety, risk awareness, and practical learning. This blog was created to help people in the electrical and controls professions gain deeper insight into hazards, incidents, and failures that can occur in real working environments.
+	</p>
+
+	<p>
+		Many electrical and controls dangers are not always obvious. Risks can be hidden in routine tasks, maintenance, troubleshooting, energization, grounding and bonding issues, control logic interactions, and human factors. Because we all bring different experience, training, and exposure to the job, a hazard that is clear to one person may be missed by another.
+	</p>
+
+	<p>
+		This blog exists to share past events, incidents, and lessons learned so professionals can strengthen awareness, improve judgment, and carry those insights into safer decisions and work practices. The goal is simple: learn from what has happened before, recognize warning signs earlier, and help prevent similar incidents in the future.
+	</p>
+
+	<p style="font-weight: bold; font-size: 1.1em; color: var(--accent); margin-top: 2em; text-align: center;">
+		If anyone would like to share a story with this community please feel free to email me.
+	</p>
+</Layout>

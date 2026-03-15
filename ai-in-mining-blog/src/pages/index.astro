@@ -1,0 +1,225 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+// Fetch all incidents and topics, sorted by newest first
+const allIncidents = (await getCollection('incidents')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const allTopics = (await getCollection('safety-topics')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// Determine featured incident (the newest one) and past incidents
+const featuredIncident = allIncidents[0];
+const pastIncidents = allIncidents.slice(1);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				max-width: 1400px;
+				margin: 0 auto;
+				padding: 2em;
+			}
+			.homepage-intro {
+				text-align: center;
+				margin-bottom: 3rem;
+				max-width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.homepage-intro h1 {
+				margin-bottom: 0.5em;
+			}
+			
+			/* 3-Column Layout */
+			.columns-wrapper {
+				display: grid;
+				grid-template-columns: 1fr 2fr 1fr;
+				gap: 2rem;
+				align-items: start;
+			}
+			
+			@media (max-width: 1024px) {
+				.columns-wrapper {
+					grid-template-columns: 1fr 1fr;
+				}
+				.column-past {
+					grid-column: span 2;
+				}
+			}
+			
+			@media (max-width: 768px) {
+				.columns-wrapper {
+					grid-template-columns: 1fr;
+				}
+				.column-past {
+					grid-column: span 1;
+				}
+			}
+
+			.col-header {
+				font-size: 1.5rem;
+				border-bottom: 2px solid var(--accent);
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+				color: rgb(var(--black));
+			}
+
+			/* Card Styles */
+			.card {
+				background: #ffffff;
+				border-radius: 8px;
+				border: 1px solid #e5e7eb;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+				padding: 1.25rem;
+				margin-bottom: 1.5rem;
+				transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+			}
+			.card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+				border-color: var(--accent);
+			}
+			.card h3 {
+				margin: 0 0 0.5rem 0;
+				font-size: 1.25rem;
+				line-height: 1.2;
+				color: rgb(var(--black));
+			}
+			.card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+			.card .date {
+				font-size: 0.85rem;
+				color: rgb(var(--gray));
+				margin-bottom: 0.5rem;
+			}
+			.card p {
+				font-size: 0.95rem;
+				line-height: 1.4;
+				margin: 0;
+				color: rgb(var(--gray-dark));
+			}
+			
+			/* Featured Incident Specifics */
+			.featured-card {
+				padding: 0;
+				overflow: hidden;
+				background: #fff;
+			}
+			.featured-card img {
+				width: 100%;
+				height: auto;
+				display: block;
+				border-bottom: 4px solid var(--accent);
+			}
+			.featured-content {
+				padding: 1.5rem;
+			}
+			.featured-content h3 {
+				font-size: 1.75rem;
+				color: var(--accent);
+			}
+			.featured-content p {
+				font-size: 1.05rem;
+			}
+			.featured-content p {
+				font-size: 1.05rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="homepage-intro">
+				<h1>Understanding Hazards, Preventing Injuries</h1>
+				<p>
+					Welcome to the <strong>Electrical & Controls Safety Blog</strong>. We break down root 
+					causes so you can recognize hidden dangers and protect your team. Please refer to your local AHJ for any code requirements or further questions you may have. Note, this blog is not intended to provide code interpretations.
+				</p>
+			</section>
+
+			<section class="columns-wrapper">
+				<!-- LEFT: Daily Topics -->
+				<div class="column column-topics">
+					<h2 class="col-header">Daily Safety Topic</h2>
+					{allTopics[0] ? (
+						<article class="card featured-card">
+							<a href={`/safety-topics/${allTopics[0].id}/`}>
+								<img src="/hierarchy_of_controls.jpg" alt="Hierarchy of Controls" />
+								<div class="featured-content">
+									<h3>{allTopics[0].data.title}</h3>
+									<div class="date"><FormattedDate date={allTopics[0].data.pubDate} /></div>
+									<p>{allTopics[0].data.description}</p>
+								</div>
+							</a>
+						</article>
+					) : (
+						<p>No daily topics yet.</p>
+					)}
+					{allTopics.slice(1).map((topic) => (
+						<article class="card">
+							<a href={`/safety-topics/${topic.id}/`}>
+								<h3>{topic.data.title}</h3>
+								<div class="date"><FormattedDate date={topic.data.pubDate} /></div>
+								<p>{topic.data.description}</p>
+							</a>
+						</article>
+					))}
+				</div>
+
+				<!-- MIDDLE: Featured Incident -->
+				<div class="column column-featured">
+					<h2 class="col-header">Latest Incident RCA</h2>
+					{featuredIncident ? (
+						<article class="card featured-card">
+							<a href={`/incidents/${featuredIncident.id}/`}>
+								{featuredIncident.data.heroImage && (
+									// @ts-ignore
+									<img src={featuredIncident.data.heroImage.src || featuredIncident.data.heroImage} alt="" />
+								)}
+								<div class="featured-content">
+									<h3>{featuredIncident.data.title}</h3>
+									<div class="date"><FormattedDate date={featuredIncident.data.pubDate} /></div>
+									<p>{featuredIncident.data.description}</p>
+								</div>
+							</a>
+						</article>
+					) : (
+						<p>No incidents published yet.</p>
+					)}
+				</div>
+
+				<!-- RIGHT: Past Incidents -->
+				<div class="column column-past">
+					<h2 class="col-header">Past Incidents</h2>
+					{pastIncidents.length > 0 ? pastIncidents.map((incident) => (
+						<article class="card">
+							<a href={`/incidents/${incident.id}/`}>
+								<h3>{incident.data.title}</h3>
+								<div class="date"><FormattedDate date={incident.data.pubDate} /></div>
+							</a>
+						</article>
+					)) : (
+						<p>Check back later for more historical analyses.</p>
+					)}
+				</div>
+			</section>
+
+			<NewsletterSignup />
+		</main>
+		<Footer />
+	</body>
+</html>

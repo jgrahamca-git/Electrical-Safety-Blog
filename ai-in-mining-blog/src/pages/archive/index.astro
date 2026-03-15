@@ -1,0 +1,110 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={'Archive - ' + SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 960px;
+			}
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				width: calc(50% - 1rem);
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			ul li img {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+				background: #ffffff;
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+				padding: 1.25rem;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+				transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+				height: 100%;
+				box-sizing: border-box;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			ul li a:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 10px 15px rgba(138, 58, 25, 0.15);
+				border-color: var(--accent);
+			}
+			ul li a:hover h4,
+			ul li a:hover .date {
+				color: rgb(var(--accent));
+			}
+			.post-type {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--accent);
+                font-weight: bold;
+                margin-bottom: 0.2em;
+            }
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+            <h1>Full Safety Archive</h1>
+			<section>
+				<ul>
+					<li>
+						<a href="/archive/incidents/">
+							<img src="/incident_occurrence.jpg" alt="Incidents" />
+							<div class="post-type">Incidents Database</div>
+							<h4 class="title">View All Incidents</h4>
+							<p class="date">Chronological index of all root cause analyses.</p>
+						</a>
+					</li>
+					<li>
+						<a href="/archive/safety-topics/">
+							<img src="/hierarchy_of_controls.jpg" alt="Safety Topics" />
+							<div class="post-type">Safety Topics Database</div>
+							<h4 class="title">View All Safety Topics</h4>
+							<p class="date">Chronological index of all daily safety briefings.</p>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

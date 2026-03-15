@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'safety-topics'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+				margin-bottom: 2rem;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+				width: 720px;
+				max-width: calc(100% - 2em);
+				height: auto;
+			}
+			.topic-image {
+				display: block;
+				margin: 3rem auto;
+				border-radius: 8px;
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+			}
+			@media (max-width: 720px) {
+				.hero-image img {
+					max-width: 100%;
+				}
+				.topic-image {
+					max-width: 100%;
+				}
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+			.post-type {
+				color: rgb(var(--accent));
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				margin-bottom: 0.5em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					<img src="/hierarchy_of_controls.jpg" alt="Hierarchy of Controls" />
+				</div>
+				<div class="prose">
+					<div class="title">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+						<div class="post-type">Daily Safety Topic</div>
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					{heroImage && <Image width={500} height={250} src={heroImage} alt={title} class="topic-image" />}
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

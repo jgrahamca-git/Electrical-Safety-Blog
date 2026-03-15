@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('incidents')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 960px;
+			}
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				width: calc(50% - 1rem);
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			.static-image-container {
+				width: 100%;
+				margin-bottom: 2rem;
+			}
+			.static-hero-image {
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+				object-fit: contain;
+				display: block;
+				margin: 0 auto;
+			}
+			ul li img {
+				margin: 0 auto 0.5rem auto;
+				border-radius: 12px;
+				width: 100%;
+				max-width: 100%;
+				display: block;
+				height: auto;
+			}
+			ul li a {
+				display: block;
+				background: #ffffff;
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+				padding: 1.25rem;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+				transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+				height: 100%;
+				box-sizing: border-box;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			ul li a:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 10px 15px rgba(138, 58, 25, 0.15);
+				border-color: var(--accent);
+			}
+			ul li a:hover h4,
+			ul li a:hover .date {
+				color: rgb(var(--accent));
+			}
+			ul a:hover img {
+				box-shadow: var(--box-shadow);
+			}
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+				.static-hero-image {
+					width: 100%;
+					max-width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<div class="static-image-container">
+					<img src="/incident_occurrence.jpg" alt="Incident Occurrence" class="static-hero-image" />
+				</div>
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/incidents/${post.id}/`}>
+									<h4 class="title">{post.data.title}</h4>
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

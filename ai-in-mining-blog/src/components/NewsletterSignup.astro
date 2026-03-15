@@ -1,0 +1,154 @@
+---
+---
+
+<div class="newsletter-signup">
+	<div class="newsletter-content">
+		<h3>Get Safety Alerts in Your Inbox</h3>
+		<p>Join our community of professionals and receive the latest electrical safety incidents, RCAs, and daily topics directly in your inbox.</p>
+		<form id="subscribe-form" class="subscribe-form">
+			<input type="email" id="email" name="email" placeholder="Enter your email address" required />
+			<button type="submit" class="subscribe-btn">Subscribe</button>
+		</form>
+		<p id="subscribe-success" class="success-message hidden">✅ Thank you for subscribing! Please check your inbox to confirm your subscription.</p>
+	</div>
+</div>
+
+<style>
+	.newsletter-signup {
+		background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+		border-radius: 12px;
+		padding: 3rem 2rem;
+		margin: 3rem 0;
+		color: white;
+		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	/* Adding a subtle accent overlay */
+	.newsletter-signup::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: var(--accent);
+	}
+
+	.newsletter-content {
+		position: relative;
+		z-index: 1;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.newsletter-content h3 {
+		color: white;
+		font-size: 1.8rem;
+		margin: 0 0 1rem 0;
+	}
+
+	.newsletter-content p {
+		color: #94a3b8;
+		font-size: 1.05rem;
+		margin-bottom: 2rem;
+		line-height: 1.5;
+	}
+
+	.subscribe-form {
+		display: flex;
+		gap: 0.5rem;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	.subscribe-form input {
+		flex: 1;
+		padding: 0.8rem 1.2rem;
+		border-radius: 6px;
+		border: 1px solid #475569;
+		background: #334155;
+		color: white;
+		font-size: 1rem;
+		outline: none;
+		transition: border-color 0.2s, box-shadow 0.2s;
+	}
+
+	.subscribe-form input:focus {
+		border-color: var(--accent);
+		box-shadow: 0 0 0 2px rgba(138, 58, 25, 0.5);
+	}
+
+	.subscribe-form input::placeholder {
+		color: #94a3b8;
+	}
+
+	.subscribe-btn {
+		background: var(--accent);
+		color: white;
+		border: none;
+		border-radius: 6px;
+		padding: 0 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background-color 0.2s, transform 0.1s;
+	}
+
+	.subscribe-btn:hover {
+		background: #733015; /* slightly darker copper */
+	}
+
+	.subscribe-btn:active {
+		transform: translateY(1px);
+	}
+
+	.success-message {
+		color: #10b981 !important;
+		font-weight: 500;
+		margin-top: 1rem !important;
+		margin-bottom: 0 !important;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	@media (max-width: 600px) {
+		.subscribe-form {
+			flex-direction: column;
+		}
+		.subscribe-btn {
+			padding: 0.8rem 1.5rem;
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		const form = document.getElementById('subscribe-form');
+		const successMessage = document.getElementById('subscribe-success');
+
+		if (form) {
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				
+				// Standard API submission logic would go here (e.g. Mailchimp, ConvertKit, Netlify Forms)
+				
+				// Hide form and show success using GSAP if available
+				form.style.display = 'none';
+				if (successMessage) {
+					successMessage.classList.remove('hidden');
+					if (window.gsap) {
+						window.gsap.fromTo(successMessage, 
+							{ opacity: 0, scale: 0.95 }, 
+							{ opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }
+						);
+					}
+				}
+			});
+		}
+	});
+</script>
