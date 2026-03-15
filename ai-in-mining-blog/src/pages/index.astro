@@ -158,7 +158,10 @@ const pastIncidents = allIncidents.slice(1);
 					{allTopics[0] ? (
 						<article class="card featured-card">
 							<a href={`/safety-topics/${allTopics[0].id}/`}>
-								<img src="/blog-placeholder-1.jpg" alt="Safety Topic" />
+								{allTopics[0].data.heroImage && (
+									// @ts-ignore
+									<img src={allTopics[0].data.heroImage.src || allTopics[0].data.heroImage} alt="" />
+								)}
 								<div class="featured-content">
 									<h3>{allTopics[0].data.title}</h3>
 									<div class="date"><FormattedDate date={allTopics[0].data.pubDate} /></div>
