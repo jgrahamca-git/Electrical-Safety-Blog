@@ -96,16 +96,24 @@ const latestTopic = topics.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubD
 		display: flex;
 	}
 	@media (max-width: 720px) {
+		header {
+			padding: 0;
+			width: 100%;
+		}
 		nav {
 			flex-direction: column;
 			gap: 0.5rem;
 			padding-top: 0.8rem;
+			width: 100%;
 		}
 		.internal-links {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
 			gap: 0.25rem;
+			width: 100%;
+			padding: 0 1rem;
+			box-sizing: border-box;
 		}
 		nav a {
 			padding: 0.5em 0.75em;
