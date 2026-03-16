@@ -96,6 +96,21 @@ const latestTopic = topics.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubD
 		display: flex;
 	}
 	@media (max-width: 720px) {
+		nav {
+			flex-direction: column;
+			gap: 0.5rem;
+			padding-top: 0.8rem;
+		}
+		.internal-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.25rem;
+		}
+		nav a {
+			padding: 0.5em 0.75em;
+			font-size: 0.9em;
+		}
 		.social-links {
 			display: none;
 		}
