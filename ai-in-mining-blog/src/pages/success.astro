@@ -1,0 +1,67 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// Force prerender so this page is fully static and avoids any SSR function issues with Netlify Forms
+export const prerender = true;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Success | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 100%;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 4em 2em;
+				box-sizing: border-box;
+				text-align: center;
+				min-height: 60vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			h1 {
+				color: var(--accent);
+				margin-bottom: 0.5em;
+				font-size: 2.5rem;
+			}
+			p {
+				color: rgb(var(--gray-dark));
+				font-size: 1.2rem;
+				line-height: 1.6;
+				margin-bottom: 2em;
+			}
+			.btn {
+				display: inline-block;
+				background: var(--accent);
+				color: white;
+				text-decoration: none;
+				padding: 0.8rem 1.5rem;
+				border-radius: 6px;
+				font-weight: bold;
+				transition: background-color 0.2s, transform 0.1s;
+			}
+			.btn:hover {
+				background: #733015;
+			}
+			.btn:active {
+				transform: translateY(1px);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Thank You! ✅</h1>
+			<p>You have successfully subscribed to the Electrical & Controls Safety Blog newsletter. We will send you updates directly to your inbox!</p>
+			<a href="/" class="btn">Return to Homepage</a>
+		</main>
+		<Footer />
+	</body>
+</html>
