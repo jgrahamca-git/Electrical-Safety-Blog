@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Newsletter Form Definition</title>
+</head>
+<body>
+  <!-- A hidden static HTML form exactly matching the Astro form so Netlify bots always detect it at build time -->
+  <form name="newsletter" data-netlify="true" hidden>
+    <input type="email" name="email" />
+    <button type="submit">Subscribe</button>
+  </form>
+</body>
+</html>
