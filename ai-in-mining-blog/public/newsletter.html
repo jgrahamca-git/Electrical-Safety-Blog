@@ -6,7 +6,7 @@
 </head>
 <body>
   <!-- A hidden static HTML form exactly matching the Astro form so Netlify bots always detect it at build time -->
-  <form name="newsletter" data-netlify="true" hidden>
+  <form name="newsletter" method="POST" data-netlify="true" hidden>
     <input type="email" name="email" />
     <button type="submit">Subscribe</button>
   </form>
