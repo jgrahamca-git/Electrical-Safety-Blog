@@ -1,0 +1,16 @@
+name: Daily Netlify Build
+
+on:
+  schedule:
+    # Runs at 6:00 AM Eastern Time (11:00 UTC) every day.
+    # Adjust the cron schedule if you prefer a different time.
+    - cron: '0 11 * * *'
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab if you want to force a build
+
+jobs:
+  daily-build:
+    name: Trigger Netlify Webhook
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Netlify Build Hook
+        run: curl -X POST -d {} ${{ secrets.NETLIFY_ELI_BUILD_HOOK }}

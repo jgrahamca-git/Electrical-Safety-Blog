@@ -8,9 +8,10 @@ import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import IncidentHeroImage from '../../assets/Incident.jpg';
 
-const posts = (await getCollection('incidents')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const now = new Date();
+const posts = (await getCollection('incidents'))
+	.filter((post) => post.data.pubDate <= now)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>

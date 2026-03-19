@@ -7,13 +7,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
-// Fetch all incidents and topics, sorted by newest first
-const allIncidents = (await getCollection('incidents')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-const allTopics = (await getCollection('safety-topics')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const now = new Date();
+
+// Fetch all incidents and topics, filter out future dates, and sort by newest first
+const allIncidents = (await getCollection('incidents'))
+	.filter((post) => post.data.pubDate <= now)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+	
+const allTopics = (await getCollection('safety-topics'))
+	.filter((post) => post.data.pubDate <= now)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Determine featured incident (the newest one) and past incidents
 const featuredIncident = allIncidents[0];
