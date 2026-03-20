@@ -1,7 +1,7 @@
 ---
-title: "Saturday: Identifying Frayed Cables"
+title: "Friday: Identifying Frayed Cables"
 description: "A small nick in insulation can lead to a catastrophic short circuit."
-pubDate: 2026-03-21
+pubDate: 2026-03-20
 heroImage: "../../assets/category-shock.jpg"
 ---
 

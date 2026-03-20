@@ -1,7 +1,7 @@
 ---
-title: "Friday: Preventing Ground Faults"
+title: "Saturday: Preventing Ground Faults"
 description: "Understand the importance of GFCI protection in wet or damaged environments."
-pubDate: 2026-03-20
+pubDate: 2026-03-21
 heroImage: "../../assets/category-grounding-bonding.jpg"
 ---
 

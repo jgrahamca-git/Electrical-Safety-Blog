@@ -179,32 +179,25 @@ const pastIncidents = allIncidents.slice(1);
 				<!-- LEFT: Daily Topics -->
 				<div class="column column-topics">
 					<h2 class="col-header">Daily Safety Topic</h2>
-					{allTopics[0] ? (
-						<article class="card featured-card">
-							<a href={`/safety-topics/${allTopics[0].id}/`}>
-								{allTopics[0].data.heroImage && (
-									// @ts-ignore
-									<img src={allTopics[0].data.heroImage.src || allTopics[0].data.heroImage} alt="" />
-								)}
-								<div class="featured-content">
-									<h3>{allTopics[0].data.title}</h3>
-									<div class="date"><FormattedDate date={allTopics[0].data.pubDate} /></div>
-									<p>{allTopics[0].data.description}</p>
-								</div>
-							</a>
-						</article>
+					{allTopics.length > 0 ? (
+						allTopics.map((topic) => (
+							<article class="card featured-card">
+								<a href={`/safety-topics/${topic.id}/`}>
+									{topic.data.heroImage && (
+										// @ts-ignore
+										<img src={topic.data.heroImage.src || topic.data.heroImage} alt="" />
+									)}
+									<div class="featured-content">
+										<h3>{topic.data.title}</h3>
+										<div class="date"><FormattedDate date={topic.data.pubDate} /></div>
+										<p>{topic.data.description}</p>
+									</div>
+								</a>
+							</article>
+						))
 					) : (
 						<p>No daily topics yet.</p>
 					)}
-					{allTopics.slice(1).map((topic) => (
-						<article class="card">
-							<a href={`/safety-topics/${topic.id}/`}>
-								<h3>{topic.data.title}</h3>
-								<div class="date"><FormattedDate date={topic.data.pubDate} /></div>
-								<p>{topic.data.description}</p>
-							</a>
-						</article>
-					))}
 				</div>
 
 				<!-- MIDDLE: Featured Incident -->
