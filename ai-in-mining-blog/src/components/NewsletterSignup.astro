@@ -7,7 +7,7 @@
 			<h3>Get Safety Alerts in Your Inbox</h3>
 			<p>Join our community of professionals and receive the latest electrical safety incidents, RCAs, and daily topics directly in your inbox.</p>
 			
-			<form class="ml-block-form subscribe-form" action="https://assets.mailerlite.com/jsonp/2206705/forms/182399104804980264/subscribe" data-code="" method="post" target="_blank">
+			<form class="ml-block-form subscribe-form" action="https://assets.mailerlite.com/jsonp/2206705/forms/182399104804980264/subscribe" data-code="" method="post">
 				<input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Enter your email address" autocomplete="email" required>
 				<input type="hidden" name="ml-submit" value="1">
 				<input type="hidden" name="anticsrf" value="true">
@@ -150,14 +150,46 @@
 	}
 </style>
 
-<script is:inline>
-	function ml_webform_success_38721112() {
-		var $ = ml_jQuery || jQuery;
-		$('.ml-subscribe-form-38721112 .row-success').show();
-		$('.ml-subscribe-form-38721112 .row-form').hide();
+<script>
+	const form = document.querySelector('.subscribe-form');
+	const formContainer = document.querySelector('.row-form');
+	const successMessage = document.querySelector('.row-success');
+
+	if (form) {
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault(); // Stop the browser from opening a new tab
+			
+			const btn = form.querySelector('button[type="submit"]');
+			if (btn) {
+				btn.innerText = "Subscribing...";
+				btn.disabled = true;
+			}
+
+			try {
+				const formData = new FormData(form);
+				const response = await fetch(form.action, {
+					method: 'POST',
+					body: formData,
+					headers: {
+						'Accept': 'application/json' // Ask for JSON response
+					}
+				});
+
+				// Wait for network success
+				if (response.ok) {
+					if (formContainer) formContainer.style.display = 'none';
+					if (successMessage) successMessage.style.display = 'block';
+				} else {
+					console.error("Subscription failed.");
+				}
+			} catch (error) {
+				console.error("Error submitting form:", error);
+			} finally {
+				if (btn) {
+					btn.innerText = "Subscribe";
+					btn.disabled = false;
+				}
+			}
+		});
 	}
-</script>
-<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript" is:inline></script>
-<script is:inline>
-	fetch("https://assets.mailerlite.com/jsonp/2206705/forms/182399104804980264/takel");
 </script>
