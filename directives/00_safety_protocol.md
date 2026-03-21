@@ -26,4 +26,5 @@ Whenever tasked with writing a new piece of content for the blog (e.g., Daily Sa
 - **Drafting:** Do NOT immediately create or overwrite markdown files with the finished content.
 - **Options:** You MUST draft 2 to 3 brief concepts/outlines for the new post.
 - **Review:** Present these options to the user in the chat for review and selection.
+- **Images:** Based on the product or service selected by the user, you (the AI) must automatically source an appropriate vendor image to use for the post. If none exists, seamlessly run a web search to find a suitable image.
 - **Commitment:** Only write out the actual files AFTER the user has explicitly chosen an option or approved a final draft.
