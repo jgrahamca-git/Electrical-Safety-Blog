@@ -9,7 +9,7 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://eli-ei-safety.netlify.app',
+  site: 'https://safetyblog.eli-intelligence.com',
   integrations: [mdx(), sitemap()],
 
   vite: {
