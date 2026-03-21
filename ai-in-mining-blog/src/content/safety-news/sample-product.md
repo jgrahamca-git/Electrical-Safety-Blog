@@ -2,7 +2,7 @@
 title: 'Selected Product of the Week: Enhanced Arc Flash PPE'
 description: 'A look at the latest ultra-lightweight arc flash suits improving mobility and safety for electrical workers.'
 pubDate: 'Mar 21 2026'
-heroImage: '/hierarchy_of_controls.jpg'
+heroImage: '../../assets/category-ppe.png'
 ---
 Welcome to our new Safety News & Products section! This week we are highlighting the importance of lightweight, high-visibility arc flash PPE that reduces heat exhaustion while maintaining maximum protection.
 
