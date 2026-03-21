@@ -20,3 +20,10 @@ After providing the Safety Brief, you must stop and wait. You may only proceed i
 
 ## 4. Error Handling
 If a script fails, you may analyze the error, but you must repeat the "Safety Brief" for the corrected version before re-running.
+
+## 5. Content Generation (Blogs, RCA, Safety Topics)
+Whenever tasked with writing a new piece of content for the blog (e.g., Daily Safety Topics, Incident RCAs, Product features):
+- **Drafting:** Do NOT immediately create or overwrite markdown files with the finished content.
+- **Options:** You MUST draft 2 to 3 brief concepts/outlines for the new post.
+- **Review:** Present these options to the user in the chat for review and selection.
+- **Commitment:** Only write out the actual files AFTER the user has explicitly chosen an option or approved a final draft.

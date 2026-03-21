@@ -17,6 +17,10 @@ const allIncidents = (await getCollection('incidents'))
 const allTopics = (await getCollection('safety-topics'))
 	.filter((post) => post.data.pubDate <= now)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+	
+const allNews = (await getCollection('safety-news'))
+	.filter((post) => post.data.pubDate <= now)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Determine featured incident (the newest one) and past incidents
 const featuredIncident = allIncidents[0];
@@ -222,18 +226,23 @@ const pastIncidents = allIncidents.slice(1);
 					)}
 				</div>
 
-				<!-- RIGHT: Past Incidents -->
+				<!-- RIGHT: Industry News & Products -->
 				<div class="column column-past">
-					<h2 class="col-header">Past Incidents</h2>
-					{pastIncidents.length > 0 ? pastIncidents.map((incident) => (
+					<h2 class="col-header">Safety News & Products</h2>
+					{allNews.length > 0 ? allNews.map((news) => (
 						<article class="card">
-							<a href={`/incidents/${incident.id}/`}>
-								<h3>{incident.data.title}</h3>
-								<div class="date"><FormattedDate date={incident.data.pubDate} /></div>
+							<a href={`/safety-news/${news.id}/`}>
+								{news.data.heroImage && (
+									// @ts-ignore
+									<img src={news.data.heroImage.src || news.data.heroImage} alt="" style="width: 100%; border-radius: 4px; margin-bottom: 0.75rem;" />
+								)}
+								<h3>{news.data.title}</h3>
+								<div class="date"><FormattedDate date={news.data.pubDate} /></div>
+								{news.data.description && <p style="margin-top:0.5rem; font-size:0.9rem;">{news.data.description}</p>}
 							</a>
 						</article>
 					)) : (
-						<p>Check back later for more historical analyses.</p>
+						<p>Check back later for products and news.</p>
 					)}
 				</div>
 			</section>

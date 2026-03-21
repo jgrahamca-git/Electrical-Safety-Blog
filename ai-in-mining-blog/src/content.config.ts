@@ -21,4 +21,9 @@ const safetyTopics = defineCollection({
 	schema: postSchema,
 });
 
-export const collections = { incidents, 'safety-topics': safetyTopics };
+const safetyNews = defineCollection({
+	loader: glob({ base: './src/content/safety-news', pattern: '**/*.{md,mdx}' }),
+	schema: postSchema,
+});
+
+export const collections = { incidents, 'safety-topics': safetyTopics, 'safety-news': safetyNews };
