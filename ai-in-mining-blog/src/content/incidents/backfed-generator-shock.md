@@ -1,0 +1,28 @@
+---
+title: "Incident RCA: Lineman Shocked by Improperly Backfed Portable Generator"
+description: "A severe shock incident caused by a homeowner running a portable generator without a transfer switch, sending deadly voltage back onto the grid during storm restoration."
+pubDate: "Mar 23 2026"
+heroImage: "../../assets/backfed-gen.jpg"
+---
+
+### Incident Overview
+During the early hours of post-storm restoration, a primary distribution line had been de-energized to allow crews to safely remove fallen trees and repair downed conductors. Before applying personal grounds, a journeyman lineman made contact with a supposedly dead conductor and received a severe shock. He was thrown backward and sustained secondary fall injuries, but fortunately survived due to swift action from his crew.
+
+### The Immediate Danger
+The crew had correctly verified the main feed from the substation was open (de-energized). However, the line was unexpectedly re-energized from the **load side**. A local homeowner, attempting to restore power to their house, plugged a running portable generator directly into a dryer outlet without a transfer switch.
+
+### Root Cause Analysis (RCA)
+
+#### Direct Causes
+1. **Improper Backfeeding:** The homeowner bypassed all established safety and building codes by "backfeeding" their home's panel. This caused the generator's 120/240V output to travel backward through the service entrance.
+2. **Reverse Transformer Action:** The pole-mounted distribution transformer acted in reverse, stepping the 240V back up to primary distribution voltage (thousands of volts) and fully energizing the downed line.
+
+#### Systemic/Procedural Failures
+- **Failure to Test Before Touch:** The lineman skipped the critical "test for absence of voltage" rule immediately prior to handling the conductor, assuming it was dead because the main feeder breaker was open. 
+- **Delayed Grounding:** Personal grounding clusters were not applied immediately after the main isolation steps. If grounds had been in place, the high backfed voltage would have been shorted to the neutral/ground, instantly tripping the generator’s breaker and protecting the worker.
+
+### Corrective Actions & Key Takeaways
+
+1. **Verify and Treat as Energized:** Never assume a line is dead during an outage. Countless residential generators are improperly connected during grid failures. **Always verify absence of voltage (Live-Dead-Live) before every single interaction.**
+2. **Immediate Personal Grounding:** The only absolute guarantee of safety on a distribution line is placing personal protective grounds securely on all phases between the worker and *every* possible source of energy—including the load side.
+3. **Public Education:** Continue pushing aggressive local community outreach regarding the immense, fatal dangers of bypassing transfer switches when deploying emergency generators.

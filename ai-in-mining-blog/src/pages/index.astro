@@ -16,11 +16,13 @@ const allIncidents = (await getCollection('incidents'))
 	
 const allTopics = (await getCollection('safety-topics'))
 	.filter((post) => post.data.pubDate <= now)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
 	
 const allNews = (await getCollection('safety-news'))
 	.filter((post) => post.data.pubDate <= now)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
 
 // Determine featured incident (the newest one) and past incidents
 const featuredIncident = allIncidents[0];
