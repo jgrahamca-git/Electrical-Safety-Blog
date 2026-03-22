@@ -16,7 +16,7 @@ const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } 
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={heroImage} />
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -35,6 +35,15 @@ const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } 
 				width: 720px;
 				max-width: calc(100% - 2em);
 				height: auto;
+			}
+			.topic-image {
+				display: block;
+				margin: 2rem auto 3rem auto;
+				border-radius: 8px;
+				width: 100%;
+				max-width: 720px;
+				height: auto;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 			}
 			@media (max-width: 720px) {
 				.hero-image img {
@@ -78,9 +87,11 @@ const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } 
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					<Image src={DefaultHeroImage} alt="Incident Occurrence" />
-				</div>
+				{!hideMeta && (
+					<div class="hero-image">
+						<Image src={DefaultHeroImage} alt="Incident Occurrence" />
+					</div>
+				)}
 				<div class="prose">
 					<div class="title">
 						{!hideMeta && (
@@ -99,6 +110,7 @@ const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } 
 						<h1>{title}</h1>
 						<hr />
 					</div>
+					{heroImage && <img src={typeof heroImage === 'object' ? heroImage.src : heroImage} alt={title} class="topic-image" />}
 					<slot />
 					<NewsletterSignup />
 					<Comments />

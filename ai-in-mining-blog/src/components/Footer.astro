@@ -12,6 +12,9 @@ const today = new Date();
 	<div style="margin-bottom: 1em;">
 		<a href="mailto:info@eli-intelligence.com" style="color: rgb(var(--gray)); text-decoration: none;">info@eli-intelligence.com</a>
 	</div>
+	<div style="margin-bottom: 1em; font-size: 1.15em; font-weight: 500; color: var(--accent); letter-spacing: 0.5px;">
+		Empowering Learned Intelligence
+	</div>
 	&copy; {today.getFullYear()} Electrical & Controls Safety. All rights reserved.
 	<div class="social-links">
 		<a href="https://linkedin.com" target="_blank">
@@ -25,6 +28,12 @@ const today = new Date();
 	</div>
 </footer>
 <div class="diagonal-wipe" transition:persist="wipe"></div>
+
+<!-- Global Image Lightbox Modal -->
+<div id="image-lightbox" class="lightbox-overlay">
+	<button class="lightbox-close" aria-label="Close image">&times;</button>
+	<img id="lightbox-img" src="" alt="Expanded view" />
+</div>
 <style>
 	footer {
 		padding: 2em 1em 6em 1em;
@@ -87,6 +96,56 @@ const today = new Date();
 		50% { background-position: 100% 50%; }
 		100% { background-position: 0% 50%; }
 	}
+
+	/* Lightbox Styles */
+	.lightbox-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.9);
+		z-index: 999999;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+	}
+	.lightbox-overlay.active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	.lightbox-overlay img {
+		max-width: 90%;
+		max-height: 90vh;
+		border-radius: 8px;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+		transform: scale(0.95);
+		transition: transform 0.3s ease;
+	}
+	.lightbox-overlay.active img {
+		transform: scale(1);
+	}
+	.lightbox-close {
+		position: absolute;
+		top: 20px;
+		right: 30px;
+		background: none;
+		border: none;
+		color: white;
+		font-size: 3rem;
+		cursor: pointer;
+		line-height: 1;
+		z-index: 1000000;
+	}
+	.lightbox-close:hover {
+		color: var(--accent);
+	}
+	:global(main img) {
+		cursor: zoom-in;
+	}
 </style>
 <script>
 	import gsap from 'gsap';
@@ -99,6 +158,44 @@ const today = new Date();
 		if (bttBtn) {
 			bttBtn.addEventListener('click', () => {
 				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
+		}
+
+		// --- Lightbox Logic ---
+		const lightbox = document.getElementById('image-lightbox');
+		const lightboxImg = document.getElementById('lightbox-img');
+		const closeBtn = document.querySelector('.lightbox-close');
+		
+		if (lightbox && lightboxImg && closeBtn) {
+			const images = document.querySelectorAll('main img');
+			images.forEach(img => {
+				img.addEventListener('click', (e) => {
+					// Stop the image click from triggering any wrapping <a> tag navigation
+					e.preventDefault();
+					e.stopPropagation();
+					
+					lightboxImg.src = img.src;
+					lightboxImg.alt = img.alt;
+					lightbox.classList.add('active');
+					document.body.style.overflow = 'hidden'; // Stop background scrolling
+				});
+			});
+
+			const closeLightbox = () => {
+				lightbox.classList.remove('active');
+				document.body.style.overflow = '';
+			};
+
+			closeBtn.addEventListener('click', closeLightbox);
+			// Close if clicking outside the image
+			lightbox.addEventListener('click', (e) => {
+				if (e.target === lightbox) closeLightbox();
+			});
+			// Close on escape key
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+					closeLightbox();
+				}
 			});
 		}
 	});
