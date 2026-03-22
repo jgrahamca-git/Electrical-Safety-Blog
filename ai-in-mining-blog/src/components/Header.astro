@@ -24,6 +24,7 @@ const latestTopic = topics.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubD
 			<HeaderLink href={`/safety-topics/${latestTopic.id}/`}>Safety Topics</HeaderLink>
 			<HeaderLink href="/archive">Archive</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
+			<a href="/#mlb2-38721112" class="subscribe-badge">Subscribe</a>
 		</div>
 		<div class="social-links">
 			<a href="https://linkedin.com" target="_blank">
@@ -94,6 +95,28 @@ const latestTopic = topics.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubD
 	.social-links,
 	.social-links a {
 		display: flex;
+	}
+	.subscribe-badge {
+		background: rgba(230, 100, 40, 0.15) !important;
+		color: #f3f4f6 !important;
+		padding: 0.3em 0.8em !important;
+		border: 1px solid rgba(230, 100, 40, 0.4) !important;
+		border-radius: 4px !important;
+		font-weight: 500;
+		font-size: 0.85em;
+		margin-left: 1rem;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		transition: all 0.2s ease;
+		display: inline-flex;
+		align-items: center;
+	}
+	.subscribe-badge:hover {
+		background: rgba(230, 100, 40, 0.3) !important;
+		border-color: var(--accent) !important;
+		color: #ffffff !important;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 8px rgba(230, 100, 40, 0.2);
 	}
 	@media (max-width: 720px) {
 		header {
