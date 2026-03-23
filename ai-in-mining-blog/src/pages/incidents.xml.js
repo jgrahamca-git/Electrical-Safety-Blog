@@ -7,15 +7,15 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
 export async function GET(context) {
-	const topics = await getCollection('safety-topics');
+	const incidents = await getCollection('incidents');
 	
-	const allPosts = [...topics]
+	const allPosts = [...incidents]
 		.filter((post) => post.data.pubDate.valueOf() <= Date.now())
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 	return rss({
-		title: SITE_TITLE,
-		description: SITE_DESCRIPTION,
+		title: `${SITE_TITLE} - Incident Reports`,
+		description: 'Latest Incident RCAs and Reports',
 		site: context.site,
 		items: allPosts.map((post) => {
 			const imgSrc = typeof post.data.heroImage === 'object' ? post.data.heroImage.src : post.data.heroImage;
