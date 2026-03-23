@@ -22,8 +22,13 @@ export async function GET(context) {
 			const imgSrc = typeof post.data.heroImage === 'object' ? post.data.heroImage.src : post.data.heroImage;
 			const fullImgUrl = imgSrc ? `https://safetyblog.eli-intelligence.com${imgSrc.startsWith('/') ? '' : '/'}${imgSrc}` : null;
 			
-			// Parse the raw markdown body into clean HTML for email rendering
-			const htmlBody = sanitizeHtml(parser.render(post.body || ''));
+			// Safely strip MDX imports and interactive Quiz tags before compiling
+			let cleanBody = post.body || '';
+			cleanBody = cleanBody.replace(/^import\s+.*?;$/gm, '');
+			cleanBody = cleanBody.replace(/<Quiz[\s\S]*?\/>/g, '');
+
+			// Parse the clean markdown body into HTML for email rendering
+			const htmlBody = sanitizeHtml(parser.render(cleanBody));
 
 			return {
 				title: post.data.title,
