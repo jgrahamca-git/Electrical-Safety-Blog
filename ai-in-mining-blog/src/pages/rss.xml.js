@@ -14,11 +14,16 @@ export async function GET(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
-		items: allPosts.map((post) => ({
-			title: post.data.title,
-			pubDate: post.data.pubDate,
-			description: post.data.description,
-			link: `/${post.collection}/${post.id}/`,
-		})),
+		items: allPosts.map((post) => {
+			const imgSrc = typeof post.data.heroImage === 'object' ? post.data.heroImage.src : post.data.heroImage;
+			const fullImgUrl = imgSrc ? `https://safetyblog.eli-intelligence.com${imgSrc.startsWith('/') ? '' : '/'}${imgSrc}` : null;
+			return {
+				title: post.data.title,
+				pubDate: post.data.pubDate,
+				description: post.data.description,
+				link: `/${post.collection}/${post.id}/`,
+				customData: fullImgUrl ? `<enclosure url="${fullImgUrl}" length="0" type="image/jpeg"/>` : '',
+			};
+		}),
 	});
 }
