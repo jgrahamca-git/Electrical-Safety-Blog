@@ -24,7 +24,9 @@ If a script fails, you may analyze the error, but you must repeat the "Safety Br
 ## 5. Content Generation (Blogs, RCA, Safety Topics)
 Whenever tasked with writing a new piece of content for the blog (e.g., Daily Safety Topics, Incident RCAs, Product features):
 - **Drafting:** Do NOT immediately create or overwrite markdown files with the finished content.
-- **Options:** You MUST draft 2 to 3 brief concepts/outlines for the new post.
-- **Review:** Present these options to the user in the chat for review and selection.
+- **Options:** You MUST draft 2 to 3 brief concepts/outlines for the new post (or 10 incidents / 7 topics as required by the workflow).
+- **Selection:** Present these options to the user in the chat for review and selection.
+- **Full Text Review:** Once an option is selected, you MUST provide the complete, finalized drafted text of the post in the chat for the user to read and approve.
+- **Narrative Format:** Adhere precisely to whatever storytelling narrative and formatting structures the user establishes for incident analysis and safety topics.
 - **Images:** Based on the product or service selected by the user, you (the AI) must automatically source an appropriate vendor image to use for the post. If none exists, seamlessly run a web search to find a suitable image.
-- **Commitment:** Only write out the actual files AFTER the user has explicitly chosen an option or approved a final draft.
+- **Commitment:** Only write out the actual files to the codebase AFTER the user has explicitly read the full text and approved the final draft.
