@@ -2,9 +2,9 @@ name: Daily Netlify Build
 
 on:
   schedule:
-    # Runs at 6:00 AM Eastern Time (11:00 UTC) every day.
-    # Adjust the cron schedule if you prefer a different time.
-    - cron: '0 11 * * *'
+    # Runs at 5:00 AM Eastern Time (09:00 UTC) every day.
+    # MailerLite RSS Campaign is set to send at 5:30 AM Eastern.
+    - cron: '0 9 * * *'
   workflow_dispatch: # Allows manual triggering from the GitHub Actions tab if you want to force a build
 
 jobs:
