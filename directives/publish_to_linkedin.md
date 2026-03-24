@@ -40,3 +40,31 @@ python execution/post_to_linkedin.py --text "Approved text here" --url "https://
 
 ### 5. Verify and Annotate
 If the script succeeds, inform the user that the post is live. If it fails, self-anneal (check token expiration, API formatting) and update this directive if you discover API changes.
+
+---
+
+## OAuth Token Maintenance
+
+### Token Lifecycle
+LinkedIn OAuth 2.0 access tokens expire after **60 days**. A 401 Unauthorized response from `post_to_linkedin.py` always means the token is expired or invalid — not a bug in the script.
+
+### Pre-Post Token Check (Required)
+Before executing Step 4, always run the token validation script:
+
+```bash
+python execution/check_linkedin_token.py
+```
+
+- If it prints `SUCCESS`, proceed to post.
+- If it prints `ERROR: Token is EXPIRED`, follow the refresh steps below before posting.
+
+### How to Refresh the Token
+1. Go to your app at `https://www.linkedin.com/developers/apps` and open the **Auth** tab.
+2. Under **OAuth 2.0 tools**, click **Request access token**.
+3. Select scopes: `openid`, `profile`, `w_member_social`.
+4. Copy the new access token.
+5. Update `LINKEDIN_ACCESS_TOKEN` in the `.env` file.
+6. Re-run `check_linkedin_token.py` to confirm the new token is valid.
+
+### Reminder Cadence
+Tokens last ~60 days. If posting bi-weekly, plan to refresh the token approximately every 8 weeks. If the check fails unexpectedly early, the token may have been manually revoked from the LinkedIn Developer Portal.
