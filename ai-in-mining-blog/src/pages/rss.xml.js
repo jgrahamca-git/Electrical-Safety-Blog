@@ -27,7 +27,12 @@ export async function GET(context) {
 			cleanBody = cleanBody.replace(/<Quiz[\s\S]*?\/>/g, '');
 
 			// Parse the clean markdown body into HTML for email rendering
-			const htmlBody = sanitizeHtml(parser.render(cleanBody));
+			let htmlBody = sanitizeHtml(parser.render(cleanBody));
+
+			// Inject the hero image directly into the HTML format for MailerLite's "Full Content" option
+			if (fullImgUrl) {
+				htmlBody = `<img src="${fullImgUrl}" alt="Featured Image" style="max-width: 100%; height: auto; margin-bottom: 20px; border-radius: 8px;" />\n` + htmlBody;
+			}
 
 			return {
 				title: post.data.title,
