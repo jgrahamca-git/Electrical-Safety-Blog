@@ -23,6 +23,9 @@ If a script fails, you may analyze the error, but you must repeat the "Safety Br
 
 ## 5. Content Generation (Blogs, RCA, Safety Topics)
 Whenever tasked with writing a new piece of content for the blog (e.g., Daily Safety Topics, Incident RCAs, Product features):
+- **Research Review:** After conducting any web research for a new topic or incident, you MUST pause and present a comprehensive review of your findings to the user for validation BEFORE drafting any concepts or content.
+- **Titles:** All Incident RCAs and Daily Safety Topics MUST feature a "safety hook title" – a title that is punchy, immediately grabs attention, and clearly communicates the critical safety stakes or incident impact.
+- **SEO Optimization:** You MUST rigorously apply the SEO rules defined in `directives/03_seo_guidelines.md` (optimized frontmatter, keyword density, accessible alt text, and internal/external links) to all drafted content to maximize organic traffic.
 - **Drafting:** Do NOT immediately create or overwrite markdown files with the finished content.
 - **Options:** You MUST draft 2 to 3 brief concepts/outlines for the new post (or 10 incidents / 7 topics as required by the workflow).
 - **Selection:** Present these options to the user in the chat for review and selection.
