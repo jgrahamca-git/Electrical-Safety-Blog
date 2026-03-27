@@ -7,7 +7,9 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
 export async function GET(context) {
-	const incidents = await getCollection('incidents');
+	const incidents = await getCollection('incidents', ({ data }) => {
+		return data.draft !== true;
+	});
 	
 	const allPosts = [...incidents]
 		.filter((post) => post.data.pubDate.valueOf() <= Date.now())
