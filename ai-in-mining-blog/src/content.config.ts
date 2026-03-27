@@ -8,6 +8,7 @@ const postSchema = ({ image }: any) =>
 		description: z.string(),
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
+		draft: z.boolean().optional(),
 		heroImage: z.optional(image()),
 	});
 
