@@ -3,7 +3,9 @@ import { getCollection } from 'astro:content';
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 
-const incidents = await getCollection('incidents');
+const incidents = await getCollection('incidents', ({ data }) => {
+	return data.draft !== true;
+});
 const latestIncident = incidents.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 
 const topics = await getCollection('safety-topics');
