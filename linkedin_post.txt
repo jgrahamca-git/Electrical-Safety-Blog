@@ -1,0 +1,19 @@
+[Hook] A minor "tingle" on a mobile mining drill rig isn't static electricity. It’s an active equipment bonding failure—and a deadly warning.
+
+[Story] At 2:00 AM on a graveyard shift, an operator steadied himself against a 1000V mobile drill rig and felt a sharp, pulsating shock. He shook it off as static discharge. He was standing inches away from a catastrophic double-failure.
+
+Over weeks of severely dragging the trailing cable around, the equipment grounding conductors started to intermittantly open and close inside the cable which led to several trips that were never investigated further and simply shrugged off and promptly reset. Normally, the Ground-Fault Ground-Check (GFGC) relay catches the open ground instantly. But the relay eventually failed too—its output contacts had welded shut. The monitor was trying to open its contacts to de-energize the breaker but could not do so. Instead, the local LED on the GFGC showed that the output tripped but in reality was unable to actually open due to the welded closed contacts.
+
+When a high-impedance insulation fault developed in the main drive motor, it energized the chassis. With no low-impedance fault return path and a failed-closed monitor, every single layer of automatic protection was gone. The operator's body had become the path to earth.
+
+[Lesson] This is exactly why MSHA regulations explicitly treat welded relay contacts as a known, severe danger in ground-check circuits.
+
+Also, if a shunt trip wiring configuration is used it is generally known that this is not a fail-safe methodology. That said, it is advisable to transition to a de-energize-to-trip (UVR) logic.
+Never rely just on the relay's LED indicator. You must physically test the complete trip chain from sensor to breaker.
+Stop work immediately on any reported tingle. The absence of a breaker trip is the danger signal itself.
+
+[Link] I just published a full Incident RCA breaking down the exact forensics of this fault sequence, including a free downloadable PDF checklist for trailing-cable GFGC testing. Read the complete breakdown here: 👉 https://safetyblog.eli-intelligence.com/incidents/tingling-drill-rig
+
+[CTA] Have you ever uncovered a welded relay contact or a "healthy-looking" ground-check monitor during a routine panel inspection? Let me know in the comments.
+
+[Tags] #MiningSafety #ElectricalSafety #IndustrialMaintenance #EquipmentBonding #TouchPotential #TrailingCables

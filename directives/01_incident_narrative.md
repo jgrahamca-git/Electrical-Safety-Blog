@@ -11,8 +11,8 @@ Every Incident RCA must adhere rigidly to the following 6 chronological sections
 - **Format:** The `title` field in the frontmatter MUST be a "safety hook title" – punchy, immediate, and communicating the critical stakes of the incident. It should grab attention immediately.
 
 ### 1. The Hook (The Flashpoint)
-- **Format:** A punchy 1-2 sentence opening that immediately describes the most dramatic moment of the incident. No gradual buildup to start; go straight to the impact.
-- **Example:** "At 10:15 AM on a rainy Tuesday, what should have been a routine 480V breaker replacement turned into a catastrophic arc blast that hospitalized two senior electricians."
+- **Format:** A punchy 1-2 sentence opening that immediately describes the most dramatic moment of the incident. No gradual buildup to start; go straight to the impact. The impact does not always have to be a personal injury—it can be catastrophic equipment damage, a massive fire, or a narrow near-miss that caused heavy downtime.
+- **Example:** "At 10:15 AM on a rainy Tuesday, what should have been a routine 480V breaker replacement turned into a catastrophic arc blast that hospitalized two senior electricians." OR "A loose aluminum termination went unnoticed for three years—until it melted through the 600V busbar and burned down the entire motor control center."
 
 ### 2. The Setup (The Context & Environment)
 - **Format:** Rewind the clock to set the scene. Thoroughly detail the weather, the time of day, how long the shift had been running (analyzing fatigue factor), the exact equipment involved, and all the trades present on site.

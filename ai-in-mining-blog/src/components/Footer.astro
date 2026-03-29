@@ -112,6 +112,7 @@ const today = new Date();
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity 0.3s ease;
+		overflow: auto; /* Allow scrolling when zoomed */
 	}
 	.lightbox-overlay.active {
 		opacity: 1;
@@ -124,9 +125,22 @@ const today = new Date();
 		box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 		transform: scale(0.95);
 		transition: transform 0.3s ease;
+		cursor: zoom-in;
+		margin: auto;
 	}
 	.lightbox-overlay.active img {
 		transform: scale(1);
+	}
+	/* Zooms image to intrinsic full size for tables/FMEAs */
+	.lightbox-overlay.zoomed {
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+	.lightbox-overlay.zoomed img {
+		max-width: none;
+		max-height: none;
+		cursor: zoom-out;
+		margin: 2rem;
 	}
 	.lightbox-close {
 		position: absolute;
@@ -182,11 +196,16 @@ const today = new Date();
 			});
 
 			const closeLightbox = () => {
-				lightbox.classList.remove('active');
+				lightbox.classList.remove('active', 'zoomed');
 				document.body.style.overflow = '';
 			};
 
 			closeBtn.addEventListener('click', closeLightbox);
+			// Toggle zoom when clicking the image itself
+			lightboxImg.addEventListener('click', (e) => {
+				e.stopPropagation();
+				lightbox.classList.toggle('zoomed');
+			});
 			// Close if clicking outside the image
 			lightbox.addEventListener('click', (e) => {
 				if (e.target === lightbox) closeLightbox();

@@ -9,6 +9,7 @@ const incidents = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		heroImage: image().optional().or(z.string().optional()),
 		hideMeta: z.boolean().optional(),
+		hideNewsletter: z.boolean().optional(),
 	}),
 });
 

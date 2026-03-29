@@ -9,9 +9,9 @@ import NewsletterSignup from '../components/NewsletterSignup.astro';
 import Comments from '../components/Comments.astro';
 import DefaultHeroImage from '../assets/Incident.jpg';
 
-type Props = CollectionEntry<'incidents'>['data'] & { hideMeta?: boolean };
+type Props = CollectionEntry<'incidents'>['data'] & { hideMeta?: boolean, hideNewsletter?: boolean };
 
-const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, hideMeta = false, hideNewsletter = false } = Astro.props;
 ---
 
 <html lang="en">
@@ -112,7 +112,7 @@ const { title, description, pubDate, updatedDate, heroImage, hideMeta = false } 
 					</div>
 					{heroImage && <img src={typeof heroImage === 'object' ? heroImage.src : heroImage} alt={title} class="topic-image" />}
 					<slot />
-					<NewsletterSignup />
+					{!hideNewsletter && <NewsletterSignup />}
 					<Comments />
 				</div>
 			</article>

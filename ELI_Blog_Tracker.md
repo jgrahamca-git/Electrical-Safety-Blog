@@ -32,7 +32,7 @@
 - **Quality AI:** Claude (research review, editorial, LinkedIn review)
 - **Email:** MailerLite with RSS automation (hourly polling)
 - **Scheduling:** Zapier free tier — daily 5:00 AM EST build hook to Netlify
-- **LinkedIn:** Bi-weekly, automated via Python scripts (`post_to_linkedin.py`, `check_linkedin_token.py`). OAuth token has 60-day expiry.
+- **LinkedIn:** Bi-weekly, automated via Zapier RSS integration.
 
 ### Current status
 
@@ -64,8 +64,7 @@
 2. Gemini drafts LinkedIn post (Hook → Story → Lesson → Link → CTA → Tags)
 3. Claude reviews for engagement quality
 4. Jason approves at the gate
-5. Token check script runs (`check_linkedin_token.py`)
-6. Post script executes via LinkedIn API (`post_to_linkedin.py`)
+5. Zapier automatically broadcasts new blog URLs via RSS feed (or Jason copy-pastes approved text block)
 
 ### Content formats
 
@@ -89,6 +88,7 @@
 - Tone: experienced journeyman teaching an apprentice — not academic, not corporate safety department
 - Real incidents handled with respect for people involved
 - Industrial/mining audience — not residential/consumer
+- **Scope:** Incidents and topics do NOT have to be strictly personnel hazards (shocks/arc flashes). They can and should equally cover massive equipment damage, downtime triggers, and industrial fires.
 
 ### Content pillars
 
@@ -101,9 +101,12 @@
 ### Blockers and open questions
 
 - [ ] Subscriber count and total posts published need to be recorded here
-- [ ] LinkedIn OAuth token expiry tracking — when does the current token expire?
-- [ ] Lead magnet strategy not yet defined (Gemini flagged this as next step)
+- [ ] Verify Zapier automation correctly pulled this week's RSS feed on publishing day
+- [x] Provide Gemini with the small weekly incident image (for the blog post header/preview)
+- [x] Provide Gemini with the high-res GFGC FMEA table image for the Astro popout
+- [x] Create the MailerLite automation hook to send the GFGC Checklist PDF to new subscribers
 - [ ] No content calendar beyond the current weekly cycle
+- [ ] **Future Feature (Gamification):** Implement backend tally logic for Astro `<Quiz />` components to track user scores. Build a public Leaderboard that posts user names and high scores to heavily drive engagement over time.
 
 ---
 
@@ -137,6 +140,10 @@
 ## 3. Progress log
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
+
+### 2026-03-29
+
+- progress | Generated deep-dive research on Functional Safety, SIL, 2oo3 Voting Logic, and AI implementations in E&I safety. Saved local artifact to `research/functional_safety_ai_research.md` to be used as foundational seed material for the next week's Safety Topics and RCAs.
 
 ### 2026-03-26
 
@@ -175,3 +182,31 @@ Paste or upload this entire file at the start of any AI conversation about the E
 - When the workflow changes (new tool, new format, new cadence)
 - When you make a decision (log it with rationale)
 - When you hit a milestone (new subscriber threshold, N posts published, etc.)
+
+---
+
+## 5. Topics Log (Previously Covered)
+
+*Do not propose these topics again for Daily Safety Topics or RCAs to prevent duplicates.*
+
+- Identifying Frayed Cables (`identifying-frayed-cables.md`)
+- Arc Flash Boundaries (`arc-flash-boundaries.md`)
+- Understanding CAT Ratings (`understanding-cat-ratings.md`)
+- The Complacency Trap (`complacency-trap.md`)
+- Emergency Stop Testing (`emergency-stop-testing.md`)
+- The First 60 Seconds of an Arc Flash (`first-60-seconds-arc.md`)
+- Inspecting PPE (`inspecting-ppe.md`)
+- Limits of Rubber Gloves (`limit-of-rubber-gloves.md`)
+- Lockout Tagout Foundations (`lockout-tagout.md`)
+- Master Lockbox Method (`master-lockbox-method.md`)
+- Preventing Ground Faults (`preventing-ground-faults.md`)
+- Safety PLCs and Architecture (`safety-plcs-and-architecture.md`)
+- Ten Foot Rule for Mobile Equipment (`ten-foot-rule-mobile-equipment.md`)
+- Test Before Touch (`test-before-touch.md`)
+- Intrinsic Safety (IS) Barrier Bypassing (`intrinsic-safety-bypassing.md`)
+- VFD DC Bus Discharge Wait Times (`vfd-dc-bus-discharge-times.md`)
+- Motor Space Heater Hazards During LOTO (`motor-space-heater-hazards.md`)
+- Current Transformer (CT) Open-Circuit Hazards (`ct-open-circuit-hazards.md`)
+- The Lethal Myth of "Earth" as a Fault Return Path (`lethal-myth-of-earth.md`)
+- Why Aluminum-to-Copper Terminations Burn Down Panels (`aluminum-copper-terminations.md`)
+- The Hidden Danger of Back-fed Control Transformers (`backfed-control-transformers.md`)
