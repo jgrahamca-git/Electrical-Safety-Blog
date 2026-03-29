@@ -8,8 +8,11 @@ const parser = new MarkdownIt();
 
 export async function GET(context) {
 	const topics = await getCollection('safety-topics');
+	const incidents = await getCollection('incidents', ({ data }) => {
+		return data.draft !== true;
+	});
 	
-	const allPosts = [...topics]
+	const allPosts = [...topics, ...incidents]
 		.filter((post) => post.data.pubDate.valueOf() <= Date.now())
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
