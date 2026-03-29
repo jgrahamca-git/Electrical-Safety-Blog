@@ -1,7 +1,7 @@
 ---
 title: "The Rise of Smart PPE: Voltage-Detecting Gloves and the Complacency Trap"
 description: "Wearable proximity sensors are changing industrial electrical safety, but are they building a fatal reliance on batteries?"
-pubDate: "2026-03-30T05:00:00.000Z"
+pubDate: "2026-03-29T05:00:00.000Z"
 heroImage: "../../assets/gfgc_relay_failure_modes.jpg"
 ---
 

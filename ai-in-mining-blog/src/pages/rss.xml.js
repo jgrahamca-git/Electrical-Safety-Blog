@@ -11,8 +11,9 @@ export async function GET(context) {
 	const incidents = await getCollection('incidents', ({ data }) => {
 		return data.draft !== true;
 	});
+	const news = await getCollection('safety-news');
 	
-	const allPosts = [...topics, ...incidents]
+	const allPosts = [...topics, ...incidents, ...news]
 		.filter((post) => post.data.pubDate.valueOf() <= Date.now())
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
