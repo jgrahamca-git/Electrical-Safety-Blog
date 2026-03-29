@@ -210,3 +210,4 @@ Paste or upload this entire file at the start of any AI conversation about the E
 - The Lethal Myth of "Earth" as a Fault Return Path (`lethal-myth-of-earth.md`)
 - Why Aluminum-to-Copper Terminations Burn Down Panels (`aluminum-copper-terminations.md`)
 - The Hidden Danger of Back-fed Control Transformers (`backfed-control-transformers.md`)
+- AI in Functional Safety and SIL-0 Supervisory Layers (`functional-safety-ai-systems.md`)
