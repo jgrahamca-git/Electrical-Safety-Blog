@@ -89,9 +89,7 @@ For highly critical trailing cable applications like massive production drills o
 [![SIL and PFD Table](/images/sil-pfd-table.png)](/images/sil-pfd-table.png)  
 *Typical SIL, Reliability, PFD, and Risk Reduction Factor (RRF) values based on IEC 61508 / 61511 standards.* 
 
-Because of how the underlying circuit monitoring works, you cannot simply wire three separate GFGC relays to the same pilot loop—they would interfere with each other. However, alternative methods are possible without astronomical expense. For example, an architecture could utilize three redundant Current Transformers (CTs) on the Ground-Check (GC) circuit input, feeding analog values into a small Safety PLC. The Safety PLC would run the 2oo3 voting logic and drive SIL-rated de-energize-to-trip outputs directly to the breaker. 
-
-While this specific architecture primarily bolsters the GC continuity side rather than the Ground-Fault (GF) side, it demonstrates that advanced redundancy is technically feasible. 
+Because of how the underlying circuit monitoring works, you cannot simply wire three separate GFGC relays to the same pilot loop—they would interfere with each other. However, alternative methods are possible without astronomical expense.
 
 The question for site electrical/controls professionals: **Can we engineer cost-effective SIL architectures for trailing cable monitoring to eliminate these single points of failure, or is a rigorous monthly functional test of a standard relay sufficient?** Let us know your thoughts in the comments or on LinkedIn.
 
