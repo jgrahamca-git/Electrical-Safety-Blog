@@ -3,6 +3,10 @@ title: "The 10-Foot Rule: Mobile Equipment and Overhead Lines"
 description: "Best practices for maintaining safe clearances between heavy machinery and energized distribution lines."
 pubDate: "Mar 28 2026"
 heroImage: "../../assets/category-shock.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: false
+editor_confirmed: true
 ---
 Operating mobile cranes, excavators, and elevated work platforms (MEWPs) in the vicinity of overhead power lines presents a massive, often fatal electrocution hazard. The operator inside the cab is typically protected by heavy steel, but the riggers or ground spotters touching the load exterior will be instantly killed if contact is made.
 

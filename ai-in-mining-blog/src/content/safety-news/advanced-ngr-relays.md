@@ -3,6 +3,10 @@ title: "Eliminating Trailing Cable Fires: Advanced Ground-Fault Relays for Mobil
 description: "Why solid-state NGR monitoring is critical for draglines, shovels, and continuous miners."
 pubDate: "Mar 23 2026"
 heroImage: "../../assets/ngr-relay.png"
+criticality: "L1"
+conclusion_state: "neutral"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 When a continuous miner, dragline, or electric shovel is powered by a high-voltage trailing cable, that cable represents one of the most extreme electrical vulnerabilities on the job site. Subjected to severe abrasion, the crushing weight of rock falls, and constant high-tension reeling, these cables are highly susceptible to sudden insulation failure and violent ground faults.

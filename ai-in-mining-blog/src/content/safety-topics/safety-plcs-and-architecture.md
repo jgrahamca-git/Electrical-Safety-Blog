@@ -3,6 +3,10 @@ title: "Safety PLCs, Relays, and Fail-Safe Architecture"
 description: "Understanding the difference between standard industrial controls and certified safety systems (SIS)."
 pubDate: "Mar 29 2026"
 heroImage: "../../assets/category-electrical-safety-systems.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: false
+editor_confirmed: true
 ---
 In modern industrial environments, standard programmable logic controllers (PLCs) handle the day-to-day automation of valves, motors, and conveyors. However, when Human safety is directly dependent on a system shutting down—such as a light curtain over a press or an emergency stop (E-Stop) loop—standard PLCs fall dangerously short.
 

@@ -4,26 +4,29 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+@import './eli-tokens.css';
 @import "tailwindcss";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/700.css";
-@import "@fontsource/montserrat/600.css";
-@import "@fontsource/montserrat/700.css";
+
 
 :root {
 	--accent: #e66a33;
 	--accent-dark: #b84f22;
-	--black: 24, 24, 27; /* Darkest grey */
+	--black: 24, 24, 27;
+	/* Darkest grey */
 	--gray: 107, 114, 128;
-	--gray-light: 243, 244, 246; /* Off-white for cards/bg */
+	--gray-light: 243, 244, 246;
+	/* Off-white for cards/bg */
 	--gray-dark: 63, 63, 70;
 	--box-shadow:
 		0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
 }
+
 body {
 	font-family: "Inter", sans-serif;
 	background-color: #f9fafb;
@@ -36,12 +39,14 @@ body {
 	font-size: 16px;
 	line-height: 1.7;
 }
+
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -56,91 +61,116 @@ h6 {
 	word-wrap: normal;
 	word-break: normal;
 }
+
 h1 {
 	font-size: 2.5em;
 }
+
 h2 {
 	font-size: 2.0em;
 }
+
 h3 {
 	font-size: 1.75em;
 }
+
 h4 {
 	font-size: 1.5em;
 }
+
 h5 {
 	font-size: 1.25em;
 }
+
 strong,
 b {
 	font-weight: 700;
 }
+
 a {
 	color: var(--accent);
 }
+
 a:hover {
 	color: var(--accent);
 }
+
 p {
 	margin-bottom: 1em;
 }
+
 .prose p {
 	margin-bottom: 2em;
 }
+
 textarea {
 	width: 100%;
 	font-size: 16px;
 }
+
 input {
 	font-size: 16px;
 }
+
 table {
 	width: 100%;
 }
+
 img {
 	max-width: 100%;
 	height: auto;
 	border-radius: 8px;
 }
+
 code {
 	padding: 2px 5px;
 	background-color: rgba(var(--gray-light), 0.5);
 	color: #e66a33;
 	border-radius: 2px;
 }
+
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
 }
-pre > code {
+
+pre>code {
 	all: unset;
 }
+
 blockquote {
 	border-left: 4px solid var(--accent);
 	padding: 0 0 0 20px;
 	margin: 0;
 	font-size: 1.333em;
 }
+
 hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+
 @media (max-width: 720px) {
 	body {
 		font-size: 15px;
 	}
+
 	main {
 		padding: 1em;
 	}
+
 	h1 {
 		font-size: 2.0em;
 	}
+
 	h2 {
 		font-size: 1.75em;
 	}
+
 	h3 {
 		font-size: 1.5em;
 	}
+
 	h4 {
 		font-size: 1.25em;
 	}

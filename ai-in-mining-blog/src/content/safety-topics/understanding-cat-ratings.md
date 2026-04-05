@@ -3,6 +3,10 @@ title: "Understanding CAT Ratings on Voltage Test Meters"
 description: "Why bringing a commercial multitester to an industrial panel is a deadly mistake."
 pubDate: "Mar 26 2026"
 heroImage: "../../assets/category-testing.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: false
+editor_confirmed: true
 ---
 Not all electrical multimeters are created equal. A multimeter built for testing standard 120V wall outlets can literally explode in your hand if used carelessly on the main bus of an industrial 480V motor control center (MCC).
 

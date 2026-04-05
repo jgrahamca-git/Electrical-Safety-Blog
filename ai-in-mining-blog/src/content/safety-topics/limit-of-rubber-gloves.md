@@ -3,6 +3,10 @@ title: "The Hard Limit of Rubber Insulating Gloves"
 description: "Why field pinhole checks and strict adherence to class testing dates are non-negotiable for insulating PPE."
 pubDate: "Mar 23 2026"
 heroImage: "../../assets/category-ppe.png"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 Rubber insulating gloves are the absolute last line of defense between an electrician's hands and lethal voltage. However, the protection they offer is highly conditional.
 

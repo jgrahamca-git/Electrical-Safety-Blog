@@ -3,6 +3,10 @@ title: "Sunday: The Hidden Danger of Back-fed Control Transformers"
 description: "A lethal trap inside Motor Control Centers (MCCs) where 120V can magically step up to 480V."
 pubDate: 2026-04-05
 heroImage: "../../assets/category-controls.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 You approach a bucket on a Motor Control Center (MCC). You flip the main disconnect switch down to the OFF position, open the door, and throw your meter across the primary 480V stabs. The meter lights up to 480 Volts. The bucket is dead, but the stabs are fully energized. 

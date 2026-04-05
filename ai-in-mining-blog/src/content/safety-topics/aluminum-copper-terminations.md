@@ -3,6 +3,10 @@ title: "Saturday: Why Aluminum-to-Copper Terminations Burn Down Panels"
 description: "Why treating aluminum wire like copper wiring on terminals is a guaranteed recipe for arc flashes."
 pubDate: 2026-04-04
 heroImage: "../../assets/category-maintenance.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 Aluminum is lighter and cheaper than copper, making it heavily preferred for large industrial feeder cables. However, the exact moment you land an oversized aluminum conductor onto a copper or brass terminal block, you start a ticking thermal time bomb.

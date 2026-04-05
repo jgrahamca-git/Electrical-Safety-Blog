@@ -1,0 +1,310 @@
+/* ============================================================
+   ELI DESIGN SYSTEM — TOKEN FILE
+   src/styles/eli-tokens.css
+   
+   Import this at the top of src/styles/global.css:
+   @import './eli-tokens.css';
+   
+   All ELI brand colors, typography, criticality scale,
+   spacing, and component tokens in one place.
+   Never hardcode these values anywhere in the codebase —
+   always reference the variable.
+   Last updated: 2026-04-04
+   ============================================================ */
+
+:root {
+
+  /* ──────────────────────────────────────────
+     BACKGROUND SCALE
+     ────────────────────────────────────────── */
+  --eli-black:        #0D0F12;   /* Primary page background */
+  --eli-dark:         #141720;   /* Section backgrounds */
+  --eli-panel:        #1A1E26;   /* Cards, nav, sidebars */
+  --eli-card:         #1F2430;   /* Elevated / raised cards */
+  --eli-border:       #2A3040;   /* Dividers, borders, strokes */
+
+  /* ──────────────────────────────────────────
+     TEXT SCALE
+     ────────────────────────────────────────── */
+  --eli-white:        #F2EDE8;   /* Primary body text — warm white */
+  --eli-muted:        #8A909E;   /* Metadata, secondary text, placeholders */
+
+  /* ──────────────────────────────────────────
+     BRAND ACCENT SCALE
+     ────────────────────────────────────────── */
+  --eli-accent:       #E8680A;   /* Arc Orange — primary brand accent */
+  --eli-accent-hover: #FF8030;   /* Arc Orange hover / CTA state */
+  --eli-accent-dim:   #B5500A;   /* Arc Orange dimmed — borders on dark */
+  --eli-accent-glow:  rgba(232, 104, 10, 0.15);  /* Arc Orange bg tint */
+  --eli-accent-border:rgba(232, 104, 10, 0.40);  /* Arc Orange border */
+
+  --eli-amber:        #F0A030;   /* Hazard Amber — secondary accent */
+  --eli-amber-lt:     #FAC050;   /* Amber light — highlight text */
+  --eli-amber-dim:    rgba(240, 160, 48, 0.15);
+  --eli-amber-border: rgba(240, 160, 48, 0.40);
+
+  /* ──────────────────────────────────────────
+     CRITICALITY SCALE
+     Maps to industrial HMI convention:
+     Green (OK) → Yellow (Caution) → Orange (Warning) → Red (Critical)
+     ────────────────────────────────────────── */
+
+  /* L0 — Normal / System OK / Safe State */
+  --eli-l0-text:      #5DD470;
+  --eli-l0-bg:        rgba(42, 122, 58, 0.20);
+  --eli-l0-border:    rgba(61, 170, 80, 0.38);
+  --eli-l0-solid:     #3DAA50;   /* For dots, solid indicators */
+
+  /* L1 — Advisory / Caution */
+  --eli-l1-text:      #E8C040;
+  --eli-l1-bg:        rgba(200, 150, 10, 0.15);
+  --eli-l1-border:    rgba(224, 172, 16, 0.40);
+  --eli-l1-solid:     #E0AC10;
+
+  /* L2 — Warning / High Risk */
+  /* Note: shares hue with --eli-accent intentionally */
+  --eli-l2-text:      #FF8030;
+  --eli-l2-bg:        rgba(232, 104, 10, 0.15);
+  --eli-l2-border:    rgba(232, 104, 10, 0.40);
+  --eli-l2-solid:     #E8680A;
+
+  /* L3 — Critical / Fatal */
+  --eli-l3-text:      #FF5555;
+  --eli-l3-bg:        rgba(204, 34, 34, 0.15);
+  --eli-l3-border:    rgba(204, 34, 34, 0.40);
+  --eli-l3-solid:     #CC2222;
+
+  /* ──────────────────────────────────────────
+     CATEGORY / INFORMATIONAL COLORS
+     ────────────────────────────────────────── */
+
+  /* Standards / Codes (CEC, NFPA, IEC) — informational blue */
+  --eli-info-text:    #80C0FF;
+  --eli-info-bg:      rgba(30, 100, 200, 0.12);
+  --eli-info-border:  rgba(80, 150, 255, 0.35);
+
+  /* Neutral — Controls, Instrumentation, VFD */
+  --eli-neutral-text:   var(--eli-muted);
+  --eli-neutral-bg:     rgba(138, 144, 158, 0.12);
+  --eli-neutral-border: rgba(138, 144, 158, 0.28);
+
+  /* ──────────────────────────────────────────
+     TYPOGRAPHY STACK
+     Fonts loaded via Google Fonts in BaseLayout.astro
+     ────────────────────────────────────────── */
+  --font-display:  'Bebas Neue', sans-serif;        /* Hero titles */
+  --font-sub:      'Rajdhani', sans-serif;           /* Headlines, labels */
+  --font-body:     'DM Sans', sans-serif;            /* Body text */
+  --font-mono:     'Share Tech Mono', monospace;     /* Code, badges, standards refs */
+
+  /* ──────────────────────────────────────────
+     FONT SIZES
+     ────────────────────────────────────────── */
+  --text-display:  clamp(36px, 6vw, 64px);  /* Bebas Neue hero */
+  --text-h1:       clamp(22px, 3vw, 28px);  /* Rajdhani section title */
+  --text-h2:       clamp(16px, 2.5vw, 22px);
+  --text-h3:       15px;
+  --text-sub:      13px;                    /* Rajdhani subheadings */
+  --text-body:     15px;                    /* DM Sans body */
+  --text-sm:       13px;
+  --text-xs:       11px;
+  --text-mono:     12px;                    /* Share Tech Mono */
+  --text-badge:    9px;                     /* Badge / pill labels */
+
+  /* ──────────────────────────────────────────
+     LINE HEIGHTS
+     ────────────────────────────────────────── */
+  --leading-tight:  1.1;
+  --leading-snug:   1.3;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* ──────────────────────────────────────────
+     LETTER SPACING
+     ────────────────────────────────────────── */
+  --tracking-display: 0.04em;   /* Bebas Neue */
+  --tracking-headline:0.06em;   /* Rajdhani headlines */
+  --tracking-sub:     0.15em;   /* Rajdhani subheadings */
+  --tracking-badge:   0.12em;   /* Badge / mono labels */
+  --tracking-wide:    0.20em;   /* Section labels */
+
+  /* ──────────────────────────────────────────
+     SPACING SCALE
+     ────────────────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+
+  /* ──────────────────────────────────────────
+     BORDER RADIUS
+     ────────────────────────────────────────── */
+  --radius-sm:   2px;    /* Badges, tight elements */
+  --radius-md:   4px;    /* Cards, panels */
+  --radius-lg:   6px;    /* Larger cards */
+  --radius-pill: 999px;  /* Pills only — deliberate */
+
+  /* ──────────────────────────────────────────
+     BORDERS
+     ────────────────────────────────────────── */
+  --border-default:  0.5px solid var(--eli-border);
+  --border-accent:   1px solid var(--eli-accent-border);
+  --border-l0:       1px solid var(--eli-l0-border);
+  --border-l1:       1px solid var(--eli-l1-border);
+  --border-l2:       1px solid var(--eli-l2-border);
+  --border-l3:       1px solid var(--eli-l3-border);
+  --border-info:     1px solid var(--eli-info-border);
+
+  /* ──────────────────────────────────────────
+     TEXTURE HELPERS
+     Use as background-image values
+     ────────────────────────────────────────── */
+  --texture-circuit:
+    repeating-linear-gradient(
+      90deg,
+      rgba(232, 104, 10, 0.07) 0px,
+      rgba(232, 104, 10, 0.07) 1px,
+      transparent 1px,
+      transparent 55px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(232, 104, 10, 0.07) 0px,
+      rgba(232, 104, 10, 0.07) 1px,
+      transparent 1px,
+      transparent 55px
+    );
+
+  --texture-hazard:
+    repeating-linear-gradient(
+      45deg,
+      rgba(232, 104, 10, 0.07) 0px,
+      rgba(232, 104, 10, 0.07) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+
+  --texture-dots:
+    radial-gradient(
+      rgba(232, 104, 10, 0.15) 1px,
+      transparent 1px
+    );
+
+  /* ──────────────────────────────────────────
+     TRANSITIONS
+     ────────────────────────────────────────── */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow:   0.35s ease;
+
+  /* ──────────────────────────────────────────
+     Z-INDEX SCALE
+     ────────────────────────────────────────── */
+  --z-base:     0;
+  --z-raised:   10;
+  --z-overlay:  100;
+  --z-nav:      200;
+  --z-modal:    300;
+
+  /* ──────────────────────────────────────────
+     COMPONENT TOKENS — PostCard
+     ────────────────────────────────────────── */
+  --card-bg:          var(--eli-panel);
+  --card-border:      var(--eli-border);
+  --card-radius:      var(--radius-md);
+  --card-header-h:    52px;
+  --card-padding:     14px;
+
+  /* ──────────────────────────────────────────
+     COMPONENT TOKENS — Badges
+     ────────────────────────────────────────── */
+  --badge-font:       var(--font-mono);
+  --badge-size:       var(--text-badge);
+  --badge-tracking:   var(--tracking-badge);
+  --badge-padding:    3px 8px;
+  --badge-radius:     var(--radius-sm);
+
+  /* ──────────────────────────────────────────
+     COMPONENT TOKENS — Buttons
+     ────────────────────────────────────────── */
+  --btn-font:         var(--font-sub);
+  --btn-weight:       700;
+  --btn-tracking:     var(--tracking-badge);
+  --btn-radius:       var(--radius-sm);
+  --btn-padding:      10px 20px;
+
+  /* ──────────────────────────────────────────
+     COMPONENT TOKENS — Nav
+     ────────────────────────────────────────── */
+  --nav-bg:           var(--eli-dark);
+  --nav-border:       var(--eli-border);
+  --nav-height:       60px;
+  --nav-link-color:   var(--eli-muted);
+  --nav-link-active:  var(--eli-accent);
+  --nav-link-hover:   var(--eli-white);
+
+  /* ──────────────────────────────────────────
+     COMPONENT TOKENS — Article / Takeaway Block
+     ────────────────────────────────────────── */
+  --takeaway-bg:         var(--eli-card);
+  --takeaway-radius:     var(--radius-sm);
+  --takeaway-padding:    12px 14px;
+  --takeaway-safe-border:  var(--eli-l0-border);
+  --takeaway-hazard-border:var(--eli-l3-border);
+  --takeaway-neutral-border:var(--eli-border);
+
+}
+
+/* ──────────────────────────────────────────
+   UTILITY CLASSES
+   Lightweight helpers — use sparingly.
+   Most styling should live in components.
+   ────────────────────────────────────────── */
+
+/* Texture backgrounds */
+.eli-texture-circuit {
+  background-color: var(--eli-panel);
+  background-image: var(--texture-circuit);
+}
+
+.eli-texture-hazard {
+  background-color: var(--eli-panel);
+  background-image: var(--texture-hazard);
+}
+
+.eli-texture-dots {
+  background-color: var(--eli-panel);
+  background-image: var(--texture-dots);
+  background-size: 12px 12px;
+}
+
+/* Section label style — matches brand board */
+.eli-section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  color: var(--eli-accent);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* Mono code / standards reference */
+.eli-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  color: var(--eli-accent);
+  letter-spacing: 0.06em;
+}
+
+/* Muted metadata text */
+.eli-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  color: var(--eli-muted);
+  letter-spacing: var(--tracking-badge);
+}

@@ -3,6 +3,10 @@ title: "The First 60 Seconds of an Arc Response"
 description: "Immediate, life-saving actions to take when witnessing an arc flash or severe electrical shock."
 pubDate: "Mar 25 2026"
 heroImage: "../../assets/category-arc-flash.png"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 An arc flash or violent electrical shock unfolds in fractions of a second. The actions taken by bystanders and crew members in the 60 seconds immediately following the blast are the most critical determinants of the victim's survival.
 

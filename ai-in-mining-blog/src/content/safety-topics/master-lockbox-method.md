@@ -3,6 +3,10 @@ title: "Group LOTO: The Master Lockbox Method"
 description: "Managing complex isolation points across multiple trades safely using centralized lockboxes."
 pubDate: "Mar 24 2026"
 heroImage: "../../assets/category-loto.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: false
+editor_confirmed: true
 ---
 When a turnaround or major installation involves dozens of workers across multiple disciplines (electricians, mechanics, piping, etc.), individual Lockout/Tagout (LOTO) at the equipment source becomes impossible to manage safely. 
 

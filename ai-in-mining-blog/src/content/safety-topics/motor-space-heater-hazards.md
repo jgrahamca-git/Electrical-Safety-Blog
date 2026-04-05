@@ -3,6 +3,10 @@ title: "Wednesday: Motor Space Heater Hazards During LOTO"
 description: "Why locking out the main motor breaker does not always zero-energy the motor peckerhead."
 pubDate: 2026-04-01
 heroImage: "../../assets/category-electrical-safety-systems.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 You are preparing to terminate the leads on a massive 4160V medium-voltage motor. You rack out the main feeder breaker, lock it, tag it, and verify the absence of voltage on the primary cables. You pop the cover off the motor peckerhead (terminal box), assuming the entire housing is dead.

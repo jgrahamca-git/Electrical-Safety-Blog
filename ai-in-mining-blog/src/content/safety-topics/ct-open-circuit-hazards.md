@@ -3,6 +3,10 @@ title: "Thursday: Current Transformer (CT) Open-Circuit Hazards"
 description: "Why lifting a wire on an energized CT secondary creates immediate, lethal high voltage."
 pubDate: 2026-04-02
 heroImage: "../../assets/category-electrical-safety-systems.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 Instrument technicians routinely land wires while circuits are live, but there is one component that bends the rules of electrical physics into a lethal hazard: **The Current Transformer (CT).**

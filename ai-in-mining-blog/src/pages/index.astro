@@ -3,256 +3,390 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
+import CriticalityBadge from '../components/CriticalityBadge.astro';
+import CategoryBadge from '../components/CategoryBadge.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
 const now = new Date();
 
-// Fetch all incidents and topics, filter out future dates, and sort by newest first
 const allIncidents = (await getCollection('incidents', ({ data }) => {
-	return data.draft !== true;
+  return data.draft !== true;
 }))
-	.filter((post) => post.data.pubDate <= now)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-	
-const allTopics = (await getCollection('safety-topics'))
-	.filter((post) => post.data.pubDate <= now)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 5);
-	
-const allNews = (await getCollection('safety-news'))
-	.filter((post) => post.data.pubDate <= now)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 5);
+  .filter((post) => post.data.pubDate <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Determine featured incident (the newest one) and past incidents
+const allTopics = (await getCollection('safety-topics'))
+  .filter((post) => post.data.pubDate <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
+const allNews = (await getCollection('safety-news'))
+  .filter((post) => post.data.pubDate <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
 const featuredIncident = allIncidents[0];
-const pastIncidents = allIncidents.slice(1);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 100%;
-				max-width: 1400px;
-				margin: 0 auto;
-				padding: 2em;
-				box-sizing: border-box;
-			}
-			.homepage-intro {
-				text-align: center;
-				margin-bottom: 3rem;
-				max-width: 800px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-			.homepage-intro h1 {
-				margin-bottom: 0.5em;
-			}
-			
-			/* 3-Column Layout */
-			.columns-wrapper {
-				display: grid;
-				grid-template-columns: 1fr 2fr 1fr;
-				gap: 2rem;
-				align-items: start;
-			}
-			
-			@media (max-width: 1024px) {
-				.columns-wrapper {
-					grid-template-columns: 1fr 1fr;
-				}
-				.column-featured {
-					grid-column: 1 / -1;
-					grid-row: 1;
-				}
-				.column-topics {
-					grid-column: 1;
-					grid-row: 2;
-				}
-				.column-past {
-					grid-column: 2;
-					grid-row: 2;
-				}
-			}
-			
-			@media (max-width: 768px) {
-				main {
-					padding: 1rem;
-				}
-				.columns-wrapper {
-					display: flex;
-					flex-direction: column;
-				}
-				.column-featured {
-					order: 1;
-				}
-				.column-topics {
-					order: 2;
-				}
-				.column-past {
-					order: 3;
-				}
-			}
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      body {
+        background: var(--eli-black, #0D0F12);
+        color: var(--eli-white, #F2EDE8);
+      }
 
-			.col-header {
-				font-size: 1.5rem;
-				border-bottom: 2px solid var(--accent);
-				padding-bottom: 0.5rem;
-				margin-bottom: 1.5rem;
-				color: rgb(var(--black));
-			}
+      main {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2em;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
 
-			/* Card Styles */
-			.card {
-				background: #ffffff;
-				border-radius: 8px;
-				border: 1px solid #e5e7eb;
-				box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-				padding: 1.25rem;
-				margin-bottom: 1.5rem;
-				transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-			}
-			.card:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-				border-color: var(--accent);
-			}
-			.card h3 {
-				margin: 0 0 0.5rem 0;
-				font-size: 1.25rem;
-				line-height: 1.2;
-				color: rgb(var(--black));
-			}
-			.card a {
-				text-decoration: none;
-				color: inherit;
-				display: block;
-			}
-			.card .date {
-				font-size: 0.85rem;
-				color: rgb(var(--gray));
-				margin-bottom: 0.5rem;
-			}
-			.card p {
-				font-size: 0.95rem;
-				line-height: 1.4;
-				margin: 0;
-				color: rgb(var(--gray-dark));
-			}
-			
-			/* Featured Incident Specifics */
-			.featured-card {
-				padding: 0;
-				overflow: hidden;
-				background: #fff;
-			}
-			.featured-card img {
-				width: 100%;
-				height: auto;
-				display: block;
-				border-bottom: 4px solid var(--accent);
-			}
-			.featured-content {
-				padding: 1.5rem;
-			}
-			.featured-content h3 {
-				font-size: 1.75rem;
-				color: var(--accent);
-			}
-			.featured-content p {
-				font-size: 1.05rem;
-			}
-			.featured-content p {
-				font-size: 1.05rem;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="homepage-intro">
-				<h1>Understanding Hazards, Preventing Injuries and Equipment Damage</h1>
-				<p>
-					Welcome to the <strong>Electrical & Controls Safety Blog</strong>. We break down root 
-					causes so you can recognize hidden dangers and protect your team. Please refer to your local AHJ for any code requirements or further questions you may have. <em>(Disclaimer: This blog is not intended to be a formal interpretation of electrical codes or regulatory standards. It is strictly an educational supplement designed to deepen your real-world understanding of the physical hazards and protection mechanisms.)</em>
-				</p>
-			</section>
+      /* ── HERO ── */
+      .homepage-intro {
+        text-align: center;
+        margin: 0 auto 3rem auto;
+        max-width: 860px;
+        width: 100%;
+        padding: 2.5rem 2rem;
+        background: var(--eli-dark, #141720);
+        background-image:
+          repeating-linear-gradient(90deg, rgba(232,104,10,0.07) 0px, rgba(232,104,10,0.07) 1px, transparent 1px, transparent 55px),
+          repeating-linear-gradient(0deg, rgba(232,104,10,0.07) 0px, rgba(232,104,10,0.07) 1px, transparent 1px, transparent 55px);
+        border: 1px solid var(--eli-border, #2A3040);
+        border-top: 2px solid var(--eli-accent, #E8680A);
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
 
-			<section class="columns-wrapper">
-				<!-- LEFT: Daily Topics -->
-				<div class="column column-topics">
-					<h2 class="col-header">Daily Safety Topic</h2>
-					{allTopics.length > 0 ? (
-						allTopics.map((topic) => (
-							<article class="card featured-card">
-								<a href={`/safety-topics/${topic.id}/`}>
-									{topic.data.heroImage && (
-										// @ts-ignore
-										<img src={topic.data.heroImage.src || topic.data.heroImage} alt="" />
-									)}
-									<div class="featured-content">
-										<h3>{topic.data.title}</h3>
-										<div class="date"><FormattedDate date={topic.data.pubDate} /></div>
-										<p>{topic.data.description}</p>
-									</div>
-								</a>
-							</article>
-						))
-					) : (
-						<p>No daily topics yet.</p>
-					)}
-				</div>
+      .homepage-intro h1 {
+        font-family: var(--font-display, 'Bebas Neue', sans-serif);
+        font-size: clamp(28px, 4vw, 48px);
+        letter-spacing: 0.04em;
+        color: var(--eli-white, #F2EDE8);
+        margin: 0 0 1rem 0;
+        line-height: 1.1;
+      }
 
-				<!-- MIDDLE: Featured Incident -->
-				<div class="column column-featured">
-					<h2 class="col-header">Weekly Incident & RCA</h2>
-					{featuredIncident ? (
-						<article class="card featured-card">
-							<a href={`/incidents/${featuredIncident.id}/`}>
-								{featuredIncident.data.heroImage && (
-									// @ts-ignore
-									<img src={featuredIncident.data.heroImage.src || featuredIncident.data.heroImage} alt="" />
-								)}
-								<div class="featured-content">
-									<h3>{featuredIncident.data.title}</h3>
-									<div class="date"><FormattedDate date={featuredIncident.data.pubDate} /></div>
-									<p>{featuredIncident.data.description}</p>
-								</div>
-							</a>
-						</article>
-					) : (
-						<p>No incidents published yet.</p>
-					)}
-				</div>
+      .homepage-intro h1 span { color: var(--eli-accent, #E8680A); }
 
-				<!-- RIGHT: Industry News & Products -->
-				<div class="column column-past">
-					<h2 class="col-header">Safety News & Products</h2>
-					{allNews.length > 0 ? allNews.map((news) => (
-						<article class="card">
-							<a href={`/safety-news/${news.id}/`}>
-								{news.data.heroImage && (
-									// @ts-ignore
-									<img src={news.data.heroImage.src || news.data.heroImage} alt="" style="width: 100%; border-radius: 4px; margin-bottom: 0.75rem;" />
-								)}
-								<h3>{news.data.title}</h3>
-								<div class="date"><FormattedDate date={news.data.pubDate} /></div>
-								{news.data.description && <p style="margin-top:0.5rem; font-size:0.9rem;">{news.data.description}</p>}
-							</a>
-						</article>
-					)) : (
-						<p>Check back later for products and news.</p>
-					)}
-				</div>
-			</section>
+      .homepage-intro p {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.95rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.7;
+        margin: 0;
+      }
 
-			<NewsletterSignup />
-		</main>
-		<Footer />
-	</body>
+      .homepage-intro strong {
+        color: var(--eli-white, #F2EDE8);
+        font-weight: 500;
+      }
+
+      /* ── COLUMNS ── */
+      .columns-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 1.5rem;
+        align-items: start;
+        min-width: 0;
+      }
+
+      .column { min-width: 0; }
+
+      @media (max-width: 1024px) {
+        .columns-wrapper { grid-template-columns: 1fr 1fr; }
+        .column-featured { grid-column: 1 / -1; grid-row: 1; }
+        .column-topics   { grid-column: 1; grid-row: 2; }
+        .column-past     { grid-column: 2; grid-row: 2; }
+      }
+
+      @media (max-width: 768px) {
+        main { padding: 1rem; }
+        .columns-wrapper { display: flex; flex-direction: column; }
+        .column-featured { order: 1; }
+        .column-topics   { order: 2; }
+        .column-past     { order: 3; }
+      }
+
+      /* ── COLUMN HEADERS ── */
+      .col-header {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--eli-white, #F2EDE8);
+        border-bottom: 2px solid var(--eli-accent, #E8680A);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .col-header::before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--eli-accent, #E8680A);
+        flex-shrink: 0;
+      }
+
+      /* ── CARDS ── */
+      .card {
+        background: var(--eli-panel, #1A1E26);
+        border: 1px solid var(--eli-border, #2A3040);
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        transition: border-color 0.2s, transform 0.2s;
+        min-width: 0;
+      }
+
+      .card:hover {
+        border-color: var(--eli-accent, #E8680A);
+        transform: translateY(-2px);
+      }
+
+      .card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      /* ── CARD IMAGE ── */
+      .card-img-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 160px;
+        background: var(--eli-dark, #141720);
+        flex-shrink: 0;
+      }
+
+      .featured-card .card-img-wrap { height: 220px; }
+
+      .card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+        filter: brightness(0.65) saturate(0.85);
+        transition: filter 0.3s;
+      }
+
+      .card:hover .card-img-wrap img {
+        filter: brightness(0.8) saturate(1.0);
+      }
+
+      .card-img-wrap::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+          90deg,
+          rgba(232,104,10,0.06) 0px,
+          rgba(232,104,10,0.06) 1px,
+          transparent 1px,
+          transparent 40px
+        );
+        pointer-events: none;
+      }
+
+      /* ── BADGE BAR ── */
+      .card-cat-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 6px 10px;
+        background: linear-gradient(to top, rgba(13,15,18,0.95), transparent);
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+
+      /* ── CARD BODY ── */
+      .card-body { padding: 12px 14px 14px; }
+
+      .card-title {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.3;
+        margin: 0 0 5px 0;
+        overflow-wrap: break-word;
+      }
+
+      .featured-card .card-title {
+        font-size: 1.3rem;
+        color: var(--eli-accent, #E8680A);
+      }
+
+      .card-date {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-muted, #8A909E);
+        letter-spacing: 0.1em;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .card-desc {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.875rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.5;
+        margin: 0;
+        overflow-wrap: break-word;
+      }
+
+      .card-cta {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--eli-accent, #E8680A);
+        margin-top: 10px;
+        display: block;
+      }
+
+      .empty-state {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 11px;
+        color: var(--eli-muted, #8A909E);
+        letter-spacing: 0.1em;
+        padding: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+
+      <section class="homepage-intro">
+        <h1>Understanding Hazards,<br /><span>Preventing</span> Injuries and Equipment Damage</h1>
+        <p>
+          Welcome to the <strong>Electrical &amp; Controls Safety Blog</strong>. We break down root
+          causes so you can recognize hidden dangers and protect your team. Please refer to your local
+          AHJ for any code requirements or further questions you may have.
+          <em>(Disclaimer: This blog is not intended to be a formal interpretation of electrical codes
+          or regulatory standards. It is strictly an educational supplement designed to deepen your
+          real-world understanding of the physical hazards and protection mechanisms.)</em>
+        </p>
+      </section>
+
+      <section class="columns-wrapper">
+
+        <!-- LEFT: Daily Topics -->
+        <div class="column column-topics">
+          <h2 class="col-header">Daily Safety Topic</h2>
+          {allTopics.length > 0 ? (
+            allTopics.map((topic) => (
+              <article class="card">
+                <a href={`/safety-topics/${topic.id}/`}>
+                  {topic.data.heroImage && (
+                    <div class="card-img-wrap">
+                      <img src={topic.data.heroImage.src || topic.data.heroImage} alt={topic.data.title} />
+                      <div class="card-cat-bar">
+                        {topic.data.criticality && <CriticalityBadge level={topic.data.criticality} />}
+                        <CategoryBadge tag="safety-topic" />
+                      </div>
+                    </div>
+                  )}
+                  <div class="card-body">
+                    <span class="card-date"><FormattedDate date={topic.data.pubDate} /></span>
+                    <h3 class="card-title">{topic.data.title}</h3>
+                    <p class="card-desc">{topic.data.description}</p>
+                    <span class="card-cta">Read →</span>
+                  </div>
+                </a>
+              </article>
+            ))
+          ) : (
+            <p class="empty-state">No daily topics yet.</p>
+          )}
+        </div>
+
+        <!-- MIDDLE: Featured Incident -->
+        <div class="column column-featured">
+          <h2 class="col-header">Weekly Incident &amp; RCA</h2>
+          {featuredIncident ? (
+            <article class="card featured-card">
+              <a href={`/incidents/${featuredIncident.id}/`}>
+                {featuredIncident.data.heroImage && (
+                  <div class="card-img-wrap">
+                    <img src={featuredIncident.data.heroImage.src || featuredIncident.data.heroImage} alt={featuredIncident.data.title} />
+                    <div class="card-cat-bar">
+                      {featuredIncident.data.criticality && <CriticalityBadge level={featuredIncident.data.criticality} />}
+                      <CategoryBadge tag="incident" />
+                      <CategoryBadge tag="rca" />
+                    </div>
+                  </div>
+                )}
+                <div class="card-body">
+                  <span class="card-date"><FormattedDate date={featuredIncident.data.pubDate} /></span>
+                  <h3 class="card-title">{featuredIncident.data.title}</h3>
+                  <p class="card-desc">{featuredIncident.data.description}</p>
+                  <span class="card-cta">Read Full RCA →</span>
+                </div>
+              </a>
+            </article>
+          ) : (
+            <p class="empty-state">No incidents published yet.</p>
+          )}
+        </div>
+
+        <!-- RIGHT: Safety News -->
+        <div class="column column-past">
+          <h2 class="col-header">Safety News &amp; Products</h2>
+          {allNews.length > 0 ? allNews.map((news) => (
+            <article class="card">
+              <a href={`/safety-news/${news.id}/`}>
+                {news.data.heroImage && (
+                  <div class="card-img-wrap">
+                    <img src={news.data.heroImage.src || news.data.heroImage} alt={news.data.title} />
+                    <div class="card-cat-bar">
+                      {news.data.criticality && <CriticalityBadge level={news.data.criticality} />}
+                      <CategoryBadge tag="safety-news" />
+                    </div>
+                  </div>
+                )}
+                <div class="card-body">
+                  <span class="card-date"><FormattedDate date={news.data.pubDate} /></span>
+                  <h3 class="card-title">{news.data.title}</h3>
+                  {news.data.description && <p class="card-desc">{news.data.description}</p>}
+                  <span class="card-cta">Read →</span>
+                </div>
+              </a>
+            </article>
+          )) : (
+            <p class="empty-state">Check back later.</p>
+          )}
+        </div>
+
+      </section>
+
+      <NewsletterSignup />
+    </main>
+    <Footer />
+  </body>
 </html>

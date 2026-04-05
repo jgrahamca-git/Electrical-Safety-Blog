@@ -3,6 +3,10 @@ title: "Tuesday: VFD DC Bus Discharge Wait Times"
 description: "Why opening a Variable Frequency Drive cabinet immediately after power-down is an extreme shock hazard."
 pubDate: 2026-03-31
 heroImage: "../../assets/category-testing.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 You approach a Variable Frequency Drive (VFD) cabinet to troubleshoot a fault. You throw the main disconnect to the OFF position, confirm the panel HMI has gone dark, and immediately reach for the cabinet latch.

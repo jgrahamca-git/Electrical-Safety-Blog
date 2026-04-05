@@ -1,0 +1,87 @@
+---
+// CriticalityBadge.astro
+// Usage: <CriticalityBadge level="L2" />
+// Reads criticality level and renders colored badge with dot + label.
+// Falls back gracefully if no level provided.
+
+interface Props {
+  level?: 'L0' | 'L1' | 'L2' | 'L3';
+  size?: 'sm' | 'md';
+}
+
+const { level, size = 'md' } = Astro.props;
+
+if (!level) return;
+
+const config = {
+  L0: {
+    label: 'L0 — Normal',
+    dot: '#5DD470',
+    color: '#5DD470',
+    bg: 'rgba(42,122,58,0.20)',
+    border: 'rgba(61,170,80,0.38)',
+  },
+  L1: {
+    label: 'L1 — Advisory',
+    dot: '#E0AC10',
+    color: '#E8C040',
+    bg: 'rgba(200,150,10,0.15)',
+    border: 'rgba(224,172,16,0.40)',
+  },
+  L2: {
+    label: 'L2 — Warning',
+    dot: '#E8680A',
+    color: '#FF8030',
+    bg: 'rgba(232,104,10,0.15)',
+    border: 'rgba(232,104,10,0.40)',
+  },
+  L3: {
+    label: 'L3 — Critical',
+    dot: '#CC2222',
+    color: '#FF5555',
+    bg: 'rgba(204,34,34,0.15)',
+    border: 'rgba(204,34,34,0.40)',
+  },
+};
+
+const c = config[level];
+---
+
+<span
+  class="eli-criticality-badge"
+  data-level={level}
+  style={`
+    background: ${c.bg};
+    border: 1px solid ${c.border};
+    color: ${c.color};
+  `}
+>
+  <span
+    class="eli-badge-dot"
+    style={`background: ${c.dot};`}
+  ></span>
+  {c.label}
+</span>
+
+<style>
+  .eli-criticality-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono, 'Share Tech Mono', monospace);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .eli-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+</style>

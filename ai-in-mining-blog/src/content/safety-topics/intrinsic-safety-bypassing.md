@@ -3,6 +3,10 @@ title: "Monday: Intrinsic Safety (IS) Barrier Bypassing"
 description: "Why bypassing a blown IS barrier diode on a live process loop instantly defeats hazardous area protection."
 pubDate: 2026-03-30
 heroImage: "../../assets/category-controls.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 When a 4-20mA instrument loop drops out in a Class 1 Div 1 hazardous area, pressure builds to get operations back online fast. If troubleshooting reveals a blown Zener diode in the Intrinsic Safety (IS) barrier, the temptation is to temporarily bypass the barrier with a jumper wire.

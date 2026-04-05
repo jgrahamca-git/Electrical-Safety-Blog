@@ -1,0 +1,106 @@
+---
+// CategoryBadge.astro
+// Usage: <CategoryBadge tag="grounding" />
+// Maps tag string to ELI brand color. Used on PostCards and article headers.
+// Neutral gray for unrecognized tags — never errors.
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+
+// Tag → color mapping based on ELI brand system
+// Green  = safe-state categories (grounding, bonding, loto, zero energy)
+// Orange = hazard categories (arc flash, high voltage, shock)
+// Red    = incident/critical categories
+// Blue   = standards/codes (informational)
+// Yellow = advisory/caution
+// Gray   = neutral (controls, instrumentation, general)
+
+type ColorConfig = {
+  color: string;
+  bg: string;
+  border: string;
+};
+
+const tagMap: Record<string, ColorConfig> = {
+  // Green — safe state
+  'grounding':        { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'bonding':          { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'equipotential':    { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'ground-fault':     { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'loto':             { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'lockout-tagout':   { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'zero-energy':      { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'safe-isolation':   { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+  'permit-to-work':   { color: '#5DD470', bg: 'rgba(42,122,58,0.20)', border: 'rgba(61,170,80,0.38)' },
+
+  // Orange — hazard
+  'arc-flash':        { color: '#FF8030', bg: 'rgba(232,104,10,0.15)', border: 'rgba(232,104,10,0.40)' },
+  'arc flash':        { color: '#FF8030', bg: 'rgba(232,104,10,0.15)', border: 'rgba(232,104,10,0.40)' },
+  'high-voltage':     { color: '#FF8030', bg: 'rgba(232,104,10,0.15)', border: 'rgba(232,104,10,0.40)' },
+  'shock-risk':       { color: '#FF8030', bg: 'rgba(232,104,10,0.15)', border: 'rgba(232,104,10,0.40)' },
+  'ppe':              { color: '#FF8030', bg: 'rgba(232,104,10,0.15)', border: 'rgba(232,104,10,0.40)' },
+  'electrical-safety':{ color: '#FF8030', bg: 'rgba(232,104,10,0.15)', border: 'rgba(232,104,10,0.40)' },
+  'maintenance':      { color: '#FF8030', bg: 'rgba(232,104,10,0.15)', border: 'rgba(232,104,10,0.40)' },
+
+  // Red — incident / critical
+  'incident':         { color: '#FF5555', bg: 'rgba(204,34,34,0.15)', border: 'rgba(204,34,34,0.40)' },
+  'rca':              { color: '#FF5555', bg: 'rgba(204,34,34,0.15)', border: 'rgba(204,34,34,0.40)' },
+  'fatality':         { color: '#FF5555', bg: 'rgba(204,34,34,0.15)', border: 'rgba(204,34,34,0.40)' },
+  'mining':           { color: '#FF5555', bg: 'rgba(204,34,34,0.15)', border: 'rgba(204,34,34,0.40)' },
+  'critical':         { color: '#FF5555', bg: 'rgba(204,34,34,0.15)', border: 'rgba(204,34,34,0.40)' },
+
+  // Blue — standards / codes
+  'nec':              { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+  'cec':              { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+  'nfpa':             { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+  'nfpa-70e':         { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+  'csa-z462':         { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+  'iec':              { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+  'standards':        { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+  'codes':            { color: '#80C0FF', bg: 'rgba(30,100,200,0.12)', border: 'rgba(80,150,255,0.35)' },
+
+  // Yellow — advisory
+  'near-miss':        { color: '#E8C040', bg: 'rgba(200,150,10,0.15)', border: 'rgba(224,172,16,0.40)' },
+  'advisory':         { color: '#E8C040', bg: 'rgba(200,150,10,0.15)', border: 'rgba(224,172,16,0.40)' },
+  'caution':          { color: '#E8C040', bg: 'rgba(200,150,10,0.15)', border: 'rgba(224,172,16,0.40)' },
+  'testing':          { color: '#E8C040', bg: 'rgba(200,150,10,0.15)', border: 'rgba(224,172,16,0.40)' },
+};
+
+// Normalize tag — lowercase, trim
+const normalizedTag = tag.toLowerCase().trim();
+
+// Look up color config, fall back to neutral gray
+const c: ColorConfig = tagMap[normalizedTag] ?? {
+  color: '#8A909E',
+  bg: 'rgba(138,144,158,0.12)',
+  border: 'rgba(138,144,158,0.28)',
+};
+---
+
+<span
+  class="eli-category-badge"
+  style={`
+    color: ${c.color};
+    background: ${c.bg};
+    border: 1px solid ${c.border};
+  `}
+>
+  {tag}
+</span>
+
+<style>
+  .eli-category-badge {
+    display: inline-block;
+    font-family: var(--font-mono, 'Share Tech Mono', monospace);
+    font-size: 9px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    line-height: 1;
+  }
+</style>

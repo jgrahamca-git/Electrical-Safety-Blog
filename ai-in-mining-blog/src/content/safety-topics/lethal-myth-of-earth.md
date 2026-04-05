@@ -3,6 +3,10 @@ title: "Friday: The Lethal Myth of Earth as a Fault Return Path"
 description: "Why driving a ground rod into the dirt offers absolutely zero protection against electrical shocks."
 pubDate: 2026-04-03
 heroImage: "../../assets/category-grounding-bonding.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
 ---
 
 There is a terrifyingly common misconception among some trades: "If I drive a ground rod next to this motor frame, I've safely grounded the equipment and protected workers from shock." 
