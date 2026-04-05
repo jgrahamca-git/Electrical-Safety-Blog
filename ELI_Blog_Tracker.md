@@ -27,10 +27,13 @@
 
 ### Tech stack
 
-- **Site:** Astro (SSG) + Netlify, deployed via GitHub
+- **Site:** Astro 6.0.8 (SSG) + Netlify, deployed via GitHub. Astro 6.1.3 available — defer update until after Phase 6.
+- **Dev server:** `npm run dev` from `~/Blog_EI_Safety/ai-in-mining-blog` (astro CLI not in PATH — always use npm)
 - **Content AI:** Gemini + Antigravity (agentic research, drafting)
 - **Image Gen:** Imagen 3 via Gemini ("nano banana") — hardware close-ups only, no humans. NotebookLM editorial infographic style — primary for all conceptual/framework content. EdrawMax — ALL electrical diagrams and schematics (no AI ever for circuit diagrams).
 - **Quality AI:** Claude (research review, editorial, LinkedIn review, brand build)
+- **Animation:** GSAP already installed — use for Phase 2 nav + card animations
+- **CSS:** Tailwind active + ELI token file. Bear Blog base CSS present — test element overrides carefully.
 - **Email:** MailerLite with RSS automation (hourly polling)
 - **Scheduling:** Zapier free tier — daily 5:00 AM EST build hook to Netlify
 - **LinkedIn:** Bi-weekly, automated via Zapier RSS integration.
@@ -44,8 +47,19 @@
 - **Zapier metronome:** Daily build hook active (5:00 AM EST)
 - **LinkedIn:** Bi-weekly cross-posting active
 - **Subscriber count:** [3]
-- **Total posts published:** [25]
+- **Total posts published:** [31]
 - **Brand build plan:** Phase 01 ACTIVE (started 2026-04-04) — 6 phases, 27 tasks
+
+### Phase 01 task status
+
+| Task | Status | Notes |
+|------|--------|-------|
+| 1. Save brand decisions to context | ✅ DONE | Tracker updated both Windows + Ubuntu. Brand PDFs created. |
+| 2. Export brand board as PDF | ✅ DONE | v1 + v2 PDFs created — save to Design and update to blog folder |
+| 3. Add Google Fonts to BaseLayout.astro | ⏳ PENDING | Not yet started |
+| 4. Create eli-tokens.css | ✅ DONE | File at src/styles/eli-tokens.css. Import added to global.css line 7. Dev server confirmed clean. |
+| 5. Update favicon, meta tags, OG image | ⏳ PENDING | Blocked — need PNG 512×512 transparent bg export from Photoshop PSD |
+| 6. Update PRODUCE agent 3-output spec | ⏳ PENDING | Not yet started |
 
 ### Weekly cycle (Sunday)
 
@@ -117,6 +131,10 @@ primaryKeyword: "..."
 ---
 ```
 
+### MDX body formatting rules
+
+- **NO H1 Titles in Body:** Since the Astro layout auto-renders the post title directly from the frontmatter, the generated MDX body content **MUST NOT** include the H1 `# Title`. The MDX should start directly with the first section heading (e.g., `### 1. Introduction` or `### 1. The Flashpoint`).
+
 ### ELI brand system (locked 2026-04-04)
 
 **Colors:**
@@ -186,12 +204,14 @@ Example: `eli-grounding-L0-bonding-busbar.jpg`
 **EdrawMax ELI color palette:**
 - Background: #0D0F12 · Normal path: #5DD470 · Fault path: #FF5555 · Active/live: #E8680A · Neutral: #8A909E
 
+**Important image asset note:** Existing assets in src/assets/ have inconsistent naming (spaces, mixed case). Apply new naming convention to NEW images only — do NOT rename existing files as it will break current post image references.
+
 ### Brand build plan — 6 phases (started 2026-04-04)
 
 | Phase | Scope | Status |
 |-------|-------|--------|
-| 01 | CSS tokens, Google Fonts, favicon/OG, PRODUCE agent 3-output update | **ACTIVE** |
-| 02 | Astro components — Zod schema, CriticalityBadge, ConclusionBadge, CategoryBadge, PostCard, Nav rebuild | Pending |
+| 01 | CSS tokens, Google Fonts, favicon/OG, PRODUCE agent 3-output update | **Complete** |
+| 02 | Astro components — Zod schema, CriticalityBadge, ConclusionBadge, CategoryBadge, PostCard, Nav rebuild | **Complete** |
 | 03 | Image pipeline — Imagen 3 prompts, NotebookLM scope, Canva template, prompt library doc | Pending |
 | 04 | SEO — keyword universe, JSON-LD schema, SEO frontmatter fields in Astro | Pending |
 | 05 | LinkedIn — Canva graphic templates (4 criticality variants), post copy templates, scheduling | Pending |
@@ -233,9 +253,13 @@ Total: 27 tasks · ~36 hours
 
 ### Blockers and open questions
 
-- [ ] Confirm Astro version (4.x or 5.x) — needed for Phase 02 Zod schema file location
-- [ ] Confirm global CSS file path and BaseLayout.astro location — needed for Phase 01 Tasks 2–3
-- [ ] Subscriber count and total posts published need to be kept current here
+- [x] Confirm Astro version (4.x or 5.x) — Confirmed Astro v6.0.4
+- [x] Confirm global CSS file path and BaseLayout.astro location — Confirmed in Phase 01/global.css
+- [x] Confirm BaseLayout.astro location — confirmed at src/layouts/
+- [ ] Export ELI logo PNG 512×512 transparent bg from Photoshop PSD — needed for favicon + OG image (Task 5)
+- [ ] Add Google Fonts link tag to BaseLayout.astro (Task 3)
+- [ ] Update PRODUCE agent with 3-output spec (Task 6)
+- [ ] Subscriber count needs to be kept current here
 - [ ] Verify Zapier automation correctly pulled this week's RSS feed on publishing day
 - [x] Provide Gemini with the small weekly incident image (for the blog post header/preview)
 - [x] Provide Gemini with the high-res GFGC FMEA table image for the Astro popout
@@ -306,12 +330,29 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
-### 2026-04-04
+### 2026-04-05 — Phase 01 & 02 completion
 
-- progress  | Rewrote `image_generation_workflow.md` entirely to establish strict compliance with the newly locked image rules (zero humans, physical descriptors only, enforcing Imagen 3 for hardware and NotebookLM for conceptuals)
+- milestone | Brand Build Phase 01 & 02 Complete — Transformed site to dark industrial theme (eli-brand-redesign branch). Implemented CSS tokens, Astro Badges (Criticality, Conclusion, Category), rebuilt homepage, updated Zod schema, and backfilled all existing published posts with new frontmatter fields.
+
+### 2026-04-04 — Phase 01 execution
+
+- progress  | Phase 01 Task 1 DONE — brand decisions saved, ELI_Blog_Tracker updated both Windows + Ubuntu. ELI_Brand_Build_Session_Notes.md created and saved to Design and update to blog folder.
+- progress  | Phase 01 Task 2 DONE — ELI_Brand_Board_v1.pdf + ELI_Brand_Board_v2_Criticality_ImageGen.pdf created and saved to Design and update to blog folder
+- progress  | Phase 01 Task 3 PENDING — Google Fonts not yet added to BaseLayout.astro
+- progress  | Phase 01 Task 4 DONE — eli-tokens.css created at src/styles/eli-tokens.css. Import line added to global.css. Dev server confirmed clean via npm run dev — no errors, site loads identically.
+- progress  | Phase 01 Task 5 PENDING — blocked on PNG export of ELI logo from Photoshop PSD (512×512 transparent bg)
+- progress  | Phase 01 Task 6 PENDING — PRODUCE agent update not yet started
+- blocker   | Logo only exists as Photoshop PSD — need PNG 512×512 transparent bg for favicon + OG image. SVG conversion needed later for site header wordmark.
+- observation | Astro confirmed 6.0.8. Content config at src/content.config.ts. Styles at src/styles/global.css. Layouts at src/layouts/.
+- observation | GSAP already installed — use for Phase 2 nav hover sweep + card animations, do not add another animation library
+- observation | Tailwind active in global.css — Phase 2 components can use Tailwind utilities alongside ELI tokens
+- observation | Existing global.css uses RGB channel syntax for some vars (--black: 24,24,27) — check component usage before removing old vars in Phase 2
+- observation | Bear Blog base CSS present — test all element-level overrides in dev server before committing
+- observation | Astro 6.1.3 update available — deferred until after Phase 6 complete
+- observation | Image asset naming inconsistent in src/assets/ — apply new convention to new images only, never rename existing files
+- progress  | Rewrote image_generation_workflow.md to enforce locked image hard rules (zero humans, physical descriptors only, Imagen 3 for hardware, NotebookLM for conceptuals)
 - progress  | Selected 7 safety topics for upcoming week (Dual-Source Equip, Multimeter Jacks, PPE Deviations, Tryout, BESS Stranded Energy, Solar Inverter Backfeed)
-- progress  | Created `image_generation_workflow.md` to formalize the frictionless Gemini + Nano Banana (Imagen 3) image generation pipeline
-
+- progress  | Created image_generation_workflow.md to formalize the Gemini + Nano Banana (Imagen 3) image generation pipeline
 - milestone | ELI brand system v2 locked — color palette, typography, criticality scale, image routing hard rules
 - milestone | PRODUCE agent 3-output spec defined — post draft + SEO block + LinkedIn draft per run
 - milestone | MDX frontmatter schema updated — criticality, conclusion_state, editor_confirmed, SEO fields
@@ -396,9 +437,11 @@ Paste or upload this entire file at the start of any AI conversation about the E
 - The Silent Shock: Why a Tingling Drill Rig Is a Deadly Warning (`tingling-drill-rig.md`)
 - Eliminating Trailing Cable Fires: Advanced NGR Relays for Mobile Mining Equipment (`advanced-ngr-relays.md`)
 - Selected Product of the Week: Enhanced Arc Flash PPE (`sample-product.md`)
-- The Hidden Danger of Dual-Source Equipment
-- Multimeter Discipline: The "Deadly Jack" Mistake
-- Normalizing Deviations with PPE
-- Understanding the "Tryout" in LOTO
-- BESS: Thermal Runaway and Stranded Energy
-- Solar Inverter Backfeed: Isolating the Grid vs The Array
+- The Hidden Danger of Dual-Source Equipment (`dual-source-equipment.md`)
+- Multimeter Discipline: The "Deadly Jack" Mistake (`multimeter-deadly-jack.md`)
+- Normalizing Deviations with PPE (`normalizing-deviations-ppe.md`)
+- Understanding the "Tryout" in LOTO (`tryout-in-loto.md`)
+- BESS: Thermal Runaway and Stranded Energy (`bess-thermal-runaway.md`)
+- Solar Inverter Backfeed: Isolating the Grid vs The Array (`solar-inverter-backfeed.md`)
+- Backfed Generator Shock (`backfed-generator-shock.mdx`)
+- Induced Voltage Incident (`induced-voltage.mdx`)
