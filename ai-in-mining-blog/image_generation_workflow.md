@@ -24,7 +24,7 @@ To save tokens and context window inside your main coding chat, follow this sequ
 
 **Step 4:** Highlight and copy all 7 prompts (or use your clipboard history manager) and paste them directly into your image generator in rapid succession.
 
-**Step 5:** Save the generated images directly into `/home/jgrah/Blog_EI_Safety/ai-in-mining-blog/src/assets/` using the strict naming convention: `eli-safety-topics-[L0-3]-[slug].jpg` (e.g., `eli-safety-topics-L2-deadly-jack.jpg`). Apply standard Canva post-processing (60% brightness, orange grade, 8% grid overlay).
+**Step 5:** Save the generated images directly into `/home/jgrah/Blog_EI_Safety/ai-in-mining-blog/src/assets/` using the strict naming convention: `[specific-subject]-[hazard-or-context].jpg` (max 5-6 hyphenated words, NO eli- prefixes or category labels, e.g., `multimeter-current-jack-voltage-arc-flash.jpg`). Apply standard Canva post-processing (60% brightness, orange grade, 8% grid overlay).
 
 ---
 
