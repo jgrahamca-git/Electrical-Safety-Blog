@@ -2,281 +2,533 @@
 const today = new Date();
 ---
 
+<!-- ── RISK MATRIX SECTION ── -->
+<section class="risk-matrix-section">
+  <div class="risk-matrix-inner">
+    <div class="rm-header">
+      <div class="rm-title-group">
+        <span class="rm-label">ELI CRITICALITY SCALE</span>
+        <h3 class="rm-title">Likelihood × Consequence Risk Matrix</h3>
+        <p class="rm-desc">Every post on this blog is classified using this industrial risk matrix. Badge colors map directly to the resulting criticality level.</p>
+      </div>
+      <a href="/risk-matrix" class="rm-link">Full Guide →</a>
+    </div>
+
+    <div class="rm-body">
+      <!-- Matrix table -->
+      <div class="rm-table-wrap">
+        <table class="rm-table">
+          <thead>
+            <tr>
+              <th class="rm-corner">Likelihood ↓ / Consequence →</th>
+              <th>Minor</th>
+              <th>Moderate</th>
+              <th>Serious</th>
+              <th>Fatal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rm-row-label">Almost Certain</td>
+              <td class="rm-l1">L1</td>
+              <td class="rm-l2">L2</td>
+              <td class="rm-l3">L3</td>
+              <td class="rm-l3">L3</td>
+            </tr>
+            <tr>
+              <td class="rm-row-label">Likely</td>
+              <td class="rm-l0">L0</td>
+              <td class="rm-l1">L1</td>
+              <td class="rm-l2">L2</td>
+              <td class="rm-l3">L3</td>
+            </tr>
+            <tr>
+              <td class="rm-row-label">Possible</td>
+              <td class="rm-l0">L0</td>
+              <td class="rm-l0">L0</td>
+              <td class="rm-l1">L1</td>
+              <td class="rm-l2">L2</td>
+            </tr>
+            <tr>
+              <td class="rm-row-label">Unlikely</td>
+              <td class="rm-l0">L0</td>
+              <td class="rm-l0">L0</td>
+              <td class="rm-l0">L0</td>
+              <td class="rm-l1">L1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Legend -->
+      <div class="rm-legend">
+        <div class="rm-legend-title">Badge Key</div>
+        <div class="rm-legend-item">
+          <span class="rm-badge rm-l0">L0</span>
+          <div>
+            <div class="rm-legend-name">Normal</div>
+            <div class="rm-legend-desc">Educational / correct practice</div>
+          </div>
+        </div>
+        <div class="rm-legend-item">
+          <span class="rm-badge rm-l1">L1</span>
+          <div>
+            <div class="rm-legend-name">Advisory</div>
+            <div class="rm-legend-desc">Near-miss / equipment damage</div>
+          </div>
+        </div>
+        <div class="rm-legend-item">
+          <span class="rm-badge rm-l2">L2</span>
+          <div>
+            <div class="rm-legend-name">Warning</div>
+            <div class="rm-legend-desc">Serious injury potential</div>
+          </div>
+        </div>
+        <div class="rm-legend-item">
+          <span class="rm-badge rm-l3">L3</span>
+          <div>
+            <div class="rm-legend-name">Critical</div>
+            <div class="rm-legend-desc">Fatality / catastrophic failure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-	<div class="back-to-top">
-		<button id="backToTopBtn" aria-label="Scroll back to top">
-			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-			Back to Top
-		</button>
-	</div>
-	<div style="margin-bottom: 1em;">
-		<a href="mailto:info@eli-intelligence.com" style="color: rgb(var(--gray)); text-decoration: none;">info@eli-intelligence.com</a>
-	</div>
-	<div style="margin-bottom: 1em; font-size: 1.15em; font-weight: 500; color: var(--accent); letter-spacing: 0.5px;">
-		Empowering Learned Intelligence
-	</div>
-	&copy; {today.getFullYear()} Electrical & Controls Safety. All rights reserved.
-	<div class="social-links">
-		<a href="https://linkedin.com" target="_blank">
-			<span class="sr-only">Follow on LinkedIn</span>
-			<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-		</a>
-		<a href="https://reddit.com" target="_blank">
-			<span class="sr-only">Follow on Reddit</span>
-			<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32" fill="currentColor"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.275-1.84.731-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.058 4.699c-.716.719-2.223 1.055-3.834 1.055-1.614 0-3.12-.336-3.837-1.055-.176-.177-.179-.462-.007-.642.173-.178.455-.18.631-.005.539.544 1.8 1.055 3.213 1.055 1.41 0 2.671-.511 3.208-1.055.176-.176.459-.174.632.004.172.181.168.468-.006.643zm-.458-3.124c-.872 0-1.581-.706-1.581-1.574s.709-1.575 1.581-1.575c.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574z"/></svg>
-		</a>
-	</div>
+  <div class="back-to-top">
+    <button id="backToTopBtn" aria-label="Scroll back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+      Back to Top
+    </button>
+  </div>
+  <div style="margin-bottom: 1em;">
+    <a href="mailto:info@eli-intelligence.com" style="color: rgb(var(--gray)); text-decoration: none;">info@eli-intelligence.com</a>
+  </div>
+  <div style="margin-bottom: 1em; font-size: 1.15em; font-weight: 500; color: var(--accent); letter-spacing: 0.5px;">
+    Empowering Learned Intelligence
+  </div>
+  &copy; {today.getFullYear()} Electrical & Controls Safety. All rights reserved.
+  <div class="social-links">
+    <a href="https://linkedin.com" target="_blank">
+      <span class="sr-only">Follow on LinkedIn</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://reddit.com" target="_blank">
+      <span class="sr-only">Follow on Reddit</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32" fill="currentColor"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.275-1.84.731-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.058 4.699c-.716.719-2.223 1.055-3.834 1.055-1.614 0-3.12-.336-3.837-1.055-.176-.177-.179-.462-.007-.642.173-.178.455-.18.631-.005.539.544 1.8 1.055 3.213 1.055 1.41 0 2.671-.511 3.208-1.055.176-.176.459-.174.632.004.172.181.168.468-.006.643zm-.458-3.124c-.872 0-1.581-.706-1.581-1.574s.709-1.575 1.581-1.575c.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574z"/></svg>
+    </a>
+  </div>
 </footer>
 <div class="diagonal-wipe" transition:persist="wipe"></div>
 
 <!-- Global Image Lightbox Modal -->
 <div id="image-lightbox" class="lightbox-overlay">
-	<button class="lightbox-close" aria-label="Close image">&times;</button>
-	<img id="lightbox-img" src="" alt="Expanded view" />
+  <button class="lightbox-close" aria-label="Close image">&times;</button>
+  <img id="lightbox-img" src="" alt="Expanded view" />
 </div>
+
 <style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: #111111;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.back-to-top {
-		margin-bottom: 2em;
-	}
-	.back-to-top button {
-		background: none;
-		border: 1px solid rgb(var(--gray));
-		color: rgb(var(--gray));
-		padding: 0.5rem 1rem;
-		border-radius: 20px;
-		cursor: pointer;
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		font-size: 0.9rem;
-		transition: all 0.2s ease;
-	}
-	.back-to-top button:hover {
-		color: #ffffff;
-		border-color: var(--accent);
-		background: var(--accent);
-		transform: translateY(-2px);
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: var(--accent);
-	}
-	.diagonal-wipe {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		z-index: 999998;
-		pointer-events: none;
-		opacity: 0;
-		box-shadow: 0 0 50px rgba(0,0,0,0.5);
-		background: linear-gradient(135deg, #4d2612, #c87a4f, #4d2612);
-		background-size: 200% 200%;
-		animation: gradient 2s ease infinite;
-	}
+  /* ── RISK MATRIX SECTION ── */
+  .risk-matrix-section {
+    background: var(--eli-dark, #141720);
+    border-top: 1px solid var(--eli-border, #2A3040);
+    border-bottom: 1px solid var(--eli-border, #2A3040);
+    padding: 2.5rem 2rem;
+  }
 
-	@keyframes gradient {
-		0% { background-position: 0% 50%; }
-		50% { background-position: 100% 50%; }
-		100% { background-position: 0% 50%; }
-	}
+  .risk-matrix-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 
-	/* Lightbox Styles */
-	.lightbox-overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		background: rgba(0, 0, 0, 0.9);
-		z-index: 999999;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		opacity: 0;
-		pointer-events: none;
-		transition: opacity 0.3s ease;
-		overflow: auto; /* Allow scrolling when zoomed */
-	}
-	.lightbox-overlay.active {
-		opacity: 1;
-		pointer-events: auto;
-	}
-	.lightbox-overlay img {
-		max-width: 90%;
-		max-height: 90vh;
-		border-radius: 8px;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-		transform: scale(0.95);
-		transition: transform 0.3s ease;
-		cursor: zoom-in;
-		margin: auto;
-	}
-	.lightbox-overlay.active img {
-		transform: scale(1);
-	}
-	/* Zooms image to intrinsic full size for tables/FMEAs */
-	.lightbox-overlay.zoomed {
-		justify-content: flex-start;
-		align-items: flex-start;
-	}
-	.lightbox-overlay.zoomed img {
-		max-width: none;
-		max-height: none;
-		cursor: zoom-out;
-		margin: 2rem;
-	}
-	.lightbox-close {
-		position: absolute;
-		top: 20px;
-		right: 30px;
-		background: none;
-		border: none;
-		color: white;
-		font-size: 3rem;
-		cursor: pointer;
-		line-height: 1;
-		z-index: 1000000;
-	}
-	.lightbox-close:hover {
-		color: var(--accent);
-	}
-	:global(main img) {
-		cursor: zoom-in;
-	}
+  .rm-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .rm-label {
+    font-family: var(--font-mono, 'Share Tech Mono', monospace);
+    font-size: 9px;
+    color: var(--eli-accent, #E8680A);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .rm-title {
+    font-family: var(--font-sub, 'Rajdhani', sans-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--eli-white, #F2EDE8);
+    margin: 0 0 6px 0;
+  }
+
+  .rm-desc {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 0.85rem;
+    color: var(--eli-muted, #8A909E);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 500px;
+  }
+
+  .rm-link {
+    font-family: var(--font-sub, 'Rajdhani', sans-serif);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--eli-accent, #E8680A);
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid rgba(232,104,10,0.4);
+    padding: 6px 14px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  .rm-link:hover {
+    background: rgba(232,104,10,0.15);
+    border-color: var(--eli-accent, #E8680A);
+  }
+
+  .rm-body {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .rm-body { grid-template-columns: 1fr; }
+    .rm-header { flex-direction: column; }
+  }
+
+  /* ── MATRIX TABLE ── */
+  .rm-table-wrap { overflow-x: auto; }
+
+  .rm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono, 'Share Tech Mono', monospace);
+    font-size: 11px;
+  }
+
+  .rm-table th {
+    background: var(--eli-panel, #1A1E26);
+    color: var(--eli-accent, #E8680A);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border: 1px solid var(--eli-border, #2A3040);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .rm-corner {
+    text-align: left !important;
+    color: var(--eli-muted, #8A909E) !important;
+    font-size: 9px !important;
+  }
+
+  .rm-table td {
+    padding: 8px 12px;
+    border: 1px solid var(--eli-border, #2A3040);
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .rm-row-label {
+    background: var(--eli-panel, #1A1E26);
+    color: var(--eli-muted, #8A909E) !important;
+    text-align: left !important;
+    font-size: 10px;
+    white-space: nowrap;
+    font-weight: 400 !important;
+  }
+
+  /* Level colors in table cells */
+  .rm-l0 { background: rgba(42,122,58,0.20); color: #5DD470; }
+  .rm-l1 { background: rgba(200,150,10,0.15); color: #E8C040; }
+  .rm-l2 { background: rgba(232,104,10,0.15); color: #FF8030; }
+  .rm-l3 { background: rgba(204,34,34,0.15); color: #FF5555; }
+
+  /* ── LEGEND ── */
+  .rm-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 180px;
+  }
+
+  .rm-legend-title {
+    font-family: var(--font-mono, 'Share Tech Mono', monospace);
+    font-size: 9px;
+    color: var(--eli-accent, #E8680A);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .rm-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rm-badge {
+    font-family: var(--font-mono, 'Share Tech Mono', monospace);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .rm-badge.rm-l0 { border-color: rgba(61,170,80,0.38); }
+  .rm-badge.rm-l1 { border-color: rgba(224,172,16,0.40); }
+  .rm-badge.rm-l2 { border-color: rgba(232,104,10,0.40); }
+  .rm-badge.rm-l3 { border-color: rgba(204,34,34,0.40); }
+
+  .rm-legend-name {
+    font-family: var(--font-sub, 'Rajdhani', sans-serif);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--eli-white, #F2EDE8);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .rm-legend-desc {
+    font-family: var(--font-body, 'DM Sans', sans-serif);
+    font-size: 11px;
+    color: var(--eli-muted, #8A909E);
+  }
+
+  /* ── EXISTING FOOTER STYLES — UNCHANGED ── */
+  footer {
+    padding: 2em 1em 6em 1em;
+    background: #111111;
+    color: rgb(var(--gray));
+    text-align: center;
+  }
+  .back-to-top { margin-bottom: 2em; }
+  .back-to-top button {
+    background: none;
+    border: 1px solid rgb(var(--gray));
+    color: rgb(var(--gray));
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+  .back-to-top button:hover {
+    color: #ffffff;
+    border-color: var(--accent);
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
+  .social-links a {
+    text-decoration: none;
+    color: rgb(var(--gray));
+  }
+  .social-links a:hover { color: var(--accent); }
+  .diagonal-wipe {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 999998;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    background: linear-gradient(135deg, #4d2612, #c87a4f, #4d2612);
+    background-size: 200% 200%;
+    animation: gradient 2s ease infinite;
+  }
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    overflow: auto;
+  }
+  .lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+    margin: auto;
+  }
+  .lightbox-overlay.active img { transform: scale(1); }
+  .lightbox-overlay.zoomed {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .lightbox-overlay.zoomed img {
+    max-width: none;
+    max-height: none;
+    cursor: zoom-out;
+    margin: 2rem;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 30px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 1000000;
+  }
+  .lightbox-close:hover { color: var(--accent); }
+  :global(main img) { cursor: zoom-in; }
 </style>
+
 <script>
-	import gsap from 'gsap';
+  import gsap from 'gsap';
 
-	gsap.set('.diagonal-wipe', { autoAlpha: 0 });
+  gsap.set('.diagonal-wipe', { autoAlpha: 0 });
 
-	// Back to Top button logic
-	document.addEventListener('astro:page-load', () => {
-		const bttBtn = document.getElementById('backToTopBtn');
-		if (bttBtn) {
-			bttBtn.addEventListener('click', () => {
-				window.scrollTo({ top: 0, behavior: 'smooth' });
-			});
-		}
+  document.addEventListener('astro:page-load', () => {
+    const bttBtn = document.getElementById('backToTopBtn');
+    if (bttBtn) {
+      bttBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
 
-		// --- Lightbox Logic ---
-		const lightbox = document.getElementById('image-lightbox');
-		const lightboxImg = document.getElementById('lightbox-img');
-		const closeBtn = document.querySelector('.lightbox-close');
-		
-		if (lightbox && lightboxImg && closeBtn) {
-			const images = document.querySelectorAll('main img');
-			images.forEach(img => {
-				img.addEventListener('click', (e) => {
-					// Stop the image click from triggering any wrapping <a> tag navigation
-					e.preventDefault();
-					e.stopPropagation();
-					
-					lightboxImg.src = img.src;
-					lightboxImg.alt = img.alt;
-					lightbox.classList.add('active');
-					document.body.style.overflow = 'hidden'; // Stop background scrolling
-				});
-			});
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
 
-			const closeLightbox = () => {
-				lightbox.classList.remove('active', 'zoomed');
-				document.body.style.overflow = '';
-			};
+    if (lightbox && lightboxImg && closeBtn) {
+      const images = document.querySelectorAll('main img');
+      images.forEach(img => {
+        img.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
 
-			closeBtn.addEventListener('click', closeLightbox);
-			// Toggle zoom when clicking the image itself
-			lightboxImg.addEventListener('click', (e) => {
-				e.stopPropagation();
-				lightbox.classList.toggle('zoomed');
-			});
-			// Close if clicking outside the image
-			lightbox.addEventListener('click', (e) => {
-				if (e.target === lightbox) closeLightbox();
-			});
-			// Close on escape key
-			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-					closeLightbox();
-				}
-			});
-		}
-	});
+      const closeLightbox = () => {
+        lightbox.classList.remove('active', 'zoomed');
+        document.body.style.overflow = '';
+      };
 
-	// Gradient double action wipe
-	document.addEventListener('astro:before-preparation', (e) => {
-		gsap.set('.diagonal-wipe', { autoAlpha: 1, xPercent: 100 });
+      closeBtn.addEventListener('click', closeLightbox);
+      lightboxImg.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightbox.classList.toggle('zoomed');
+      });
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    }
+  });
 
-		const originalLoader = e.loader;
-		e.loader = async () => {
-			await new Promise(resolve => {
-				// Slide them in from the right to cover the screen
-				gsap.to('.diagonal-wipe', {
-					xPercent: 0,
-					duration: 0.25,
-					ease: 'power2.inOut',
-					onComplete: resolve
-				});
-			});
-			await originalLoader();
-		};
-	});
+  document.addEventListener('astro:before-preparation', (e) => {
+    gsap.set('.diagonal-wipe', { autoAlpha: 1, xPercent: 100 });
+    const originalLoader = e.loader;
+    e.loader = async () => {
+      await new Promise(resolve => {
+        gsap.to('.diagonal-wipe', {
+          xPercent: 0,
+          duration: 0.25,
+          ease: 'power2.inOut',
+          onComplete: resolve
+        });
+      });
+      await originalLoader();
+    };
+  });
 
-	// Trigger the wipe OUTSIDE when navigation finishes
-	document.addEventListener('astro:after-swap', () => {
-		// Slide them out to the left to uncover the screen
-		gsap.to('.diagonal-wipe', {
-			xPercent: -100,
-			duration: 0.25,
-			ease: 'power2.inOut',
-			onComplete: () => {
-				gsap.set('.diagonal-wipe', { autoAlpha: 0, xPercent: 100 });
-			}
-		});
-	});
+  document.addEventListener('astro:after-swap', () => {
+    gsap.to('.diagonal-wipe', {
+      xPercent: -100,
+      duration: 0.25,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        gsap.set('.diagonal-wipe', { autoAlpha: 0, xPercent: 100 });
+      }
+    });
+  });
 
-	document.addEventListener('astro:page-load', () => {
-		// Main container fade and slide up
-		gsap.from('main', {
-			opacity: 0,
-			y: 20,
-			duration: 0.6,
-			ease: 'power2.out'
-		});
+  document.addEventListener('astro:page-load', () => {
+    gsap.from('main', {
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      ease: 'power2.out'
+    });
 
-		// Staggered card animations for index pages
-		gsap.from('.card', {
-			opacity: 0,
-			y: 30,
-			duration: 0.5,
-			stagger: 0.1,
-			ease: 'power2.out',
-			delay: 0.2
-		});
+    gsap.from('.card', {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out',
+      delay: 0.2
+    });
 
-		// Fade in article content on individual pages
-		gsap.from('.prose', {
-			opacity: 0,
-			y: 15,
-			duration: 0.6,
-			ease: 'power2.out',
-			delay: 0.2
-		});
-	});
+    gsap.from('.prose', {
+      opacity: 0,
+      y: 15,
+      duration: 0.6,
+      ease: 'power2.out',
+      delay: 0.2
+    });
+  });
 </script>

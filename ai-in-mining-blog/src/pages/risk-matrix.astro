@@ -1,0 +1,450 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "ELI Risk Classification Guide | Electrical & Controls Safety";
+const description = "How ELI classifies electrical safety content using an industrial likelihood × consequence risk matrix. Every post is assigned a criticality level from L0 to L3.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      body {
+        background: var(--eli-black, #0D0F12);
+        color: var(--eli-white, #F2EDE8);
+      }
+
+      main {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        box-sizing: border-box;
+      }
+
+      /* ── PAGE HEADER ── */
+      .page-header {
+        margin-bottom: 3rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--eli-border, #2A3040);
+      }
+
+      .page-label {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 10px;
+        color: var(--eli-accent, #E8680A);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .page-title {
+        font-family: var(--font-display, 'Bebas Neue', sans-serif);
+        font-size: clamp(32px, 5vw, 52px);
+        letter-spacing: 0.04em;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.1;
+        margin: 0 0 1rem 0;
+      }
+
+      .page-title span { color: var(--eli-accent, #E8680A); }
+
+      .page-intro {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.7;
+        max-width: 680px;
+      }
+
+      /* ── SECTIONS ── */
+      .section {
+        margin-bottom: 3rem;
+      }
+
+      .section-label {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-accent, #E8680A);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1.25rem;
+      }
+
+      .section-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--eli-border, #2A3040);
+      }
+
+      .section-title {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--eli-white, #F2EDE8);
+        margin: 0 0 1rem 0;
+      }
+
+      .section-body {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.95rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+
+      /* ── FULL MATRIX TABLE ── */
+      .matrix-wrap { overflow-x: auto; margin-bottom: 1rem; }
+
+      .matrix-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 12px;
+      }
+
+      .matrix-table th {
+        background: var(--eli-panel, #1A1E26);
+        color: var(--eli-accent, #E8680A);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 12px 16px;
+        border: 1px solid var(--eli-border, #2A3040);
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .matrix-table .corner {
+        text-align: left;
+        color: var(--eli-muted, #8A909E);
+        font-size: 10px;
+      }
+
+      .matrix-table td {
+        padding: 12px 16px;
+        border: 1px solid var(--eli-border, #2A3040);
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        font-size: 13px;
+      }
+
+      .row-label {
+        background: var(--eli-panel, #1A1E26);
+        color: var(--eli-muted, #8A909E);
+        text-align: left;
+        font-size: 11px;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+
+      .c-l0 { background: rgba(42,122,58,0.20); color: #5DD470; }
+      .c-l1 { background: rgba(200,150,10,0.15); color: #E8C040; }
+      .c-l2 { background: rgba(232,104,10,0.15); color: #FF8030; }
+      .c-l3 { background: rgba(204,34,34,0.15); color: #FF5555; }
+
+      /* ── LEVEL CARDS ── */
+      .level-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      @media (max-width: 600px) {
+        .level-grid { grid-template-columns: 1fr; }
+      }
+
+      .level-card {
+        background: var(--eli-panel, #1A1E26);
+        border: 1px solid var(--eli-border, #2A3040);
+        border-radius: 4px;
+        padding: 16px;
+        border-top: 2px solid;
+      }
+
+      .level-card.l0 { border-top-color: #5DD470; }
+      .level-card.l1 { border-top-color: #E8C040; }
+      .level-card.l2 { border-top-color: #FF8030; }
+      .level-card.l3 { border-top-color: #FF5555; }
+
+      .level-code {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .level-card.l0 .level-code { color: #5DD470; }
+      .level-card.l1 .level-code { color: #E8C040; }
+      .level-card.l2 .level-code { color: #FF8030; }
+      .level-card.l3 .level-code { color: #FF5555; }
+
+      .level-name {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--eli-white, #F2EDE8);
+        margin-bottom: 8px;
+      }
+
+      .level-desc {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.875rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+
+      .level-examples {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        letter-spacing: 0.08em;
+        line-height: 1.9;
+        color: var(--eli-muted, #8A909E);
+      }
+
+      /* ── CONCLUSION STATE ── */
+      .state-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      @media (max-width: 600px) {
+        .state-grid { grid-template-columns: 1fr; }
+      }
+
+      .state-card {
+        background: var(--eli-panel, #1A1E26);
+        border: 1px solid var(--eli-border, #2A3040);
+        border-radius: 0 4px 4px 0;
+        padding: 14px;
+      }
+
+      .state-card.safe   { border-left: 3px solid #5DD470; }
+      .state-card.hazard { border-left: 3px solid #FF5555; }
+      .state-card.neutral{ border-left: 3px solid #8A909E; }
+
+      .state-label {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 8px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .state-card.safe .state-label   { color: #5DD470; }
+      .state-card.hazard .state-label { color: #FF5555; }
+      .state-card.neutral .state-label{ color: #8A909E; }
+
+      .state-name {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--eli-white, #F2EDE8);
+        margin-bottom: 6px;
+      }
+
+      .state-desc {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.6;
+      }
+
+      /* ── DISCLAIMER ── */
+      .disclaimer {
+        background: var(--eli-panel, #1A1E26);
+        border: 1px solid var(--eli-border, #2A3040);
+        border-left: 3px solid var(--eli-accent, #E8680A);
+        border-radius: 0 4px 4px 0;
+        padding: 14px 16px;
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.875rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+
+      <div class="page-header">
+        <span class="page-label">ELI Content Classification System</span>
+        <h1 class="page-title">Risk <span>Classification</span> Guide</h1>
+        <p class="page-intro">
+          Every post on this blog is classified using the same industrial risk assessment methodology
+          used on real worksites. The criticality level determines badge color, visual urgency, and
+          how the content should be prioritized by you and your team.
+        </p>
+      </div>
+
+      <!-- SECTION 1: MATRIX -->
+      <div class="section">
+        <div class="section-label">01 — Likelihood × Consequence Matrix</div>
+        <h2 class="section-title">How Criticality Is Assigned</h2>
+        <p class="section-body">
+          Each post is assessed on two axes: how likely the hazard is to occur in a typical industrial
+          environment, and what the potential consequence is if it does. The intersection determines
+          the criticality level assigned to that content.
+        </p>
+
+        <div class="matrix-wrap">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th class="corner">Likelihood ↓ / Consequence →</th>
+                <th>Minor</th>
+                <th>Moderate</th>
+                <th>Serious Injury</th>
+                <th>Fatal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-label">Almost Certain</td>
+                <td class="c-l1">L1</td>
+                <td class="c-l2">L2</td>
+                <td class="c-l3">L3</td>
+                <td class="c-l3">L3</td>
+              </tr>
+              <tr>
+                <td class="row-label">Likely</td>
+                <td class="c-l0">L0</td>
+                <td class="c-l1">L1</td>
+                <td class="c-l2">L2</td>
+                <td class="c-l3">L3</td>
+              </tr>
+              <tr>
+                <td class="row-label">Possible</td>
+                <td class="c-l0">L0</td>
+                <td class="c-l0">L0</td>
+                <td class="c-l1">L1</td>
+                <td class="c-l2">L2</td>
+              </tr>
+              <tr>
+                <td class="row-label">Unlikely</td>
+                <td class="c-l0">L0</td>
+                <td class="c-l0">L0</td>
+                <td class="c-l0">L0</td>
+                <td class="c-l1">L1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SECTION 2: LEVELS -->
+      <div class="section">
+        <div class="section-label">02 — Criticality Levels</div>
+        <h2 class="section-title">What Each Level Means</h2>
+        <div class="level-grid">
+          <div class="level-card l0">
+            <div class="level-code">L0 — Normal</div>
+            <div class="level-name">System OK</div>
+            <div class="level-desc">Educational content with no active hazard. Describes correct practice, standards compliance, or foundational knowledge.</div>
+            <div class="level-examples">
+              Daily Safety Topics<br>
+              Correct grounding practice<br>
+              LOTO procedures done right<br>
+              Code and standards reference
+            </div>
+          </div>
+          <div class="level-card l1">
+            <div class="level-code">L1 — Advisory</div>
+            <div class="level-name">Caution</div>
+            <div class="level-desc">A known hazard with low to moderate consequence. Requires awareness and action but typically non-fatal outcome.</div>
+            <div class="level-examples">
+              Near-miss reports<br>
+              Equipment damage incidents<br>
+              Procedure deviation warnings<br>
+              Advisory safety notices
+            </div>
+          </div>
+          <div class="level-card l2">
+            <div class="level-code">L2 — Warning</div>
+            <div class="level-name">High Risk</div>
+            <div class="level-desc">Serious injury potential. Covers arc flash exposure, electrical shock risk, major equipment failure modes, and protection system failures.</div>
+            <div class="level-examples">
+              Arc flash hazards<br>
+              Electrical shock events<br>
+              Bonding and grounding failures<br>
+              VFD and CT hazards
+            </div>
+          </div>
+          <div class="level-card l3">
+            <div class="level-code">L3 — Critical</div>
+            <div class="level-name">Fatal Risk</div>
+            <div class="level-desc">Fatality or multiple serious injuries. Documented deaths, catastrophic system failures, and major incident root cause analyses.</div>
+            <div class="level-examples">
+              Fatality RCAs<br>
+              Electrocution incidents<br>
+              Explosion and fire events<br>
+              Multi-casualty incidents
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: CONCLUSION STATE -->
+      <div class="section">
+        <div class="section-label">03 — Conclusion State</div>
+        <h2 class="section-title">Post Takeaway Classification</h2>
+        <p class="section-body">
+          In addition to the criticality level, each post's conclusion is classified to signal whether
+          the primary takeaway is a validated safe practice, a failure mode warning, or neutral information.
+        </p>
+        <div class="state-grid">
+          <div class="state-card safe">
+            <div class="state-label">Conclusion: Safe</div>
+            <div class="state-name">Correct Practice</div>
+            <div class="state-desc">The post concludes with a confirmed correct or protected state. "Do this and you are protected." Green takeaway badge.</div>
+          </div>
+          <div class="state-card hazard">
+            <div class="state-label">Conclusion: Hazard</div>
+            <div class="state-name">Failure Mode</div>
+            <div class="state-desc">The post concludes with a failure mode or do-not-do warning. "This kills people. Do not do this." Red takeaway badge.</div>
+          </div>
+          <div class="state-card neutral">
+            <div class="state-label">Conclusion: Neutral</div>
+            <div class="state-name">Informational</div>
+            <div class="state-desc">Standards reference, product review, or general awareness. No definitive safe or unsafe conclusion. Gray takeaway badge.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DISCLAIMER -->
+      <div class="disclaimer">
+        <strong style="color: var(--eli-white, #F2EDE8); font-weight: 500;">Disclaimer:</strong>
+        This classification system is an educational tool to help readers prioritize and contextualize
+        safety content. It is not a formal regulatory risk assessment and does not replace site-specific
+        hazard assessments, engineering controls, or the requirements of your local Authority Having
+        Jurisdiction (AHJ). Always refer to applicable codes and standards including CEC, NEC, CSA Z462,
+        and NFPA 70E for compliance requirements.
+      </div>
+
+    </main>
+    <Footer />
+  </body>
+</html>
