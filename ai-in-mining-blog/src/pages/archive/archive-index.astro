@@ -3,8 +3,6 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
-import SafetyTriangle from '../../assets/Safety Triangle.jpg';
-import SafetyNews from '../../assets/category-safety-news.jpg';
 ---
 
 <!doctype html>
@@ -16,6 +14,7 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
         background: var(--eli-black, #0D0F12);
         color: var(--eli-white, #F2EDE8);
       }
+
       main {
         width: 100%;
         max-width: 1000px;
@@ -23,6 +22,7 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
         padding: 3rem 2rem;
         box-sizing: border-box;
       }
+
       .page-label {
         font-family: var(--font-mono, 'Share Tech Mono', monospace);
         font-size: 9px;
@@ -32,15 +32,18 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
         display: block;
         margin-bottom: 10px;
       }
+
       h1 {
-        font-family: var(--font-display, 'Bebas Neue', sans-serif) !important;
-        font-size: clamp(32px, 5vw, 52px) !important;
-        letter-spacing: 0.04em !important;
-        color: var(--eli-white, #F2EDE8) !important;
-        margin: 0 0 0.5rem 0 !important;
-        line-height: 1.1 !important;
+        font-family: var(--font-display, 'Bebas Neue', sans-serif);
+        font-size: clamp(32px, 5vw, 52px);
+        letter-spacing: 0.04em;
+        color: var(--eli-white, #F2EDE8);
+        margin: 0 0 0.5rem 0;
+        line-height: 1.1;
       }
+
       h1 span { color: var(--eli-accent, #E8680A); }
+
       .page-desc {
         font-family: var(--font-body, 'DM Sans', sans-serif);
         font-size: 0.95rem;
@@ -49,6 +52,8 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
         margin: 0 0 3rem 0;
         line-height: 1.6;
       }
+
+      /* ── ARCHIVE CARDS ── */
       ul {
         display: flex;
         flex-wrap: wrap;
@@ -57,29 +62,37 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
         margin: 0;
         padding: 0;
       }
-      ul li { width: calc(33.333% - 1rem); min-width: 0; }
+
+      ul li {
+        width: calc(33.333% - 1rem);
+        min-width: 0;
+      }
+
       ul li a {
         display: block;
-        background: #1A1E26 !important;
-        border: 1px solid #2A3040 !important;
-        border-radius: 6px !important;
+        background: var(--eli-panel, #1A1E26);
+        border: 1px solid var(--eli-border, #2A3040);
+        border-radius: 6px;
         overflow: hidden;
-        text-decoration: none !important;
+        text-decoration: none;
         transition: border-color 0.2s, transform 0.2s;
         height: 100%;
         box-sizing: border-box;
-        color: inherit !important;
       }
+
       ul li a:hover {
         transform: translateY(-3px);
-        border-color: #E8680A !important;
+        border-color: var(--eli-accent, #E8680A);
       }
+
+      /* Image wrapper */
       .card-img-wrap {
         position: relative;
         height: 160px;
         overflow: hidden;
-        background: #141720;
+        background: var(--eli-dark, #141720);
       }
+
       .card-img-wrap img {
         width: 100%;
         height: 100%;
@@ -89,52 +102,72 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
         filter: brightness(0.55) saturate(0.8);
         transition: filter 0.3s;
       }
-      ul li a:hover .card-img-wrap img { filter: brightness(0.7) saturate(0.9); }
+
+      ul li a:hover .card-img-wrap img {
+        filter: brightness(0.7) saturate(0.9);
+      }
+
+      /* Circuit overlay on images */
       .card-img-wrap::after {
         content: '';
         position: absolute;
         inset: 0;
-        background-image: repeating-linear-gradient(90deg, rgba(232,104,10,0.06) 0px, rgba(232,104,10,0.06) 1px, transparent 1px, transparent 40px);
+        background-image: repeating-linear-gradient(
+          90deg,
+          rgba(232,104,10,0.06) 0px,
+          rgba(232,104,10,0.06) 1px,
+          transparent 1px,
+          transparent 40px
+        );
         pointer-events: none;
       }
-      .card-body { padding: 14px 16px 16px; background: #1A1E26 !important; }
+
+      /* Card body */
+      .card-body {
+        padding: 14px 16px 16px;
+      }
+
       .post-type {
         font-family: var(--font-mono, 'Share Tech Mono', monospace);
         font-size: 9px;
         text-transform: uppercase;
         letter-spacing: 0.15em;
-        color: #E8680A !important;
+        color: var(--eli-accent, #E8680A);
         margin-bottom: 6px;
         display: block;
       }
+
       .title {
-        font-family: var(--font-sub, 'Rajdhani', sans-serif) !important;
-        font-size: 1.1rem !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.04em !important;
-        color: #F2EDE8 !important;
-        margin: 0 0 6px 0 !important;
-        line-height: 1.2 !important;
-        text-transform: uppercase !important;
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--eli-white, #F2EDE8);
+        margin: 0 0 6px 0;
+        line-height: 1.2;
+        text-transform: uppercase;
       }
+
       .card-desc {
         font-family: var(--font-body, 'DM Sans', sans-serif);
         font-size: 0.875rem;
         font-weight: 300;
-        color: #8A909E !important;
+        color: var(--eli-muted, #8A909E);
         margin: 0;
         line-height: 1.5;
       }
+
       .card-cta {
         font-family: var(--font-sub, 'Rajdhani', sans-serif);
         font-size: 11px;
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #E8680A !important;
+        color: var(--eli-accent, #E8680A);
         margin-top: 10px;
         display: block;
       }
+
       @media (max-width: 720px) {
         ul { gap: 1rem; }
         ul li { width: 100%; }
@@ -147,6 +180,7 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
       <span class="page-label">ELI Safety Blog</span>
       <h1>Full Safety <span>Archive</span></h1>
       <p class="page-desc">Browse the complete index of incident RCAs, daily safety topics, and industry news.</p>
+
       <section>
         <ul>
           <li>
@@ -165,7 +199,7 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
           <li>
             <a href="/archive/safety-topics/">
               <div class="card-img-wrap">
-                <img src={SafetyTriangle.src} alt="Safety Topics" />
+                <img src="/hierarchy_of_controls.jpg" alt="Safety Topics" />
               </div>
               <div class="card-body">
                 <span class="post-type">Safety Topics Database</span>
@@ -178,7 +212,7 @@ import SafetyNews from '../../assets/category-safety-news.jpg';
           <li>
             <a href="/archive/safety-news/">
               <div class="card-img-wrap">
-                <img src={SafetyNews.src} alt="Safety News" />
+                <img src="/safety triangle.jpg" alt="Safety News" />
               </div>
               <div class="card-body">
                 <span class="post-type">Safety News & Products</span>

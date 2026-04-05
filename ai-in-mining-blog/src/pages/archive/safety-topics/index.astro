@@ -7,161 +7,188 @@ import { getCollection } from 'astro:content';
 
 const now = new Date();
 const posts = (await getCollection('safety-topics'))
-	.filter((post) => post.data.pubDate <= now)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .filter((post) => post.data.pubDate <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Group posts by Year, then Month
 const groupedPosts = posts.reduce((acc, post) => {
-	const date = new Date(post.data.pubDate);
-	const year = date.getFullYear();
-	const month = date.toLocaleString('default', { month: 'long' });
-	
-	if (!acc[year]) acc[year] = {};
-	if (!acc[year][month]) acc[year][month] = [];
-	
-	acc[year][month].push(post);
-	return acc;
+  const date = new Date(post.data.pubDate);
+  const year = date.getFullYear();
+  const month = date.toLocaleString('default', { month: 'long' });
+  if (!acc[year]) acc[year] = {};
+  if (!acc[year][month]) acc[year][month] = [];
+  acc[year][month].push(post);
+  return acc;
 }, {} as Record<string, Record<string, typeof posts>>);
 
 const years = Object.keys(groupedPosts).sort((a, b) => Number(b) - Number(a));
 ---
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={`Safety Topics Archive - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-				max-width: calc(100% - 2em);
-				margin: 0 auto;
-				padding: 3em 1em;
-			}
-			h1 {
-				text-align: center;
-				margin-bottom: 2rem;
-				color: var(--accent);
-			}
-			.year-section {
-				margin-bottom: 4rem;
-			}
-			.year-title {
-				font-size: 2.5rem;
-				border-bottom: 3px solid var(--accent);
-				padding-bottom: 0.5rem;
-				margin-bottom: 2rem;
-				color: rgb(var(--black));
-			}
-			.month-section {
-				margin-bottom: 1.5rem;
-				padding-left: 1rem;
-				background: #f8fafc;
-				border-radius: 6px;
-				padding: 1rem;
-			}
-			.month-title {
-				font-size: 1.5rem;
-				color: rgb(var(--gray-dark));
-				cursor: pointer;
-				user-select: none;
-				font-weight: 500;
-			}
-			.month-title:hover {
-				color: var(--accent);
-			}
-			.post-list {
-				list-style: none;
-				padding: 0;
-				margin: 1rem 0 0 0;
-				display: flex;
-				flex-direction: column;
-				gap: 0.5rem;
-			}
-			.post-item {
-				background: #ffffff;
-				border: 1px solid #e5e7eb;
-				border-left: 4px solid var(--accent);
-				border-radius: 4px;
-				padding: 0.75rem 1rem;
-				transition: transform 0.2s;
-			}
-			.post-item:hover {
-				transform: translateX(4px);
-				border-color: var(--accent);
-			}
-			.post-link {
-				text-decoration: none;
-				display: flex;
-				flex-direction: column;
-				gap: 0.5rem;
-			}
-			.post-date {
-				font-family: monospace;
-				color: rgb(var(--gray));
-				font-size: 0.95rem;
-				background: #f1f5f9;
-				padding: 0.1rem 0.5rem;
-				border-radius: 4px;
-				display: inline-block;
-			}
-			.post-title {
-				margin: 0;
-				color: rgb(var(--black));
-				font-size: 1.15rem;
-				font-weight: 500;
-			}
-			.post-item:hover .post-title {
-				color: var(--accent);
-			}
-			
-			@media (max-width: 720px) {
-				.month-section {
-					padding-left: 0;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Safety Topics Database (Chronological)</h1>
-            <p style="text-align: center; margin-bottom: 3rem; color: rgb(var(--gray));">An ordered history of all daily safety briefings and memos.</p>
-
-			{years.length === 0 ? (
-				<p style="text-align: center;">No safety topics found.</p>
-			) : (
-				years.map((year) => (
-					<section class="year-section">
-						<h2 class="year-title">{year}</h2>
-						
-						{Object.keys(groupedPosts[year]).map((month, idx) => (
-							<details class="month-section" open={idx === 0}>
-								<summary class="month-title">{month} <span style="font-size: 0.8em; color: var(--gray); font-weight: normal;">(Click to Expand)</span></summary>
-								
-								<ul class="post-list">
-									{groupedPosts[year][month].map((post) => {
-										// Format day manually to avoid timezone weirdness
-										const dateObj = new Date(post.data.pubDate);
-										const dayStr = dateObj.getDate().toString().padStart(2, '0');
-										
-										return (
-											<li class="post-item">
-												<a href={`/safety-topics/${post.id}/`} class="post-link">
-													<div style="display: flex; align-items: center; gap: 1rem;">
-														<span class="post-date">Day {dayStr}</span>
-														<h4 class="post-title">{post.data.title}</h4>
-													</div>
-												</a>
-											</li>
-										);
-									})}
-								</ul>
-							</details>
-						))}
-					</section>
-				))
-			)}
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={`Safety Topics Archive - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    <style>
+      body {
+        background: var(--eli-black, #0D0F12);
+        color: var(--eli-white, #F2EDE8);
+      }
+      main {
+        width: 960px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+        padding: 3em 1em;
+      }
+      .page-label {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-accent, #E8680A);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        display: block;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      h1 {
+        font-family: var(--font-display, 'Bebas Neue', sans-serif) !important;
+        font-size: clamp(28px, 4vw, 44px) !important;
+        letter-spacing: 0.04em !important;
+        color: var(--eli-white, #F2EDE8) !important;
+        text-align: center;
+        margin-bottom: 0.5rem !important;
+      }
+      .page-desc {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.95rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E) !important;
+      }
+      .year-section { margin-bottom: 3rem; }
+      .year-title {
+        font-family: var(--font-display, 'Bebas Neue', sans-serif) !important;
+        font-size: 2rem !important;
+        color: var(--eli-accent, #E8680A) !important;
+        border-bottom: 1px solid var(--eli-border, #2A3040) !important;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.25rem !important;
+        letter-spacing: 0.04em !important;
+      }
+      .month-section {
+        margin-bottom: 1rem;
+        background: var(--eli-panel, #1A1E26) !important;
+        border: 1px solid var(--eli-border, #2A3040);
+        border-radius: 4px;
+        padding: 0.875rem 1rem !important;
+      }
+      .month-title {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--eli-white, #F2EDE8) !important;
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
+      }
+      .month-title:hover { color: var(--eli-accent, #E8680A) !important; }
+      .month-title .hint {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 8px;
+        color: var(--eli-muted, #8A909E);
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-left: 8px;
+      }
+      .post-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.75rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .post-item {
+        background: var(--eli-card, #1F2430) !important;
+        border: 1px solid var(--eli-border, #2A3040) !important;
+        border-left: 3px solid var(--eli-accent, #E8680A) !important;
+        border-radius: 3px;
+        padding: 0.65rem 1rem;
+        transition: transform 0.15s, border-color 0.15s;
+      }
+      .post-item:hover {
+        transform: translateX(4px);
+        border-color: var(--eli-accent, #E8680A) !important;
+      }
+      .post-link {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .post-date {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        color: var(--eli-accent, #E8680A) !important;
+        font-size: 9px;
+        letter-spacing: 0.1em;
+        background: rgba(232,104,10,0.12) !important;
+        border: 1px solid rgba(232,104,10,0.3);
+        padding: 2px 7px;
+        border-radius: 2px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .post-title {
+        margin: 0;
+        color: var(--eli-white, #F2EDE8) !important;
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        line-height: 1.3;
+      }
+      .post-item:hover .post-title { color: var(--eli-accent, #E8680A) !important; }
+      @media (max-width: 720px) {
+        .month-section { padding-left: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <span class="page-label">ELI Safety Blog</span>
+      <h1>Safety Topics Database</h1>
+      <p class="page-desc">An ordered history of all daily safety briefings and memos.</p>
+      {years.length === 0 ? (
+        <p style="text-align: center; color: var(--eli-muted);">No safety topics found.</p>
+      ) : (
+        years.map((year) => (
+          <section class="year-section">
+            <h2 class="year-title">{year}</h2>
+            {Object.keys(groupedPosts[year]).map((month, idx) => (
+              <details class="month-section" open={idx === 0}>
+                <summary class="month-title">{month} <span class="hint">· Click to expand</span></summary>
+                <ul class="post-list">
+                  {groupedPosts[year][month].map((post) => {
+                    const dateObj = new Date(post.data.pubDate);
+                    const dayStr = dateObj.getDate().toString().padStart(2, '0');
+                    return (
+                      <li class="post-item">
+                        <a href={`/safety-topics/${post.id}/`} class="post-link">
+                          <span class="post-date">Day {dayStr}</span>
+                          <h4 class="post-title">{post.data.title}</h4>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </details>
+            ))}
+          </section>
+        ))
+      )}
+    </main>
+    <Footer />
+  </body>
 </html>
