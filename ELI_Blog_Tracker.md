@@ -181,18 +181,21 @@ primaryKeyword: "..."
 
 | Content Type | Tool | Rule |
 |---|---|---|
-| Incident RCA | NotebookLM editorial | Fault sequence / cause-effect / bow-tie diagram |
-| Grounding / Bonding | EdrawMax | Bonding path diagram — Jason draws it |
-| Protection Systems | EdrawMax | CT wiring, relay connections — Jason draws it |
-| Controls / Instrumentation | EdrawMax | Loop diagram, PLC I/O — Jason draws it |
-| Arc Flash | Imagen 3 | Scorched hardware — isolated, no humans, no connections |
-| LOTO / Safe Work | NotebookLM editorial | Isolation point map — conceptual only |
-| PPE / Human in context | Real Photo | Field photo or licensed stock — never AI |
-| Safety News / Products | Imagen 3 | Product on dark surface — no hands, no displays |
-| Any circuit diagram | EdrawMax ONLY | No AI ever — hard rule, no exceptions |
-| Any human + tool | Real Photo ONLY | No AI ever — hands/meters always fail |
-| Any meter display | Never AI | AI meter readings are always wrong |
-| Any wiring schematic | Never AI | AI produces topologically incorrect results |
+| Incident RCA | NotebookLM editorial | Fault sequence / cause-effect diagram |
+| Grounding / Bonding | EdrawMax | Jason draws it — no AI |
+| Protection Systems | EdrawMax | Jason draws it — no AI |
+| Controls / Instrumentation | EdrawMax | Jason draws it — no AI |
+| Arc Flash | Imagen 3 | Hardware close-up — NO humans, NO connections |
+| LOTO / Safe Work | NotebookLM editorial | Conceptual diagram only |
+| PPE / Human in context | Real Photo | Licensed stock or field photo |
+| Safety News / Products | Imagen 3 | Product on dark surface — NO hands |
+| ANY circuit diagram | NEVER AI | EdrawMax only, always |
+| ANY human using a tool | NEVER AI | Real photo only, always |
+| ANY meter display | NEVER AI | AI meter readings are always wrong |
+| ANY wiring schematic | NEVER AI | AI produces incorrect topology |
+
+**Fallback Images:**
+- `src/assets/category-safety-news.jpg` — Use for safety news posts that lack a specific image.
 
 **Image naming convention:** `eli-[category]-[L0-3]-[slug].jpg`
 Example: `eli-grounding-L0-bonding-busbar.jpg`
@@ -408,7 +411,22 @@ Paste or upload this entire file at the start of any AI conversation about the E
 
 ---
 
-## 5. Topics log (previously covered)
+## 5. Topics Queue (Upcoming Posts)
+
+These six topics are planned but not yet drafted. Antigravity must use the pre-approved `criticality` and `conclusion_state` metrics below:
+
+| Topic | criticality | conclusion_state |
+|-------|-------------|-----------------|
+| Dual-Source Equipment hazards | L2 | hazard |
+| Multimeter Deadly Jack mistake | L2 | hazard |
+| Normalizing PPE deviations | L1 | hazard |
+| Tryout step in LOTO | L0 | safe |
+| BESS Thermal Runaway and Stranded Energy | L2 | hazard |
+| Solar Inverter Backfeed — Grid vs Array isolation | L2 | hazard |
+
+---
+
+## 6. Topics log (previously covered)
 
 *Do not propose these topics again for Daily Safety Topics or RCAs to prevent duplicates.*
 
