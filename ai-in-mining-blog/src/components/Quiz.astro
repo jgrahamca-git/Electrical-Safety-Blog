@@ -7,16 +7,18 @@ interface Props {
 }
 
 const { question, options, correctAnswerIndex, explanation } = Astro.props;
-// Generate a unique ID for this quiz instance in case there are multiple on a page
 const quizId = Math.random().toString(36).substring(7);
 ---
 
 <div class="quiz-container" id={`quiz-${quizId}`} data-correct={correctAnswerIndex}>
 	<div class="quiz-header">
-		<h3>🧩 Guess the Root Cause</h3>
+		<h3 class="quiz-title">
+			<span class="quiz-icon">?</span>
+			Guess the Root Cause
+		</h3>
 		<p class="question">{question}</p>
 	</div>
-	
+
 	<div class="quiz-options">
 		{options.map((option, index) => (
 			<button class="quiz-btn" data-index={index}>
@@ -33,131 +35,227 @@ const quizId = Math.random().toString(36).substring(7);
 </div>
 
 <style>
+	/* ── CONTAINER ── */
 	.quiz-container {
-		background: #f8fafc;
-		border: 1px solid #e2e8f0;
-		border-radius: 12px;
-		padding: 2rem;
+		background: var(--eli-panel, #1A1E26);
+		border: 1px solid var(--eli-border, #2A3040);
+		border-top: 2px solid var(--eli-accent, #E8680A);
+		border-radius: 6px;
+		padding: 1.75rem;
 		margin: 2.5rem 0;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+		position: relative;
+		overflow: hidden;
 	}
+
+	/* Circuit grid texture */
+	.quiz-container::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image:
+			repeating-linear-gradient(
+				90deg,
+				rgba(232,104,10,0.05) 0px,
+				rgba(232,104,10,0.05) 1px,
+				transparent 1px,
+				transparent 55px
+			);
+		pointer-events: none;
+	}
+
+	/* ── HEADER ── */
 	.quiz-header {
 		margin-bottom: 1.5rem;
+		position: relative;
 	}
-	.quiz-header h3 {
-		margin: 0 0 0.5rem 0;
-		color: var(--accent);
-		display: flex;
+
+	.quiz-title {
+		font-family: var(--font-sub, 'Rajdhani', sans-serif) !important;
+		font-size: 1rem !important;
+		font-weight: 700 !important;
+		letter-spacing: 0.12em !important;
+		text-transform: uppercase !important;
+		color: var(--eli-accent, #E8680A) !important;
+		margin: 0 0 0.75rem 0 !important;
+		display: flex !important;
+		align-items: center !important;
+		gap: 8px !important;
+		border-left: none !important;
+		padding-left: 0 !important;
+	}
+
+	.quiz-icon {
+		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
+		justify-content: center;
+		width: 22px;
+		height: 22px;
+		border-radius: 50%;
+		background: rgba(232,104,10,0.2);
+		border: 1px solid rgba(232,104,10,0.4);
+		color: var(--eli-accent, #E8680A);
+		font-family: var(--font-mono, 'Share Tech Mono', monospace);
+		font-size: 12px;
+		font-weight: 700;
+		flex-shrink: 0;
 	}
+
 	.question {
-		font-size: 1.1rem;
-		font-weight: 500;
-		color: #1e293b;
+		font-family: var(--font-body, 'DM Sans', sans-serif);
+		font-size: 1rem;
+		font-weight: 400;
+		color: var(--eli-white, #F2EDE8) !important;
 		margin: 0;
+		line-height: 1.6;
 	}
+
+	/* ── OPTIONS ── */
 	.quiz-options {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
-		margin-bottom: 1.5rem;
+		gap: 0.6rem;
+		margin-bottom: 1.25rem;
+		position: relative;
 	}
+
 	.quiz-btn {
 		display: flex;
 		align-items: center;
 		width: 100%;
 		text-align: left;
-		background: white;
-		border: 2px solid #e2e8f0;
-		border-radius: 8px;
-		padding: 1rem;
+		background: var(--eli-card, #1F2430);
+		border: 1px solid var(--eli-border, #2A3040);
+		border-radius: 4px;
+		padding: 0.875rem 1rem;
 		cursor: pointer;
-		transition: all 0.2s ease;
-		font-family: inherit;
-		font-size: 1rem;
-		color: #334155;
+		transition: border-color 0.2s, background 0.2s, transform 0.15s;
+		font-family: var(--font-body, 'DM Sans', sans-serif);
+		font-size: 0.925rem;
+		color: var(--eli-white, #F2EDE8);
 	}
+
 	.quiz-btn:hover:not(:disabled) {
-		border-color: #cbd5e1;
-		background: #f1f5f9;
+		border-color: var(--eli-accent, #E8680A);
+		background: rgba(232,104,10,0.08);
 		transform: translateX(4px);
 	}
+
 	.btn-letter {
-		background: #e2e8f0;
-		color: #475569;
-		width: 28px;
-		height: 28px;
+		background: rgba(232,104,10,0.15);
+		color: var(--eli-accent, #E8680A);
+		border: 1px solid rgba(232,104,10,0.35);
+		width: 26px;
+		height: 26px;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-weight: bold;
-		font-size: 0.9rem;
-		margin-right: 1rem;
+		font-family: var(--font-mono, 'Share Tech Mono', monospace);
+		font-weight: 700;
+		font-size: 11px;
+		margin-right: 0.875rem;
 		flex-shrink: 0;
 	}
+
+	.btn-text {
+		color: var(--eli-white, #F2EDE8);
+		line-height: 1.4;
+	}
+
+	/* ── CORRECT STATE ── */
 	.quiz-btn.correct {
-		background: #ecfdf5;
-		border-color: #10b981;
-		color: #065f46;
+		background: rgba(42,122,58,0.25) !important;
+		border-color: #5DD470 !important;
+		color: #5DD470 !important;
 	}
+
 	.quiz-btn.correct .btn-letter {
-		background: #10b981;
-		color: white;
+		background: #5DD470 !important;
+		border-color: #5DD470 !important;
+		color: #0D0F12 !important;
 	}
+
+	.quiz-btn.correct .btn-text {
+		color: #5DD470 !important;
+	}
+
+	/* ── INCORRECT STATE ── */
 	.quiz-btn.incorrect {
-		background: #fef2f2;
-		border-color: #ef4444;
-		color: #991b1b;
-		opacity: 0.7;
+		background: rgba(204,34,34,0.15) !important;
+		border-color: #FF5555 !important;
+		opacity: 0.85;
 	}
+
+	.quiz-btn.incorrect .btn-letter {
+		background: rgba(204,34,34,0.3) !important;
+		border-color: #FF5555 !important;
+		color: #FF5555 !important;
+	}
+
+	.quiz-btn.incorrect .btn-text {
+		color: #FF5555 !important;
+	}
+
 	.quiz-btn:disabled {
 		cursor: default;
 	}
+
+	/* ── FEEDBACK ── */
 	.quiz-feedback {
-		background: white;
-		border-radius: 8px;
-		padding: 1.5rem;
-		border-left: 4px solid #cbd5e1;
+		background: var(--eli-card, #1F2430);
+		border-radius: 4px;
+		padding: 1.25rem;
+		border-left: 3px solid var(--eli-border, #2A3040);
 		transition: all 0.3s ease;
+		position: relative;
 	}
+
 	.quiz-feedback.hidden {
 		display: none;
 	}
+
 	.quiz-feedback.success {
-		border-left-color: #10b981;
-		background: #ecfdf5;
+		border-left-color: #5DD470;
+		background: rgba(42,122,58,0.15);
 	}
+
 	.quiz-feedback.error {
-		border-left-color: #ef4444;
-		background: #fef2f2;
+		border-left-color: #FF5555;
+		background: rgba(204,34,34,0.12);
 	}
+
 	.feedback-badge {
-		font-weight: bold;
+		font-family: var(--font-sub, 'Rajdhani', sans-serif);
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 		margin-bottom: 0.5rem;
-		font-size: 1.1rem;
+		font-size: 1rem;
 	}
+
 	.quiz-feedback.success .feedback-badge {
-		color: #10b981;
+		color: #5DD470;
 	}
+
 	.quiz-feedback.error .feedback-badge {
-		color: #ef4444;
+		color: #FF5555;
 	}
+
 	.explanation {
 		margin: 0;
-		color: #334155;
-		line-height: 1.5;
+		font-family: var(--font-body, 'DM Sans', sans-serif);
+		font-size: 0.9rem;
+		font-weight: 300;
+		color: var(--eli-muted, #8A909E) !important;
+		line-height: 1.6;
 	}
 </style>
 
 <script>
-	// Run logic slightly after Astro swaps the page to re-bind events
 	document.addEventListener('astro:page-load', () => {
 		const quizContainers = document.querySelectorAll('.quiz-container');
 
 		quizContainers.forEach((container) => {
-			// Skip if we already bound events to this specific quiz
 			if (container.hasAttribute('data-initialized')) return;
 			container.setAttribute('data-initialized', 'true');
 
@@ -168,43 +266,37 @@ const quizId = Math.random().toString(36).substring(7);
 
 			buttons.forEach((btn) => {
 				btn.addEventListener('click', (e) => {
-					// Disable all buttons once an answer is chosen
 					buttons.forEach(b => {
 						b.disabled = true;
-						b.style.pointerEvents = 'none'; // prevent hover
+						b.style.pointerEvents = 'none';
 					});
 
 					const clickedBtn = e.currentTarget as HTMLButtonElement;
 					const selectedIndex = clickedBtn.getAttribute('data-index');
-					
-					// Highlight exactly what was chosen
 					const isCorrect = selectedIndex === correctIndex;
-					
+
 					if (isCorrect) {
 						clickedBtn.classList.add('correct');
 						feedback.classList.remove('hidden', 'error');
 						feedback.classList.add('success');
-						feedbackBadge.textContent = '✅ Correct!';
+						feedbackBadge.textContent = '✓ Correct!';
 					} else {
 						clickedBtn.classList.add('incorrect');
-						// Also highlight the actual correct one for them
 						buttons.forEach(b => {
 							if (b.getAttribute('data-index') === correctIndex) {
 								b.classList.add('correct');
 							}
 						});
-						
 						feedback.classList.remove('hidden', 'success');
 						feedback.classList.add('error');
-						feedbackBadge.textContent = '❌ Incorrect';
+						feedbackBadge.textContent = '✗ Incorrect';
 					}
-					
-					// Use GSAP to animate the feedback block in if available, otherwise just remove hidden class
+
 					if (window.gsap) {
 						feedback.style.display = 'block';
-						window.gsap.fromTo(feedback, 
-							{ opacity: 0, height: 0, paddingBottom: 0, paddingTop: 0 }, 
-							{ opacity: 1, height: 'auto', paddingBottom: '1.5rem', paddingTop: '1.5rem', duration: 0.4, ease: 'power2.out' }
+						window.gsap.fromTo(feedback,
+							{ opacity: 0, height: 0, paddingBottom: 0, paddingTop: 0 },
+							{ opacity: 1, height: 'auto', paddingBottom: '1.25rem', paddingTop: '1.25rem', duration: 0.4, ease: 'power2.out' }
 						);
 					}
 				});

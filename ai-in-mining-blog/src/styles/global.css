@@ -5,7 +5,8 @@
  */
 
 @import './eli-tokens.css';
-@import "tailwindcss";
+@import './global-dark-overrides.css';
+@import 'tailwindcss';
 
 
 :root {

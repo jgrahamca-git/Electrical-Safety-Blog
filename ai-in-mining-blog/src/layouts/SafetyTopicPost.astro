@@ -5,111 +5,367 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import CriticalityBadge from '../components/CriticalityBadge.astro';
+import CategoryBadge from '../components/CategoryBadge.astro';
+import ConclusionBadge from '../components/ConclusionBadge.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 type Props = CollectionEntry<'safety-topics'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  criticality,
+  conclusion_state,
+} = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} image={heroImage} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-				margin-bottom: 2rem;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-				width: 720px;
-				max-width: calc(100% - 2em);
-				height: auto;
-			}
-			.topic-image {
-				display: block;
-				margin: 3rem auto;
-				border-radius: 8px;
-				width: 100%;
-				max-width: 100%;
-				height: auto;
-			}
-			@media (max-width: 720px) {
-				.hero-image img {
-					max-width: 100%;
-				}
-				.topic-image {
-					max-width: 100%;
-				}
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-			.post-type {
-				color: rgb(var(--accent));
-				font-weight: bold;
-				text-transform: uppercase;
-				letter-spacing: 1px;
-				margin-bottom: 0.5em;
-			}
-		</style>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} image={heroImage} />
+    <style>
+      body {
+        background: var(--eli-black, #0D0F12);
+        color: var(--eli-white, #F2EDE8);
+      }
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					<img src="/hierarchy_of_controls.jpg" alt="Hierarchy of Controls" />
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<div class="post-type">Daily Safety Topic</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					{heroImage && <Image width={720} src={heroImage} alt={title} class="topic-image" />}
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+      main {
+        width: calc(100% - 2em);
+        max-width: 100%;
+        margin: 0;
+      }
+
+      /* ── HERO BANNER ── */
+      .hero-image {
+        width: 100%;
+        max-height: 320px;
+        overflow: hidden;
+        position: relative;
+        background: var(--eli-dark, #141720);
+        background-image:
+          repeating-linear-gradient(
+            90deg,
+            rgba(232,104,10,0.07) 0px,
+            rgba(232,104,10,0.07) 1px,
+            transparent 1px,
+            transparent 55px
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(232,104,10,0.07) 0px,
+            rgba(232,104,10,0.07) 1px,
+            transparent 1px,
+            transparent 55px
+          );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 120px;
+      }
+
+      .hero-image img {
+        display: block;
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        object-position: top;
+        filter: brightness(0.55) saturate(0.8);
+      }
+
+      .hero-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          repeating-linear-gradient(
+            90deg,
+            rgba(232,104,10,0.06) 0px,
+            rgba(232,104,10,0.06) 1px,
+            transparent 1px,
+            transparent 55px
+          );
+        pointer-events: none;
+      }
+
+      /* ── ARTICLE HEADER ── */
+      .article-header {
+        background: var(--eli-dark, #141720);
+        border-bottom: 1px solid var(--eli-border, #2A3040);
+        padding: 2rem 1em 1.75rem;
+      }
+
+      .article-header-inner {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+      }
+
+      .article-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+
+      .article-date {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 10px;
+        color: var(--eli-muted, #8A909E);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .article-post-type {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-l0-text, #5DD470);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        border: 1px solid rgba(61,170,80,0.38);
+        padding: 2px 8px;
+        border-radius: 2px;
+      }
+
+      .article-title {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.2;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .article-description {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .last-updated {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-muted, #8A909E);
+        font-style: italic;
+      }
+
+      /* ── INLINE HERO IMAGE ── */
+      .topic-image {
+        display: block;
+        margin: 2rem auto;
+        border-radius: 6px;
+        width: 100%;
+        max-width: 720px;
+        height: auto;
+        filter: brightness(0.9);
+      }
+
+      /* ── PROSE ── */
+      .prose {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+        padding: 2em 1em;
+        color: var(--eli-white, #F2EDE8);
+      }
+
+      .prose h1, .prose h2, .prose h3, .prose h4 { color: var(--eli-white, #F2EDE8) !important; }
+
+      .prose h2 {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--eli-white, #F2EDE8);
+        border-left: 3px solid var(--eli-l0-text, #5DD470);
+        padding-left: 12px;
+        margin: 2rem 0 1rem 0;
+      }
+
+      .prose h3 {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--eli-white, #F2EDE8);
+        margin: 1.5rem 0 0.75rem 0;
+      }
+
+      .prose p {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.975rem;
+        font-weight: 300;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.8;
+        margin: 0 0 1.25rem 0;
+      }
+
+      .prose strong {
+        color: var(--eli-white, #F2EDE8);
+        font-weight: 500;
+      }
+
+      .prose em {
+        color: var(--eli-amber, #F0A030);
+        font-style: italic;
+      }
+
+      .prose a {
+        color: var(--eli-l0-text, #5DD470);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .prose a:hover {
+        color: var(--eli-white, #F2EDE8);
+      }
+
+      .prose ul, .prose ol {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.975rem;
+        font-weight: 300;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.8;
+        padding-left: 1.5em;
+        margin: 0 0 1.25rem 0;
+      }
+
+      .prose li { margin-bottom: 0.4rem; }
+
+      .prose blockquote {
+        border-left: 3px solid var(--eli-l0-text, #5DD470);
+        background: var(--eli-panel, #1A1E26);
+        padding: 1rem 1.25rem;
+        margin: 1.5rem 0;
+        border-radius: 0 4px 4px 0;
+        font-style: italic;
+        color: var(--eli-muted, #8A909E);
+      }
+
+      .prose code {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 0.875rem;
+        color: var(--eli-l0-text, #5DD470);
+        background: var(--eli-panel, #1A1E26);
+        padding: 2px 6px;
+        border-radius: 2px;
+        border: 1px solid var(--eli-border, #2A3040);
+      }
+
+      .prose hr {
+        border: none;
+        border-top: 1px solid var(--eli-border, #2A3040);
+        margin: 2rem 0;
+      }
+
+      /* ── CONCLUSION BLOCK ── */
+      .conclusion-section {
+        margin: 2.5rem 0 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--eli-border, #2A3040);
+      }
+
+      .conclusion-label {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-accent, #E8680A);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      /* ── FORCE DARK THEME ON ALL PROSE ELEMENTS ── */
+      .prose * { color: inherit; }
+      .prose h1 {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: clamp(1.4rem, 3.5vw, 2rem);
+        font-weight: 700;
+        color: var(--eli-white, #F2EDE8) !important;
+        letter-spacing: 0.03em;
+        margin: 1.5rem 0 0.75rem 0;
+        line-height: 1.2;
+      }
+      .prose h2 { color: var(--eli-white, #F2EDE8) !important; }
+      .prose h3 { color: var(--eli-white, #F2EDE8) !important; }
+      .prose h4 {
+        color: var(--eli-l0-text, #5DD470) !important;
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 1.25rem 0 0.5rem 0;
+      }
+      article { background: var(--eli-black, #0D0F12); }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+
+        <!-- HERO BANNER -->
+        <div class="hero-image">
+          {heroImage
+            ? <Image width={1400} src={heroImage} alt={title} style="width:100%;height:320px;object-fit:cover;object-position:top;filter:brightness(0.55) saturate(0.8);" />
+            : <img src="/hierarchy_of_controls.jpg" alt="Safety Topic" style="width:100%;height:320px;object-fit:cover;object-position:top;filter:brightness(0.45) saturate(0.7);" />
+          }
+        </div>
+
+        <!-- ARTICLE HEADER -->
+        <div class="article-header">
+          <div class="article-header-inner">
+            <div class="article-meta-row">
+              <span class="article-date">
+                <FormattedDate date={pubDate} />
+              </span>
+              {updatedDate && (
+                <span class="last-updated">
+                  Updated: <FormattedDate date={updatedDate} />
+                </span>
+              )}
+              <span class="article-post-type">Daily Safety Topic</span>
+              {criticality && <CriticalityBadge level={criticality} />}
+              <CategoryBadge tag="safety-topic" />
+            </div>
+            <h1 class="article-title">{title}</h1>
+            {description && (
+              <p class="article-description">{description}</p>
+            )}
+          </div>
+        </div>
+
+        <!-- PROSE CONTENT -->
+        <div class="prose">
+          <slot />
+
+          <!-- CONCLUSION BADGE -->
+          {conclusion_state && (
+            <div class="conclusion-section">
+              <span class="conclusion-label">Post Conclusion</span>
+              <ConclusionBadge state={conclusion_state}>
+                {conclusion_state === 'safe' && 'This post describes a confirmed correct and protected practice.'}
+                {conclusion_state === 'hazard' && 'This post describes a failure mode or active hazard. Do not ignore the warning signs described.'}
+                {conclusion_state === 'neutral' && 'This post is informational. Refer to your local AHJ and applicable standards for compliance requirements.'}
+              </ConclusionBadge>
+            </div>
+          )}
+
+          <NewsletterSignup />
+        </div>
+
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>

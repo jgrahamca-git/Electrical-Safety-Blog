@@ -7,116 +7,389 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import Comments from '../components/Comments.astro';
+import CriticalityBadge from '../components/CriticalityBadge.astro';
+import CategoryBadge from '../components/CategoryBadge.astro';
+import ConclusionBadge from '../components/ConclusionBadge.astro';
 import DefaultHeroImage from '../assets/Incident.jpg';
 
-type Props = CollectionEntry<'incidents'>['data'] & { hideMeta?: boolean, hideNewsletter?: boolean };
+type Props = CollectionEntry<'incidents'>['data'] & {
+  hideMeta?: boolean;
+  hideNewsletter?: boolean;
+};
 
-const { title, description, pubDate, updatedDate, heroImage, hideMeta = false, hideNewsletter = false } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  criticality,
+  conclusion_state,
+  hideMeta = false,
+  hideNewsletter = false,
+} = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} image={heroImage} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-				margin-bottom: 2rem;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-				width: 720px;
-				max-width: calc(100% - 2em);
-				height: auto;
-			}
-			.topic-image {
-				display: block;
-				margin: 2rem auto 3rem auto;
-				border-radius: 8px;
-				width: 100%;
-				max-width: 720px;
-				height: auto;
-				box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-			}
-			@media (max-width: 720px) {
-				.hero-image img {
-					max-width: 100%;
-				}
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-			.post-type {
-				color: rgb(var(--accent));
-				font-weight: bold;
-				text-transform: uppercase;
-				letter-spacing: 1px;
-				margin-bottom: 0.5em;
-			}
-		</style>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} image={heroImage} />
+    <style>
+      body {
+        background: var(--eli-black, #0D0F12);
+        color: var(--eli-white, #F2EDE8);
+      }
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				{!hideMeta && (
-					<div class="hero-image">
-						<Image src={DefaultHeroImage} alt="Incident Occurrence" />
-					</div>
-				)}
-				<div class="prose">
-					<div class="title">
-						{!hideMeta && (
-							<div class="date">
-								<FormattedDate date={pubDate} />
-								{
-									updatedDate && (
-										<div class="last-updated-on">
-											Last updated on <FormattedDate date={updatedDate} />
-										</div>
-									)
-								}
-							</div>
-						)}
-						{!hideMeta && <div class="post-type">Incident Report</div>}
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					{heroImage && <img src={typeof heroImage === 'object' ? heroImage.src : heroImage} alt={title} class="topic-image" />}
-					<slot />
-					{!hideNewsletter && <NewsletterSignup />}
-					<Comments />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+      main {
+        width: calc(100% - 2em);
+        max-width: 100%;
+        margin: 0;
+      }
+
+      /* ── HERO BANNER ── */
+      .hero-image {
+        width: 100%;
+        max-height: 420px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 0;
+        background: var(--eli-dark, #141720);
+      }
+
+      .hero-image img {
+        display: block;
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        object-position: top;
+        filter: brightness(0.55) saturate(0.8);
+      }
+
+      /* Circuit grid overlay on hero */
+      .hero-image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          repeating-linear-gradient(
+            90deg,
+            rgba(232,104,10,0.06) 0px,
+            rgba(232,104,10,0.06) 1px,
+            transparent 1px,
+            transparent 55px
+          );
+        pointer-events: none;
+      }
+
+      /* ── ARTICLE HEADER ── */
+      .article-header {
+        background: var(--eli-dark, #141720);
+        border-bottom: 1px solid var(--eli-border, #2A3040);
+        padding: 2rem 1em 1.75rem;
+      }
+
+      .article-header-inner {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+      }
+
+      .article-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+
+      .article-date {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 10px;
+        color: var(--eli-muted, #8A909E);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .article-post-type {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-accent, #E8680A);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        border: 1px solid rgba(232,104,10,0.4);
+        padding: 2px 8px;
+        border-radius: 2px;
+      }
+
+      .article-title {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.2;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .article-description {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 1rem;
+        font-weight: 300;
+        color: var(--eli-muted, #8A909E);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .last-updated {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-muted, #8A909E);
+        font-style: italic;
+        margin-top: 4px;
+      }
+
+      /* ── ARTICLE IMAGE (inline heroImage) ── */
+      .topic-image {
+        display: block;
+        margin: 2rem auto;
+        border-radius: 6px;
+        width: 100%;
+        max-width: 720px;
+        height: auto;
+        filter: brightness(0.85);
+      }
+
+      /* ── PROSE CONTENT ── */
+      .prose {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
+        padding: 2em 1em;
+        color: var(--eli-white, #F2EDE8);
+      }
+
+      /* ── PROSE TYPOGRAPHY ── */
+      .prose h1, .prose h2, .prose h3, .prose h4 { color: var(--eli-white, #F2EDE8) !important; }
+
+      .prose h2 {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--eli-white, #F2EDE8);
+        border-left: 3px solid var(--eli-accent, #E8680A);
+        padding-left: 12px;
+        margin: 2rem 0 1rem 0;
+      }
+
+      .prose h3 {
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--eli-white, #F2EDE8);
+        margin: 1.5rem 0 0.75rem 0;
+      }
+
+      .prose p {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.975rem;
+        font-weight: 300;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.8;
+        margin: 0 0 1.25rem 0;
+      }
+
+      .prose strong {
+        color: var(--eli-white, #F2EDE8);
+        font-weight: 500;
+      }
+
+      .prose em {
+        color: var(--eli-amber, #F0A030);
+        font-style: italic;
+      }
+
+      .prose a {
+        color: var(--eli-accent, #E8680A);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .prose a:hover {
+        color: var(--eli-amber, #F0A030);
+      }
+
+      .prose ul, .prose ol {
+        font-family: var(--font-body, 'DM Sans', sans-serif);
+        font-size: 0.975rem;
+        font-weight: 300;
+        color: var(--eli-white, #F2EDE8);
+        line-height: 1.8;
+        padding-left: 1.5em;
+        margin: 0 0 1.25rem 0;
+      }
+
+      .prose li { margin-bottom: 0.4rem; }
+
+      .prose blockquote {
+        border-left: 3px solid var(--eli-accent, #E8680A);
+        background: var(--eli-panel, #1A1E26);
+        padding: 1rem 1.25rem;
+        margin: 1.5rem 0;
+        border-radius: 0 4px 4px 0;
+        font-style: italic;
+        color: var(--eli-muted, #8A909E);
+      }
+
+      .prose code {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 0.875rem;
+        color: var(--eli-accent, #E8680A);
+        background: var(--eli-panel, #1A1E26);
+        padding: 2px 6px;
+        border-radius: 2px;
+        border: 1px solid var(--eli-border, #2A3040);
+      }
+
+      .prose pre {
+        background: var(--eli-panel, #1A1E26);
+        border: 1px solid var(--eli-border, #2A3040);
+        border-radius: 4px;
+        padding: 1.25rem;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+      }
+
+      .prose pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        color: var(--eli-white, #F2EDE8);
+      }
+
+      .prose hr {
+        border: none;
+        border-top: 1px solid var(--eli-border, #2A3040);
+        margin: 2rem 0;
+      }
+
+      /* ── CONCLUSION BLOCK ── */
+      .conclusion-section {
+        margin: 2.5rem 0 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--eli-border, #2A3040);
+      }
+
+      .conclusion-label {
+        font-family: var(--font-mono, 'Share Tech Mono', monospace);
+        font-size: 9px;
+        color: var(--eli-accent, #E8680A);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      /* ── FORCE DARK THEME ON ALL PROSE ELEMENTS ── */
+      /* Overrides any global CSS or Bear Blog styles bleeding in */
+      .prose * { color: inherit; }
+      .prose h1 { 
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: clamp(1.4rem, 3.5vw, 2rem);
+        font-weight: 700;
+        color: var(--eli-white, #F2EDE8) !important;
+        letter-spacing: 0.03em;
+        margin: 1.5rem 0 0.75rem 0;
+        line-height: 1.2;
+      }
+      .prose h2 { color: var(--eli-white, #F2EDE8) !important; }
+      .prose h3 { color: var(--eli-white, #F2EDE8) !important; }
+      .prose h4 { 
+        color: var(--eli-amber, #F0A030) !important;
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 1.25rem 0 0.5rem 0;
+      }
+      article { background: var(--eli-black, #0D0F12); }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+
+        <!-- HERO BANNER IMAGE -->
+        {!hideMeta && (
+          <div class="hero-image">
+            <Image src={DefaultHeroImage} alt="Incident Report" />
+          </div>
+        )}
+
+        <!-- ARTICLE HEADER -->
+        {!hideMeta && (
+          <div class="article-header">
+            <div class="article-header-inner">
+              <div class="article-meta-row">
+                <span class="article-date">
+                  <FormattedDate date={pubDate} />
+                </span>
+                {updatedDate && (
+                  <span class="last-updated">
+                    Updated: <FormattedDate date={updatedDate} />
+                  </span>
+                )}
+                <span class="article-post-type">Incident Report</span>
+                {criticality && <CriticalityBadge level={criticality} />}
+                <CategoryBadge tag="incident" />
+                <CategoryBadge tag="rca" />
+              </div>
+              <h1 class="article-title">{title}</h1>
+              {description && (
+                <p class="article-description">{description}</p>
+              )}
+            </div>
+          </div>
+        )}
+
+        <!-- PROSE CONTENT -->
+        <div class="prose">
+          {hideMeta && <h1 class="article-title">{title}</h1>}
+
+          <!-- Inline hero image if provided -->
+          {heroImage && (
+            <img
+              src={typeof heroImage === 'object' ? heroImage.src : heroImage}
+              alt={title}
+              class="topic-image"
+            />
+          )}
+
+          <slot />
+
+          <!-- CONCLUSION BADGE -->
+          {conclusion_state && (
+            <div class="conclusion-section">
+              <span class="conclusion-label">Post Conclusion</span>
+              <ConclusionBadge state={conclusion_state}>
+                {conclusion_state === 'safe' && 'This post describes a confirmed correct and protected practice.'}
+                {conclusion_state === 'hazard' && 'This post describes a failure mode or active hazard. Do not ignore the warning signs described.'}
+                {conclusion_state === 'neutral' && 'This post is informational. Refer to your local AHJ and applicable standards for compliance requirements.'}
+              </ConclusionBadge>
+            </div>
+          )}
+
+          {!hideNewsletter && <NewsletterSignup />}
+          <Comments />
+        </div>
+
+      </article>
+    </main>
+    <Footer />
+  </body>
 </html>
+<!-- This file was already created - need to update prose styles -->

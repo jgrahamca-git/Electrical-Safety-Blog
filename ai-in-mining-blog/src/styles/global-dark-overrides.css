@@ -1,0 +1,90 @@
+/* ── ELI DARK THEME — ARTICLE CONTENT OVERRIDES ──
+   Global rules to override Bear Blog / Tailwind base styles.
+   Scoped Astro styles cannot reach MDX slot content — global rules do.
+*/
+
+article {
+  background: #0D0F12 !important;
+}
+
+/* ── HEADINGS — Arc Orange for h1/h2, warm white for h3/h4 ── */
+article .prose h1 {
+  color: #E8680A !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+article .prose h2 {
+  color: #E8680A !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+article .prose h3 {
+  color: #F2EDE8 !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+article .prose h4,
+article .prose h5,
+article .prose h6 {
+  color: #F0A030 !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+}
+
+/* ── BODY TEXT ── */
+article .prose p,
+article .prose li,
+article .prose td,
+article .prose th {
+  color: #F2EDE8 !important;
+}
+
+article .prose strong {
+  color: #F2EDE8 !important;
+  font-weight: 500;
+}
+
+/* ── ITALIC — subtle, not copper ── */
+article .prose em {
+  color: #C8B89A !important;
+  font-style: italic;
+}
+
+article .prose a {
+  color: #E8680A !important;
+}
+
+article .prose a:hover {
+  color: #F0A030 !important;
+}
+
+article .prose blockquote {
+  color: #8A909E !important;
+}
+
+article .prose code {
+  color: #E8680A !important;
+}
+
+/* ── SAFETY TOPIC PAGES — green h2 accent ── */
+.safety-topic-page article .prose h2 {
+  color: #5DD470 !important;
+}
+
+/* ── HIDE DUPLICATE TITLE IN MDX CONTENT ──
+   BlogPost.astro and SafetyTopicPost.astro render the title
+   in the dark header panel from frontmatter. The MDX content
+   also contains an H1 title written by Antigravity.
+   Hide the first H1 in prose to prevent duplication.
+*/
+article .prose h1:first-of-type {
+  display: none !important;
+}
