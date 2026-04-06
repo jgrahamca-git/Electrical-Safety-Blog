@@ -2,7 +2,7 @@
 title: "Monday: \"Test Before Touch\": The Ultimate Lifesaver"
 description: "Assuming a circuit is dead because a breaker was flipped is a leading cause of electrical fatalities."
 pubDate: "2026-04-06T08:00:00.000Z"
-heroImage: "../../assets/category-maintenance.jpg"
+heroImage: "../../assets/prove-test-prove-voltage-absence-verification.jpg"
 criticality: "L1"
 conclusion_state: "safe"
 agent_suggested: true

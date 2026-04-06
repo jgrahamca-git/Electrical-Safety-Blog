@@ -2,7 +2,7 @@
 title: "Saturday: Utility-Scale Solar: DC Arc Faults Don't Stop"
 description: "A continuous plasma arc is just one mistaken MC4 pull away in utility solar."
 pubDate: "2026-04-11T08:00:00.000Z"
-heroImage: "../../assets/category-maintenance.jpg"
+heroImage: "../../assets/utility-scale-solar-dc-arc-faults.jpg"
 criticality: "L2"
 conclusion_state: "hazard"
 agent_suggested: true

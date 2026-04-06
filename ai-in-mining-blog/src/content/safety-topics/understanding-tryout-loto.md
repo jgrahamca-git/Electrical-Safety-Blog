@@ -2,7 +2,7 @@
 title: "Friday: Understanding the \"Tryout\" in LOTO"
 description: "Lockout/Tagout is incomplete without physically attempting to tryout the equipment."
 pubDate: "2026-04-10T08:00:00.000Z"
-heroImage: "../../assets/category-maintenance.jpg"
+heroImage: "../../assets/tryout-verification-loto-industrial-equipment.jpg"
 criticality: "L0"
 conclusion_state: "safe"
 agent_suggested: true

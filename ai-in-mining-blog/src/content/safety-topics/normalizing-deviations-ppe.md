@@ -2,7 +2,7 @@
 title: "Thursday: Normalizing Deviations with PPE"
 description: "Why bypassing PPE for 'just a quick look' is a recipe for disaster."
 pubDate: "2026-04-09T08:00:00.000Z"
-heroImage: "../../assets/category-maintenance.jpg"
+heroImage: "../../assets/arc-flash-ppe-normalization-deviations.jpg"
 criticality: "L1"
 conclusion_state: "hazard"
 agent_suggested: true
