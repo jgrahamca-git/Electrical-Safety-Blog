@@ -2,7 +2,7 @@
 title: "Quenching the Flash: How Active Arc Detection is Revolutionizing Switchgear"
 description: "Traditional breakers rely on overcurrent curves to trip, taking cycles to clear a fault. New active arc quenching systems drop incident energy in milliseconds, saving lives and equipment."
 pubDate: "2026-04-06T09:00:00.000Z"
-heroImage: "../../assets/switchgear-optical-arc-flash-sensor.jpg"
+heroImage: "../../assets/switchgear-optical-arc-flash-sensor.png"
 criticality: "L1"
 conclusion_state: "neutral"
 agent_suggested: true
