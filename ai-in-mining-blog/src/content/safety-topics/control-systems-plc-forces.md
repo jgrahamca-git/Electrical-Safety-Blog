@@ -2,7 +2,7 @@
 title: "Sunday: Control Systems: The Danger of \"Forces\" in PLC Logic"
 description: "Treat software forces like physical safety bypasses. They can be just as deadly."
 pubDate: "2026-04-12T08:00:00.000Z"
-heroImage: "../../assets/plc-forced-io-unexpected-startup-hazard.jpg"
+heroImage: "../../assets/plc-force-function-safety-interlock-bypass.jpg"
 criticality: "L2"
 conclusion_state: "hazard"
 agent_suggested: true

@@ -2,7 +2,7 @@
 title: "Wednesday: Multimeter Discipline: The \"Deadly Jack\" Mistake"
 description: "A common and dangerous multimeter error is leaving the red test lead in the current jack."
 pubDate: "2026-04-08T08:00:00.000Z"
-heroImage: "../../assets/multimeter-current-jack-explosion-hazard.jpg"
+heroImage: "../../assets/multimeter-current-jack-voltage-arc-flash.jpg"
 criticality: "L2"
 conclusion_state: "hazard"
 agent_suggested: true

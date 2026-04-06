@@ -2,7 +2,7 @@
 title: "Tuesday: The Hidden Danger of Dual-Source Equipment"
 description: "Locking out the AC side does not de-energize the DC side. Here's why."
 pubDate: "2026-04-07T08:00:00.000Z"
-heroImage: "../../assets/dual-source-energy-switchgear-hazard.jpg"
+heroImage: "../../assets/dual-source-equipment-dc-backfeed-hazard.jpg"
 criticality: "L1"
 conclusion_state: "hazard"
 agent_suggested: true
