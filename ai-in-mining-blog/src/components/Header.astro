@@ -3,13 +3,19 @@ import { getCollection } from 'astro:content';
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 
+const now = new Date();
+
 const incidents = await getCollection('incidents', ({ data }) => {
   return data.draft !== true;
 });
-const latestIncident = incidents.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+const latestIncident = incidents
+  .filter((post) => post.data.pubDate <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 
 const topics = await getCollection('safety-topics');
-const latestTopic = topics.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
+const latestTopic = topics
+  .filter((post) => post.data.pubDate <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 ---
 
 <header>
