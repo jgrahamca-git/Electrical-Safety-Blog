@@ -21,6 +21,7 @@ export async function GET(context) {
 		title: "ELI Safety Blog - Daily Topics",
 		description: "Daily electrical safety topics and toolbox talks.",
 		site: context.site,
+		xmlns: { media: 'http://search.yahoo.com/mrss/' },
 		items: allPosts.map((post) => {
 			const imgSrc = typeof post.data.heroImage === 'object' ? post.data.heroImage.src : post.data.heroImage;
 			const fullImgUrl = imgSrc ? `https://safetyblog.eli-intelligence.com${imgSrc.startsWith('/') ? '' : '/'}${imgSrc}` : null;

@@ -22,6 +22,7 @@ export async function GET(context) {
 		title: `${SITE_TITLE} - Weekly Incident & RCA`,
 		description: 'Latest Incident RCAs and Reports',
 		site: context.site,
+		xmlns: { media: 'http://search.yahoo.com/mrss/' },
 		items: allPosts.map((post) => {
 			const imgSrc = typeof post.data.heroImage === 'object' ? post.data.heroImage.src : post.data.heroImage;
 			const fullImgUrl = imgSrc ? `https://safetyblog.eli-intelligence.com${imgSrc.startsWith('/') ? '' : '/'}${imgSrc}` : null;
