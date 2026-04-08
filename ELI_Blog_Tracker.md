@@ -333,6 +333,12 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
+### 2026-04-08 [Updated: 09:55 AM EDT] — RSS & Email Delivery Stabilization
+
+- progress  | Fixed Netlify 1 AM build bug: Astro RSS filtering used strict \`Date.now()\`, causing it to miss posts scheduled for 8 AM UTC (4 AM EDT) on the same day. Swapped to \`endOfToday\` (23:59:59 UTC) logic across \`rss.xml.js\`, \`rss-topics.xml.js\`, \`incidents.xml.js\`, and \`index.astro\`.
+- progress  | Fixed MailerLite RSS XML validation error by adding \`xmlns: { media: 'http://search.yahoo.com/mrss/' }\` to Astro RSS config. Added \`<media:content>\` enclosures to feeds.
+- progress  | Added hard \`width="600"\` attribute to inline email images to bypass aggressive Outlook resizing/dropping.
+
 ### 2026-04-05 — Phase 01 & 02 completion
 
 - milestone | Brand Build Phase 01 & 02 Complete — Transformed site to dark industrial theme (eli-brand-redesign branch). Implemented CSS tokens, Astro Badges (Criticality, Conclusion, Category), rebuilt homepage, updated Zod schema, and backfilled all existing published posts with new frontmatter fields.
