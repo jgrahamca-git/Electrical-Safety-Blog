@@ -188,7 +188,7 @@ primaryKeyword: "..."
 | Arc Flash | Imagen 3 | Hardware close-up — NO humans, NO connections |
 | LOTO / Safe Work | NotebookLM editorial | Conceptual diagram only |
 | PPE / Human in context | Real Photo | Licensed stock or field photo |
-| Safety News / Products | Imagen 3 | Product on dark surface — NO hands |
+| Safety News, Products & Discussions | Imagen 3 | Product on dark surface — NO hands |
 | ANY circuit diagram | NEVER AI | EdrawMax only, always |
 | ANY human using a tool | NEVER AI | Real photo only, always |
 | ANY meter display | NEVER AI | AI meter readings are always wrong |
@@ -197,8 +197,8 @@ primaryKeyword: "..."
 **Fallback Images:**
 - `src/assets/category-safety-news.jpg` — Use for safety news posts that lack a specific image.
 
-**Image naming convention:** `eli-[category]-[L0-3]-[slug].jpg`
-Example: `eli-grounding-L0-bonding-busbar.jpg`
+**Image naming convention [REVISED 2026-04-10]:** `[primary-keyword-phrase]-[secondary-context].jpg`
+Example: `hmi-alarm-flood-scada-systems.jpg` or `system-bonding-jumper-isolation-transformer.jpg`
 
 **Imagen 3 prompt rule:** Physical descriptors only — "close-up of a copper bonding busbar, surface oxidation, single warm sidelight from left, dark background." Never topology, never connections, never people.
 
@@ -333,6 +333,20 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
+### 2026-04-10 — Weekly Batch Drafted (April 13th Week)
+
+- progress  | Drafted all 7 Daily Safety Topics for next week (Alarm Floods, VFD Shaft Voltages, Overfilled Trays, Gas Monitor Bump Tests, System Bonding Jumpers, Phase Rotation Meters, Open Panel Covers). Posts include SEO configuration and LinkedIn distribution drafts.
+
+### 2026-04-10 — Future Topics & Categories Update
+
+- progress  | Saved 10 brainstormed topics into a new file `ELI_Future_Topics.md`.
+- change    | Updated the "Safety News & Products" blog category across the Astro frontend and the Tracker to "Safety News, Products & Discussions" to accommodate high-level conceptual pieces.
+
+### 2026-04-10 — Foundation Food Group Liquid Nitrogen Incident RCA
+
+- progress  | Drafted and finalized the FFG Liquid Nitrogen release RCA built directly from CSB reporting.
+- progress  | Generated a custom FMEA table screenshot and a specialized 2D editorial/scientific vector illustration for the blog post header.
+
 ### 2026-04-08 [Updated: 09:55 AM EDT] — RSS & Email Delivery Stabilization
 
 - progress  | Fixed Netlify 1 AM build bug: Astro RSS filtering used strict \`Date.now()\`, causing it to miss posts scheduled for 8 AM UTC (4 AM EDT) on the same day. Swapped to \`endOfToday\` (23:59:59 UTC) logic across \`rss.xml.js\`, \`rss-topics.xml.js\`, \`incidents.xml.js\`, and \`index.astro\`.
@@ -419,16 +433,17 @@ Paste or upload this entire file at the start of any AI conversation about the E
 
 ## 5. Topics Queue (Upcoming Posts)
 
-These six topics are planned but not yet drafted. Antigravity must use the pre-approved `criticality` and `conclusion_state` metrics below:
+These seven topics are drafted for the coming week and awaiting final editorial sign-off and publishing (April 13th to 19th):
 
 | Topic | criticality | conclusion_state |
 |-------|-------------|-----------------|
-| Dual-Source Equipment hazards | L2 | hazard |
-| Multimeter Deadly Jack mistake | L2 | hazard |
-| Normalizing PPE deviations | L1 | hazard |
-| Tryout step in LOTO | L0 | safe |
-| BESS Thermal Runaway and Stranded Energy | L2 | hazard |
-| Solar Inverter Backfeed — Grid vs Array isolation | L2 | hazard |
+| Alarm Floods and HMI Blindness | L3 | hazard |
+| VFD Induced Shaft Voltages | L2 | hazard |
+| De-rating Ampacity in Overfilled Cable Trays | L2 | hazard |
+| Bump Testing vs Calibration for Gas Monitors | L1 | hazard |
+| System Bonding Jumpers in Isolation Transformers | L0 | safe |
+| Motor Phase Rotation Verification Hazards | L2 | hazard |
+| Leaving Breaker Panel Covers Off Overnight | L2 | hazard |
 
 ---
 
@@ -469,3 +484,4 @@ These six topics are planned but not yet drafted. Antigravity must use the pre-a
 - Solar Inverter Backfeed: Isolating the Grid vs The Array (`solar-inverter-backfeed.md`)
 - Backfed Generator Shock (`backfed-generator-shock.mdx`)
 - Induced Voltage Incident (`induced-voltage.mdx`)
+- Foundation Food Group Liquid Nitrogen Incident (`foundation-food-group-liquid-nitrogen.mdx`)

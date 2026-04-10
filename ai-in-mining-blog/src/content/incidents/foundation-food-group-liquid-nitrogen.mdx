@@ -1,0 +1,120 @@
+---
+title: "The Bubbler Tube That Killed Six People — How a Single Point of Failure Defeated Both the Control System and the Safety Interlock"
+description: "When a level control loop and a high-level safety interlock both depend on the same physical sensor, you have one protection layer, not two. A bent bubbler tube led to a 90-minute liquid nitrogen release and six fatalities."
+pubDate: "2026-04-13T05:00:00.000Z"
+draft: false
+heroImage: "../../assets/ffg-liquid-nitrogen-release-immersion-freezer-rca.jpg"
+keywords: "functional safety, process safety, CSB report, liquid nitrogen, instrumented protective systems, single point of failure, ANSI/ISA-84.00.01, IEC 61511, cryogenic hazards, PHA failure, safety interlock, control loop"
+criticality: "L3"
+conclusion_state: "hazard"
+agent_suggested: false
+editor_confirmed: true
+seoTitle: "Foundation Food Group Liquid Nitrogen Release CSB RCA"
+metaDescription: "Learn how a single point of failure in an immersion freezer caused a massive liquid nitrogen release. An analysis of the Foundation Food Group incident."
+primaryKeyword: "liquid nitrogen release RCA"
+---
+import Quiz from '../../components/Quiz.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+
+# The Bubbler Tube That Killed Six People — How a Single Point of Failure Defeated Both the Control System and the Safety Interlock
+
+### 1. The Flashpoint
+
+On Thursday, January 28, 2021, two maintenance workers were troubleshooting a liquid nitrogen immersion freezer at the Foundation Food Group (FFG) Plant 4 facility in Gainesville, Georgia. During the maintenance, a critical component called a bubbler tube was bent out of position.
+
+What followed was a silent, catastrophic overflow. Between approximately 8:45 and 10:15 a.m., an estimated 6,300 gallons (~42,400 pounds) of liquid nitrogen discharged uncontrollably, filling the partially enclosed lower-level freezer room with an invisible, oxygen-deficient atmosphere. The release continued for 90 minutes before a maintenance manager manually closed the bulk storage tank valves outside the building.
+
+Six workers died of asphyxiation: the two maintenance workers troubleshooting the freezer, and four FFG employees — including supervisors and the Plant 4 Superintendent — who entered the area attempting rescue. Three additional FFG employees and one responding firefighter were seriously injured (*CSB Investigation Report No. 2021-03-I-GA, December 2023*).
+
+### 2. The Architecture That Failed
+
+This incident is a textbook example of a fundamental rule in functional safety: when a basic process control system (BPCS) — the PLCs and HMI that run normal day-to-day operations — and a safety instrumented system (SIS) — a dedicated, separate safety layer designed to take a hazardous process to a safe state — share a sensor, you do not have redundancy. You have a single point of failure.
+
+The Messer-designed immersion-spiral freezer used a **bubbler tube** to measure the liquid nitrogen level. A bubbler tube infers liquid level by sending a constant flow of vapor through a submerged vertical tube and measuring the differential pressure.
+
+The fundamental architectural flaw was that the control system used this single bubbler tube as the sole input for **two parallel functions**:
+
+- **Function 1: Level control loop** — modulated the liquid nitrogen inlet control valve to maintain the setpoint.
+- **Function 2: High-level safety interlock** — designed to close shutoff valves if the level exceeded a safe threshold.
+
+Both functions depended on the exact same instrument. The PLC logic, the HMI visualization, and the safety interlock all relied on this single bubbler tube without any diverse measurement technology or independent high-level cutoff. See CSB Figures 11, 12, and 14 from the [full CSB investigation report](https://www.csb.gov/assets/1/6/ffg_investigation_report_publication_copy.pdf) for the explicit design schematics showing one sensor, two functions, and zero independence.
+
+### 3. How the Failures Combined
+
+The catastrophic result came from a combination of undetected damage and blind instrumentation:
+
+1. **The Missing Manufacturing Clamp:** The bubbler tube was designed to be secured inside the freezer with two support clamps. However, the freezer involved in this incident was fabricated in 2016 with only one clamp installed, leaving the tube vulnerable to deformation.
+2. **The Bent Tube:** Sometime during maintenance troubleshooting, the tube became bent, pushing its tip *above* the actual liquid overflow level inside the freezer.
+3. **The Blind Control Loop:** With the tip above the liquid, the bubbler read "zero liquid level." The BPCS control loop, responding to the false reading, called for maximum liquid nitrogen flow.
+4. **The Blind Safety Interlock:** The high-level safety interlock, relying on the same impaired sensor, also saw "no liquid" and never activated. Post-incident testing confirmed the system's alarm and event log recorded no high-level event.
+5. **The Release:** With the control valve wide open and the interlock unable to detect the overflow, nitrogen flowed into the freezer room for 90 minutes.
+
+<br />
+
+<Quiz
+  question="According to ANSI/ISA-84.00.01 / IEC 61511, if a basic process control system (BPCS) and a safety instrumented system (SIS) share the same sensor for a safety-critical measurement, what is the consequence for the independence of the safety layer?"
+  options={[
+    "The safety system has an acceptable layer of single-point redundancy.",
+    "The single shared sensor becomes a single point of failure that blinds both the control loop and the safety interlock.",
+    "The control loop will automatically shut down the process if the sensor is damaged.",
+    "The system meets SIL-2 requirements because the sensor feeds both a control function and a protective function."
+  ]}
+  correctAnswerIndex={1}
+  explanation="If the BPCS and the SIS share a sensor, they share the exact same vulnerability. The failure or distortion of that single sensor (like the bent bubbler tube in this incident) blinds both the control loop and the safety interlock simultaneously, completely defeating the independent protection layer."
+/>
+
+### 4. Failure Modes and Effects Analysis
+
+Every significant failure mode in the FFG immersion freezer's bubbler-tube architecture — from the initial manufacturing defect through the blinded safety interlock — mapped to root cause, consequence, detection method, and recommended control.
+
+[![FFG Immersion Freezer Failure Modes and Effects Analysis](/images/ffg-fmea-table.png)](/images/ffg-fmea-table.png)
+*Click to enlarge — Immersion Freezer FMEA covering initial manufacturing defects through the blinded safety interlock.*
+
+This table illustrates a pattern the CSB has documented across multiple incidents: **safety-critical failures rarely come from a single component defect. They typically emerge from a combination of smaller issues — a missing clamp, an ambiguous checklist, a grouped PHA entry, a shared sensor — each one manageable on its own, but consequential in combination.**
+
+### 5. Direct, Systemic, and Organizational Causes
+
+**Direct cause:** A bent bubbler tube combined with a single-sensor architecture. The control loop and the safety interlock were both blinded by the same physical deformation.
+
+**Systemic causes:**
+
+- **PHA Methodology Failure:** Linde's (later acquired by Messer) Process Hazards Analysis (PHA) — the formal study a design team uses to identify hazards and the safeguards that protect against them — identified "bubbler failure" as a potential cause of high level, but listed the high-level alarm as the safeguard. Because the high-level alarm shared the same sensor, the CSB found that the PHA team had effectively listed the bubbler tube as a safeguard for itself — a finding the report states explicitly.
+- **Manufacturing QC Failure:** The missing support clamp was not caught during quality control inspections because the checklist line item was ambiguous, referring to exterior components rather than internal securing clips.
+- **No Atmospheric Monitoring:** Despite multiple written recommendations from Messer over the years, FFG never installed oxygen monitoring in the freezer room.
+
+**Organizational causes:**
+
+- **No Process Safety Management (PSM):** Because liquid nitrogen isn't classified as a "highly hazardous chemical" under OSHA's Process Safety Management standard or an "extremely hazardous substance" under EPA's Risk Management Program rule, FFG was not legally required to implement PSM — and chose not to. They had no formal policy, no management of change (MOC), and the safety manager position had been vacant for over a year.
+- **Deficient Emergency Response:** The first 911 call was delayed over an hour. FFG's emergency action plan did not cover liquid nitrogen hazards, and the training and plan were in English despite a largely non-English-speaking workforce.
+- **Responder Fatalities:** Four of the six workers killed were responders attempting rescue without training, PPE, or awareness of cryogenic asphyxiants.
+
+### 6. The Standards That Already Existed
+
+The tragedy is that industry standards exist specifically to prevent this exact shared-sensor failure pattern. **ANSI/ISA-84.00.01** and its international equivalent **IEC 61511** (*Functional Safety – Safety Instrumented Systems for the Process Industry Sector*) mandate independence between the BPCS and any safety instrumented functions (SIFs). Different sensors. Different logic solvers. Different final elements. If the BPCS and the SIS share a sensor, the failure of that sensor defeats the safety layer — by definition, not by accident.
+
+Linde's original design predated the formal codification of the modern standard, but the underlying principle of independence was well-established engineering practice long before it was written into a standard. And when the CSB investigated this incident, they cited ISA-84 / IEC 61511 by name as the relevant guidance. The gap wasn't in the standards — the standards were there. The gap was in how the design was reviewed, how the PHA evaluated safeguard independence, and how manufacturing QC verified safety-critical features.
+
+This isn't the only place I've seen this architecture failure. I'll be writing more about the pattern — and about why the SIS conversation so often fails to happen at scoping time — later this week.
+
+### 7. Actionable Protocols
+
+- **Never share a sensor between the BPCS and the SIS.** Critical setpoints require their own independent measurement devices, ideally relying on different physics (e.g., a bubbler for control, but a radar or capacitance probe for high-level safety cutoff).
+- **Enforce strict PHA discipline.** Every safeguard must be analyzed for the specific failure mode it mitigates. A safeguard dependent on the same physical component as the initiating event provides zero protection.
+- **Demand atmospheric monitoring.** If you operate indoor processes with cryogenic asphyxiants, fixed atmospheric monitoring with localized alarms is non-negotiable.
+- **Enhance Manufacturing QC.** Verify safety-critical mechanical features against detailed engineering drawings, rather than checking off ambiguous list items.
+- **Never bypass interlocks during maintenance.** The CSB noted the workers had intentionally bypassed transition box door and lid safety switches. Interlocks must never be bypassed without an explicit procedure and equivalent temporary protection.
+- **Prepare your specific emergency action plan.** EAPs must be in the language the workforce understands, address the specific chemical hazards on-site, and involve proactive coordination with local emergency responders.
+
+### 8. A Question for the PHA Room
+
+The CSB determined that Linde's PHA team recorded the high-level alarm (which relied on the bubbler tube) as a safeguard against the bubbler tube's failure. This is one of the clearest examples of a PHA methodology breakdown documented in a public incident report.
+
+My question for the functional safety and process safety community: How do we catch this pattern earlier? When you've been in a PHA room and seen a sensor listed as a safeguard for its own failure mode — what got in the way of someone calling it out? Was it the methodology itself? Time pressure? Team hierarchy? Something else? I want to hear from people who've been in those rooms.
+
+---
+
+*I wrote a few weeks ago about a trailing cable incident where a single GFGC relay failure defeated every layer of automatic protection on an [underground drill rig](/incidents/tingling-drill-rig). Different industry, different system, same architectural failure mode.*
+
+**One sensor can't be its own safeguard. That's the whole rule, and it's the rule that failed six people.**
+
+<NewsletterSignup />
