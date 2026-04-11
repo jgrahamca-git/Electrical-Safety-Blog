@@ -16,7 +16,7 @@ Variable Frequency Drives (VFDs) are phenomenal for process efficiency, but thei
 
 A VFD operates by pulsing DC voltage extremely rapidly using Pulse Width Modulation (PWM). This switching occurs thousands of times per second (the carrier frequency). Because the three electrical phases are never perfectly balanced at microsecond speeds, this switching induces a parasitic voltage directly onto the spinning rotor shaft.
 
-The voltage desperately seeks a path to ground. The path of least resistance is usually straight through the ultra-thin layer of lubricating grease inside the motor's steel bearings. When the voltage arcs across this gap, it acts like a microscopic welder. This process is called Electrical Discharge Machining (EDM). Over millions of arcs, it physically blasts away the race of the bearing, creating a washboard effect known as "fluting." 
+The voltage desperately seeks a path to ground. The path of least resistance is usually straight through the ultra-thin layer of lubricating grease inside the motor's steel bearings. When the voltage arcs across this gap, it acts like a microscopic welder. This micro-arcing is called the Electrical Discharge Machining (EDM) Effect. Over millions of arcs, it physically blasts away the race of the bearing, creating a washboard effect known as "fluting." 
 
 The motor eventually begins to scream, vibrate violently, and then seize entirely, tripping the line offline. To prevent this destructive hazard, any motor driven by a VFD should be equipped with a shaft grounding ring (like an AEGIS ring) to safely bleed the parasitic voltage away from the bearings directly to the grounded motor frame.
 
