@@ -1,0 +1,87 @@
+
+> ai-in-mining-blog@0.0.1 build
+> astro build
+
+12:01:12 [@astrojs/netlify] Enabling sessions with Netlify Blobs
+12:01:14 [content] Syncing content
+12:01:14 [content] Synced content
+12:01:14 [types] Generated 1.14s
+12:01:14 [build] output: "static"
+12:01:14 [build] mode: "server"
+12:01:14 [build] directory: /home/jgrah/Blog_EI_Safety/ai-in-mining-blog/dist/
+12:01:14 [build] adapter: @astrojs/netlify
+12:01:14 [build] Collecting build info...
+12:01:14 [build] ✓ Completed in 1.24s.
+12:01:14 [build] Building server entrypoints...
+12:01:17 [WARN] [vite] "matchHostname", "matchPathname", "matchPort" and "matchProtocol" are imported from external module "@astrojs/internal-helpers/remote" but never used in "node_modules/astro/dist/assets/utils/index.js".
+12:01:18 [vite] ✓ built in 3.87s
+12:01:18 [WARN] [vite] "matchHostname", "matchPathname", "matchPort" and "matchProtocol" are imported from external module "@astrojs/internal-helpers/remote" but never used in "node_modules/astro/dist/assets/utils/index.js".
+12:01:18 [vite] ✓ built in 799ms
+12:01:19 [vite] ✓ built in 655ms
+
+ prerendering static routes 
+12:01:19   ├─ /about/index.html (+59ms) 
+12:01:19   ├─ /archive/archive-index/index.html (+22ms) 
+12:01:19   ├─ /archive/incidents/index.html (+20ms) 
+12:01:19   ├─ /archive/safety-news/index.html (+21ms) 
+12:01:19   ├─ /archive/safety-topics/index.html (+34ms) 
+12:01:19   ├─ /archive/index.html (+17ms) 
+12:01:19   ├─ /incidents/index.html (+26ms) 
+12:01:19   ├─ /incidents/backfed-generator-shock/index.html (+32ms) 
+12:01:19   ├─ /incidents/dual-source-forklift-charger-lockout/index.html (+23ms) 
+12:01:19   ├─ /incidents/foundation-food-group-liquid-nitrogen/index.html (+24ms) 
+12:01:20   ├─ /incidents/induced-voltage/index.html (+26ms) 
+12:01:20   ├─ /incidents/tingling-drill-rig/index.html (+27ms) 
+12:01:20   ├─ /incidents.xml (+445ms) 
+12:01:20   ├─ /risk-matrix/index.html (+16ms) 
+12:01:20   ├─ /rss-topics.xml (+40ms) 
+12:01:20   ├─ /rss.xml (+76ms) 
+12:01:20   ├─ /safety-news/active-arc-quenching-technology/index.html (+17ms) 
+12:01:20   ├─ /safety-news/advanced-ngr-relays/index.html (+11ms) 
+12:01:20   ├─ /safety-news/sample-product/index.html (+14ms) 
+12:01:20   ├─ /safety-news/smart-ppe-voltage-sensing/index.html (+14ms) 
+12:01:20   ├─ /safety-topics/index.html (+28ms) 
+12:01:20   ├─ /safety-topics/alarm-floods-hmi-blindness/index.html (+13ms) 
+12:01:20   ├─ /safety-topics/aluminum-copper-terminations/index.html (+11ms) 
+12:01:20   ├─ /safety-topics/arc-flash-boundaries/index.html (+12ms) 
+12:01:20   ├─ /safety-topics/backfed-control-transformers/index.html (+11ms) 
+12:01:20   ├─ /safety-topics/bump-test-vs-calibration/index.html (+13ms) 
+12:01:20   ├─ /safety-topics/complacency-trap/index.html (+15ms) 
+12:01:20   ├─ /safety-topics/control-systems-plc-forces/index.html (+13ms) 
+12:01:20   ├─ /safety-topics/ct-open-circuit-hazards/index.html (+16ms) 
+12:01:20   ├─ /safety-topics/emergency-stop-testing/index.html (+20ms) 
+12:01:20   ├─ /safety-topics/first-60-seconds-arc/index.html (+14ms) 
+12:01:20   ├─ /safety-topics/hidden-danger-dual-source/index.html (+12ms) 
+12:01:20   ├─ /safety-topics/identifying-frayed-cables/index.html (+12ms) 
+12:01:20   ├─ /safety-topics/inspecting-ppe/index.html (+20ms) 
+12:01:20   ├─ /safety-topics/intrinsic-safety-bypassing/index.html (+16ms) 
+12:01:20   ├─ /safety-topics/lethal-myth-of-earth/index.html (+19ms) 
+12:01:20   ├─ /safety-topics/limit-of-rubber-gloves/index.html (+16ms) 
+12:01:20   ├─ /safety-topics/lockout-tagout/index.html (+16ms) 
+12:01:20   ├─ /safety-topics/master-lockbox-method/index.html (+15ms) 
+12:01:20   ├─ /safety-topics/missing-panel-covers/index.html (+12ms) 
+12:01:21   ├─ /safety-topics/motor-phase-rotation-meters/index.html (+15ms) 
+12:01:21   ├─ /safety-topics/motor-space-heater-hazards/index.html (+13ms) 
+12:01:21   ├─ /safety-topics/multimeter-discipline-deadly-jack/index.html (+11ms) 
+12:01:21   ├─ /safety-topics/normalizing-deviations-ppe/index.html (+13ms) 
+12:01:21   ├─ /safety-topics/overfilled-cable-trays/index.html (+13ms) 
+12:01:21   ├─ /safety-topics/preventing-ground-faults/index.html (+22ms) 
+12:01:21   ├─ /safety-topics/safety-plcs-and-architecture/index.html (+17ms) 
+12:01:21   ├─ /safety-topics/system-bonding-jumpers/index.html (+16ms) 
+12:01:21   ├─ /safety-topics/ten-foot-rule-mobile-equipment/index.html (+12ms) 
+12:01:21   ├─ /safety-topics/test-before-touch/index.html (+16ms) 
+12:01:21   ├─ /safety-topics/understanding-cat-ratings/index.html (+12ms) 
+12:01:21   ├─ /safety-topics/understanding-tryout-loto/index.html (+11ms) 
+12:01:21   ├─ /safety-topics/utility-scale-solar-dc-arc-faults/index.html (+11ms) 
+12:01:21   ├─ /safety-topics/vfd-dc-bus-discharge-times/index.html (+13ms) 
+12:01:21   ├─ /safety-topics/vfd-shaft-voltage/index.html (+11ms) 
+12:01:21   ├─ /success/index.html (+16ms) 
+12:01:21   ├─ /index.html (+23ms) 
+12:01:21 ✓ Completed in 1.70s.
+
+12:01:21 [build] Rearranging server assets...
+12:01:21 [build] ✓ Completed in 7.18s.
+12:01:21 [@astrojs/netlify] Emitted _redirects
+12:01:21 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+12:01:21 [build] Server built in 8.46s
+12:01:21 [build] Complete!

@@ -1,0 +1,29 @@
+
+> ai-in-mining-blog@0.0.1 build
+> astro build
+
+11:58:30 [@astrojs/netlify] Enabling sessions with Netlify Blobs
+11:58:31 [content] Syncing content
+11:58:31 [content] Synced content
+11:58:31 [types] Generated 1.10s
+11:58:31 [build] output: "static"
+11:58:31 [build] mode: "server"
+11:58:31 [build] directory: /home/jgrah/Blog_EI_Safety/ai-in-mining-blog/dist/
+11:58:31 [build] adapter: @astrojs/netlify
+11:58:31 [build] Collecting build info...
+11:58:31 [build] ✓ Completed in 1.20s.
+11:58:31 [build] Building server entrypoints...
+11:58:34 [ERROR] [vite] ✗ Build failed in 2.46s
+[ImageNotFound] [commonjs--resolver] Could not find requested image `../../assets/motor-phase-rotation-testing-arc-flash.jpg`. Does it exist?
+  Hint:
+    This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/image-not-found/
+  Location:
+    /home/jgrah/Blog_EI_Safety/ai-in-mining-blog/node_modules/astro/dist/content/vite-plugin-content-assets.js:40:19
+  Stack trace:
+    at Object.handler (file:///home/jgrah/Blog_EI_Safety/ai-in-mining-blog/node_modules/astro/dist/content/vite-plugin-content-assets.js:40:19)
+    at async resolveId (file:///home/jgrah/Blog_EI_Safety/ai-in-mining-blog/node_modules/rollup/dist/es/shared/node-entry.js:20912:26)
+    at async Object.resolveId (file:///home/jgrah/Blog_EI_Safety/ai-in-mining-blog/node_modules/astro/node_modules/vite/dist/node/chunks/config.js:4154:21)
+    at async resolveId (file:///home/jgrah/Blog_EI_Safety/ai-in-mining-blog/node_modules/rollup/dist/es/shared/node-entry.js:20912:26)
+    at async file:///home/jgrah/Blog_EI_Safety/ai-in-mining-blog/node_modules/rollup/dist/es/shared/node-entry.js:21670:50
