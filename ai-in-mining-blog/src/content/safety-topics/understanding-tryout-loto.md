@@ -6,7 +6,7 @@ heroImage: "../../assets/lockout-tagout-tryout-step-verification.jpg"
 criticality: "L0"
 conclusion_state: "safe"
 agent_suggested: true
-editor_confirmed: false
+editor_confirmed: true
 seoTitle: "LOTO Tryout Step: Why You Must Attempt to Energize After Lockout"
 metaDescription: "Lockout/Tagout is incomplete without the tryout step. Physically attempt to start the equipment after locking out — verify you isolated the right energy source."
 primaryKeyword: "LOTO tryout step lockout tagout"

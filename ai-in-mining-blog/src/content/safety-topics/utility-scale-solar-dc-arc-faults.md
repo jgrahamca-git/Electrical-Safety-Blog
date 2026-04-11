@@ -6,7 +6,7 @@ heroImage: "../../assets/utility-scale-solar-dc-arc-faults.jpg"
 criticality: "L2"
 conclusion_state: "hazard"
 agent_suggested: true
-editor_confirmed: false
+editor_confirmed: true
 seoTitle: "DC Arc Faults in Utility Solar: Why They Don't Self-Extinguish"
 metaDescription: "DC arcs in utility-scale solar systems don't cross zero like AC — they burn continuously. Understand the risk of MC4 disconnection under load at 1500V DC."
 primaryKeyword: "DC arc fault utility solar"

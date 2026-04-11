@@ -6,7 +6,7 @@ heroImage: "../../assets/plc-force-function-safety-interlock-bypass.jpg"
 criticality: "L2"
 conclusion_state: "hazard"
 agent_suggested: true
-editor_confirmed: false
+editor_confirmed: true
 seoTitle: "PLC Force Function Safety Risk: The Forgotten Bypass"
 metaDescription: "Software forces in PLC logic bypass safety interlocks. If left in place after troubleshooting, they can cause motors to start unexpectedly or tanks to overfill."
 primaryKeyword: "PLC force function safety hazard"
