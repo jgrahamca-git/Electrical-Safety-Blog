@@ -1,5 +1,5 @@
 ---
-title: "Eliminating Trailing Cable Fires: Advanced Ground-Fault Relays for Mobile Mining Equipment"
+title: "Eliminating Trailing Cable Meltdown: Advanced Ground-Fault Relays for Mobile Mining Equipment"
 description: "Why solid-state NGR monitoring is critical for draglines, shovels, and continuous miners."
 pubDate: "Mar 23 2026"
 heroImage: "../../assets/ngr-relay.png"

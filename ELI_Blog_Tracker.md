@@ -476,7 +476,7 @@ These seven topics are drafted for the coming week and awaiting final editorial 
 - The Hidden Danger of Back-fed Control Transformers (`backfed-control-transformers.md`)
 - The Rise of Smart PPE and Voltage-Detecting Gloves (`smart-ppe-voltage-sensing.md`)
 - The Silent Shock: Why a Tingling Drill Rig Is a Deadly Warning (`tingling-drill-rig.md`)
-- Eliminating Trailing Cable Fires: Advanced NGR Relays for Mobile Mining Equipment (`advanced-ngr-relays.md`)
+- Eliminating Trailing Cable Meltdown: Advanced NGR Relays for Mobile Mining Equipment (`advanced-ngr-relays.md`)
 - Selected Product of the Week: Enhanced Arc Flash PPE (`sample-product.md`)
 - The Hidden Danger of Dual-Source Equipment (`dual-source-equipment.md`)
 - Multimeter Discipline: The "Deadly Jack" Mistake (`multimeter-deadly-jack.md`)
