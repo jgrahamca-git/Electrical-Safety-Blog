@@ -9,6 +9,7 @@
 > - **Section 2 (Decision log):** Append only. Never edit old entries.
 > - **Section 3 (Progress log):** Append only. Never edit old entries.
 > - **Update trigger:** Workflow changes, milestones, new content format decisions, tool changes, or Sunday after weekly review
+> - **Dual-Sync Mandatory:** Any updates to this tracker MUST be explicitly synced to BOTH the Ubuntu location (`/home/jgrah/Blog_EI_Safety/ELI_Blog_Tracker.md`) and the Google Drive location (`C:\Users\jgrah\My Drive\01_ELI\ELI_Blog_Tracker.md`).
 
 ---
 
@@ -224,7 +225,7 @@ Total: 27 tasks · ~36 hours
 
 ### Content formats
 
-**Daily Safety Topics:** 7 per batch, future-dated (Mon–Sun). Concise, educational, actionable. `.mdx` format with Astro frontmatter.
+**Daily Safety Topics:** 7 per batch, future-dated (Mon–Sun). Concise, educational, actionable. `.mdx` format with Astro frontmatter. **MUST reference relevant sections of the NEC, CEC, and/or other associated standards (e.g. NFPA 70E, CSA Z462, OSHA) applicable to the specific topic.**
 
 **Incident RCAs (strict 6-part narrative):**
 1. Safety Hook Title (frontmatter)
