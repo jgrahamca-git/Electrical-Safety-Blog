@@ -12,7 +12,7 @@ metaDescription: "Software forces in PLC logic bypass safety interlocks. If left
 primaryKeyword: "PLC force function safety hazard"
 ---
 
-**The Core Issue:** During troubleshooting or commissioning, standard practice is to place a software "force" on a PLC output or input to bypass a sensor or fire a valve. 
+**The Core Issue:** During troubleshooting or commissioning, standard practice is to place a software "force" on a PLC output or input to bypass a sensor. 
 
 **The Lesson:** If a technician forgets to remove the "force" after testing, the automated safety interlocks rely on false data. A tank could overfill, or a motor could start while someone is working on it, overriding the physical emergency stop relays in badly designed systems.
 
