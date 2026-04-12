@@ -11,6 +11,8 @@ const now = new Date();
 const posts = (await getCollection('safety-topics'))
 	.filter((post) => post.data.pubDate <= now)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+import CategoryDailyTopic from '../../assets/category-daily-topic.jpg';
 ---
 
 <!doctype html>
@@ -115,8 +117,10 @@ const posts = (await getCollection('safety-topics'))
 						posts.map((post) => (
 							<li>
 								<a href={`/safety-topics/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+									{post.data.heroImage ? (
+										<Image width={720} height={360} src={post.data.heroImage} alt="" style="object-fit:cover;object-position:top;" />
+									) : (
+										<Image width={720} height={360} src={CategoryDailyTopic} alt="Safety Topic" style="object-fit:cover;object-position:top;" />
 									)}
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">

@@ -189,7 +189,7 @@ primaryKeyword: "..."
 | Arc Flash | Imagen 3 | Hardware close-up — NO humans, NO connections |
 | LOTO / Safe Work | NotebookLM editorial | Conceptual diagram only |
 | PPE / Human in context | Real Photo | Licensed stock or field photo |
-| Safety News, Products & Discussions | Imagen 3 | Product on dark surface — NO hands |
+| Interest, Safety News, Products | Imagen 3 | Product on dark surface — NO hands |
 | ANY circuit diagram | NEVER AI | EdrawMax only, always |
 | ANY human using a tool | NEVER AI | Real photo only, always |
 | ANY meter display | NEVER AI | AI meter readings are always wrong |
@@ -197,6 +197,7 @@ primaryKeyword: "..."
 
 **Fallback Images:**
 - `src/assets/category-safety-news.jpg` — Use for safety news posts that lack a specific image.
+- `src/assets/category-daily-topic.jpg` — Use for daily safety topics that lack a specific image.
 
 **Image naming convention [REVISED 2026-04-10]:** `[primary-keyword-phrase]-[secondary-context].jpg`
 Example: `hmi-alarm-flood-scada-systems.jpg` or `system-bonding-jumper-isolation-transformer.jpg`
@@ -341,7 +342,7 @@ Total: 27 tasks · ~36 hours
 ### 2026-04-10 — Future Topics & Categories Update
 
 - progress  | Saved 10 brainstormed topics into a new file `ELI_Future_Topics.md`.
-- change    | Updated the "Safety News & Products" blog category across the Astro frontend and the Tracker to "Safety News, Products & Discussions" to accommodate high-level conceptual pieces.
+- change    | Updated the "Safety News & Products" blog category across the Astro frontend and the Tracker to "Interest, Safety News, Products" to accommodate high-level conceptual pieces.
 
 ### 2026-04-10 — Foundation Food Group Liquid Nitrogen Incident RCA
 

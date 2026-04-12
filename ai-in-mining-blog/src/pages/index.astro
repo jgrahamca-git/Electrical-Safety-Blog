@@ -9,6 +9,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
+import CategoryDailyTopic from '../assets/category-daily-topic.jpg';
+const fallbackImage = CategoryDailyTopic;
 const now = new Date();
 const endOfToday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 23, 59, 59, 999));
 
@@ -304,15 +306,16 @@ const featuredIncident = allIncidents[0];
             allTopics.map((topic) => (
               <article class="card">
                 <a href={`/safety-topics/${topic.id}/`}>
-                  {topic.data.heroImage && (
-                    <div class="card-img-wrap">
-                      <img src={topic.data.heroImage.src || topic.data.heroImage} alt={topic.data.title} />
-                      <div class="card-cat-bar">
-                        {topic.data.criticality && <CriticalityBadge level={topic.data.criticality} />}
-                        <CategoryBadge tag="safety-topic" />
-                      </div>
+                  <div class="card-img-wrap">
+                    <img 
+                      src={topic.data.heroImage ? (topic.data.heroImage.src || topic.data.heroImage) : fallbackImage.src} 
+                      alt={topic.data.title} 
+                    />
+                    <div class="card-cat-bar">
+                      {topic.data.criticality && <CriticalityBadge level={topic.data.criticality} />}
+                      <CategoryBadge tag="safety-topic" />
                     </div>
-                  )}
+                  </div>
                   <div class="card-body">
                     <span class="card-date"><FormattedDate date={topic.data.pubDate} /></span>
                     <h3 class="card-title">{topic.data.title}</h3>
@@ -358,7 +361,7 @@ const featuredIncident = allIncidents[0];
 
         <!-- RIGHT: Safety News -->
         <div class="column column-past">
-          <h2 class="col-header">Safety News, Products &amp; Discussions</h2>
+          <h2 class="col-header">Interest, Safety News, Products</h2>
           {allNews.length > 0 ? allNews.map((news) => (
             <article class="card">
               <a href={`/safety-news/${news.id}/`}>
