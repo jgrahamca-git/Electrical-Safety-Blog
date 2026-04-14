@@ -76,3 +76,16 @@ const imageSrc = typeof image === 'string' ? image : image?.src;
 
 <!-- Client Router -->
 <ClientRouter />
+
+<!-- Google Analytics 4 -->
+{import.meta.env.PROD && (
+  <>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-ZHQ0NPRP9Y"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZHQ0NPRP9Y');
+    </script>
+  </>
+)}
