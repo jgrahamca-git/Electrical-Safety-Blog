@@ -32,5 +32,8 @@ Every Incident RCA must adhere rigidly to the following 6 chronological sections
   - **Direct Cause:** The physical trigger (e.g., a dropped uninsulated wrench shorted the A and C phases).
   - **Systemic/Human Cause:** Why the operator made that specific choice (e.g., perceived time pressure from management, muscle-memory complacency, or completely skipped job briefings).
 
-### 6. The "Takeaway" (Actionable Conclusion)
+### 6. Relevant Codes & Standards
+- **Format:** Explicitly reference and briefly explain the sections of relevant safety codes (e.g., NEC, CEC, NFPA 70E, OSHA, CSA Z462) that were violated or applied to the scenario. Mention roughly where they can be found.
+
+### 7. The "Takeaway" (Actionable Conclusion)
 - **Format:** Exactly 3 clear, highly actionable bullet points that the reader can implement on their own job site *today* to ensure this never happens to their crew. Do not write generic advice; be incredibly specific to the incident.

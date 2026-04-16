@@ -19,10 +19,6 @@ Every Daily Safety Topic should adhere to the following structure:
 - Provide the technical breakdown of the topic.
 - Maintain an objective, educational tone appropriate for an experienced journeyman teaching an apprentice.
 
-### 3. Standards and Code Referencing (MANDATORY)
-- You MUST explicitly reference relevant sections of the **NEC (National Electrical Code)**, **CEC (Canadian Electrical Code)**, and any other associated standards (e.g., **NFPA 70E**, **CSA Z462**, **OSHA**, **IEC**) that govern or apply to the specific topic.
-- Quote or contextualize the specific articles or sections to validate the safety practices discussed.
-
-### 4. Actionable Takeaways
+### 3. Actionable Takeaways
 - Exactly 3-4 clear, highly actionable bullet points that the reader can implement on their job site *today*.
 - Do not write generic advice; be incredibly specific to the equipment, procedure, or topic discussed.
