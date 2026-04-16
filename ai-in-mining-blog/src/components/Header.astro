@@ -89,15 +89,24 @@ const isElectricalSafetyMonth = now.getUTCMonth() === 4; // May is month index 4
 
   /* ── SAFETY MONTH BANNER ── */
   .safety-month-banner {
-    background-color: var(--eli-accent, #E8680A);
-    color: var(--eli-dark, #141720);
+    background: linear-gradient(90deg, rgba(232, 104, 10, 0.1) 0%, var(--eli-dark, #141720) 25%, var(--eli-dark, #141720) 75%, rgba(232, 104, 10, 0.1) 100%);
+    background-color: var(--eli-dark, #141720);
+    color: var(--eli-white, #F2EDE8);
     text-align: center;
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1rem;
     font-family: var(--font-sub, 'Rajdhani', sans-serif);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    border-bottom: 1px solid rgba(232, 104, 10, 0.2);
+    box-shadow: inset 0 -15px 15px -15px rgba(232, 104, 10, 0.15);
+  }
+
+  .safety-month-banner strong {
+    color: var(--eli-accent, #E8680A);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(232, 104, 10, 0.3);
   }
 
   /* ── NAV ── */
