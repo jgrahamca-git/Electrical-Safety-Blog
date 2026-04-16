@@ -30,7 +30,7 @@ Six workers died of asphyxiation: the two maintenance workers troubleshooting th
 
 This incident is a textbook example of a fundamental rule in functional safety: when a basic process control system (BPCS) — the PLCs and HMI that run normal day-to-day operations — and a safety instrumented system (SIS) — a dedicated, separate safety layer designed to take a hazardous process to a safe state — share a sensor, you do not have redundancy. You have a single point of failure.
 
-The Messer-designed immersion-spiral freezer used a **bubbler tube** to measure the liquid nitrogen level. A bubbler tube infers liquid level by sending a constant flow of vapor through a submerged vertical tube and measuring the differential pressure.
+The system used a **bubbler tube** to measure the liquid nitrogen level. A bubbler tube infers liquid level by sending a constant flow of vapor through a submerged vertical tube and measuring the differential pressure.
 
 The fundamental architectural flaw was that the control system used this single bubbler tube as the sole input for **two parallel functions**:
 
