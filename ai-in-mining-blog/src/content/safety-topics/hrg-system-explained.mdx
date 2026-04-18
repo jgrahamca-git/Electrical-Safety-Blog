@@ -1,0 +1,35 @@
+---
+title: "High-Resistance Grounding (HRG) Systems Explained"
+description: "How HRG systems prevent industrial plant shutdowns during a single ground fault while minimizing arc flash risks."
+pubDate: "2026-04-24"
+category: "safety-topics"
+tags: ["Grounding", "Reliability", "Arc Flash"]
+image: "./eli-safety-topics-L0-hrg-system-explained.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "High-Resistance Grounding (HRG) Systems Explained"
+metaDescription: "Learn how High-Resistance Grounding (HRG) protects industrial continuous processes by limiting fault current and minimizing arc flash hazards."
+primaryKeyword: "high resistance grounding system"
+---
+
+### 1. Introduction & Context
+
+If an electric motor shorts to ground on a standard solidly grounded 600V system, the immediate result is a massive surge of fault current and an instantaneous breaker trip. The motor stops, and for a continuous manufacturing process (like a paper mill or glass furnace), that unexpected shutdown can cost tens of thousands of dollars in ruined product. 
+
+### 2. The Core Issue
+
+To maximize uptime, many older industrial plants utilized "Ungrounded" delta systems. A single ground fault on an ungrounded system doesn't trip anything, allowing the plant to keep running. However, ungrounded systems are notoriously dangerous—they are prone to severe transient over-voltages that destroy insulation and can escalate a simple phase-to-ground fault into a catastrophic phase-to-phase arc flash.
+
+**The modern solution is High-Resistance Grounding (HRG).** 
+
+An HRG system places a large neutral grounding resistor (NGR) directly between the power transformer's neutral point and earth ground. When a phase-to-ground fault occurs, the resistor restricts the fault current to a very low, safe level—typically 5 amps or less. 
+
+Because the fault current is severely choked by the resistor, the line breaker does not trip. The process continues to run seamlessly. Instead, the HRG system triggers an alarm, notifying maintenance that a fault exists. Technicians can use pulse-tracing equipment to hunt down the fault and schedule a repair during a planned outage, all without suffering the volatile transient over-voltages of an ungrounded system. Additionally, capping ground fault current at 5 amps practically eliminates the risk of a phase-to-ground arc flash.
+
+### 3. Actionable Takeaways
+
+- **Respond Immediately Avoid Second Faults:** An HRG alarm is an urgent warning, not an "ignore it" buzzer. If a second phase goes to ground before the first is fixed, you have a phase-to-phase short that bypasses the resistor, leading to a massive fault and a hard shutdown.
+- **Monitor the Resistor:** An HRG system is only as safe as the resistor. Install continuous NGR monitors to ensure the resistor path remains intact; an open resistor turns the system back into a dangerous ungrounded setup.
+- **Safe Troubleshooting Practices:** Use proper pulsing hardware and portable clamp meters to trace the fault. Do not attempt to disconnect or manipulate grounding conductors while the system is tracing.

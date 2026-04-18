@@ -16,25 +16,12 @@
 - **Pillar:** Industrial AI and OT/SCADA Safety
 - **Focus:** Moving beyond mechanical 6-month proof tests. How AI models analyze continuous diagnostic data streams (HART/Profibus PA) from transmitters to detect membrane fouling or micro-resistance changes before a critical failure occurs.
 
-### 4. Dynamic Arc Flash Incident Energy Modeling
-- **Pillar:** Arc Flash and Electrical Safety
-- **Focus:** Shifting from static, 5-year snapshot arc flash studies to real-time SCADA-integrated calculations. Explaining how live utility impedance and tie-breaker configurations dynamically alter incident energy boundaries millisecond by millisecond.
 
 ### 5. Computer Vision for Electrical Boundaries
 - **Pillar:** Industrial AI and OT/SCADA Safety
 - **Focus:** Replacing standard light curtains with ML vision models. The system detects if a worker crossing the restricted approach boundary is actually wearing the correct high-cal PPE (face shield, arc-rated balaclava) before triggering a local alarm.
 
-### 6. The De-Energize to Trip (Failsafe) Principle
-- **Pillar:** Codes and Standards Updates / Controls
-- **Focus:** Why critical SIS/ESD loops must use Normally Energized coils. A severed cable, relay destruction, or power loss must automatically drop out the coil and default the system to the tripped/safe state (unlike inherent non-failsafe shunt trips).
 
-### 7. Control vs. Safety Separation (BPCS and SIS)
-- **Pillar:** Codes and Standards Updates (ISA-84) / Controls
-- **Focus:** A foundational rule: You cannot execute Safety Instrumented Functions (SIFs) in the Basic Process Control System (BPCS). Exploring why physical and logical separation is non-negotiable for system survivability.
-
-### 8. Smart Ground Fault/Check Pattern Recognition in Mining
-- **Pillar:** Grounding and Bonding / Industrial AI
-- **Focus:** Standard GFGC relays struggle with VFD switching noise in deep underground trailing cables. How AI analyzes the high-frequency waveforms of leakage currents to differentiate a fracturing conductor from harmless capacitive charging.
 
 ### 9. The Danger of Forced / Bridged Contacts in PLCs
 - **Pillar:** Electrical Safety Culture and Human Factors / Controls
@@ -43,3 +30,7 @@
 ### 10. The Hazards of Incorrect VFD Carrier Frequencies
 - **Pillar:** Controls / Arc Flash
 - **Focus:** How improperly tuning the switching frequency (PWM) on large Variable Frequency Drives can induce excessive motor heating, insulation breakdown, and bearing current damage, eventually culminating in a catastrophic short circuit.
+
+### 11. The Safety ROI of Proper Equipment Maintenance
+- **Pillar:** Electrical Safety Culture and Human Factors
+- **Focus:** Discussing how routine preventive maintenance (e.g., infrared thermography, torque checks, breaker exercising, and motor bearing lubrication/greasing) isn't just about operational uptime—it directly reduces the risk of arc flash incidents, bolted faults, and safety system failures.

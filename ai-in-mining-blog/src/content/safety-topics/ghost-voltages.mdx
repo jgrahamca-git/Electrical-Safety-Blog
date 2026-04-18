@@ -1,0 +1,35 @@
+---
+title: "Capacitive Coupling: Reading Ghost Voltages"
+description: "Why your multimeter is lying to you when troubleshooting long parallel control wires."
+pubDate: "2026-04-25"
+category: "safety-topics"
+tags: ["Troubleshooting", "Controls", "Hazards"]
+image: "./eli-safety-topics-L1-ghost-voltages.jpg"
+criticality: "L1"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Capacitive Coupling and Ghost Voltages in Cable Trays"
+metaDescription: "Learn how unshielded control wires in parallel cable trays induce dangerous ghost voltages, causing false PLC states and misleading multimeter readings."
+primaryKeyword: "ghost voltages capacitive coupling"
+---
+
+### 1. Introduction & Context
+
+A maintenance technician is troubleshooting a limit switch that refuses to trigger a PLC input. They disconnect the switch wire, touch a standard digital multimeter to the dead line, and read "68 Volts AC." They assume a broken wire is bleeding power. But when they touch the wire to a low-impedance testing load, the voltage instantly collapses to zero. They are dealing with a ghost voltage.
+
+### 2. The Core Issue
+
+**Ghost voltage** (or phantom voltage) is the result of capacitive coupling. 
+
+When you run an un-energized, unshielded low-voltage control wire in the same cable tray as a live 480V or 120V power conductor over long distances, the two parallel wires essentially form a giant capacitor. The air and insulation between them act as the dielectric. 
+
+The energized power cable radiates a changing alternating current field, which induces an actual voltage onto the dead control wire. Because modern digital multimeters have extremely high internal input impedance (often >10 Megohms), they do not drain this tiny capacitive charge. Instead, the meter displays it as a substantial RMS voltage, deeply confusing the troubleshooter. 
+
+Worse than confusing a technician, substantial capacitive coupling on long runs can induce enough current to falsely trigger a discrete PLC input module, making the control system believe a valve is closed or a guard door is locked when it is actually open.
+
+### 3. Actionable Takeaways
+
+- **Use a LoZ Meter:** Always equip your troubleshooters with multimeters that feature a "LoZ" (Low Impedance) or "Auto-V" mode. This setting places a small load across the probes, instantly collapsing purely coupled ghost voltages while reading hard wired voltages accurately.
+- **Separate Voltage Classes:** Strictly adhere to tray separation codes. Never run 24VDC or 120VAC control signals in the same unpartitioned tray as high-current 480V motor leads or rapidly switching VFD output cables.
+- **Shield and Drain:** For long parallel runs that cannot be avoided, utilize shielded twisted pair cables and ensure the shield is properly grounded at one end only to drain capacitive charges safely.

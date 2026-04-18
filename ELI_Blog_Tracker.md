@@ -355,6 +355,11 @@ Total: 27 tasks · ~36 hours
 
 - change    | Updated directives `00_safety_protocol.md` and `01_incident_narrative.md` to enforce the mandatory inclusion of relevant Codes and Standards on all new safety and RCA posts.
 
+### 2026-04-18 — Weekly Batch Drafted (April 20th Week)
+
+- progress  | Drafted 7 Daily Safety Topics (Failsafe Coils, BPCS/SIS Separation, HRG Systems, Ghost Voltages, High Performance HMI, AI Ground Faults, Dynamic Arc Flash).
+- progress  | Drafted Incident RCA: The Hidden Fault (Severing an Active Ground Path).
+
 ### 2026-04-10 — Weekly Batch Drafted (April 13th Week)
 
 - progress  | Drafted all 7 Daily Safety Topics for next week (Alarm Floods, VFD Shaft Voltages, Overfilled Trays, Gas Monitor Bump Tests, System Bonding Jumpers, Phase Rotation Meters, Open Panel Covers). Posts include SEO configuration and LinkedIn distribution drafts.
@@ -455,17 +460,18 @@ Paste or upload this entire file at the start of any AI conversation about the E
 
 ## 5. Topics Queue (Upcoming Posts)
 
-These seven topics are drafted for the coming week and awaiting final editorial sign-off and publishing (April 13th to 19th):
+These eight topics are drafted for the coming week and awaiting final editorial sign-off and publishing (April 20th to 26th):
 
 | Topic | criticality | conclusion_state |
 |-------|-------------|-----------------|
-| Alarm Floods and HMI Blindness | L3 | hazard |
-| VFD Induced Shaft Voltages | L2 | hazard |
-| De-rating Ampacity in Overfilled Cable Trays | L2 | hazard |
-| Bump Testing vs Calibration for Gas Monitors | L1 | hazard |
-| System Bonding Jumpers in Isolation Transformers | L0 | safe |
-| Motor Phase Rotation Verification Hazards | L2 | hazard |
-| Leaving Breaker Panel Covers Off Overnight | L2 | hazard |
+| The Hidden Fault: Severing an Active Ground Path (RCA) | L3 | hazard |
+| The De-Energize to Trip (Failsafe) Principle | L0 | safe |
+| Dynamic Arc Flash Incident Energy Modeling | L0 | neutral |
+| Control vs. Safety Separation (BPCS and SIS) | L0 | neutral |
+| AI Pattern Recognition for Mining Ground Faults | L0 | neutral |
+| High-Resistance Grounding (HRG) Systems Explained | L0 | safe |
+| Capacitive Coupling: Reading Ghost Voltages | L1 | hazard |
+| High Performance HMI: Saving Seconds | L0 | safe |
 
 ---
 
@@ -473,6 +479,13 @@ These seven topics are drafted for the coming week and awaiting final editorial 
 
 *Do not propose these topics again for Daily Safety Topics or RCAs to prevent duplicates.*
 
+- Alarm Floods and HMI Blindness (`alarm-floods-hmi.md`)
+- VFD Induced Shaft Voltages (`vfd-shaft-voltages.md`)
+- De-rating Ampacity in Overfilled Cable Trays (`overfilled-cable-trays.md`)
+- Bump Testing vs Calibration for Gas Monitors (`gas-monitor-bump-test.md`)
+- System Bonding Jumpers in Isolation Transformers (`system-bonding-transformers.md`)
+- Motor Phase Rotation Verification Hazards (`phase-rotation-hazards.md`)
+- Leaving Breaker Panel Covers Off Overnight (`panel-covers-off.md`)
 - Identifying Frayed Cables (`identifying-frayed-cables.md`)
 - Arc Flash Boundaries (`arc-flash-boundaries.md`)
 - Understanding CAT Ratings (`understanding-cat-ratings.md`)

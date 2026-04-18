@@ -84,3 +84,11 @@ Be pragmatic. Be reliable. Self-anneal.
 * **Direct Injection:** The user directly types malicious instructions into the chat interface.
 * **Indirect Injection:** The agent reads a document or website that contains hidden malicious instructions.
 * **Prompt Leaking:** Tricking the agent into revealing its internal system instructions, which can then be used to find further vulnerabilities.
+
+## Phase 1 vs Phase 2 Workflow
+
+FMEA tables and lead magnet PDFs are produced by Claude during Phase 2 editorial review, not during Phase 1 generation. When drafting an RCA, include placeholders `[FMEA section — Claude]` and `[Lead magnet CTA — Claude]` in the MDX. Do not attempt to generate the FMEA image or checklist PDF. Final assembly and deployment (image placement in `/public/images/`, PDF placement in `/public/downloads/`, git commit, Netlify deploy) remains in Gemini's scope.
+
+**Reference Templates Directory:**
+These related templates and rendering scripts are located at:
+`01_ELI/07_Blog/templates/` (contains `fmea_renderer.py`, `lead_magnet_template.html`, `README.md`).

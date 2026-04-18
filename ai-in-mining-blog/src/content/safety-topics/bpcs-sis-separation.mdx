@@ -1,0 +1,37 @@
+---
+title: "Control vs. Safety Separation (BPCS and SIS)"
+description: "The foundational ISA-84 rule: Why you can never mix basic process control with your Safety Instrumented Systems."
+pubDate: "2026-04-22"
+category: "safety-topics"
+tags: ["Controls", "Standards", "SIS"]
+image: "./eli-safety-topics-L0-bpcs-sis-separation.jpg"
+criticality: "L0"
+conclusion_state: "neutral"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "BPCS vs SIS: Why Control and Safety Must Be Separated"
+metaDescription: "Understand the core principles of ISA-84 / IEC 61511 regarding the physical and logical separation of the Basic Process Control System (BPCS) and Safety Instrumented Systems (SIS)."
+primaryKeyword: "bpcs and sis separation"
+---
+
+### 1. Introduction & Context
+
+In industrial automation, efficiency often drives engineers to combine systems into a single controller. If an Allen-Bradley ControlLogix PLC is already running the process tank levels, why not wire the emergency high-level shutdown switch directly into the same rack? According to global functional safety standards like ISA-84 (IEC 61511), doing so is a critical violation of system architecture known as mixing BPCS and SIS.
+
+### 2. The Core Issue
+
+The Basic Process Control System (BPCS) actively modulates valves and pumps to keep the process running profitably. The Safety Instrumented System (SIS) sits quietly in the background, only intervening when the BPCS fails and the process spirals out of control. 
+
+**The principle of independence:** A protection layer cannot be compromised by the same failure mode that caused the initial hazard. 
+
+If both the control logic and the safety logic live in the exact same PLC processor, a single point of failure—like a frozen CPU, a corrupted firmware update, or a cyber attack—will simultaneously blind the process control *and* paralyze the safety shutdown mechanism. 
+
+**The Mine Hoist Example:** Consider a deep underground mine hoist. The BPCS controls the VFD acceleration, deceleration, and normal stopping of the conveyance cage based on a shaft encoder. The SIS (the standalone Safety Hoist Controller) independently monitors for cage overspeed using its own dedicated physical switches. If the BPCS VFD control fails and the cage accelerates out of control, the independent SIS must be there to fire the emergency mechanical brakes. If both systems shared the same PLC, a single processor lockup would mean the cage runs away *and* the emergency brakes never deploy, resulting in a catastrophic crash.
+
+Physical and logical separation ensures survivability. The SIS must have its own dedicated sensors (not shared transmitters), its own logic solver (a dedicated, certified Safety PLC), and its own final control elements.
+
+### 3. Actionable Takeaways
+
+- **Trace the Sensor Path:** Ensure your emergency trip transmitters are completely separate physical devices, wired directly into the Safety PLC I/O, not passed over an Ethernet link from the control PLC.
+- **Never Use BPCS for SIFs:** Never execute a Safety Instrumented Function (SIF) inside a non-safety-rated routine process controller.
+- **Maintain Air Gaps in Logic:** While the SIS can send "read-only" status data to the BPCS HMI for viewing, the BPCS logic must never be able to write commands to the Safety PLC that could bypass or defeat a trip.

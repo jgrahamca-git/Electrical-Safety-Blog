@@ -1,0 +1,39 @@
+---
+title: "The De-Energize to Trip Principle: Why SIS Coils Stay Hot"
+description: "Why critical failsafe loops must use Normally Energized coils so wire breaks lead to an emergency shutdown, not a disaster."
+pubDate: "2026-04-20"
+category: "safety-topics"
+tags: ["Controls", "Failsafe", "SIS"]
+image: "./eli-safety-topics-L0-failsafe-trip.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "De-Energize to Trip: The Fundamentals of Failsafe SIS Coils"
+metaDescription: "Learn why Safety Instrumented Systems (SIS) use De-Energize to Trip architectures to ensure wire breaks and power loss default to a safe state."
+primaryKeyword: "de-energize to trip"
+---
+
+### 1. Introduction & Context
+
+In the world of standard basic process control, hitting a button to send 24V or 120V to a coil to actuate a valve makes logical sense: "I want an action, so I apply power." But in the realm of high-stakes Safety Instrumented Systems (SIS) and Emergency Shutdowns (ESD), this approach is fundamentally flawed. If safety depends on power arriving at the destination, a broken wire means your safety net is gone.
+
+This is why critical safety loops operate on the **De-Energize to Trip (DTT)**, or Failsafe, principle.
+
+### 2. The Core Issue
+
+When an architectural system relies on "Energize to Trip," the relay or actuator coil sits dead. To trigger a shutdown, the system must actively send voltage down the line to engage the coil. 
+
+**The fatal flaw:** If the control cable is severed by a forklift, if the power supply dies, or if an intermediate terminal block loosens, the system looks completely normal. You will have no idea your shutdown circuit is dead until you press the Emergency Stop button and absolutely nothing happens. The process continues running toward catastrophic failure.
+
+In a **De-Energize to Trip (Failsafe)** setup, the coil is *Normally Energized* (held in the "running" state). The Safety PLC outputs a constant 24VDC just to keep the process alive. 
+
+**The life-saving advantage:** To trigger a shutdown, the Safety PLC simply stops sending voltage. The coil drops out, and mechanical springs slam the valve closed or trip the breaker. More importantly, if a wire is cut, a fuse blows, or the facility loses power, the coil drops out automatically. The system defaults to its safe state without any intervention. You cannot run the process if the safety circuit is compromised.
+
+**The Mechanical Extension (ATO vs. ATC):** The failsafe concept doesn't stop at the electrical wiring; it must extend all the way through the final mechanical control element. For example, if your safety sequence requires a critical fuel valve to close, dropping power to the solenoid is only the first step. The solenoid vents the instrument air, but the pneumatic valve itself *must* be Fail-Closed / Air-To-Open (ATO). This ensures that when the air exhausts, the heavy mechanical spring slams the valve shut. If you mistakenly pair a DTT solenoid with an Air-To-Close (ATC) valve, losing air pressure will mechanically force the valve *open*—completely defeating your electrical failsafe. True functional safety requires analyzing the entire electro-pneumatic loop for end-to-end complexity and redundancy.
+
+### 3. Actionable Takeaways
+
+- **Audit Your E-Stops:** Ensure every Category 0 and Category 1 Emergency Stop button in your facility is wired with Normally Closed (N.C.) contacts wired in series, executing a de-energize to trip shutdown.
+- **Differentiate BPCS from SIS:** Use Energize-to-Actuate for non-critical process control, but strictly enforce De-Energize to Trip for any Safety Instrumented Function (SIF).
+- **Expect the Nuisance Trip:** DTT systems will occasionally cause "nuisance" trips due to minor power bumps or loose wires. Train operators that a nuisance trip is proof that the failsafe architecture is actively working and protecting them, not an annoyance to be bypassed.
