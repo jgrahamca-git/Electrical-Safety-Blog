@@ -19,11 +19,12 @@ import Quiz from '../../components/Quiz.astro';
 
 ### 1. The Hook (The Flashpoint)
 
-At 2:15 PM inside a heavy manufacturing plant, an electrician unbolted a main equipment grounding conductor (EGC) to isolate a section of a 480V Motor Control Center. The moment the copper lug separated from the ground bus, a massive 277V potential spiked across the open gap, instantly turning the electrician's body into the new fault path to earth and delivering a sustained, fatal shock.
+At 2:15 PM inside a heavy manufacturing plant, an electrician unbolted a main equipment grounding conductor (EGC) to isolate a section of a 480V Motor Control Center. The moment the copper lug separated from the ground bus, the full 277V potential spiked across the open gap, instantly turning the electrician's body into the new fault path to earth and delivering a sustained, fatal shock.
 
 ### 2. The Setup (The Context & Environment)
 
-The plant had been experiencing unexplained objectionable current on the grounding system and communication noise on their SCADA network for the past three weeks. Management suspected a circulating ground loop, causing a low-voltage differential across the facility's grounding array.
+The plant had been experiencing unexplained objectionable current on the grounding system and communication noise on their 
+Control network for the past three weeks. Management suspected a circulating ground loop, causing a low-voltage differential across the facility's grounding array.
 
 The task assigned to the senior electrician was to systematically isolate sections of the grounding grid at the MCC to pinpoint the source of the noise. It was a Friday afternoon, and he had been working a punishing 60-hour week. Failing to recognize the potential danger of an active fault returning on the grounding system, he bypassed verifying the wire with a clamp meter before touching it. He wore standard leather gloves, assuming they were dealing with purely structural safety bonding.
 
@@ -56,7 +57,8 @@ The electrician knelt in front of the MCC ground bus. What he didn't know was th
 The electrician inserted himself in series with an active ground fault by breaking an equipment grounding conductor that was actively carrying returning fault current.
 
 **Systemic/Human Cause**
-A deeply ingrained complacency regarding ground wires. Many technicians assume that green or bare wires are inherently safe and "dead" because their nominal function is just for emergency bonding. Time constraints and fatigue overrode standard verification protocols — a simple 5-second check with a clamp meter would have revealed the wire was carrying amperes of fault current, instantly warning the technician. Upstream of this: the facility had no ground-fault protection of equipment (GFPE) on the feeder, no continuous ground-current monitoring, and no work-planning procedure that classified grounding-system work on an energized distribution system as energized electrical work.
+A deeply ingrained complacency regarding ground wires. Many technicians and electricians 
+assume that green or bare wires are inherently safe and "dead" because their nominal function is just for emergency bonding. Time constraints and fatigue overrode standard verification protocols — a simple 5-second check with a clamp meter would have revealed the wire was carrying amperes of fault current, instantly warning the technician. Upstream of this: the facility had no ground-fault protection of equipment (GFPE) on the feeder, no continuous ground-current monitoring, and no work-planning procedure that classified grounding-system work on an energized distribution system as energized electrical work.
 
 ### 5. Relevant Codes & Standards
 
