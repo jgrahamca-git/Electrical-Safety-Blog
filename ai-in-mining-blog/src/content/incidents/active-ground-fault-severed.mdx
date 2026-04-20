@@ -17,18 +17,18 @@ keywords: "active ground fault path, objectionable current IEEE 142, GFPE ground
 
 import Quiz from '../../components/Quiz.astro';
 
-### 1. The Hook (The Flashpoint)
+### 1. The Flashpoint
 
 At 2:15 PM inside a heavy manufacturing plant, an electrician unbolted a main equipment grounding conductor (EGC) to isolate a section of a 480V Motor Control Center. The moment the copper lug separated from the ground bus, the full 277V potential spiked across the open gap, instantly turning the electrician's body into the new fault path to earth and delivering a sustained, fatal shock.
 
-### 2. The Setup (The Context & Environment)
+### 2. Context & Environment
 
 The plant had been experiencing unexplained objectionable current on the grounding system and communication noise on their 
 Control network for the past three weeks. Management suspected a circulating ground loop, causing a low-voltage differential across the facility's grounding array.
 
 The task assigned to the senior electrician was to systematically isolate sections of the grounding grid at the MCC to pinpoint the source of the noise. It was a Friday afternoon, and he had been working a punishing 60-hour week. Failing to recognize the potential danger of an active fault returning on the grounding system, he bypassed verifying the wire with a clamp meter before touching it. He wore standard leather gloves, assuming they were dealing with purely structural safety bonding.
 
-### 3. The Breakdown (Chronological Forensics)
+### 3. Chronological Forensics
 
 The electrician knelt in front of the MCC ground bus. What he didn't know was that a 50HP pump motor out in the plant had suffered an insulation failure earlier that morning. One phase of the 480V supply was actively shorted to the motor's metal casing. Because it was a high-impedance fault and the system was aging, the breaker had not tripped.
 
@@ -51,7 +51,7 @@ The electrician knelt in front of the MCC ground bus. What he didn't know was th
   explanation="When you interrupt a conductor actively carrying fault current, something must replace the path you just removed. In this case, the only remaining parallel path to the transformer neutral was through the electrician's body — roughly 1,000 Ω from hand to hand. The full 277V phase-to-ground potential drove current across his chest at the instant the lug separated. He didn't bridge a voltage — his body replaced the conductor."
 />
 
-### 4. The RCA (Root Cause Analysis)
+### 4. Root Cause Analysis
 
 **Direct Cause**
 The electrician inserted himself in series with an active ground fault by breaking an equipment grounding conductor that was actively carrying returning fault current.
@@ -66,6 +66,8 @@ assume that green or bare wires are inherently safe and "dead" because their nom
 - **NEC 230.95 / CEC Rule 14-102 (Ground-Fault Protection of Equipment)**
 - **IEEE 142 (Green Book) — Objectionable Current on the Grounding System**
 - **NFPA 70E Article 130 / CSA Z462 Clause 4.3 (Working On or Near Live Parts)**
+
+<br />
 
 ### 6. Failure Modes and Effects Analysis (FMEA)
 
@@ -83,7 +85,7 @@ Every significant failure mode in this incident — from the motor insulation br
 
 The pattern is structural: two engineering gaps (GFPE, ground-current monitoring) plus three procedural gaps (JHA scope, test-before-touch, isolation method) combined to enable this fatality. No single person failed — the system was designed in a way that made this outcome available.
 
-### 7. The "Takeaway" (Actionable Conclusion)
+### 7. Actionable Conclusion
 
 1. **Always Clamp Grounds Before Lifting:** Never disconnect an equipment grounding conductor, system bonding jumper, or neutral wire without first checking it with a clamp meter. If it is carrying current, do not touch it. Treat any non-zero reading as a live conductor until the source fault is identified and cleared.
 2. **Treat Grounds as Live Potential:** Assume every conductor is energized until you prove otherwise. A ground wire carrying fault current operates at line voltage the instant you break its connection. The green jacket does not make it safe.
