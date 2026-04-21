@@ -118,9 +118,9 @@ import CategoryDailyTopic from '../../assets/category-daily-topic.jpg';
 							<li>
 								<a href={`/safety-topics/${post.id}/`}>
 									{post.data.heroImage ? (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" style="object-fit:cover;object-position:top;" />
+										<Image width={720} height={180} src={post.data.heroImage} alt="" style="object-fit:cover;object-position:center;height:180px;" />
 									) : (
-										<Image width={720} height={360} src={CategoryDailyTopic} alt="Safety Topic" style="object-fit:cover;object-position:top;" />
+										<Image width={720} height={180} src={CategoryDailyTopic} alt="Safety Topic" style="object-fit:cover;object-position:center;height:180px;" />
 									)}
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
