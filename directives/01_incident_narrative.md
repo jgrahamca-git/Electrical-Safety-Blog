@@ -7,8 +7,9 @@ This document strictly defines the storytelling architecture and formatting requ
 
 Every Incident RCA must adhere rigidly to the following 6 chronological sections:
 
-### 0. The Frontmatter (Safety Hook Title)
+### 0. The Frontmatter (Safety Hook Title & Publish Date)
 - **Format:** The `title` field in the frontmatter MUST be a "safety hook title" – punchy, immediate, and communicating the critical stakes of the incident. It should grab attention immediately.
+- **Publish Date:** The `pubDate` field in the frontmatter MUST always be scheduled for a upcoming Tuesday.
 
 ### 1. The Hook (The Flashpoint)
 - **Format:** A punchy 1-2 sentence opening that immediately describes the most dramatic moment of the incident. No gradual buildup to start; go straight to the impact. The impact does not always have to be a personal injury—it can be catastrophic equipment damage, a massive fire, or a narrow near-miss that caused heavy downtime.

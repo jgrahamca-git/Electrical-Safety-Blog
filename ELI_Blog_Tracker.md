@@ -284,6 +284,11 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, decision, rationale, what it replaced.*
 
+### 2026-04-21 — Tuesday publication for Incident RCAs
+- **Decision:** All future Incident RCAs will be published on Tuesdays (via the `pubDate` parameter). Updated `directives/01_incident_narrative.md` to mandate this schedule.
+- **Rationale:** The user asked for all future Incident RCAs to occur every Tuesday instead of Monday to better optimize the content schedule.
+- **Replaced:** Previously, Incident RCAs did not have a strict mandatory weekday for publication, and the recent post was targeted for a Monday.
+
 ### 2026-04-16 — Permanent Mission Banner & May Electrical Safety Month logic
 - **Decision:** Added a permanent top banner stating "Blog Mission: Transforming past incidents into actionable insights to prevent future accidents." In `Header.astro`, added a check (`now.getUTCMonth() === 4`) that dynamically swaps the "Blog Mission" prefix to "May is National Electrical Safety Month" during May.
 - **Rationale:** Establishes the site's primary philosophy of learning from accidents to save lives permanently at the top of the page, while seamlessly aligning with the industry-wide safety month without manual intervention every year.
@@ -350,6 +355,10 @@ Total: 27 tasks · ~36 hours
 ## 3. Progress log
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
+
+### 2026-04-21 — Incident RCA Scheduling Update
+
+- change    | Updated directives `01_incident_narrative.md` and the Decision Log to mandate all future Incident RCAs to be published on Tuesdays.
 
 ### 2026-04-16 — Codes & Standards Workflow Update
 
