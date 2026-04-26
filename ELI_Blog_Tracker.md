@@ -356,6 +356,15 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
+### 2026-04-26 — RCA File Rename
+
+- progress  | Acknowledged RCA file rename from `oveloaded-neutrals-600y-347v.mdx` to `overloaded-neutrals-347v-277v.mdx` to correct spelling and properly reference voltages.
+
+### 2026-04-25 — Weekly Batch Drafted (April 27th Week)
+
+- progress  | Drafted 7 Daily Safety Topics (AI Black Box, 2oo3 Voting, Predictive Proof Testing, Bridged Contacts, VFD Carrier Frequencies, Maintenance ROI, SIL Levels).
+- progress  | Drafted Incident RCA: The Harmonic Your Neutral Can't Handle (600Y/347V MWBC Overload).
+
 ### 2026-04-21 — Incident RCA Scheduling Update
 
 - change    | Updated directives `01_incident_narrative.md` and the Decision Log to mandate all future Incident RCAs to be published on Tuesdays.
@@ -469,18 +478,18 @@ Paste or upload this entire file at the start of any AI conversation about the E
 
 ## 5. Topics Queue (Upcoming Posts)
 
-These eight topics are drafted for the coming week and awaiting final editorial sign-off and publishing (April 20th to 26th):
+These eight topics are drafted for the coming week and awaiting final editorial sign-off and publishing (April 27th to May 3rd):
 
 | Topic | criticality | conclusion_state |
 |-------|-------------|-----------------|
-| The Hidden Fault: Severing an Active Ground Path (RCA) | L3 | hazard |
-| The De-Energize to Trip (Failsafe) Principle | L0 | safe |
-| Dynamic Arc Flash Incident Energy Modeling | L0 | neutral |
-| Control vs. Safety Separation (BPCS and SIS) | L0 | neutral |
-| AI Pattern Recognition for Mining Ground Faults | L0 | neutral |
-| High-Resistance Grounding (HRG) Systems Explained | L0 | safe |
-| Capacitive Coupling: Reading Ghost Voltages | L1 | hazard |
-| High Performance HMI: Saving Seconds | L0 | safe |
+| The Harmonic Your Neutral Can't Handle (RCA) | L2 | hazard |
+| "The Black Box Problem" — Why AI Cannot Yet SIL-Certify | L0 | neutral |
+| The 2oo3 Voting Logic Gold Standard | L0 | safe |
+| Predictive Proof Testing via Smart Instruments | L0 | safe |
+| True-RMS vs Averaging Meters: Why Your Ammeter is Lying to You | L1 | hazard |
+| The Hazards of Incorrect VFD Carrier Frequencies | L1 | hazard |
+| The Safety ROI of Proper Equipment Maintenance | L0 | safe |
+| What is SIL (Safety Integrity Level)? | L0 | neutral |
 
 ---
 
@@ -488,6 +497,14 @@ These eight topics are drafted for the coming week and awaiting final editorial 
 
 *Do not propose these topics again for Daily Safety Topics or RCAs to prevent duplicates.*
 
+- The Hidden Fault: Severing an Active Ground Path (RCA) (`active-ground-fault-severed.mdx`)
+- The De-Energize to Trip (Failsafe) Principle (`failsafe-de-energize-to-trip.mdx`)
+- Dynamic Arc Flash Incident Energy Modeling (`dynamic-arc-flash.mdx`)
+- Control vs. Safety Separation (BPCS and SIS) (`bpcs-sis-separation.mdx`)
+- AI Pattern Recognition for Mining Ground Faults (`ai-mining-ground-fault.mdx`)
+- High-Resistance Grounding (HRG) Systems Explained (`hrg-system-explained.mdx`)
+- Capacitive Coupling: Reading Ghost Voltages (`ghost-voltages.mdx`)
+- High Performance HMI: Saving Seconds (`high-performance-hmi.mdx`)
 - Alarm Floods and HMI Blindness (`alarm-floods-hmi.md`)
 - VFD Induced Shaft Voltages (`vfd-shaft-voltages.md`)
 - De-rating Ampacity in Overfilled Cable Trays (`overfilled-cable-trays.md`)
