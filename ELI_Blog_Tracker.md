@@ -478,71 +478,15 @@ Paste or upload this entire file at the start of any AI conversation about the E
 
 ## 5. Topics Queue (Upcoming Posts)
 
-These eight topics are drafted for the coming week and awaiting final editorial sign-off and publishing (April 27th to May 3rd):
+These eight topics are drafted for the coming week and awaiting final editorial sign-off and publishing (April 27th to May 3rd). They have now been moved to the previously covered list to prevent regeneration.
 
-| Topic | criticality | conclusion_state |
-|-------|-------------|-----------------|
-| The Harmonic Your Neutral Can't Handle (RCA) | L2 | hazard |
-| "The Black Box Problem" — Why AI Cannot Yet SIL-Certify | L0 | neutral |
-| The 2oo3 Voting Logic Gold Standard | L0 | safe |
-| Predictive Proof Testing via Smart Instruments | L0 | safe |
-| True-RMS vs Averaging Meters: Why Your Ammeter is Lying to You | L1 | hazard |
-| The Hazards of Incorrect VFD Carrier Frequencies | L1 | hazard |
-| The Safety ROI of Proper Equipment Maintenance | L0 | safe |
-| What is SIL (Safety Integrity Level)? | L0 | neutral |
+*No topics currently in the upcoming queue.*
 
 ---
 
 ## 6. Topics log (previously covered)
 
-*Do not propose these topics again for Daily Safety Topics or RCAs to prevent duplicates.*
+*To optimize this tracker, all published and previously covered topics have been moved to a dedicated archive file.*
 
-- The Hidden Fault: Severing an Active Ground Path (RCA) (`active-ground-fault-severed.mdx`)
-- The De-Energize to Trip (Failsafe) Principle (`failsafe-de-energize-to-trip.mdx`)
-- Dynamic Arc Flash Incident Energy Modeling (`dynamic-arc-flash.mdx`)
-- Control vs. Safety Separation (BPCS and SIS) (`bpcs-sis-separation.mdx`)
-- AI Pattern Recognition for Mining Ground Faults (`ai-mining-ground-fault.mdx`)
-- High-Resistance Grounding (HRG) Systems Explained (`hrg-system-explained.mdx`)
-- Capacitive Coupling: Reading Ghost Voltages (`ghost-voltages.mdx`)
-- High Performance HMI: Saving Seconds (`high-performance-hmi.mdx`)
-- Alarm Floods and HMI Blindness (`alarm-floods-hmi.md`)
-- VFD Induced Shaft Voltages (`vfd-shaft-voltages.md`)
-- De-rating Ampacity in Overfilled Cable Trays (`overfilled-cable-trays.md`)
-- Bump Testing vs Calibration for Gas Monitors (`gas-monitor-bump-test.md`)
-- System Bonding Jumpers in Isolation Transformers (`system-bonding-transformers.md`)
-- Motor Phase Rotation Verification Hazards (`phase-rotation-hazards.md`)
-- Leaving Breaker Panel Covers Off Overnight (`panel-covers-off.md`)
-- Identifying Frayed Cables (`identifying-frayed-cables.md`)
-- Arc Flash Boundaries (`arc-flash-boundaries.md`)
-- Understanding CAT Ratings (`understanding-cat-ratings.md`)
-- The Complacency Trap (`complacency-trap.md`)
-- Emergency Stop Testing (`emergency-stop-testing.md`)
-- The First 60 Seconds of an Arc Flash (`first-60-seconds-arc.md`)
-- Inspecting PPE (`inspecting-ppe.md`)
-- Limits of Rubber Gloves (`limit-of-rubber-gloves.md`)
-- Lockout Tagout Foundations (`lockout-tagout.md`)
-- Master Lockbox Method (`master-lockbox-method.md`)
-- Preventing Ground Faults (`preventing-ground-faults.md`)
-- Safety PLCs and Architecture (`safety-plcs-and-architecture.md`)
-- Ten Foot Rule for Mobile Equipment (`ten-foot-rule-mobile-equipment.md`)
-- Test Before Touch (`test-before-touch.md`)
-- Intrinsic Safety (IS) Barrier Bypassing (`intrinsic-safety-bypassing.md`)
-- VFD DC Bus Discharge Wait Times (`vfd-dc-bus-discharge-times.md`)
-- Motor Space Heater Hazards During LOTO (`motor-space-heater-hazards.md`)
-- Current Transformer (CT) Open-Circuit Hazards (`ct-open-circuit-hazards.md`)
-- The Lethal Myth of "Earth" as a Fault Return Path (`lethal-myth-of-earth.md`)
-- Why Aluminum-to-Copper Terminations Burn Down Panels (`aluminum-copper-terminations.md`)
-- The Hidden Danger of Back-fed Control Transformers (`backfed-control-transformers.md`)
-- The Rise of Smart PPE and Voltage-Detecting Gloves (`smart-ppe-voltage-sensing.md`)
-- The Silent Shock: Why a Tingling Drill Rig Is a Deadly Warning (`tingling-drill-rig.md`)
-- Eliminating Trailing Cable Meltdown: Advanced NGR Relays for Mobile Mining Equipment (`advanced-ngr-relays.md`)
-- Selected Product of the Week: Enhanced Arc Flash PPE (`sample-product.md`)
-- The Hidden Danger of Dual-Source Equipment (`dual-source-equipment.md`)
-- Multimeter Discipline: The "Deadly Jack" Mistake (`multimeter-deadly-jack.md`)
-- Normalizing Deviations with PPE (`normalizing-deviations-ppe.md`)
-- Understanding the "Tryout" in LOTO (`tryout-in-loto.md`)
-- BESS: Thermal Runaway and Stranded Energy (`bess-thermal-runaway.md`)
-- Solar Inverter Backfeed: Isolating the Grid vs The Array (`solar-inverter-backfeed.md`)
-- Backfed Generator Shock (`backfed-generator-shock.mdx`)
-- Induced Voltage Incident (`induced-voltage.mdx`)
-- Foundation Food Group Liquid Nitrogen Incident (`foundation-food-group-liquid-nitrogen.mdx`)
+👉 **See `ELI_Topics_Archive.md` for the full list of published topics.** 
+*(Do not propose topics listed in the archive again for Daily Safety Topics or RCAs to prevent duplicates.)*
