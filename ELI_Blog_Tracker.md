@@ -120,7 +120,7 @@ description: "..."
 pubDate: "YYYY-MM-DD"
 category: "incidents" | "safety-topics" | "safety-news"
 tags: ["tag1", "tag2"]
-heroImage: "./eli-[category]-[L0-3]-[slug].jpg"
+image: "./eli-[category]-[L0-3]-[slug].jpg"
 # Agent-suggested — Jason confirms at Gate 1
 criticality: "L0" | "L1" | "L2" | "L3"
 conclusion_state: "safe" | "hazard" | "neutral"
@@ -356,10 +356,8 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
-### 2026-04-26 — Weekly Batch Finalized & Deployed
+### 2026-04-26 — RCA File Rename
 
-- progress  | Tested local Astro build successfully for next week's batch after fixing MDX comment formatting (`{/* */}`) across all `.mdx` files and correcting the `public/images/` path for the RCA's FMEA image.
-- progress  | Batch editorially confirmed (`editor_confirmed: true`) and successfully pushed to GitHub. Netlify automated builds will handle the scheduled deployment.
 - progress  | Acknowledged RCA file rename from `oveloaded-neutrals-600y-347v.mdx` to `overloaded-neutrals-347v-277v.mdx` to correct spelling and properly reference voltages.
 
 ### 2026-04-25 — Weekly Batch Drafted (April 27th Week)
