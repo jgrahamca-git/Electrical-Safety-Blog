@@ -196,9 +196,9 @@ primaryKeyword: "..."
 | ANY meter display | NEVER AI | AI meter readings are always wrong |
 | ANY wiring schematic | NEVER AI | AI produces incorrect topology |
 
-**Fallback Images:**
+**Fallback Images / Banners:**
 - `src/assets/category-safety-news.jpg` — Use for safety news posts that lack a specific image.
-- `src/assets/category-daily-topic.jpg` — Use for daily safety topics that lack a specific image.
+- **Daily Safety Topics:** No longer use a fallback image. Instead, they dynamically render a pure CSS text banner displaying the day of the week (e.g., "MONDAY") extracted from the `pubDate` using `Intl.DateTimeFormat`. This applies to both the article page header (`60px` height ribbon) and the article cards.
 
 **Image naming convention [REVISED 2026-04-10]:** `[primary-keyword-phrase]-[secondary-context].jpg`
 Example: `hmi-alarm-flood-scada-systems.jpg` or `system-bonding-jumper-isolation-transformer.jpg`

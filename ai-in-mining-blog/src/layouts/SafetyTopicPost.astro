@@ -22,8 +22,6 @@ const {
   conclusion_state,
 } = Astro.props;
 
-import CategoryDailyTopic from '../assets/category-daily-topic.jpg';
-const fallbackImage = CategoryDailyTopic;
 ---
 
 <html lang="en">
@@ -160,6 +158,27 @@ const fallbackImage = CategoryDailyTopic;
       }
 
       /* ── INLINE HERO IMAGE ── */
+      .fallback-day-banner-hero {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--eli-dark, #141720);
+        background-image: repeating-linear-gradient(
+          90deg,
+          rgba(232,104,10,0.03) 0px,
+          rgba(232,104,10,0.03) 1px,
+          transparent 1px,
+          transparent 40px
+        );
+        color: var(--eli-accent, #E8680A);
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
       .topic-image {
         display: block;
         margin: 2rem auto;
@@ -321,7 +340,7 @@ const fallbackImage = CategoryDailyTopic;
         <div class="hero-image">
           {heroImage
             ? <Image width={1400} src={heroImage} alt={title} style="width:100%;height:320px;object-fit:cover;object-position:top;filter:brightness(0.55) saturate(0.8);" />
-            : <Image src={fallbackImage} alt="Safety Graphic" style="max-width:300px; height:auto; margin:0 auto; filter:brightness(0.8);" />
+            : <div class="fallback-day-banner-hero">{new Intl.DateTimeFormat('en-US', { weekday: 'long', timeZone: 'UTC' }).format(pubDate)}</div>
           }
         </div>
 

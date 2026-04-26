@@ -9,8 +9,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
-import CategoryDailyTopic from '../assets/category-daily-topic.jpg';
-const fallbackImage = CategoryDailyTopic;
 const now = new Date();
 const endOfToday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 23, 59, 59, 999));
 
@@ -190,6 +188,21 @@ const featuredIncident = allIncidents[0];
 
       .featured-card .card-img-wrap { height: 220px; }
 
+      .fallback-day-banner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--eli-dark, #141720);
+        color: var(--eli-accent, #E8680A);
+        font-family: var(--font-sub, 'Rajdhani', sans-serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
+
       .card-img-wrap img {
         width: 100%;
         height: 100%;
@@ -317,10 +330,16 @@ const featuredIncident = allIncidents[0];
               <article class="card">
                 <a href={`/safety-topics/${topic.id}/`}>
                   <div class="card-img-wrap">
-                    <img 
-                      src={topic.data.heroImage ? (topic.data.heroImage.src || topic.data.heroImage) : fallbackImage.src} 
-                      alt={topic.data.title} 
-                    />
+                    {topic.data.heroImage ? (
+                      <img 
+                        src={topic.data.heroImage.src || topic.data.heroImage} 
+                        alt={topic.data.title} 
+                      />
+                    ) : (
+                      <div class="fallback-day-banner">
+                        {new Intl.DateTimeFormat('en-US', { weekday: 'long', timeZone: 'UTC' }).format(topic.data.pubDate)}
+                      </div>
+                    )}
                     <div class="card-cat-bar">
                       {topic.data.criticality && <CriticalityBadge level={topic.data.criticality} />}
                       <CategoryBadge tag="safety-topic" />
