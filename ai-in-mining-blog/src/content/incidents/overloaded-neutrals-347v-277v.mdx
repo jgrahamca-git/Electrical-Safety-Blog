@@ -16,7 +16,7 @@ primaryKeyword: "triplen harmonic neutral overload"
 
 import Quiz from '../../components/Quiz.astro';
 
-### 1. The 347V / 277V Trap
+### 1. The 347V / 277V - Know Your Neutral?
 
 Almost every medium to large Canadian commercial and industrial building wired between 1970 and 2015 ran interior lighting on three phase 600Y/347V four wire circuits — with each one of the phase branches sharing one neutral. The US analog at 480Y/277V uses 277V lighting on the same topology. Copper saved at install. Supposed to be efficient.
 
@@ -32,7 +32,7 @@ No phase breaker noticed. The phase ammeter looked balanced and well below trip.
 
 At 347V line-to-neutral, **a disconnected or opened neutral on an energized circuit turns the neutral into another hot conductor**. An electrician, if holding the neutral and making contact with a ground can create a new parallel path — a fatality risk, not just a fire risk. Always ensure and verify removal of power when working on this type of system! Do not confuse this with an open neutral at the transformer wye point of the four wire system. That is a different scenario which could potentially cause an even higher voltage potential causing damage to equipment etc. Note that this type of transformer open neutral scenario in a 240V/120V single phase system can potentially cause both larger and smaller voltages to appear on the 120V wired equipment. 
 
-277V on a 480Y/277V system carries the same risks at slightly lower voltage. Public reporting documents an apprentice electrocuted contacting an energized 277V conductor on a high-rise build, and a journeyman who survived contacting an open 277V ballast neutral only because the shock threw him clear of the ladder. An older 277V ballast creates a series voltage rise across the open neutral that can in turn creates a fatality risk.
+277V on a 480Y/277V system carries the same risks at slightly lower voltage. Public reporting documents an apprentice electrocuted contacting an energized 277V conductor on a high-rise build, and a journeyman who survived contacting an open 277V ballast neutral only because the shock threw him clear of the ladder. An older 277V ballast creates a series voltage rise across the open neutral that can in turn create a fatality risk.
 
 #### The Canadian retrofit precedent
 
@@ -200,17 +200,5 @@ PRIMARY SOURCE URLS
 - Alberta CEC-4 Information Bulletin: https://open.alberta.ca/dataset/7887ccca-d84e-4156-8e32-8f3ebd3ed66d/resource/e22400d0-8d6a-4335-b4b5-ed19f2f58f34/download/451-cec-4rev8-jan2016.pdf
 - MDPI Energies (2026) — Impact of Triplen Harmonics on Neutral Conductor Overheating: https://www.mdpi.com/1996-1073/19/7/1743
 
-LINKEDIN DRAFT
-Hook: An East Coast power-quality crew clamped a True-RMS meter onto a transformer neutral and read 100% third-harmonic content with only 17% fundamental. The fire didn't happen — the transformers got swapped before it did.
 
-Setup: When neutrals melt down in industrial plants, the post-incident meeting always blames the giant three-phase drives. Standard 6-pulse VFDs don't connect to the neutral. Their 5th and 7th order harmonics circulate in the phase conductors. They aren't the suspect.
-
-Core: The triplens that cook neutrals come from the LED drivers and SMPS loads no one audits — single-phase nonlinear loads on shared neutrals stack arithmetically as zero-sequence current. On Canadian 347V lighting and US 277V lighting both, the multi-wire branch circuit topology concentrates that current on a single neutral that nobody re-sized when the retrofit happened.
-
-Takeaway: An energy-saving LED retrofit can re-engineer fire risk into your panel overnight. Measure your neutral with a True-RMS meter. The phase ammeter is lying.
-
-CTA: Have you measured neutral current on a 347V or 277V lighting panel after an LED retrofit, and what did you find?
-
-Link: [Blog Link]
-Hashtags: #PowerQuality #Harmonics #ElectricalSafety #IndustrialMaintenance #LEDLighting #CEC
 */}
