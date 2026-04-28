@@ -18,12 +18,17 @@ const latestTopic = topics
   .filter((post) => post.data.pubDate <= endOfToday)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())[0];
 
+const isDayOfMourning = now.getUTCMonth() === 3 && now.getUTCDate() === 28; // April 28
 const isElectricalSafetyMonth = now.getUTCMonth() === 4; // May is month index 4
 ---
 
 <header>
   <div class="safety-month-banner">
-    <strong>⚡ {isElectricalSafetyMonth ? "May is National Electrical Safety Month" : "Blog Mission"}:</strong> Transforming past incidents into actionable insights to prevent future accidents.
+    {isDayOfMourning ? (
+      <strong>⚡ Canada's Day of Mourning -Moment of Silence 11am</strong>
+    ) : (
+      <><strong>⚡ {isElectricalSafetyMonth ? "May is National Electrical Safety Month" : "Blog Mission"}:</strong> Transforming past incidents into actionable insights to prevent future accidents.</>
+    )}
   </div>
   <nav>
     <h2>
