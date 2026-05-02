@@ -155,7 +155,7 @@ const {
 </style>
 
 <script is:inline>
-	async function submitMailerLiteForm(e, formElement) {
+	window.submitMailerLiteForm = async function(e, formElement) {
 		e.preventDefault(); // Bulletproof prevention of new tabs
 		
 		const formContainer = formElement.closest('.row-form');
@@ -191,5 +191,5 @@ const {
 				btn.disabled = false;
 			}
 		}
-	}
+	};
 </script>

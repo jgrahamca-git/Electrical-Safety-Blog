@@ -2,19 +2,19 @@
 > ai-in-mining-blog@0.0.1 build
 > astro build
 
-11:58:30 [@astrojs/netlify] Enabling sessions with Netlify Blobs
-11:58:31 [content] Syncing content
-11:58:31 [content] Synced content
-11:58:31 [types] Generated 1.10s
-11:58:31 [build] output: "static"
-11:58:31 [build] mode: "server"
-11:58:31 [build] directory: /home/jgrah/Blog_EI_Safety/ai-in-mining-blog/dist/
-11:58:31 [build] adapter: @astrojs/netlify
-11:58:31 [build] Collecting build info...
-11:58:31 [build] ✓ Completed in 1.20s.
-11:58:31 [build] Building server entrypoints...
-11:58:34 [ERROR] [vite] ✗ Build failed in 2.46s
-[ImageNotFound] [commonjs--resolver] Could not find requested image `../../assets/motor-phase-rotation-testing-arc-flash.jpg`. Does it exist?
+14:37:40 [@astrojs/netlify] Enabling sessions with Netlify Blobs
+14:37:41 [content] Syncing content
+14:37:41 [content] Synced content
+14:37:41 [types] Generated 1.06s
+14:37:41 [build] output: "static"
+14:37:41 [build] mode: "server"
+14:37:41 [build] directory: /home/jgrah/Blog_EI_Safety/ai-in-mining-blog/dist/
+14:37:41 [build] adapter: @astrojs/netlify
+14:37:41 [build] Collecting build info...
+14:37:41 [build] ✓ Completed in 1.14s.
+14:37:41 [build] Building server entrypoints...
+14:37:44 [ERROR] [vite] ✗ Build failed in 2.78s
+[ImageNotFound] [commonjs--resolver] Could not find requested image `../../assets/cabin-creek-banner.png`. Does it exist?
   Hint:
     This is often caused by a typo in the image path. Please make sure the file exists, and is spelled correctly.
   Error reference:

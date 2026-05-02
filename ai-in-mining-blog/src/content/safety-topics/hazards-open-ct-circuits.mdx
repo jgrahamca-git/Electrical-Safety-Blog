@@ -1,0 +1,65 @@
+---
+title: "The Lethal Gap: Hazards of Open Current Transformer (CT) Circuits"
+description: "Understanding the physics of why opening the secondary circuit of a Current Transformer under load generates lethal, catastrophic high voltage."
+pubDate: "2026-05-10"
+category: "safety-topics"
+tags: ["High Voltage", "Transformers", "Metering", "Hazards"]
+image: "./eli-safety-topics-L3-open-ct.jpg"
+criticality: "L3"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Open Current Transformer (CT) Hazard: Lethal High Voltage"
+metaDescription: "Learn why opening the secondary circuit of a Current Transformer (CT) under load creates lethal high voltage and how to safely short CT blocks."
+primaryKeyword: "open current transformer hazard"
+---
+
+### 1. The Function of a Current Transformer
+
+In heavy industrial power systems, we cannot directly run 4,160 Volts or thousands of Amps into a small digital protective relay or a power meter. We use **Current Transformers (CTs)** to step down massive primary currents to a safe, measurable, and proportional secondary current (typically 0-5 Amps).
+
+A CT is essentially a transformer operating in reverse. The massive busbar carrying the plant's load acts as a single-turn primary winding. The secondary winding, wrapped around a magnetic core, contains hundreds or thousands of turns of fine wire. 
+
+### 2. The Physics of the Hazard
+
+By design, a CT is a constant-current device. As long as current flows through the primary busbar, the magnetic flux in the core will force a proportional current to flow through the secondary circuit (to the meter or relay). 
+
+Because the secondary circuit is normally a closed loop with very low impedance (the relay), the voltage on the secondary wires remains safely low. 
+
+**The fatal mistake occurs when a technician disconnects the secondary wire (opening the circuit) while the primary busbar is still energized and carrying load.**
+
+### 3. The Infinite Voltage Spike
+
+When the secondary circuit is opened, the current has nowhere to go, but the primary magnetic flux is still violently demanding that current flow. 
+
+To overcome the infinite resistance of the open air gap, the CT acts as an extreme step-up transformer. The voltage across the open secondary terminals skyrockets. Within milliseconds, it can peak at several thousand volts. 
+- **Lethal Shock:** The technician holding the disconnected wire is instantly exposed to lethal high voltage.
+- **Dielectric Breakdown:** The extreme voltage will shred the insulation inside the CT windings, causing an internal short circuit, melting the CT, and potentially triggering a catastrophic phase-to-ground arc flash on the primary bus.
+
+### 4. Actionable Takeaways
+
+- **Never Open a Live CT:** Under no circumstances should you ever disconnect the secondary wiring of a Current Transformer while current is flowing through the primary.
+- **Short It Out First:** If you must remove a meter or relay while the system is live, you must completely **short-circuit** the secondary terminals of the CT using a specialized CT shorting block.
+- **Why Shorting is Safe:** Shorting a CT is the exact opposite of shorting a voltage transformer (PT). A CT *wants* to drive current. By providing a zero-ohm short circuit, the current flows happily, and the voltage drops to near zero, rendering the circuit perfectly safe to work on.
+
+{/* 
+IMAGE PROMPT (Imagen 3):
+Close-up of a heavy industrial CT shorting terminal block with brass shorting screws engaged, thick copper wiring, surface oxidation, single warm sidelight from left, dark background.
+
+LINKEDIN DRAFT:
+Short-circuiting a transformer is usually a disaster. Unless it's a Current Transformer (CT)—then it saves your life. ⚡
+
+A CT steps down massive primary amps to a measurable 0-5A signal. As long as the secondary circuit is closed (running to a meter), the voltage stays safely low.
+
+But if a tech makes the fatal mistake of disconnecting that wire while the primary is under load, the physics violently shift. The CT demands current flow. Confronted with the infinite resistance of an open gap, the CT steps the voltage up into the thousands. 
+
+The tech holding the wire takes a lethal shock, and the CT insulation blows apart from the inside, triggering a massive arc flash.
+
+NEVER open a live CT circuit. You must safely short the terminals at the shorting block before removing a meter. 
+
+Have you ever found a CT terminal block where the shorting screws were missing entirely? 👇
+
+[BLOG_LINK_PLACEHOLDER]
+
+#ElectricalSafety #HighVoltage #PowerSystems #CurrentTransformer #Engineering 
+*/}

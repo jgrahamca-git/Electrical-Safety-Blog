@@ -1,0 +1,68 @@
+---
+title: "The Mark of Safety: Ensuring Devices are CSA and cUL Listed"
+description: "Why installing non-NRTL approved grey-market electrical components exposes your facility to extreme liability and catastrophic failure."
+pubDate: "2026-05-06"
+category: "safety-topics"
+tags: ["Standards", "Compliance", "Hardware", "Fire Hazard"]
+image: "./eli-safety-topics-L2-csa-cul-marks.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "CSA and cUL Listed Devices: The Importance of NRTL Marks"
+metaDescription: "Understand why using CSA and cUL listed devices is legally required by electrical codes and how non-listed power supplies trigger catastrophic failures."
+primaryKeyword: "CSA and cUL listed"
+---
+
+### 1. The Grey-Market Temptation
+
+In the middle of a night shift, the main 24VDC DIN-rail power supply in a critical control cabinet burns up. The exact replacement is back-ordered, but the maintenance supervisor finds a visually identical, off-brand power supply on a discount online marketplace for a fraction of the cost. It ships overnight. 
+
+It fits perfectly on the DIN rail. It powers up the PLC perfectly. But there is a massive unseen hazard: the component lacks a recognized testing mark. It is not CSA, UL, or cUL listed.
+
+### 2. What NRTL Marks Actually Mean
+
+A mark from a Nationally Recognized Testing Laboratory (NRTL)—such as UL (Underwriters Laboratories) or CSA (Canadian Standards Association)—is not just a sticker. It is the result of brutal, destructive engineering validation.
+
+When UL or CSA tests an industrial power supply, they don't just verify that it outputs 24 Volts. They verify **dielectric isolation**—ensuring the high-voltage primary side (120V or 480V) can never physically bridge to the low-voltage secondary side. They also force the unit into a dead-short and a thermal overload to prove that it fails safely without catching fire.
+
+### 3. The Danger of Unlisted Power Supplies
+
+Unlisted, counterfeit, or "grey-market" power supplies often look identical to major brands on the outside but are dangerously stripped down on the inside:
+- **Lack of Dielectric Isolation:** Cheap internal transformers lack proper physical separation. If the primary winding shorts to the secondary, the power supply will instantly inject 120V AC directly onto your 24V DC control bus, instantly frying the PLC, every I/O card, and the HMI.
+- **No Thermal Overload Protection:** To save money, counterfeiters remove internal thermal fuses. If the load draws too much current, the internal components simply overheat until the plastic casing melts and starts a severe panel fire.
+- **Poor Filtering:** They output "dirty" DC power riddled with AC ripple, causing erratic behavior and phantom faults in sensitive instrumentation long before they physically fail.
+
+### 4. The Legal and Code Requirements
+
+Using unlisted equipment isn't just dangerous; it's a direct code violation.
+- **NEC Article 110.2 (Approval):** Mandates that all conductors and equipment must be acceptable only if "approved," which universally means listed by an NRTL.
+- **CEC Section 2-024 (Approval of electrical equipment):** Explicitly requires electrical equipment to be approved (bearing the mark of an accredited certification body like CSA) before it can be used or installed.
+
+If an unlisted component causes a fire or injury, the facility's insurance will almost certainly deny the claim, and the liability will fall squarely on the management and the electrician who installed it.
+
+### 5. Actionable Takeaways
+
+- **Inspect the Sticker:** Before installing any new component, physically verify the presence of a legitimate CSA, UL, cUL, or ETL mark. 
+- **Beware of the "CE" Mark:** The CE mark is a European self-certification mark. It is **not** an NRTL listing and does not legally satisfy North American electrical code requirements for approval.
+- **Traceability:** Only purchase critical electrical components through authorized distributors, never from unverified third-party online marketplaces.
+
+{/* 
+IMAGE PROMPT (Imagen 3):
+Close-up of a melted and charred 24VDC DIN-rail industrial power supply inside a grey cabinet, showing a melted green terminal block, single warm sidelight from left, dark background.
+
+LINKEDIN DRAFT:
+That cheap replacement power supply could void your insurance and burn down your control panel. ⚠️
+
+When a 24VDC power supply fails at 2 AM, it's tempting to order a cheap, visually identical knock-off online. But if it lacks a legitimate NRTL mark (like CSA or cUL), you are installing a bomb. 
+
+NRTL testing ensures that a power supply has proper dielectric isolation. Counterfeits routinely skip this to save money. If an unlisted power supply fails internally, it can inject 120V AC directly onto your 24V DC bus—instantly frying your PLC, I/O cards, and HMI, or melting down into a panel fire because it lacks thermal protection.
+
+Also: The European "CE" mark is a self-certification. It does NOT satisfy North American electrical code requirements (NEC/CEC). 
+
+Have you ever caught a grey-market counterfeit part in your facility? What gave it away? 👇
+
+[BLOG_LINK_PLACEHOLDER]
+
+#ElectricalSafety #NFPA70E #CSA #Compliance #PLC
+*/}
