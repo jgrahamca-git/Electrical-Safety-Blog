@@ -356,6 +356,12 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
+### 2026-05-02 — Weekly Batch Drafted (May 4th Week)
+
+- progress  | Drafted 7 Daily Safety Topics (Control System Shield Grounding, Safety Relay Logic, CSA / cUL Marks, Surge Protection Devices, Bridged Contacts in PLCs, Computer Vision Boundaries, Open CT Circuits).
+- progress  | Drafted Incident RCA: The Invisible Ignition (Xcel Cabin Creek Static Fire).
+- progress  | Resolved Astro ViewTransitions `<ClientRouter />` rendering crash by correcting MDX comments to `{/* */}` and fixing inline script scope.
+
 ### 2026-04-26 — RCA File Rename
 
 - progress  | Acknowledged RCA file rename from `oveloaded-neutrals-600y-347v.mdx` to `overloaded-neutrals-347v-277v.mdx` to correct spelling and properly reference voltages.

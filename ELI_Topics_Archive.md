@@ -2,6 +2,14 @@
 
 *This file stores all previously covered and published blog topics to keep the main ELI Blog Tracker lean. Do not propose these topics again for Daily Safety Topics or RCAs to prevent duplicates.*
 
+- The Invisible Ignition: Static Grounding Failure in a Penstock Recoating (RCA) (`xcel-cabin-creek-static-fire.mdx`)
+- Control System Shield Grounding (`control-system-shield-grounding.mdx`)
+- Safety Relay Logic vs Standard Relay Logic (`safety-relay-logic-methodologies.mdx`)
+- CSA / cUL Device Markings (`csa-cul-device-markings.mdx`)
+- Surge Protection Devices (SPD) Hazards (`surge-protection-devices-hazards.mdx`)
+- Bridged Contacts in PLCs (`forced-bridged-contacts-plcs.mdx`)
+- The Invisible Shield: Computer Vision for Electrical Boundaries (`computer-vision-electrical-boundaries.mdx`)
+- Hazards of Open CT Circuits (`hazards-open-ct-circuits.mdx`)
 - The Harmonic Your Neutral Can't Handle (RCA) (`overloaded-neutrals-347v-277v.mdx`)
 - "The Black Box Problem" — Why AI Cannot Yet SIL-Certify (`ai-black-box-problem.mdx`)
 - The 2oo3 Voting Logic Gold Standard (`2oo3-voting-logic.mdx`)
