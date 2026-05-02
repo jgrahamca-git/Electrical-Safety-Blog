@@ -15,7 +15,7 @@
 
 ## 1. Current state snapshot
 
-*Last updated: 2026-04-04*
+*Last updated: 2026-05-02*
 
 ### Project identity
 
@@ -32,7 +32,7 @@
 - **Dev server:** `npm run dev` from `~/Blog_EI_Safety/ai-in-mining-blog` (astro CLI not in PATH — always use npm)
 - **Content AI:** Gemini + Antigravity (agentic research, drafting)
 - **Image Gen:** Imagen 3 via Gemini ("nano banana") — hardware close-ups only, no humans. NotebookLM editorial infographic style — primary for all conceptual/framework content. EdrawMax — ALL electrical diagrams and schematics (no AI ever for circuit diagrams).
-- **Quality AI:** Claude (research review, editorial, LinkedIn review, brand build)
+- **Quality AI:** Claude (research review, editorial, LinkedIn review, brand build, FMEA / banner / lead magnet asset builds)
 - **Animation:** GSAP already installed — use for Phase 2 nav + card animations
 - **CSS:** Tailwind active + ELI token file. Bear Blog base CSS present — test element overrides carefully.
 - **Email:** MailerLite with RSS automation (hourly polling)
@@ -43,21 +43,36 @@
 
 - **Blog:** Live and operational
 - **Daily Safety Topics:** Publishing weekly (7 future-dated posts per Sunday push)
-- **Incident RCAs:** Publishing as strong incidents are available (not weekly)
+- **Incident RCAs:** Weekly cadence, **published Tuesdays** (per 2026-04-21 decision)
 - **Email automation:** MailerLite RSS polling active
 - **Zapier metronome:** Daily build hook active (5:00 AM EST)
 - **LinkedIn:** Bi-weekly cross-posting active
 - **Global Banner:** "Blog Mission" top banner is active and permanently visible. It dynamically swaps its prefix to "May is National Electrical Safety Month" during May (month index 4).
 - **Subscriber count:** [3]
 - **Total posts published:** [31]
-- **Brand build plan:** Phase 01 ACTIVE (started 2026-04-04) — 6 phases, 27 tasks
+- **Brand build plan:** Phases 01 & 02 complete. Phases 03–06 pending.
+
+### Templates system (locked 2026-04-19, disclaimer added 2026-05-02)
+
+All Claude-built per-RCA assets render from templates at `C:\Users\jgrah\My Drive\01_ELI\07_Blog\templates\`:
+
+| File | Purpose |
+|---|---|
+| `fmea_renderer.py` | FMEA table PNG generator. Per-RCA CONFIG block at top. Locked 16:9 visual standard. |
+| `rca_banner_template.py` | Banner with RCA fishbone symbol, hazard grid. Per-RCA CONFIG block. v4 single-header layout. |
+| `rca_symbol.png` | Magnifier + fishbone brand symbol. Required dependency of banner template. |
+| `lead_magnet_template.html` | Lead magnet field checklist HTML template with `[[MARKERS]]`. Locked structure includes mandatory disclaimer block. |
+| `lead_magnet_builder.py` | Per-RCA CONFIG-block builder. Renders template → PDF via weasyprint. Pre-render check fails build if disclaimer missing. |
+| `LEAD_MAGNET_README.md` | Workflow doc for the lead magnet build pattern. |
+
+Per-RCA workflow: copy `<template>.py` and `<template>.html` (where applicable) into the RCA working folder, edit the CONFIG block, run, get the asset.
 
 ### Phase 01 task status
 
 | Task | Status | Notes |
 |------|--------|-------|
 | 1. Save brand decisions to context | ✅ DONE | Tracker updated both Windows + Ubuntu. Brand PDFs created. |
-| 2. Export brand board as PDF | ✅ DONE | v1 + v2 PDFs created — save to Design and update to blog folder |
+| 2. Export brand board as PDF | ✅ DONE | v1 + v2 PDFs created — saved to Design and blog folders |
 | 3. Add Google Fonts to BaseLayout.astro | ⏳ PENDING | Not yet started |
 | 4. Create eli-tokens.css | ✅ DONE | File at src/styles/eli-tokens.css. Import added to global.css line 7. Dev server confirmed clean. |
 | 5. Update favicon, meta tags, OG image | ⏳ PENDING | Blocked — need PNG 512×512 transparent bg export from Photoshop PSD |
@@ -68,8 +83,8 @@
 1. Gemini researches 10 safety topics/incidents
 2. Jason reviews, selects topics
 3. Gemini drafts 7 future-dated Daily Safety Topics
-4. Gemini drafts Incident RCAs when strong incidents are available
-5. Claude reviews drafts (quality, technical accuracy, editorial standards)
+4. Gemini drafts the weekly Incident RCA (Tuesday publication)
+5. Claude reviews drafts (quality, technical accuracy, editorial standards), builds FMEA + banner + lead magnet assets per RCA
 6. Jason approves at Gate 1 (content + criticality + conclusion_state fields confirmed, editor_confirmed flipped to true)
 7. Approved .mdx files saved locally
 8. Jason pushes batch to GitHub
@@ -135,7 +150,7 @@ primaryKeyword: "..."
 
 ### MDX body formatting rules
 
-- **NO H1 Titles in Body:** Since the Astro layout auto-renders the post title directly from the frontmatter, the generated MDX body content **MUST NOT** include the H1 `# Title`. The MDX should start directly with the first section heading (e.g., `### 1. Introduction` or `### 1. The Flashpoint`).
+- **NO H1 Titles in Body:** Since the Astro layout auto-renders the post title directly from the frontmatter, the generated MDX body content **MUST NOT** include the H1 `# Title`. The MDX should start directly with the first section heading (e.g., `### 1. Introduction` or `### 1. The Hook (Flashpoint)`).
 
 ### ELI brand system (locked 2026-04-04)
 
@@ -227,19 +242,23 @@ Total: 27 tasks · ~36 hours
 
 ### Content formats
 
-### Content formats
-
 **Daily Safety Topics:** 7 per batch, future-dated (Mon–Sun). Concise, educational, actionable. `.mdx` format with Astro frontmatter.
 
-**Incident RCAs (strict 7-part narrative):**
-1. Safety Hook Title (frontmatter)
-2. The Hook (Flashpoint) — moment of failure
-3. The Setup — context
-4. The Breakdown — technical sequence
-5. Interactive Quiz Component (Astro/MDX)
-6. The RCA — direct AND systemic causes
-7. Relevant Codes & Standards — applicable NEC, CEC, NFPA 70E, OSHA, or IEC references
-8. Actionable Takeaways
+**Incident RCAs (LOCKED 10-part structure as of April 2026):**
+1. The Hook (Flashpoint) — open on the moment of failure, not background
+2. The Setup — context that makes the reader feel present
+3. The Breakdown — chronological forensic sequence (numbered events)
+4. Interactive Quiz — Astro `<Quiz>` component testing reader understanding
+5. The RCA — direct cause AND systemic/human cause (never blame the worker alone)
+6. Failure Modes and Effects Analysis (FMEA) — embedded PNG via click-to-expand markdown pattern, produced by Claude using `fmea_renderer.py`
+7. Codes & Standards — specific section references (CEC, NEC, NFPA 70E, NFPA 77, OSHA, IEC, IEEE, CSA Z462, API)
+8. Lead Magnet CTA — paragraph + link to paired field checklist PDF (built by Claude using `lead_magnet_builder.py` + `lead_magnet_template.html`)
+9. Actionable Takeaways — specific and implementable, not "be more careful"
+10. Closing Statement — one-sentence systemic lesson
+
+(The earlier 7-part structure is deprecated. All RCAs from April 2026 onward use the 10-part structure.)
+
+**Anonymization standard (locked 2026-05-02):** Incident RCAs do not name the specific facility, owner, or contractor involved. Generic equivalents preserve technical learning value: "a hydroelectric plant" instead of named facility, "the federal incident investigation" instead of agency name. Year may be retained or stripped at editorial discretion.
 
 **General Rule:** Starting April 16, 2026, ALL new RCA incidents MUST include references to the most relevant codes and standards and roughly where they can be found. Daily Safety Topics do not require this.
 
@@ -248,11 +267,23 @@ Total: 27 tasks · ~36 hours
 ### Editorial standards
 
 - Never blame the victim. Root causes are systemic — management failures, design gaps, training deficiencies, procedural breakdowns.
-- Technical accuracy on all code/standard references (CEC, NEC, CSA Z462, NFPA 70E, IEC)
+- Technical accuracy on all code/standard references (CEC, NEC, CSA Z462, NFPA 70E, IEC, IEEE, NFPA 77, API)
 - Tone: experienced journeyman teaching an apprentice — not academic, not corporate safety department
-- Real incidents handled with respect for people involved
+- Real incidents handled with respect for people involved; anonymized per the anonymization standard
 - Industrial/mining audience — not residential/consumer
 - **Scope:** Incidents and topics do NOT have to be strictly personnel hazards (shocks/arc flashes). They can and should equally cover massive equipment damage, downtime triggers, and industrial fires.
+
+### Lead magnet structure (locked 2026-05-02)
+
+Every Incident RCA pairs with a field checklist PDF. Locked structure:
+
+1. **Cover page** — brand strip, title, subtitle, lead paragraph, meta-grid (Companion RCA / Audience / Standards). Dark background `#0D0F12` with Arc Orange accents.
+2. **Intro panel** — single-paragraph cream box with Arc Orange left border. States the use case and verification commitment.
+3. **Numbered checklist sections** — 4–6 sections, each with 2–4 verifiable items. Each item: checkbox + bold title + detail line.
+4. **Pass-criteria spec block(s)** — dark panel with Hazard Amber left border for quantitative pass criteria (resistance values, thresholds). One per section as needed.
+5. **Reference standards box** — light cream box listing codes that govern the work.
+6. **Disclaimer & Limitation of Liability box (MANDATORY, verbatim)** — 3 paragraphs covering educational scope, code-currency / jurisdictional verification, and liability disclaimer. Enforced by `lead_magnet_builder.py` pre-render check.
+7. **Footer CTA** — dark panel pointing back to `safetyblog.eli-intelligence.com`.
 
 ### Content pillars
 
@@ -260,7 +291,7 @@ Total: 27 tasks · ~36 hours
 2. Arc flash and electrical safety
 3. Electrical safety culture and human factors
 4. Industrial AI and OT/SCADA safety
-5. Codes and standards updates (CEC, NEC, ISA, IEC)
+5. Codes and standards updates (CEC, NEC, ISA, IEC, NFPA, API)
 
 ### Blockers and open questions
 
@@ -276,6 +307,8 @@ Total: 27 tasks · ~36 hours
 - [x] Provide Gemini with the high-res GFGC FMEA table image for the Astro popout
 - [x] Create the MailerLite automation hook to send the GFGC Checklist PDF to new subscribers
 - [ ] No content calendar beyond the current weekly cycle
+- [ ] **Backfill disclaimer block** to any pre-2026-05 lead magnets that lack it (Silent Shock GFGC Checklist if produced; verify each prior PDF and re-render through new builder if missing).
+- [ ] **Manual rename in Drive templates folder:** `lead_magnet_template.html` (legacy, no disclaimer) → archive; `lead_magnet_template_v2.html` → `lead_magnet_template.html` (canonical).
 - [ ] **Future Feature (Gamification):** Implement backend tally logic for Astro `<Quiz />` components to track user scores. Build a public Leaderboard that posts user names and high scores to heavily drive engagement over time.
 
 ---
@@ -283,6 +316,30 @@ Total: 27 tasks · ~36 hours
 ## 2. Decision log
 
 *Append new entries at the top. Format: date, decision, rationale, what it replaced.*
+
+### 2026-05-02 — Anonymization standard for incident RCAs
+
+- **Decision:** Incident RCAs do not name the specific facility, owner, or contractor involved. Generic equivalents preserve technical learning value: "a hydroelectric plant" instead of "[Plant name]," "the federal incident investigation" instead of "the [agency]." Year may be retained or stripped at editorial discretion based on identifiability risk.
+- **Rationale:** Editorial standards already require respect for people in real incidents. Stripping named entities reduces legal exposure, prevents the blog from reading as a callout of specific companies, and shifts reader focus to the systemic lessons that transfer to their own facilities.
+- **Replaced:** Prior RCAs may have included company names (e.g., the public CSB-cited names). Backfill not required — apply going forward.
+
+### 2026-05-02 — Lead magnet disclaimer block locked
+
+- **Decision:** Every ELI lead magnet PDF must include a 3-paragraph "Disclaimer & Limitation of Liability" block, verbatim, between the reference standards box and the footer CTA. Built into `lead_magnet_template.html` and enforced by `lead_magnet_builder.py` via a pre-render check that fails the build if the disclaimer text is absent. Skill reference (`eli-blog-assistant/references/blog-context.md`) updated with the locked structure.
+- **Rationale:** Lead magnets are educational reference material, not engineering deliverables — readers must verify current code editions for their jurisdiction. Without a disclaimer, the checklists could be mistaken for site-specific procedure or imply liability ELI does not assume.
+- **Replaced:** Previous lead magnets had no disclaimer block. Backfill is a Sunday Sweep item.
+
+### 2026-05-02 — Lead magnet template generalized to CONFIG-block builder
+
+- **Decision:** Replaced the manual edit-the-HTML approach with a Python builder pattern matching `fmea_renderer.py`. Two files in `01_ELI/07_Blog/templates/`: `lead_magnet_template.html` (locked structure, `[[MARKERS]]`, disclaimer baked in) and `lead_magnet_builder.py` (per-RCA CONFIG block + render). Workflow is now: copy both files into per-RCA folder, edit CONFIG, run, get PDF.
+- **Rationale:** Manual HTML editing per RCA was error-prone and made disclaimer enforcement unreliable. CONFIG-block pattern matches how FMEA and banner templates already work, so weekly cadence has one mental model across all three Claude-built assets.
+- **Replaced:** Direct HTML editing per RCA. Old `lead_magnet_template.html` (pre-disclaimer) archived/legacy.
+
+### 2026-05-02 — Section 1 snapshot rewrite
+
+- **Decision:** Rewrote the Section 1 snapshot to fix three staleness issues: (1) RCA structure was documented as 7-part but the skill enforces 10-part; updated to 10-part with full section list. (2) RCA cadence was "as available" in the snapshot but 2026-04-21 mandated weekly Tuesday — updated to weekly Tuesday. (3) The templates system (FMEA renderer, banner template, lead magnet template + builder, brand visual standard) was invisible from the tracker — added a dedicated section.
+- **Rationale:** A stale snapshot misleads any AI loading the tracker as context, including Antigravity's Gemini PRODUCE runs. The tracker was authoritative on three things that contradicted reality.
+- **Replaced:** 2026-04-04 snapshot.
 
 ### 2026-04-21 — Tuesday publication for Incident RCAs
 - **Decision:** All future Incident RCAs will be published on Tuesdays (via the `pubDate` parameter). Updated `directives/01_incident_narrative.md` to mandate this schedule.
@@ -295,7 +352,7 @@ Total: 27 tasks · ~36 hours
 - **Replaced:** N/A.
 
 ### 2026-04-16 — Mandatory Codes and Standards References (RCA Only)
-- **Decision:** All new RCA incident posts must include references to the most relevant codes and standards (NEC, CEC, NFPA 70E, OSHA, IEC) and roughly where they can be found. Removed this requirement from Daily Safety Topics to prevent the content from becoming too heavy. 
+- **Decision:** All new RCA incident posts must include references to the most relevant codes and standards (NEC, CEC, NFPA 70E, OSHA, IEC) and roughly where they can be found. Removed this requirement from Daily Safety Topics to prevent the content from becoming too heavy.
 - **Rationale:** Increases the technical authority and reference value of the RCA posts without overwhelming the quicker daily topics. Legacy posts will not be backfilled.
 - **Replaced:** Previous state where standards were mandated for Daily Safety Topics and skipped for RCAs. Now flipped: required for RCAs, removed from Daily Topics.
 
@@ -348,7 +405,7 @@ Total: 27 tasks · ~36 hours
 - **MailerLite RSS automation** chosen for email distribution (no manual sends, hourly polling)
 - **Gemini + Antigravity** chosen as content generation engine (native Google ecosystem, 1M context, image sourcing)
 - **Bi-weekly LinkedIn cadence** chosen (tied to RCA publication, not arbitrary schedule)
-- **6-part RCA narrative structure** defined and locked
+- **6-part RCA narrative structure** defined and locked (later expanded to 7-part, then deprecated and replaced by 10-part in April 2026)
 
 ---
 
@@ -356,10 +413,23 @@ Total: 27 tasks · ~36 hours
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
+### 2026-05-02 — RCA: The Invisible Ignition (anonymized) + lead magnet template upgrade
+
+- progress  | Drafted Incident RCA: The Invisible Ignition — static grounding failure in a penstock recoating (10-part structure, anonymized per new standard, L3 criticality, scheduled for 2026-05-05 publication).
+- progress  | Built FMEA: 10 modes, 1 Critical (continuous atmospheric monitoring, RPN 560), 5 High, 4 Medium. Top-4 priorities panel rendered.
+- progress  | Built banner via v4 template — title "THE INVISIBLE IGNITION," 4-hazard grid, GROUNDING/STATIC ELECTRICITY/HAZARDOUS LOCATIONS/CONFINED SPACE category strip.
+- progress  | Built lead magnet PDF: 14-point Static Bonding Verification Checklist with locked disclaimer block.
+- milestone | Lead magnet template system upgraded — generalized template + Python CONFIG-block builder uploaded to `01_ELI/07_Blog/templates/` (`lead_magnet_template_v2.html`, `lead_magnet_builder.py`, `LEAD_MAGNET_README.md`).
+- milestone | Lead magnet disclaimer & liability block locked across all future PDFs; pre-render check in builder.
+- milestone | Anonymization standard locked for all future Incident RCAs.
+- change    | Updated `eli-blog-assistant` skill `references/blog-context.md` — added Lead Magnet Structure section, disclaimer block reference, mandatory pre-render check, anonymization standard.
+- change    | Section 1 snapshot rewritten — corrected RCA structure (7-part → 10-part), RCA cadence (as-available → Tuesday weekly), templates system documented for the first time.
+- blocker   | Old `lead_magnet_template.html` still in templates folder (pre-disclaimer version) — needs manual rename (legacy → archive, v2 → canonical) before next weekly cycle.
+
 ### 2026-05-02 — Weekly Batch Drafted (May 4th Week)
 
 - progress  | Drafted 7 Daily Safety Topics (Control System Shield Grounding, Safety Relay Logic, CSA / cUL Marks, Surge Protection Devices, Bridged Contacts in PLCs, Computer Vision Boundaries, Open CT Circuits).
-- progress  | Drafted Incident RCA: The Invisible Ignition (Xcel Cabin Creek Static Fire).
+- progress  | Drafted Incident RCA: The Invisible Ignition (static grounding penstock fire — anonymized).
 - progress  | Resolved Astro ViewTransitions `<ClientRouter />` rendering crash by correcting MDX comments to `{/* */}` and fixing inline script scope.
 
 ### 2026-04-26 — RCA File Rename
@@ -494,5 +564,5 @@ These eight topics are drafted for the coming week and awaiting final editorial 
 
 *To optimize this tracker, all published and previously covered topics have been moved to a dedicated archive file.*
 
-👉 **See `ELI_Topics_Archive.md` for the full list of published topics.** 
+👉 **See `ELI_Topics_Archive.md` for the full list of published topics.**
 *(Do not propose topics listed in the archive again for Daily Safety Topics or RCAs to prevent duplicates.)*
