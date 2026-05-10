@@ -1,0 +1,39 @@
+---
+title: "Understanding Arc Fault Circuit Interrupters (AFCI)"
+description: "How AFCIs detect dangerous electrical arcing that traditional breakers ignore, preventing electrical fires before they start."
+pubDate: "2026-05-17"
+category: "safety-topics"
+tags: ["afci", "arc fault", "fire prevention", "circuit breakers", "nec"]
+image: "./eli-safety-topics-L0-understanding-afci-protection.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "What is an AFCI? Arc Fault Circuit Interrupters Explained"
+metaDescription: "Learn how Arc Fault Circuit Interrupters (AFCIs) protect against electrical fires by detecting high-frequency arcing signatures that standard breakers miss."
+primaryKeyword: "afci arc fault circuit interrupter"
+---
+
+### 1. Introduction & Context
+
+For decades, the standard thermal-magnetic circuit breaker was the primary line of defense in electrical panels. But standard breakers are relatively blunt instruments: they protect against massive overloads (pulling 30 amps through a 20-amp breaker) and direct short circuits (hot touching neutral). 
+
+However, they are completely blind to one of the leading causes of electrical fires: low-current arcing. Enter the Arc Fault Circuit Interrupter (AFCI), a smart device designed to "listen" to the electrical waveform and detect dangerous sparks before they ignite surrounding materials.
+
+### 2. The Core Issue: Series and Parallel Arcing
+
+**Why Standard Breakers Fail to Stop Fires**
+Imagine a frayed extension cord or a loose screw terminal on a receptacle. As current jumps across the tiny gap, it creates a high-temperature arc. Because this arc is occurring *in series* with the normal load, the total current flowing through the circuit remains relatively low—often well below the 15A or 20A trip threshold of a standard breaker. The breaker happily ignores the 5-amp arc, even as that arc generates enough heat to set the wall insulation on fire.
+
+**How AFCIs Detect the Invisible**
+An AFCI breaker contains microprocessors that continuously monitor the electrical waveform (the 60Hz sine wave). Normal loads, even "noisy" ones like vacuum cleaner motors or dimmer switches, create predictable waveform patterns. 
+
+A dangerous electrical arc, however, produces a highly erratic, high-frequency "signature" on the line. The AFCI's logic board is programmed to recognize the specific electrical signature of an unintended arc. If it detects this erratic high-frequency noise lasting for a fraction of a second, it trips the circuit.
+
+AFCIs protect against both **series arcs** (e.g., a broken wire within a cord) and **parallel arcs** (e.g., a staple driven through wire insulation causing hot and neutral to arc across the gap).
+
+### 3. Actionable Takeaways
+
+- **Don't mistake an AFCI for a GFCI:** While they look similar and both have "Test" buttons, their functions are completely different. A GFCI prevents lethal shocks by detecting missing current. An AFCI prevents fires by detecting erratic arcing signatures. (Future codes increasingly mandate dual-function AFCI/GFCI breakers to provide both).
+- **Take nuisance tripping seriously:** If an AFCI keeps tripping, do not simply replace it with a standard breaker. The AFCI is likely doing its job and detecting a loose connection, a pinched wire, or a failing motor brush on a plugged-in appliance.
+- **Check your terminations:** The majority of series arc faults occur at the termination points (receptacles and switches). Ensuring proper torque on all screw terminals is the best defense against arcing and heat buildup.

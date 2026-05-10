@@ -1,0 +1,42 @@
+---
+title: "GFCI vs GFP: Understanding the Difference in Ground Fault Protection"
+description: "Why substituting a 30 mA Ground Fault Protection (GFP) device for a 6 mA Ground Fault Circuit Interrupter (GFCI) can create a fatal personnel hazard."
+pubDate: "2026-05-14"
+category: "safety-topics"
+tags: ["gfci", "gfp", "ground fault", "personnel protection", "equipment protection"]
+image: "./eli-safety-topics-L2-gfci-vs-gfp-protection.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "GFCI vs GFP: Ground Fault Protection Classes Explained"
+metaDescription: "Understand the critical differences between Class A GFCIs designed for personnel safety (6 mA) and GFP devices designed for equipment protection (30 mA+)."
+primaryKeyword: "gfci vs gfp"
+---
+
+## GFCI vs GFP: Personnel Protection vs Equipment Protection
+
+### 1. Introduction & Context
+
+Ground fault protection devices come in two fundamentally different classes, each designed for a distinct purpose. The Canadian Electrical Code and the US National Electrical Code distinguish strictly between **Class A GFCIs**, which protect people from electric shock, and **Ground Fault Protection** devices, which protect equipment from damage and prevent fire. Understanding what each device does — and what it does not do — is essential for specifying, installing, and maintaining the correct layer of protection for a given circuit.
+
+A note on terminology: "EPD" is industry shorthand and is not a defined term in either code. The CEC uses *Class A GFCI* and *Class B GFCI* for the two GFCI classes, and *Ground Fault Protection (GFP)* for higher-threshold equipment protection. The NEC uses *Class A GFCI* and *Ground-Fault Protection of Equipment (GFPE)*, with *Special Purpose GFCI (SPGFCI)* added recently for higher-voltage circuits. The principles are the same on both sides of the border; the labels differ.
+
+### 2. The Core Issue: 6 mA vs 30 mA Thresholds
+
+**Class A GFCI — Personnel Protection**
+A Class A GFCI is defined in both codes as a device that interrupts the circuit when ground fault current is **6 mA or more, and does not trip at 4 mA or less.** It monitors the current leaving the source against the current returning on the neutral and trips on the imbalance. The 6 mA setpoint is chosen to trip below the let-go threshold — the current at which an adult cannot voluntarily release an energized object (typically around 9–10 mA for adult males per IEC 60479, lower for women and children). Above the let-go threshold, muscle paralysis and respiratory arrest become likely; ventricular fibrillation risk rises significantly above approximately 50 mA depending on current path and duration. A Class A GFCI is engineered to clear the fault before exposure reaches dangerous levels.
+
+**Ground Fault Protection (GFP / GFPE) — Equipment Protection**
+GFP and GFPE devices typically have trip thresholds of 30 mA, 100 mA, or higher depending on the application. They are designed to protect equipment and prevent fire — for example, heat trace circuits, large feeder disconnects on grounded-wye systems above 150 V to ground, marina shore power, and similar applications. In industrial practice, equipment ground-fault protection is most often implemented as a separate ground-fault relay or sensing module driving a shunt-trip breaker or contactor, rather than as a single drop-in breaker.
+
+In industrial settings, certain loads produce continuous small leakage currents to ground as part of normal operation — long heat trace runs are the classic example, where distributed capacitance and surface leakage along the trace cable add up to several milliamps over a long circuit. A 6 mA Class A GFCI would nuisance-trip constantly on these circuits. A 30 mA GFP allows normal operation while still detecting larger faults that could damage equipment or start a fire.
+
+A 30 mA GFP device will not reliably protect a worker. By the time it trips, the worker is already past the let-go threshold. **GFP is an equipment and fire-protection layer, not a personnel-protection layer.** A GFP-protected upstream feeder does not provide personnel protection for downstream receptacles, even though it detects ground faults.
+
+### 3. Actionable Takeaways
+
+- **Diagnose the leakage source on a tripping Class A GFCI; do not defeat or remove it.** If a temporary power outlet, hand-tool circuit, or wet-location receptacle keeps tripping, the fault is in the cord, tool, or load — find it. The most common field failure is replacing a tripping GFCI receptacle with a standard receptacle, which silently removes the personnel protection layer entirely.
+- **Verify protection class is preserved on every replacement.** Class A GFCI receptacles and Class A GFCI breakers are the personnel-protection devices encountered at outlets and in panels. Equipment-protection ground fault detection at higher thresholds is typically a separate ground-fault relay or sensing module driving a shunt trip. When a tripping Class A GFCI device is replaced, confirm the replacement is also Class A. Do not assume a higher-threshold equipment ground-fault scheme upstream provides personnel protection at the outlet.
+- **Do not assume an upstream GFP feeder protects downstream personnel.** GFP at the feeder level addresses equipment and fire risk on the feeder; receptacles requiring personnel protection still need a Class A GFCI device at or downstream of the protected outlet.
+- **Match the protection layer to the hazard.** Class A GFCI is the personnel-protection layer required where workers can contact energized parts under fault conditions — wet locations, outdoor receptacles, hand-tool circuits, washdown areas. GFP serves a different function and is not interchangeable, even where it provides ground-fault detection.

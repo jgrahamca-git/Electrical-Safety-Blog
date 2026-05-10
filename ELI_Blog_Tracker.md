@@ -244,21 +244,21 @@ Total: 27 tasks · ~36 hours
 
 **Daily Safety Topics:** 7 per batch, future-dated (Mon–Sun). Concise, educational, actionable. `.mdx` format with Astro frontmatter.
 
-**Incident RCAs (LOCKED 10-part structure as of April 2026):**
-1. The Hook (Flashpoint) — open on the moment of failure, not background
-2. The Setup — context that makes the reader feel present
-3. The Breakdown — chronological forensic sequence (numbered events)
-4. Interactive Quiz — Astro `<Quiz>` component testing reader understanding
-5. The RCA — direct cause AND systemic/human cause (never blame the worker alone)
-6. Failure Modes and Effects Analysis (FMEA) — embedded PNG via click-to-expand markdown pattern, produced by Claude using `fmea_renderer.py`
+**Incident RCAs (LOCKED 10-part structure as of May 2026):**
+1. Incident Overview — open on the moment of failure, not background
+2. System Background — context that makes the reader feel present
+3. Sequence of Events — chronological forensic sequence (numbered events)
+4. Knowledge Check — Astro `<Quiz>` component testing reader understanding
+5. Root Cause Analysis — direct cause AND systemic/human cause (never blame the worker alone)
+6. Failure Modes & Effects Analysis — embedded PNG via click-to-expand markdown pattern, produced by Claude using `fmea_renderer.py`
 7. Codes & Standards — specific section references (CEC, NEC, NFPA 70E, NFPA 77, OSHA, IEC, IEEE, CSA Z462, API)
-8. Lead Magnet CTA — paragraph + link to paired field checklist PDF (built by Claude using `lead_magnet_builder.py` + `lead_magnet_template.html`)
-9. Actionable Takeaways — specific and implementable, not "be more careful"
-10. Closing Statement — one-sentence systemic lesson
+8. Resources — paragraph + link to paired field checklist PDF (built by Claude using `lead_magnet_builder.py` + `lead_magnet_template.html`)
+9. Field Actions — specific and implementable, not "be more careful"
+10. Bottom Line — one-sentence systemic lesson
 
 (The earlier 7-part structure is deprecated. All RCAs from April 2026 onward use the 10-part structure.)
 
-**Anonymization standard (locked 2026-05-02):** Incident RCAs do not name the specific facility, owner, or contractor involved. Generic equivalents preserve technical learning value: "a hydroelectric plant" instead of named facility, "the federal incident investigation" instead of agency name. Year may be retained or stripped at editorial discretion.
+**Anonymization & Real-World Anchoring standard (locked 2026-05-09):** Incident RCAs MUST be based on specific, verifiable real-world events (e.g., CSB reports, OSHA investigations, IEEE case studies). The AI must hold the specific real-world incident in context and communicate the source to the user. However, for the published post, do not name the specific facility, owner, or contractor involved. Generic equivalents preserve technical learning value: "a hydroelectric plant" instead of named facility, "the federal incident investigation" instead of agency name. Year may be retained or stripped at editorial discretion. Do not invent purely hypothetical or composite incidents without the user's explicit approval.
 
 **General Rule:** Starting April 16, 2026, ALL new RCA incidents MUST include references to the most relevant codes and standards and roughly where they can be found. Daily Safety Topics do not require this.
 
@@ -316,6 +316,18 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 ## 2. Decision log
 
 *Append new entries at the top. Format: date, decision, rationale, what it replaced.*
+
+### 2026-05-10 — Incident RCA 10-part structure headers updated
+
+- **Decision:** Updated the strict 10-part structure headings for Incident RCAs from the previous stylistic ones (e.g., "The Hook (Flashpoint)", "The Breakdown") to more generic, professional ones (e.g., "Incident Overview", "Sequence of Events").
+- **Rationale:** The user is updating the ELI blog assistant skill to match these new headings, making them the new standard for the pipeline.
+- **Replaced:** The previous 10-part headings instituted in April 2026.
+
+### 2026-05-09 — Real-World Anchoring rule added to Anonymization Standard
+
+- **Decision:** Incident RCAs MUST be based on specific, verifiable real-world events (e.g., CSB, OSHA, IEEE case studies). The AI must hold this incident in context and communicate the original source to the user, even while anonymizing the final published post. Added to both the `ELI_Blog_Tracker.md` Anonymization Standard and `directives/01_incident_narrative.md`.
+- **Rationale:** The user highlighted that while RCAs are anonymized, they must still be based on actual historical occurrences rather than composite or purely hypothetical scenarios to maintain authenticity and engineering rigor.
+- **Replaced:** Previously, composite incidents based on common failure modes were implicitly allowed. Now explicitly banned without user approval.
 
 ### 2026-05-02 — Anonymization standard for incident RCAs
 
@@ -412,6 +424,13 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 ## 3. Progress log
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
+
+### 2026-05-10 — Weekly Batch Drafted (May 11th Week) & Advanced Planning
+
+- progress  | Drafted 7 Daily Safety Topics for May 11th–17th (Arc Flash vs Arc Blast, Lightning Detection, Grounding vs Bonding, GFCI vs GFP, Fiber Optics, Zero Energy State, AFCI).
+- progress  | Drafted Incident RCA for May 12th: 275 In-Lbs (Denman Island ATS Loose Aluminum Termination Fire).
+- progress  | Reorganized the floating-neutral 4-pole ATS draft into the standard 10-part Incident RCA structure (a one-time exception to the real-world anchoring rule). Scheduled for publication on Tuesday, May 19th, filling the RCA slot for the May 18th–24th week.
+- progress  | Confirmed all drafted topics at Gate 1 (editor_confirmed flipped to true for May 11th week).
 
 ### 2026-05-02 — RCA: The Invisible Ignition (anonymized) + lead magnet template upgrade
 

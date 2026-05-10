@@ -1,0 +1,38 @@
+---
+title: "The Critical Difference Between Grounding and Bonding"
+description: "Why mixing up these two terms on the job site can lead to catastrophic electrical safety failures."
+pubDate: "2026-05-13"
+category: "safety-topics"
+tags: ["grounding", "bonding", "nec", "cec", "electrical theory"]
+image: "./eli-safety-topics-L0-grounding-vs-bonding.jpg"
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Grounding vs Bonding: Electrical Safety Differences Explained"
+metaDescription: "Understand the vital technical distinction between electrical grounding and bonding, and why bonding is actually what clears faults and saves lives."
+primaryKeyword: "grounding vs bonding"
+---
+
+## Grounding vs Bonding: Two Different Jobs, Two Different Outcomes
+
+### 1. Introduction & Context
+
+Grounding and bonding are two distinct electrical functions that often get treated as one concept on industrial sites. The terms are even used interchangeably in casual conversation, but the two functions do completely different things, and confusing them is one of the most common contributors to uncleared faults and shock hazards in the field. Understanding the difference is foundational to electrical safety — every protective scheme, from a 120 V receptacle to a substation ground grid, depends on getting both right.
+
+### 2. The Core Issue: The Earth Is Not a Fault Path
+
+**Grounding (Connecting to Earth)**
+Grounding is the intentional connection of an electrical system to the physical earth via ground rods, ground rings, ground plates, or structural steel in contact with earth. Its purpose is to **establish the earth as the zero-voltage reference for the electrical system** and to provide a discharge path for high-voltage transients such as lightning strikes, switching surges, and accidental contact between distribution conductors and higher-voltage systems. By tying the system to earth at a defined point — typically the service neutral or transformer secondary — every voltage in the system is measured relative to that reference, which is what allows protective devices, insulation coordination, and instrumentation to function predictably. **Grounding does not clear faults.** Soil resistivity makes the earth a poor conductor at typical fault current levels — a ground rod alone cannot pass enough current back to the source to operate a standard overcurrent device.
+
+**Bonding (Connecting Metal to Metal)**
+Bonding is the permanent joining of metallic parts — motor frames, equipment enclosures, conduit, raceways, cable trays, junction boxes, building steel — into a continuous, low-impedance conductive system, and tying that system back to the source through the equipment grounding conductor (EGC). Its purpose is to create a low-impedance fault return path. When an energized conductor contacts a bonded metal part, the fault current returns through the bonding path to the source, drives the overcurrent device into its instantaneous trip region, and clears the fault in milliseconds. **Bonding is what clears faults and limits touch potential during the fault.** It is the function that protects people.
+
+The distinction matters because the two functions rely on entirely different physics. Grounding establishes a voltage reference and manages low-current, long-duration phenomena — surge dissipation, neutral stabilization, static charge bleed-off. Bonding carries high-magnitude fault current for a few cycles to operate a protective device. A system can be well-grounded and still be unsafe if it is poorly bonded; a system can be well-bonded and still suffer voltage instability or surge damage if it is poorly grounded. Both are required, and they are not substitutes for each other.
+
+### 3. Actionable Takeaways
+
+- **Never rely on a ground rod to clear a fault.** Driving a ground rod at a remote motor or skid without running a bonding conductor back to the source panel creates a hazard, not a protection. The casing will remain energized during a fault because earth resistance is far too high to operate the breaker. Every piece of equipment that can become energized must have a continuous metallic fault return path back to the source.
+- **Inspect bonding continuity, not just the presence of a green wire.** A loose bonding jumper, a corroded conduit coupling, a painted-over ground lug, or a missing bonding bushing on a concentric knockout all add impedance to the fault path. Higher impedance means slower clearing — or no clearing at all — and the equipment stays energized waiting for contact. Bonding integrity is a measurable, testable parameter.
+- **Use the correct terminology in design, specification, and field communication.** Ground systems to establish a voltage reference and dissipate transients; bond equipment to clear faults. Calling a bonding conductor a "ground wire" reinforces the misconception that earth contact is doing the work — it is not. Precise language drives precise installation.
+- **Verify the bonding path on commissioning, not just at first install.** Equipment is moved, modified, and re-piped over a plant's life. Conduit gets cut and replaced, junction boxes get swapped, motors get rewired. Every modification is an opportunity for a bonding path to be broken silently. Periodic continuity and impedance testing of the bonding system is part of a credible electrical maintenance program.

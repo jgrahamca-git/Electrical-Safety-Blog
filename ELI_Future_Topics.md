@@ -15,3 +15,7 @@
 ### 14. SLAC 2004 Arc Flash
 - **Pillar:** Arc Flash and Electrical Safety
 - **Focus:** An examination of the arc flash incident at the SLAC National Accelerator Laboratory, highlighting lockout/tagout failures, complex system isolation, and procedural breakdown.
+
+### 15. The Difference Between AFCI and GFCI
+- **Pillar:** Grounding and Bonding / Codes and Standards
+- **Focus:** Understanding the distinct protection mechanisms of Arc Fault Circuit Interrupters versus Ground Fault Circuit Interrupters, and where each is mandated in industrial and commercial environments.
