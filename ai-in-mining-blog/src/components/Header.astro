@@ -20,12 +20,15 @@ const latestTopic = topics
 
 const isDayOfMourning = now.getUTCMonth() === 3 && now.getUTCDate() === 28; // April 28
 const isElectricalSafetyMonth = now.getUTCMonth() === 4; // May is month index 4
+const isPowerlineSafetyWeek = now.getUTCMonth() === 4 && now.getUTCDate() >= 11 && now.getUTCDate() <= 17;
 ---
 
 <header>
   <div class="safety-month-banner">
     {isDayOfMourning ? (
       <strong>⚡ Canada's Day of Mourning -Moment of Silence 11am</strong>
+    ) : isPowerlineSafetyWeek ? (
+      <strong>⚡ ESA Powerline Safety Week (May 11 - 17)</strong>
     ) : (
       <><strong>⚡ {isElectricalSafetyMonth ? "May is National Electrical Safety Month" : "Blog Mission"}:</strong> Transforming past incidents into actionable insights to prevent future accidents.</>
     )}
