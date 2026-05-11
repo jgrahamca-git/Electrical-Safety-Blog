@@ -28,7 +28,7 @@ const isPowerlineSafetyWeek = now.getUTCMonth() === 4 && now.getUTCDate() >= 11 
     {isDayOfMourning ? (
       <strong>⚡ Canada's Day of Mourning -Moment of Silence 11am</strong>
     ) : isPowerlineSafetyWeek ? (
-      <strong>⚡ ESA Powerline Safety Week (May 11 - 17)</strong>
+      <><strong>⚡ ESA Powerline Safety Week (May 11 - 17) & {isElectricalSafetyMonth ? "National Electrical Safety Month" : "Blog Mission"}:</strong> Transforming past incidents into actionable insights to prevent future accidents.</>
     ) : (
       <><strong>⚡ {isElectricalSafetyMonth ? "May is National Electrical Safety Month" : "Blog Mission"}:</strong> Transforming past incidents into actionable insights to prevent future accidents.</>
     )}
