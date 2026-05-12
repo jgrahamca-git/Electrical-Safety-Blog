@@ -16,6 +16,8 @@ source_authority: "Technical Safety BC II-975771-2020"
 source_url: "https://www.technicalsafetybc.ca/regulatory-resources/incident-investigations/generator-transfer-switch-burnt-and-destroyed"
 ---
 
+import Quiz from '../../components/Quiz.astro';
+
 ### 1. Incident Overview
 
 It was a standard arrival at a cold vacation property on Denman Island on January 4, 2020. Seeking warmth, the homeowner’s son had already turned on a 6000 W electric in-floor boiler. Upon arriving, the homeowner turned on four additional baseboard heaters, adding another 4000 W of load to the system. The house was running normally on utility power. A few hours later, the routine arrival turned into an emergency when the homeowner noticed the distinct, acrid smell of burning plastic accompanied by the sound of electrical arcing coming from a panel in the pantry. After quickly shutting off the main breakers, the homeowner successfully extinguished the fire with a portable extinguisher, preventing what could have been a total structural loss.
@@ -35,18 +37,21 @@ According to the Technical Safety BC investigation (Reference II-975771-2020), t
 *   **T+Hours:** The homeowner discovered the fire at the transfer switch panel, isolated the power, and extinguished the flames.
 *   **Post-Incident Investigation:** Investigators found that the two 1/0 aluminum conductors and lugs feeding the emergency panel were burnt completely off at the transfer switch output. Crucially, they tested the adjacent generator-input terminations (which had not failed) and found them significantly loose. Using a screwdriver, investigators were able to hand-turn the adjacent lugs an additional *five quarter turns* before they felt snug. The manufacturer's label clearly stated the required torque specification: **275 in-lbs**.
 
+<br />
+
 ### 4. Knowledge Check
 
-**Why didn't the upstream breakers trip and stop the fire?**
-
-1.  The breakers were undersized for the total 10,000 W load.
-2.  The GFCI didn't sense the current imbalance.
-3.  Thermal runaway at a high-resistance termination produces heat without an overcurrent.
-4.  The transfer switch mechanically jammed and prevented the breaker from operating.
-
-*Answer: 3. Thermal runaway at a high-resistance termination produces heat without an overcurrent.* 
-
-The total 10,000 W heating load draws approximately 41.6 A at 240 V, which is well within the 100 A rating of the emergency panel and its upstream breaker. A standard thermal-magnetic breaker protects against overcurrent (pulling more amps than the wire is rated for) and short circuits (a sudden, massive fault). It does *not* detect high-resistance heating at a specific joint. As the loose termination's resistance increased, it acted like a small heating element right at the lug, melting the metal without ever pulling enough total current to trip the 100 A breaker.
+<Quiz 
+  question="Why didn't the upstream breakers trip and stop the fire?"
+  options={[
+    "The breakers were undersized for the total 10,000 W load.",
+    "The GFCI didn't sense the current imbalance.",
+    "Thermal runaway at a high-resistance termination produces heat without an overcurrent.",
+    "The transfer switch mechanically jammed and prevented the breaker from operating."
+  ]}
+  correctAnswerIndex={2}
+  explanation="The total 10,000 W heating load draws approximately 41.6 A at 240 V, which is well within the 100 A rating of the emergency panel and its upstream breaker. A standard thermal-magnetic breaker protects against overcurrent (pulling more amps than the wire is rated for) and short circuits (a sudden, massive fault). It does not detect high-resistance heating at a specific joint. As the loose termination's resistance increased, it acted like a small heating element right at the lug, melting the metal without ever pulling enough total current to trip the 100 A breaker."
+/>
 
 ### 5. Root Cause Analysis
 

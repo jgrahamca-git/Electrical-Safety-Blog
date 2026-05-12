@@ -16,6 +16,8 @@ content_type: "failure_mode_deep_dive"
 source_authority: "engineering analysis based on NEC 250.30, NFPA 110, IEEE 446, CSA C282"
 ---
 
+import Quiz from '../../components/Quiz.astro';
+
 *This is a failure mode deep dive, not an incident report. It examines what happens when the neutral conductor opens during a 4-pole automatic transfer switch transition — why it happens, what downstream equipment sees, and how to protect against it.*
 
 ### 1. Incident Overview
@@ -52,18 +54,21 @@ The sequence of events when the neutral opens unfolds as follows:
 - **T+seconds** — UPS systems fail. Switch-mode power supplies in IT and control equipment fail. Lighting ballasts saturate and overheat. Control transformers saturate and may smoke or arc. MOVs that have entered thermal runaway can rupture, releasing molten metal and igniting surrounding insulation.
 - **T+ongoing** — Without intervention from downstream protection, the event continues until either the neutral reconnects, the source is removed, or sustained damage causes a fault that finally trips upstream protection.
 
+<br />
+
 ### 4. Knowledge Check
 
-**In a 3-phase, 4-wire wye system, what causes the phase-to-neutral voltage to rise to dangerous levels during a floating neutral event?**
-
-1. The generator was incorrectly bonded as a separately derived system, creating parallel neutral-to-ground paths.
-2. The automatic voltage regulator (AVR) senses the voltage drop and overcompensates by maximizing excitation.
-3. The phase-to-neutral loads are placed in series across the phase-to-phase voltage, acting as a voltage divider based on their relative impedances.
-4. Triplen harmonics amplify the phase voltages when the neutral return path is lost.
-
-*Answer: 3. The phase-to-neutral loads are placed in series across the phase-to-phase voltage, acting as a voltage divider based on their relative impedances.*
-
-When the neutral reference point is disconnected, the loads on different phases form series circuits between the phase conductors. The voltage drops across these loads are proportional to their impedance, meaning the phase with the lightest load (highest impedance) will see the highest voltage, potentially approaching the full phase-to-phase voltage. This is pure circuit analysis — no exotic physics, no harmonic amplification, no AVR misbehaviour. Just a voltage divider where the divider ratio is set by whatever loads happen to be running.
+<Quiz 
+  question="In a 3-phase, 4-wire wye system, what causes the phase-to-neutral voltage to rise to dangerous levels during a floating neutral event?"
+  options={[
+    "The generator was incorrectly bonded as a separately derived system, creating parallel neutral-to-ground paths.",
+    "The automatic voltage regulator (AVR) senses the voltage drop and overcompensates by maximizing excitation.",
+    "The phase-to-neutral loads are placed in series across the phase-to-phase voltage, acting as a voltage divider based on their relative impedances.",
+    "Triplen harmonics amplify the phase voltages when the neutral return path is lost."
+  ]}
+  correctAnswerIndex={2}
+  explanation="When the neutral reference point is disconnected, the loads on different phases form series circuits between the phase conductors. The voltage drops across these loads are proportional to their impedance, meaning the phase with the lightest load (highest impedance) will see the highest voltage, potentially approaching the full phase-to-phase voltage. This is pure circuit analysis — no exotic physics, no harmonic amplification, no AVR misbehaviour. Just a voltage divider where the divider ratio is set by whatever loads happen to be running."
+/>
 
 ### 5. Root Cause Analysis
 
