@@ -1,0 +1,37 @@
+---
+title: "The Silent Killer of 3-Phase Motors: Single-Phasing"
+description: "Why losing just one phase on a 3-phase motor can quickly result in catastrophic overheating, and why standard breakers won't always catch it."
+pubDate: "2026-05-21"
+category: "safety-topics"
+tags: ["motors", "single-phasing", "overheating", "protection relays"]
+image: "./eli-safety-topics-L1-dangers-of-single-phasing-motors.jpg"
+criticality: "L1"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "3-Phase Motor Single Phasing Hazards and Protection"
+metaDescription: "Understand the dangers of single-phasing in 3-phase industrial motors, how it causes rapid overheating, and why phase failure relays are essential."
+primaryKeyword: "motor single phasing"
+---
+
+### What is Single-Phasing?
+
+A 3-phase induction motor is designed to receive balanced power across all three of its supply lines. If one of those phases is lost—due to a blown fuse, a broken wire, a loose termination, or a utility-side issue—the motor is suddenly operating on only two phases. This condition is known as "single-phasing."
+
+### The Immediate Danger: Rapid Overheating
+
+When a motor single-phases while running, it doesn't automatically stop. To maintain its mechanical load, the motor will attempt to draw the missing power from the remaining two phases. 
+
+The current in the two remaining phases will spike dramatically—often increasing by 1.73 times (the square root of 3) or more, depending on the load. Because the heat generated in the windings is proportional to the square of the current ($I^2R$), the internal temperature of the motor skyrockets. If the condition persists, the insulation on the copper windings will melt, destroying the motor and potentially starting a fire.
+
+### Why Standard Protection Fails
+
+A common misconception is that the standard upstream circuit breaker will trip and save the motor. 
+- **Circuit breakers** are primarily designed to protect the *cable* from short circuits, not the motor from overloads. 
+- **Thermal overload relays** (heaters) are designed to catch this, but if the motor is lightly loaded, the current increase on the two remaining legs might not be enough to push the bimetallic strip to the trip point fast enough to prevent winding damage.
+
+### Actionable Takeaways
+
+- **Install Phase Failure Relays.** The only guaranteed protection against single-phasing is a dedicated phase monitor or phase failure relay. These devices actively monitor voltage balance across all three legs and will immediately drop the contactor if a phase is lost.
+- **Never just "reset the overload."** If a motor starter's thermal overload trips, do not just press reset and walk away. A tripped overload is often the first and only symptom of a blown fuse or a loose lug causing a single-phase condition. Investigate the cause.
+- **Check contactor tips.** A highly degraded or pitted contactor can fail to close on one leg, creating a single-phasing event right at the motor starter. 

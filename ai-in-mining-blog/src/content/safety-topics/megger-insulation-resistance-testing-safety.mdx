@@ -1,0 +1,37 @@
+---
+title: "The Invisible Hazard of Megger Testing"
+description: "Why insulation resistance testing on long cable runs leaves behind a deadly capacitive charge, and how to safely discharge it."
+pubDate: "2026-05-20"
+category: "safety-topics"
+tags: ["megger", "testing", "capacitance", "shock hazard", "high voltage"]
+image: "./eli-safety-topics-L2-megger-insulation-resistance-testing-safety.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Megger Testing Safety: High Voltage Capacitive Charge Hazards"
+metaDescription: "Learn why high voltage insulation resistance (Megger) testing on long cables creates deadly capacitive charges and how to safely discharge the equipment."
+primaryKeyword: "megger testing safety"
+---
+
+### The Hidden Capacitor 
+
+Insulation resistance testing (often called "meggering") is a standard procedure to verify the integrity of cable jackets and motor windings. The tester applies a high DC voltage (often 1kV or 5kV) to measure leakage current. While a standard spot reading only lasts 60 seconds, a Polarization Index (PI) test—used to check for deep moisture or contamination—requires the high voltage to be applied continuously for a full 10 minutes. 
+
+By its very design, a long run of shielded medium-voltage cable acts exactly like a giant capacitor. The copper conductor is separated from the grounded metallic shield by the dielectric insulation. When you apply 5,000V DC to this arrangement, you are actively charging a massive capacitor.
+
+### The Delayed Shock
+
+If an electrician finishes a 10-minute polarization index test on a 500-meter feeder cable and immediately disconnects the test leads, the test instrument is gone, but the energy remains. The cable is still sitting at thousands of volts of DC potential. 
+
+If someone touches that bare conductor minutes (or even hours) later, the cable will discharge all that stored energy directly through them, resulting in a severe or lethal shock.
+
+### The Rule of Thumb for Discharging
+
+Most modern high-voltage test sets have an internal discharge resistor that automatically bleeds the voltage down when the test is stopped—**provided the leads are left connected.**
+
+### Actionable Takeaways
+
+- **Never disconnect leads immediately.** When the test completes, leave the test leads firmly connected to the cable. Watch the voltage display on the tester drop to near zero before disconnecting.
+- **Use the 4x Rule.** The industry standard rule of thumb is to allow the equipment to discharge for at least four times the duration of the test. If you applied high voltage for 5 minutes, leave it connected and discharging for at least 20 minutes.
+- **Apply temporary grounds.** Once the instrument shows zero volts and the leads are removed, apply an external static discharge stick or temporary ground cable to the conductor to bleed off any residual dielectric absorption (voltage that can "reappear" over time) before touching the bare copper.
