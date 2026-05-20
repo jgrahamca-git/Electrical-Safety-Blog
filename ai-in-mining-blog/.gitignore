@@ -26,3 +26,5 @@ pnpm-debug.log*
 # Local Netlify folder
 .netlify
 .secrets/
+*Zone.Identifier*
+.venv/
