@@ -1,7 +1,7 @@
 ---
 title: "Automated Lockout Tagout: Can We Trust a Touchscreen with Our Lives?"
 description: "Can automated lockout tagout systems match the absolute trust of a physical padlock? We analyze the SIL 3, PL e tech behind Ionic Mechatronics' SafeBox."
-pubDate: "2026-05-24T05:00:00.000Z"
+pubDate: "2026-05-21T05:00:00.000Z"
 heroImage: "../../assets/automated-lockout-tagout-safebox-system.png"
 criticality: "L0"
 conclusion_state: "safe"
