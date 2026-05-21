@@ -49,7 +49,7 @@
 - **LinkedIn:** Bi-weekly cross-posting active
 - **Global Banner:** "Blog Mission" top banner is active and permanently visible. It dynamically swaps its prefix to "May is National Electrical Safety Month" during May (month index 4).
 - **Subscriber count:** [3]
-- **Total posts published:** [31]
+- **Total posts published:** [32]
 - **Brand build plan:** Phases 01 & 02 complete. Phases 03–06 pending.
 
 ### Templates system (locked 2026-04-19, disclaimer added 2026-05-02)
@@ -412,6 +412,11 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 ## 3. Progress log
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
+
+### 2026-05-21 — Sourced and Scribed SafeBox Product Feature
+
+- progress  | Researched, drafted, and finalized the SafeBox LOTO automation product safety article in the safety-news collection.
+- progress  | Sourced official vendor product image from safeboxsystems.com, watermarked it with source attribution, and integrated it as the hero image.
 
 ### 2026-05-16 — Weekly Batch Finalized (May 18th Week)
 
