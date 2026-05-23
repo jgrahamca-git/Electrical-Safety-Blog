@@ -413,6 +413,14 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
+### 2026-05-21 — Weekly Batch Drafted (May 25th Week)
+
+- progress  | Drafted 7 Daily Safety Topics (Ground Rods vs Rings, Trapped Energy in Capacitors, Shift Handovers, Purdue Model OT, CSA Z462 EEWP, Step Potentials, Residential Breaker Limits).
+- progress  | Drafted Incident RCA: The 2008 RPC Shower Electrocution (10-part structure, anonymized). Config blocks added to bottom for FMEA and Lead Magnet scripts.
+- progress  | Updated Topics Queue and completed planning mode walkthrough.
+- progress  | Incident RCA Gate 1 Complete: Claude successfully generated FMEA, Banner, and Lead Magnet PDF, and they are placed in their final directories.
+- blocker   | PAUSED: Awaiting Jason's Gate 1 review of the 7 Daily Safety Topics before Git commit and Netlify deploy.
+
 ### 2026-05-21 — Sourced and Scribed SafeBox Product Feature
 
 - progress  | Researched, drafted, and finalized the SafeBox LOTO automation product safety article in the safety-news collection.
@@ -543,6 +551,8 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 
 Paste or upload this entire file at the start of any AI conversation about the ELI blog. Then ask your question.
 
+> **CRITICAL AGENT INSTRUCTION:** If you are an autonomous AI agent (Gemini, Claude, etc.) operating in this workspace, you MUST ALSO read the `GEMINI.md` (or `AGENT.md`/`CLAUDE.md`) file in the root directory before beginning any work to understand your specific Phase 1 vs Phase 2 operational workflow and safety guardrails.
+
 **Example prompts after loading this file:**
 
 - "Review this research output from Gemini — which topic should I pick for this week's RCA?"
@@ -566,16 +576,16 @@ Paste or upload this entire file at the start of any AI conversation about the E
 
 ## 5. Topics Queue (Upcoming Posts)
 
-These eight topics are drafted for the coming week and awaiting final editorial sign-off and publishing.
+These eight topics are drafted for the May 25-31 week and awaiting final editorial sign-off and publishing at Gate 1.
 
-- Understanding Cable Fire Ratings (FT4, FT6, vs. LSZH) (`understanding-cable-fire-ratings.mdx`)
-- ESD vs. Intrinsically Safe (IS) Tools: Knowing the Difference (`esd-vs-intrinsically-safe-tools.mdx`)
-- Insulation Resistance (Megger) Testing Safety (`megger-insulation-resistance-testing-safety.mdx`)
-- The Dangers of Single-Phasing in 3-Phase Motors (`dangers-of-single-phasing-motors.mdx`)
-- Battery Room and Large UPS Safety Hazards (`battery-room-ups-safety.mdx`)
-- Confined Space Electrical Safety: Low Voltage Requirements (`confined-space-electrical-safety.mdx`)
-- Motor Control Center (MCC) Remote Racking Safety (`mcc-remote-racking-safety.mdx`)
-- Floating Neutral ATS Failure Mode (RCA) (`floating-neutral-ats-failure-mode.mdx`)
+- The Safety Limitations of Ground Rods vs. Ground Rings (`safety-limitations-ground-rods-vs-rings.mdx`)
+- Trapped Energy: The Hazards of Power Factor Correction Capacitors (`capacitor-bank-trapped-energy-hazards.mdx`)
+- Shift Handover Failures in Electrical Maintenance (`shift-handover-failures-electrical.mdx`)
+- Network Segmentation (Purdue Model) for OT Systems (`purdue-model-ot-network-segmentation.mdx`)
+- CSA Z462: Energized Electrical Work Permit and Understanding (`csa-z462-energized-electrical-work-permit.mdx`)
+- Touch and Step Potentials in Substation Yards (`touch-and-step-potentials-substations.mdx`)
+- Standard Residential Panel Breakers: What They Actually Protect (`residential-panel-breakers-protection-limits.mdx`)
+- Incident RCA: The 2008 RPC Shower Electrocution (`2008-rpc-shower-electrocution.mdx`)
 
 ---
 

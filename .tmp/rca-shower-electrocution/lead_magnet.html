@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EGC Continuity & Bonding — Verification Checklist</title>
+<style>
+  @page {
+    size: Letter;
+    margin: 0.75in 0.7in 0.85in 0.7in;
+    @bottom-center {
+      content: "ELI Safety Blog  •  safetyblog.eli-intelligence.com  •  Page " counter(page) " of " counter(pages);
+      font-family: 'DejaVu Sans Mono', monospace;
+      font-size: 8pt;
+      color: #6E6862;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    color: #1A1E26;
+    font-size: 10pt;
+    line-height: 1.45;
+    margin: 0;
+  }
+  /* ---------------- Cover page ---------------- */
+  .cover {
+    background: #0D0F12;
+    color: #F2EDE8;
+    padding: 1.0in 0.7in 0.7in 0.7in;
+    margin: -0.75in -0.7in 0 -0.7in;
+    border-bottom: 4pt solid #E8680A;
+    page-break-after: always;
+    min-height: 9.5in;
+  }
+  .brand-strip {
+    border-left: 0.10in solid #E8680A;
+    padding-left: 0.20in;
+    margin-bottom: 0.45in;
+  }
+  .brand-strip .label {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 9pt;
+    letter-spacing: 0.20em;
+    color: #E8680A;
+    text-transform: uppercase;
+  }
+  .brand-strip .blog {
+    font-size: 11pt;
+    color: #A8A29E;
+    margin-top: 4pt;
+  }
+  .cover h1 {
+    font-size: 30pt;
+    font-weight: 800;
+    line-height: 1.10;
+    color: #F2EDE8;
+    margin: 0.30in 0 0.20in 0;
+    letter-spacing: -0.01em;
+  }
+  .cover .accent {
+    color: #E8680A;
+  }
+  .cover .subtitle {
+    font-size: 13pt;
+    color: #F0A030;
+    margin-bottom: 0.40in;
+    font-weight: 600;
+  }
+  .cover .lead {
+    font-size: 11pt;
+    color: #F2EDE8;
+    line-height: 1.55;
+    max-width: 5.5in;
+  }
+  .meta-grid {
+    display: table;
+    width: 100%;
+    margin-top: 0.55in;
+    border-top: 1pt solid #2A2F38;
+    padding-top: 0.20in;
+  }
+  .meta-grid .row { display: table-row; }
+  .meta-grid .cell {
+    display: table-cell;
+    padding: 0.06in 0.15in 0.06in 0;
+    font-size: 9pt;
+    color: #A8A29E;
+    width: 33%;
+  }
+  .meta-grid .cell strong {
+    color: #F2EDE8;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2pt;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8pt;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #E8680A;
+  }
+  /* ---------------- Body ---------------- */
+  .body { padding-top: 0.05in; }
+  h2 {
+    font-size: 14pt;
+    color: #0D0F12;
+    border-bottom: 2pt solid #E8680A;
+    padding-bottom: 5pt;
+    margin: 0.30in 0 0.15in 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 11pt;
+    color: #E8680A;
+    margin: 0.18in 0 0.06in 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  p { margin: 0.05in 0 0.10in 0; }
+  .intro {
+    background: #F5F1EC;
+    border-left: 4pt solid #E8680A;
+    padding: 0.18in 0.22in;
+    margin: 0.10in 0 0.20in 0;
+    font-size: 10.5pt;
+    color: #1A1E26;
+  }
+  /* ---------------- Checklist ---------------- */
+  .checklist { margin: 0.05in 0 0.20in 0; }
+  .check-item {
+    display: table;
+    width: 100%;
+    margin: 0.04in 0;
+    padding: 0.08in 0;
+    border-bottom: 0.5pt solid #DDD8D2;
+  }
+  .check-box {
+    display: table-cell;
+    width: 0.30in;
+    vertical-align: top;
+    padding-top: 1pt;
+  }
+  .check-box .box {
+    width: 0.18in;
+    height: 0.18in;
+    border: 1.2pt solid #1A1E26;
+    display: block;
+  }
+  .check-text {
+    display: table-cell;
+    vertical-align: top;
+    font-size: 10pt;
+    color: #1A1E26;
+  }
+  .check-text strong { font-weight: 700; }
+  .check-text .detail {
+    color: #5A5550;
+    font-size: 9pt;
+    margin-top: 2pt;
+    display: block;
+    line-height: 1.4;
+  }
+  /* ---------------- Spec block ---------------- */
+  .spec-block {
+    background: #1A1E26;
+    color: #F2EDE8;
+    padding: 0.18in 0.22in;
+    margin: 0.15in 0;
+    border-left: 4pt solid #F0A030;
+    font-size: 9.5pt;
+  }
+  .spec-block strong {
+    color: #F0A030;
+    font-family: 'DejaVu Sans Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 8.5pt;
+    display: block;
+    margin-bottom: 4pt;
+  }
+  .spec-block code {
+    background: #0D0F12;
+    color: #F2EDE8;
+    padding: 1pt 5pt;
+    border-radius: 2pt;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 9pt;
+  }
+  /* ---------------- Code references box ---------------- */
+  .codes-box {
+    background: #F5F1EC;
+    border: 1pt solid #DDD8D2;
+    padding: 0.15in 0.22in;
+    margin: 0.20in 0;
+    font-size: 9.5pt;
+  }
+  .codes-box .codes-title {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8.5pt;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #E8680A;
+    font-weight: 700;
+    margin-bottom: 6pt;
+  }
+  .codes-box ul { margin: 0; padding-left: 0.20in; }
+  .codes-box li { margin: 3pt 0; color: #1A1E26; }
+  .codes-box li strong { color: #0D0F12; }
+  /* ---------------- Disclaimer block (LOCKED — do not remove) ---------------- */
+  .disclaimer {
+    background: #FBF6F0;
+    border: 1pt solid #E8C9A0;
+    border-left: 4pt solid #C85A1A;
+    padding: 0.16in 0.22in;
+    margin: 0.20in 0;
+    font-size: 8.5pt;
+    color: #3A2F1F;
+    line-height: 1.40;
+  }
+  .disclaimer .disclaimer-title {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8pt;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #C85A1A;
+    font-weight: 700;
+    margin-bottom: 5pt;
+  }
+  .disclaimer p { margin: 4pt 0; }
+  /* ---------------- Footer call-to-action ---------------- */
+  .footer-cta {
+    background: #0D0F12;
+    color: #F2EDE8;
+    padding: 0.25in 0.30in;
+    margin: 0.35in -0.05in 0 -0.05in;
+    border-left: 4pt solid #E8680A;
+  }
+  .footer-cta h3 {
+    color: #E8680A;
+    margin-top: 0;
+    font-size: 12pt;
+  }
+  .footer-cta p {
+    color: #F2EDE8;
+    font-size: 10pt;
+  }
+  .footer-cta a { color: #F0A030; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ============== COVER PAGE ============== -->
+<div class="cover">
+  <div class="brand-strip">
+    <div class="label">ELI Field Checklist  •  L3 Hazard</div>
+    <div class="blog">ELI Safety Blog  •  safetyblog.eli-intelligence.com</div>
+  </div>
+
+  <h1>EGC Continuity & Bonding:<br><span class="accent">Verification Checklist</span></h1>
+
+  <div class="subtitle">A field checklist for verifying equipment grounding conductor integrity on motor and pump circuits</div>
+
+  <p class="lead">
+    A water pump motor shorted to its casing. Because the Equipment Grounding Conductor was missing, the breaker never tripped — and the building's plumbing became energized at line voltage. A worker was fatally electrocuted in the shower. The EGC was the single point of failure that turned a routine motor fault into a fatality.
+  </p>
+
+  <p class="lead" style="margin-top: 0.20in;">
+    Use this checklist during installation, commissioning, and preventive maintenance of any motor or pump circuit. Each item is a verifiable action — not a reminder to 'be safe.' Sign each line. File the completed checklist with the PM work order.
+  </p>
+
+  <div class="meta-grid">
+    <div class="row">
+      <div class="cell"><strong>Companion RCA</strong>The Fatal Shower: When Missing Grounding Conductors Kill</div>
+      <div class="cell"><strong>Audience</strong>E&I technicians, maintenance electricians, contractors, PM planners</div>
+      <div class="cell"><strong>Standards</strong>NEC 250, CEC Section 10, NFPA 70E, OSHA 1910.304</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== BODY ============== -->
+<div class="body">
+
+  <p class="intro">
+    <strong>Use this checklist at every motor/pump installation and during annual preventive maintenance.</strong> Each item must be verified by a qualified person and recorded on the work order. If you cannot verify an item, do not energize the circuit.
+  </p>
+
+  <!-- ============== CHECKLIST SECTIONS START ============== -->
+  <!-- Per-RCA: replace this block with N sections of the form below.
+       Each section can include 0+ check-items and 0+ spec-blocks.
+       Numbering convention: H2 sections numbered 1..N within the body. -->
+
+    <h2>1. Pre-Work Verification</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Circuit de-energized and LOTO applied.</strong>
+        <span class="detail">Lockout/tagout per site procedure before any EGC inspection or testing. Verify zero energy with rated voltage tester. Test-before-touch.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>As-built drawing reviewed for grounding path.</strong>
+        <span class="detail">Confirm the design specifies a dedicated EGC (not reliance on conduit alone). Identify EGC type and size on the drawing. Flag any circuit where no EGC is shown.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Correct test instruments available.</strong>
+        <span class="detail">Low-resistance ohmmeter (or 4-wire milliohm meter) for EGC continuity. Insulation resistance tester (megger) for motor winding checks. Both instruments calibrated and in-date.</span>
+      </div>
+    </div>
+  </div>
+  <h2>2. Visual Inspection of EGC Installation</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Dedicated EGC is physically present in the raceway or cable.</strong>
+        <span class="detail">Visually confirm a green, green/yellow, or bare copper conductor is pulled. Do not accept 'conduit is the ground' in high-vibration or corrosive environments.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>EGC sized correctly per code.</strong>
+        <span class="detail">Verify conductor size against NEC Table 250.122 / CEC Table 16 for the overcurrent device rating protecting the circuit.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>EGC terminated at both ends — source and equipment.</strong>
+        <span class="detail">Confirm the EGC is landed on the ground bus at the panel/MCC and on the equipment grounding lug at the motor junction box. No floating, cut, or unterminated ends.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Bonding jumpers intact at all metallic junctions.</strong>
+        <span class="detail">Check bonding jumpers across flexible conduit, expansion fittings, and isolation joints. Each jumper mechanically tight and corrosion-free.</span>
+      </div>
+    </div>
+  </div>
+  <h2>3. Continuity and Resistance Testing</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>EGC end-to-end continuity verified with low-resistance ohmmeter.</strong>
+        <span class="detail">Measure from the equipment grounding lug at the motor to the ground bus at the source panel. Record the reading on the work order.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Resistance reading within acceptable limits.</strong>
+        <span class="detail">Total EGC path resistance must provide a low-impedance fault return path capable of operating the overcurrent device. Flag any reading above the threshold below for investigation.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Motor insulation resistance tested (megger).</strong>
+        <span class="detail">Measure phase-to-ground insulation resistance on the motor windings. Record reading and compare to baseline/trend. Flag any reading below 1 megohm for immediate investigation.</span>
+      </div>
+    </div>
+  </div>
+  <div class="spec-block">
+    <strong>Pass criteria — EGC continuity</strong>
+    End-to-end EGC resistance: <code>&lt; 1 &#8486;</code> measured with a low-resistance ohmmeter. For long runs or small conductors, calculate expected resistance from conductor tables and flag readings exceeding 150% of calculated value. Motor insulation resistance: <code>&gt; 1 M&#8486;</code> phase-to-ground (IEEE 43 minimum). Record all readings on PM work order for trending.
+  </div>
+  <h2>4. Bonding of Metallic Systems</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Metallic water piping bonded per code.</strong>
+        <span class="detail">Verify bonding conductor from metallic water piping to the grounding electrode system per NEC 250.104(A) / CEC 10-406. This prevents plumbing from becoming an unintended fault path.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Equipment in wet/damp locations has GFCI protection.</strong>
+        <span class="detail">Confirm GFCI protection is installed on circuits supplying equipment in wet or damp locations per NEC 210.8 / CEC 26-700. Test GFCI trip function.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Structural steel and building metalwork included in bonding survey.</strong>
+        <span class="detail">Any metallic structure in contact with or near the equipment must be bonded to the grounding electrode system. Verify with continuity test.</span>
+      </div>
+    </div>
+  </div>
+  <h2>5. Post-Energization Verification</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>No objectionable current on EGC after energization.</strong>
+        <span class="detail">With circuit energized and motor running, measure current on EGC with True-RMS clamp meter. Any current above normal leakage indicates a fault condition requiring immediate investigation.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Touch potential spot-check at equipment frame.</strong>
+        <span class="detail">With motor running, measure voltage between equipment frame and nearest grounded structure. Any reading above 2V warrants investigation of bonding path integrity.</span>
+      </div>
+    </div>
+  </div>
+  <div class="spec-block">
+    <strong>Pass criteria — post-energization</strong>
+    EGC current: <code>&lt; 50 mA</code> under normal load (higher values indicate insulation degradation or wiring error). Touch potential: <code>&lt; 2 V</code> between equipment frame and grounded reference. Use True-RMS instruments only — averaging meters under-read distorted waveforms by 30–50%.
+  </div>
+  <h2>6. Documentation and Sign-Off</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>All readings recorded on PM work order.</strong>
+        <span class="detail">EGC resistance, insulation resistance, post-energization EGC current, and touch potential readings logged with date, instrument serial number, and technician name.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"><span class="box"></span></div>
+      <div class="check-text">
+        <strong>Deficiencies flagged and tracked to closure.</strong>
+        <span class="detail">Any failed item generates a corrective action work order. Circuit remains de-energized (or flagged for immediate follow-up) until deficiency is resolved and re-verified.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============== CHECKLIST SECTIONS END ============== -->
+
+  <div class="codes-box">
+    <div class="codes-title">Reference standards</div>
+    <ul>
+      <li><strong>NEC Article 250</strong> — Grounding and bonding — EGC sizing (Table 250.122), effective fault current path (250.4)</li>
+      <li><strong>NEC 250.104(A)</strong> — Bonding of metallic water piping to grounding electrode system</li>
+      <li><strong>NEC 250.112 / 250.114</strong> — Grounding of specific equipment; equipment in wet or damp locations</li>
+      <li><strong>CEC Section 10</strong> — Grounding and bonding — Rules 10-206, 10-400, 10-406</li>
+      <li><strong>CEC Section 26</strong> — Installation of electrical equipment (motors)</li>
+      <li><strong>NFPA 70E Article 110.5</strong> — Electrical safety program requirements</li>
+      <li><strong>OSHA 1910.304(g)(5)</strong> — Permanent and continuous path to ground</li>
+      <li><strong>IEEE 43</strong> — Recommended practice for testing insulation resistance of electric machinery</li>
+    </ul>
+  </div>
+
+  <!-- ============== DISCLAIMER (LOCKED — verbatim, every lead magnet) ============== -->
+  <div class="disclaimer">
+    <div class="disclaimer-title">Disclaimer & limitation of liability</div>
+    <p>This checklist is provided for educational and informational purposes only. It is a general industry reference, not a site-specific procedure, engineering specification, or legal compliance document. It does not replace the judgement of a qualified person, professional engineer, or authority having jurisdiction (AHJ).</p>
+    <p>Codes, standards, and regulations are revised periodically and vary by jurisdiction. <strong>Verify the current edition of all referenced codes (CEC, NEC, CSA, NFPA, API, OSHA) and any provincial, state, or local amendments that apply to your work site before relying on the items listed here.</strong> Where any conflict exists between this checklist and the applicable code, regulation, or your employer's safe work procedure, the code, regulation, or procedure governs.</p>
+    <p>ELI Intelligence and the authors of this material disclaim all liability for any loss, injury, or damage arising from the use of, or reliance on, this checklist. Use at your own risk and only under the supervision of competent persons trained for the work being performed.</p>
+  </div>
+
+  <div class="footer-cta">
+    <h3>Get the full RCA and the next checklist</h3>
+    <p>This checklist accompanies the full incident analysis at
+       <a href="https://safetyblog.eli-intelligence.com">safetyblog.eli-intelligence.com</a>.
+       New incident RCAs and field checklists publish every Friday. Subscribe at the
+       site footer to get them in your inbox the morning they go live.</p>
+  </div>
+</div>
+
+</body>
+</html>

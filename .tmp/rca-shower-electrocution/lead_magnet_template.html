@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>[[CHECKLIST_TITLE]] — [[CHECKLIST_SUBTITLE]]</title>
+<style>
+  @page {
+    size: Letter;
+    margin: 0.75in 0.7in 0.85in 0.7in;
+    @bottom-center {
+      content: "ELI Safety Blog  •  safetyblog.eli-intelligence.com  •  Page " counter(page) " of " counter(pages);
+      font-family: 'DejaVu Sans Mono', monospace;
+      font-size: 8pt;
+      color: #6E6862;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    color: #1A1E26;
+    font-size: 10pt;
+    line-height: 1.45;
+    margin: 0;
+  }
+  /* ---------------- Cover page ---------------- */
+  .cover {
+    background: #0D0F12;
+    color: #F2EDE8;
+    padding: 1.0in 0.7in 0.7in 0.7in;
+    margin: -0.75in -0.7in 0 -0.7in;
+    border-bottom: 4pt solid #E8680A;
+    page-break-after: always;
+    min-height: 9.5in;
+  }
+  .brand-strip {
+    border-left: 0.10in solid #E8680A;
+    padding-left: 0.20in;
+    margin-bottom: 0.45in;
+  }
+  .brand-strip .label {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 9pt;
+    letter-spacing: 0.20em;
+    color: #E8680A;
+    text-transform: uppercase;
+  }
+  .brand-strip .blog {
+    font-size: 11pt;
+    color: #A8A29E;
+    margin-top: 4pt;
+  }
+  .cover h1 {
+    font-size: 30pt;
+    font-weight: 800;
+    line-height: 1.10;
+    color: #F2EDE8;
+    margin: 0.30in 0 0.20in 0;
+    letter-spacing: -0.01em;
+  }
+  .cover .accent {
+    color: #E8680A;
+  }
+  .cover .subtitle {
+    font-size: 13pt;
+    color: #F0A030;
+    margin-bottom: 0.40in;
+    font-weight: 600;
+  }
+  .cover .lead {
+    font-size: 11pt;
+    color: #F2EDE8;
+    line-height: 1.55;
+    max-width: 5.5in;
+  }
+  .meta-grid {
+    display: table;
+    width: 100%;
+    margin-top: 0.55in;
+    border-top: 1pt solid #2A2F38;
+    padding-top: 0.20in;
+  }
+  .meta-grid .row { display: table-row; }
+  .meta-grid .cell {
+    display: table-cell;
+    padding: 0.06in 0.15in 0.06in 0;
+    font-size: 9pt;
+    color: #A8A29E;
+    width: 33%;
+  }
+  .meta-grid .cell strong {
+    color: #F2EDE8;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2pt;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8pt;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #E8680A;
+  }
+  /* ---------------- Body ---------------- */
+  .body { padding-top: 0.05in; }
+  h2 {
+    font-size: 14pt;
+    color: #0D0F12;
+    border-bottom: 2pt solid #E8680A;
+    padding-bottom: 5pt;
+    margin: 0.30in 0 0.15in 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 11pt;
+    color: #E8680A;
+    margin: 0.18in 0 0.06in 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  p { margin: 0.05in 0 0.10in 0; }
+  .intro {
+    background: #F5F1EC;
+    border-left: 4pt solid #E8680A;
+    padding: 0.18in 0.22in;
+    margin: 0.10in 0 0.20in 0;
+    font-size: 10.5pt;
+    color: #1A1E26;
+  }
+  /* ---------------- Checklist ---------------- */
+  .checklist { margin: 0.05in 0 0.20in 0; }
+  .check-item {
+    display: table;
+    width: 100%;
+    margin: 0.04in 0;
+    padding: 0.08in 0;
+    border-bottom: 0.5pt solid #DDD8D2;
+  }
+  .check-box {
+    display: table-cell;
+    width: 0.30in;
+    vertical-align: top;
+    padding-top: 1pt;
+  }
+  .check-box .box {
+    width: 0.18in;
+    height: 0.18in;
+    border: 1.2pt solid #1A1E26;
+    display: block;
+  }
+  .check-text {
+    display: table-cell;
+    vertical-align: top;
+    font-size: 10pt;
+    color: #1A1E26;
+  }
+  .check-text strong { font-weight: 700; }
+  .check-text .detail {
+    color: #5A5550;
+    font-size: 9pt;
+    margin-top: 2pt;
+    display: block;
+    line-height: 1.4;
+  }
+  /* ---------------- Spec block ---------------- */
+  .spec-block {
+    background: #1A1E26;
+    color: #F2EDE8;
+    padding: 0.18in 0.22in;
+    margin: 0.15in 0;
+    border-left: 4pt solid #F0A030;
+    font-size: 9.5pt;
+  }
+  .spec-block strong {
+    color: #F0A030;
+    font-family: 'DejaVu Sans Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 8.5pt;
+    display: block;
+    margin-bottom: 4pt;
+  }
+  .spec-block code {
+    background: #0D0F12;
+    color: #F2EDE8;
+    padding: 1pt 5pt;
+    border-radius: 2pt;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 9pt;
+  }
+  /* ---------------- Code references box ---------------- */
+  .codes-box {
+    background: #F5F1EC;
+    border: 1pt solid #DDD8D2;
+    padding: 0.15in 0.22in;
+    margin: 0.20in 0;
+    font-size: 9.5pt;
+  }
+  .codes-box .codes-title {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8.5pt;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #E8680A;
+    font-weight: 700;
+    margin-bottom: 6pt;
+  }
+  .codes-box ul { margin: 0; padding-left: 0.20in; }
+  .codes-box li { margin: 3pt 0; color: #1A1E26; }
+  .codes-box li strong { color: #0D0F12; }
+  /* ---------------- Disclaimer block (LOCKED — do not remove) ---------------- */
+  .disclaimer {
+    background: #FBF6F0;
+    border: 1pt solid #E8C9A0;
+    border-left: 4pt solid #C85A1A;
+    padding: 0.16in 0.22in;
+    margin: 0.20in 0;
+    font-size: 8.5pt;
+    color: #3A2F1F;
+    line-height: 1.40;
+  }
+  .disclaimer .disclaimer-title {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8pt;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #C85A1A;
+    font-weight: 700;
+    margin-bottom: 5pt;
+  }
+  .disclaimer p { margin: 4pt 0; }
+  /* ---------------- Footer call-to-action ---------------- */
+  .footer-cta {
+    background: #0D0F12;
+    color: #F2EDE8;
+    padding: 0.25in 0.30in;
+    margin: 0.35in -0.05in 0 -0.05in;
+    border-left: 4pt solid #E8680A;
+  }
+  .footer-cta h3 {
+    color: #E8680A;
+    margin-top: 0;
+    font-size: 12pt;
+  }
+  .footer-cta p {
+    color: #F2EDE8;
+    font-size: 10pt;
+  }
+  .footer-cta a { color: #F0A030; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ============== COVER PAGE ============== -->
+<div class="cover">
+  <div class="brand-strip">
+    <div class="label">ELI Field Checklist  •  [[CRITICALITY]] Hazard</div>
+    <div class="blog">ELI Safety Blog  •  safetyblog.eli-intelligence.com</div>
+  </div>
+
+  <h1>[[CHECKLIST_TITLE]]:<br><span class="accent">[[CHECKLIST_SUBTITLE]]</span></h1>
+
+  <div class="subtitle">[[CHECKLIST_TAGLINE]]</div>
+
+  <p class="lead">
+    [[LEAD_PARAGRAPH_1]]
+  </p>
+
+  <p class="lead" style="margin-top: 0.20in;">
+    [[LEAD_PARAGRAPH_2]]
+  </p>
+
+  <div class="meta-grid">
+    <div class="row">
+      <div class="cell"><strong>Companion RCA</strong>[[COMPANION_RCA_TITLE]]</div>
+      <div class="cell"><strong>Audience</strong>[[AUDIENCE]]</div>
+      <div class="cell"><strong>Standards</strong>[[STANDARDS_SHORTLIST]]</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== BODY ============== -->
+<div class="body">
+
+  <p class="intro">
+    [[INTRO_PARAGRAPH]]
+  </p>
+
+  <!-- ============== CHECKLIST SECTIONS START ============== -->
+  <!-- Per-RCA: replace this block with N sections of the form below.
+       Each section can include 0+ check-items and 0+ spec-blocks.
+       Numbering convention: H2 sections numbered 1..N within the body. -->
+
+  [[CHECKLIST_SECTIONS]]
+
+  <!-- ============== CHECKLIST SECTIONS END ============== -->
+
+  <div class="codes-box">
+    <div class="codes-title">Reference standards</div>
+    <ul>
+      [[REFERENCE_STANDARDS_LIST]]
+    </ul>
+  </div>
+
+  <!-- ============== DISCLAIMER (LOCKED — verbatim, every lead magnet) ============== -->
+  <div class="disclaimer">
+    <div class="disclaimer-title">Disclaimer & limitation of liability</div>
+    <p>This checklist is provided for educational and informational purposes only. It is a general industry reference, not a site-specific procedure, engineering specification, or legal compliance document. It does not replace the judgement of a qualified person, professional engineer, or authority having jurisdiction (AHJ).</p>
+    <p>Codes, standards, and regulations are revised periodically and vary by jurisdiction. <strong>Verify the current edition of all referenced codes (CEC, NEC, CSA, NFPA, API, OSHA) and any provincial, state, or local amendments that apply to your work site before relying on the items listed here.</strong> Where any conflict exists between this checklist and the applicable code, regulation, or your employer's safe work procedure, the code, regulation, or procedure governs.</p>
+    <p>ELI Intelligence and the authors of this material disclaim all liability for any loss, injury, or damage arising from the use of, or reliance on, this checklist. Use at your own risk and only under the supervision of competent persons trained for the work being performed.</p>
+  </div>
+
+  <div class="footer-cta">
+    <h3>Get the full RCA and the next checklist</h3>
+    <p>This checklist accompanies the full incident analysis at
+       <a href="https://safetyblog.eli-intelligence.com">safetyblog.eli-intelligence.com</a>.
+       New incident RCAs and field checklists publish every Friday. Subscribe at the
+       site footer to get them in your inbox the morning they go live.</p>
+  </div>
+</div>
+
+</body>
+</html>

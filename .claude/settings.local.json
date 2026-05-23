@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"/mnt/c/Users/jgrah/My Drive/01_ELI/07_Blog/templates/rca_symbol.png\" /home/jgrah/Blog_EI_Safety/.tmp/rca-shower-electrocution/)",
+      "Bash(python3 rca_banner_template.py)"
+    ]
+  }
+}
