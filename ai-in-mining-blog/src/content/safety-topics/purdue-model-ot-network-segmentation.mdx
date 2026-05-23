@@ -1,0 +1,53 @@
+---
+title: "Network Segmentation (Purdue Model) for OT Systems"
+description: "Why isolating your Operational Technology (OT) networks from your IT networks is critical for industrial safety and preventing catastrophic equipment manipulation."
+pubDate: "2026-05-28"
+category: "safety-topics"
+tags: ["scada", "ot security", "purdue model", "cybersecurity", "industrial control systems"]
+criticality: "L1"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Purdue Model Network Segmentation for OT Systems"
+metaDescription: "Learn how the Purdue Model for network segmentation protects industrial Operational Technology (OT) and SCADA systems from cyber threats and safety incidents."
+primaryKeyword: "purdue model ot network segmentation"
+---
+
+### 1. When IT and OT Collide
+
+In the past, Operational Technology (OT) systems like PLCs, HMIs, and SCADA networks were "air-gapped"—physically isolated from the outside world. Today, the push for data analytics and remote monitoring has merged IT and OT networks, exposing critical infrastructure to ransomware, malware, and malicious manipulation.
+
+If an attacker compromises an office computer (IT) and can reach a turbine controller (OT) because the network is flat, the result is no longer just lost data; it is physical destruction and potential loss of life.
+
+### 2. The Purdue Enterprise Reference Architecture
+
+The Purdue Model is the gold standard for structuring industrial control system networks securely. It segments the network into distinct levels with firewalls and demilitarized zones (DMZs) between them.
+
+* **Level 0/1 (Process/Basic Control):** The actual sensors, valves, and PLCs directly touching the physical process.
+* **Level 2 (Supervisory Control):** The HMIs and SCADA servers monitoring the PLCs.
+* **Level 3 (Site Operations):** Historians and local manufacturing execution systems.
+* **Level 3.5 (Industrial DMZ):** A highly restricted firewall zone. Traffic cannot pass directly from IT to OT; it must terminate here.
+* **Level 4/5 (Enterprise IT):** Office computers, email, and the internet.
+
+### 3. The Safety Imperative of the DMZ
+
+The Industrial DMZ (Level 3.5) is the critical safety boundary. By enforcing a rule that no direct traffic can cross from the Enterprise network to the Control network, you ensure that a ransomware infection in the HR department cannot spread to the Safety Instrumented System (SIS) or plant PLCs. 
+
+### 4. How Data Safely Crosses the DMZ
+
+Because direct communication between Level 4 (IT) and Level 3 (OT) is strictly prohibited, data and personnel must cross the Industrial DMZ using secure intermediaries:
+* **Jump Servers (Remote Access):** Engineers needing to troubleshoot a PLC from the corporate network cannot connect directly. They must authenticate into a dedicated "Jump Server" located inside the DMZ, which then establishes a separate, restricted session into the OT network.
+* **Data Replicators:** Instead of IT pulling data directly from an OT historian (which requires dangerous inbound firewall rules), the OT historian pushes its data outward to a mirror server in the DMZ. IT users then pull data safely from the DMZ mirror.
+* **Data Diodes:** For highly critical infrastructure, hardware data diodes physically guarantee that network traffic can only flow in one direction (OT to IT). By removing the physical return path, it becomes physically impossible for a cyberattack to travel backward into the plant.
+
+**The Takeaway:** A flat network in an industrial facility is an unacceptable safety risk. Implementing the Purdue Model ensures that digital threats cannot easily transition into physical hazards.
+
+{/*
+LINKEDIN POST DRAFT:
+Hook: If an email attachment can shut down your plant's PLCs, you don't just have a cybersecurity problem—you have a life safety problem.
+Setup: The convergence of IT and Operational Technology (OT) has destroyed the traditional "air gap." Today, flat networks allow office malware to migrate directly into SCADA systems and safety controllers.
+Core Failure: When network segmentation is ignored, malicious actors can manipulate valves, overspeed motors, or blind HMIs, turning digital attacks into kinetic, physical destruction.
+Takeaway: The Purdue Model isn't just an IT framework; it's a fundamental engineering safety control. The Industrial DMZ ensures that enterprise network breaches cannot reach the process level.
+CTA: Has your facility conducted a recent audit to verify strict network segmentation between IT and OT?
+Hashtags: #CyberSecurity #SCADA #OTSecurity #IndustrialAutomation #SafetyEngineering
+*/}

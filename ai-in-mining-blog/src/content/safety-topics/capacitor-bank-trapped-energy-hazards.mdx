@@ -1,0 +1,53 @@
+---
+title: "Trapped Energy: The Hazards of Power Factor Correction Capacitors"
+description: "Why de-energizing a circuit doesn't mean it's safe when capacitor banks are involved. Understanding discharge times and trapped energy hazards."
+pubDate: "2026-05-26"
+category: "safety-topics"
+tags: ["capacitors", "trapped energy", "power factor", "loto", "shock hazard"]
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Safety Hazards of Power Factor Correction Capacitors"
+metaDescription: "Learn why Power Factor Correction (PFC) capacitors remain lethally energized after disconnect and the critical wait times required for safety."
+primaryKeyword: "capacitor bank safety"
+---
+
+### 1. The De-Energized Illusion
+
+In industrial electrical maintenance, the golden rule is "test before you touch." But when dealing with Power Factor Correction (PFC) capacitor banks, turning off the disconnect switch and applying your lock does NOT immediately render the equipment safe. 
+
+Unlike a motor or a transformer that drops to zero volts the moment power is removed, a capacitor is designed to store electrical energy. Even after the primary circuit is physically broken, the capacitor remains fully charged, acting as a lethal, high-voltage battery.
+
+### 2. Discharge Resistors and the 5-Minute Rule
+
+To mitigate this trapped energy hazard, industrial capacitor banks are required by code to have built-in discharge resistors. These resistors bleed the stored energy down to a safe level (typically under 50 volts).
+
+Under the National Electrical Code (NEC) Article 460 and the Canadian Electrical Code (CEC) Section 26, capacitors rated over 1,000 volts (NEC) or 750 volts (CEC) must discharge to 50V or less within **5 minutes**. Capacitors rated under those thresholds must discharge within **1 minute**. 
+
+However, you must never trust the resistor.
+
+### 3. When Safety Mechanisms Fail
+
+Discharge resistors are subject to thermal cycling, vibration, and component failure. If the internal resistor burns out or the connection breaks, the capacitor bank will retain its full lethal charge indefinitely—sometimes for days or weeks.
+
+If a technician assumes the capacitor is safe because the 5-minute wait time has passed, they could step directly into a lethal shock or arc flash when they touch the busbars.
+
+### 4. Safe Verification and Grounding
+
+Because discharge resistors can fail silently, safe maintenance on capacitor banks requires strict protocol:
+1. **Wait the Time:** Always wait the manufacturer's specified discharge time after opening the disconnect.
+2. **Test the Voltage:** Wearing appropriate arc flash PPE, use a rated high-voltage probe to test phase-to-phase and phase-to-ground.
+3. **Bleed and Ground:** Only after verifying zero voltage should you apply a mechanical ground or a temporary grounding cluster. This ensures any remaining "recovery voltage" (dielectric absorption) is bled to ground before you begin work.
+
+**The Takeaway:** Trapped energy doesn't care about your LOTO lock. Treat every capacitor bank as fully energized until you have personally verified zero voltage and applied a hard ground.
+
+{/*
+LINKEDIN POST DRAFT:
+Hook: Opening the disconnect switch on a capacitor bank doesn't make it safe. In fact, it's still fully loaded.
+Setup: Power Factor Correction (PFC) capacitors are essentially massive batteries. When you lock out the circuit, the capacitor retains its full, lethal charge. 
+Core Failure: Code requires discharge resistors to bleed that energy down over 1 to 5 minutes. But what happens if that resistor has silently failed due to thermal fatigue? The capacitor will hold lethal voltage for weeks.
+Takeaway: Never trust the wait time alone. Always test for zero energy with proper PPE, and apply temporary grounding cables before you put your hands near the busbars.
+CTA: Does your facility's LOTO procedure for capacitor banks specifically mandate the use of temporary grounding clusters after the discharge wait time?
+Hashtags: #ElectricalSafety #Capacitors #LOTO #Engineering #Maintenance
+*/}
