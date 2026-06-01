@@ -1,0 +1,45 @@
+---
+title: "The Hazard of 'Troubleshooting by Replacement'"
+description: "Why blindly swapping PLC cards or relays without understanding the root cause often introduces new faults, clears evidence, or inadvertently bypasses safety interlocks."
+pubDate: "2026-06-04"
+category: "safety-topics"
+tags: ["safety-culture", "troubleshooting", "maintenance"]
+image: "./eli-safety-topics-L1-troubleshooting-by-replacement.jpg"
+criticality: "L1"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "The Danger of Troubleshooting by Replacement in Control Systems"
+metaDescription: "Learn why swapping PLC cards and relays without understanding the root cause can bypass interlocks and introduce new faults."
+primaryKeyword: "troubleshooting by replacement"
+---
+
+### 1. The Urgency Trap
+
+When a critical process goes down, the pressure on the E&I technician is immense. Every minute of downtime costs the facility money. In this environment, the temptation to bypass a methodical root-cause analysis and jump straight to "troubleshooting by replacement" is high.
+
+This practice—blindly swapping out PLC cards, control relays, or sensors based on a guess—might occasionally get the process running faster, but it introduces massive safety and reliability risks.
+
+### 2. The Dangers of Blind Swapping
+
+Replacing components without proving they are failed leads to several dangerous outcomes:
+
+- **Destroying Evidence:** The original component holds the key to the failure. If a relay coil burned up due to a downstream short, removing it before checking the circuit destroys the evidence. If you put a new relay in, it will immediately burn up again.
+- **Introducing New Faults:** Swapping complex components like PLC I/O cards or VFD control boards often requires moving dozens of wires or re-seating delicate pins. Each intervention is an opportunity to roll a wire, bend a pin, or drop a screw into a live bus.
+- **Bypassing Interlocks:** In older, undocumented relay logic panels, a technician might swap a failed multi-pole relay with whatever is in the parts bin. If the new relay has a different contact configuration (e.g., normally open instead of normally closed), a critical safety interlock might be permanently bypassed without anyone knowing.
+
+### 3. The Methodical Alternative
+
+Effective troubleshooting requires proving the fault *before* breaking out the screwdriver.
+
+- **Use the Schematics:** Start at the prints, not the panel. Trace the logic and identify the test points that will isolate the problem in half.
+- **Test Before You Pull:** Use your multimeter to confirm that a component is receiving the correct input but failing to produce the correct output. Only then is it a confirmed failure.
+- **Ask "Why did it fail?":** Components rarely die of old age. Before installing the replacement, you must answer what killed the original component—was it a voltage spike, a mechanical jam, or water ingress?
+
+### 4. Actionable Takeaways
+
+- **Ban the "Parts Cannon":** Establish a maintenance culture — aligned with NFPA 70E 110.5 (host/contract employer responsibilities) and CSA Z462 Section 4.1 (electrical safety program) — where technicians must explain *why* a component failed before requesting a replacement from stores.
+- **Post-Incident Review:** If a system required three different parts swapped to get it running, the root cause was not found. Schedule a post-mortem to analyze the original removed parts.
+- **Document Changes:** If a component is replaced, ensure the new part number matches the schematic perfectly. If a substitution is made, it must be documented through the Management of Change (MOC) process.
+
+

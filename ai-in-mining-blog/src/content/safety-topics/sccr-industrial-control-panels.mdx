@@ -1,0 +1,41 @@
+---
+title: "Short-Circuit Current Rating (SCCR) of Industrial Control Panels"
+description: "Understanding UL 508A requirements, why the weakest component dictates the entire panel's SCCR, and the catastrophic hazards of misrating."
+pubDate: "2026-06-06"
+category: "safety-topics"
+tags: ["standards", "protection", "switchgear"]
+image: "./eli-safety-topics-L2-sccr-control-panels.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Understanding SCCR for Industrial Control Panels"
+metaDescription: "Learn how the Short-Circuit Current Rating (SCCR) of an industrial control panel is determined by its weakest component and the dangers of misrating."
+primaryKeyword: "short circuit current rating sccr"
+---
+
+### 1. What is SCCR?
+
+The Short-Circuit Current Rating (SCCR) is the maximum level of short-circuit current that an electrical component or an entire control panel can safely withstand without catastrophic failure (i.e., without bursting into flames, expelling shrapnel, or creating a shock hazard).
+
+It is a critical safety parameter mandated by NEC 110.10 and UL 508A Supplement SB in the US, and by CEC Rule 2-024 (interrupting capacity) and CSA C22.2 No. 286 (Industrial Control Panels and Assemblies) in Canada. The SCCR of a panel must be greater than or equal to the available fault current at the terminals where the panel is installed. If the available fault current exceeds the SCCR, a short circuit inside the panel could cause an explosion.
+
+### 2. The "Weakest Link" Principle
+
+The most important and often misunderstood rule of calculating a panel's overall SCCR is the "weakest link" principle. A control panel is only as strong as its lowest-rated component in the primary power circuit.
+
+If you build a panel using a main disconnect rated for 100kA, a contactor rated for 65kA, but you install a small power distribution block that is only rated for 5kA, the entire panel's SCCR drops to 5kA. Installing that panel in a location with 20kA of available fault current is a massive code violation and a lethal safety hazard.
+
+### 3. The Hazard of Modifications
+
+Many panels leave the original equipment manufacturer (OEM) with a perfectly acceptable 65kA SCCR label. However, over the lifespan of the equipment, maintenance technicians inevitably make modifications.
+
+A technician might replace a failed variable frequency drive (VFD) with a different brand, or swap out a set of fuses for a breaker to save time on replacements. If the new component has a lower standalone SCCR, or if a specific breaker-contactor series rating is broken, the entire panel's SCCR is instantly compromised. The label on the door becomes a lie.
+
+### 4. Actionable Takeaways
+
+- **Verify Available Fault Current:** Before installing any new control panel, you must calculate the available fault current at that specific node in the facility's power system and ensure the panel's SCCR is higher.
+- **MOC for Replacements:** Any replacement of a power component (breaker, fuse, contactor, VFD, distribution block) must go through a Management of Change (MOC) process to verify it does not lower the panel's overall SCCR.
+- **Use Series Ratings Carefully:** Sometimes a low-rated component can be used if it is protected by a specific, tested current-limiting fuse or breaker upstream. However, this "series rating" is highly specific to exact part numbers and cannot be substituted.
+
+

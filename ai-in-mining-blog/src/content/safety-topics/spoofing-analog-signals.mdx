@@ -1,0 +1,43 @@
+---
+title: "Spoofing Analog Signals via Open Ports"
+description: "Why modern PLCs require strict out-of-range limits and rate-of-change alarms to detect compromised field sensors or spoofed analog inputs."
+pubDate: "2026-06-05"
+category: "safety-topics"
+tags: ["scada", "cybersecurity", "instrumentation"]
+image: "./eli-safety-topics-L2-spoofing-analog-signals.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Spoofing Analog Signals in PLCs and OT Systems"
+metaDescription: "Understand the risks of spoofed analog signals in OT systems and how strict PLC range limits and rate-of-change alarms can detect anomalies."
+primaryKeyword: "spoofing analog signals"
+---
+
+### 1. The Vulnerability of 4-20mA Loops
+
+In industrial environments, physical processes are monitored by sensors outputting standard analog signals, most commonly 4-20mA. These signals are fed directly into the Programmable Logic Controller (PLC) to automate decisions like opening valves, adjusting pump speeds, or triggering emergency shutdowns.
+
+Historically, we assumed these analog loops were secure because they were hardwired. However, if a bad actor gains access to the OT network—or physically accesses an open field panel—they can spoof these signals. By injecting a false 4-20mA signal or manipulating the digital representation of that signal via an unsecured network port, they can force the PLC to make disastrous physical decisions.
+
+### 2. The Danger of "In-Range" Spoofing
+
+If an attacker simply maxes out a sensor value (e.g., forcing a tank level to read 150%), the PLC's basic high-high alarms will usually catch it and trip the system. 
+
+The real danger lies in "in-range" spoofing. An attacker slowly ramps the spoofed signal up or down within the normal operating bounds, or freezes the signal at a "normal" value while the actual physical process goes out of control. For example, spoofing a cooling water flow sensor to read a perfect "500 GPM" while physically shutting off the pump will cause a reactor to overheat without triggering any low-flow alarms.
+
+### 3. Defending the Logic
+
+Because you cannot always guarantee physical security at every remote junction box, you must build defense-in-depth directly into the PLC logic — a core principle of IEC 62443 (industrial cybersecurity) and NIST SP 800-82 (OT security guidance).
+
+- **Rate-of-Change (RoC) Alarms:** Physical processes have inertia. A 100,000-gallon tank cannot empty in two seconds. If the analog signal changes faster than physically possible, the PLC should flag it as a failed or spoofed sensor, not a process anomaly.
+- **Signal Freezing Detection:** If an analog signal stays *exactly* the same for an extended period, it is likely frozen or spoofed. Real sensors always have a slight noise or dither.
+- **Cross-Checking Variables:** If the pump speed is at 100%, but the flow meter reads 0 GPM, the logic should recognize the discrepancy between the commanded state and the measured state and trigger an alarm.
+
+### 4. Actionable Takeaways
+
+- **Audit PLC Logic:** Review your critical analog input scaling blocks. Ensure they include high-high, low-low, and rate-of-change limits that accurately reflect the physical limits of the process.
+- **Implement Noise Checking:** Program your PLCs to look for the natural "dither" in analog signals. A perfectly flat line for hours should trigger a maintenance alarm.
+- **Secure Unused Ports:** Physically disable or put MAC filtering on unused Ethernet ports in field cabinets to prevent easy access to the PLC network.
+
+
