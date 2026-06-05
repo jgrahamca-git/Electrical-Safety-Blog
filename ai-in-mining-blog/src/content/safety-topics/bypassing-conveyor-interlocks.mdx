@@ -1,0 +1,33 @@
+---
+title: "The Hazards of Bypassing Safety Interlocks on Conveyor Systems"
+description: "Why forcing inputs and bypassing physical interlocks on massive conveyor systems is a recipe for disaster."
+pubDate: "2026-06-12"
+category: "safety-topics"
+tags: ["Controls", "PLCs", "Interlocks", "Conveyors"]
+image: "./eli-safety-topics-L3-bypassing-conveyor-interlocks.jpg"
+criticality: "L3"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Bypassing Safety Interlocks on Conveyor Systems"
+metaDescription: "Examine the extreme dangers of defeating or bypassing physical safety interlocks and forcing PLC inputs on industrial conveyor systems."
+primaryKeyword: "bypassing safety interlocks"
+---
+
+### 1. Introduction & Context
+
+Massive industrial conveyor systems, especially those in mining and bulk material handling, possess immense kinetic energy. They can crush, amputate, or pull a worker into a transfer chute in fractions of a second. To protect personnel, these systems are surrounded by guarding and guarded by safety interlocks—pull cords, gate switches, and zero-speed sensors. Yet, the temptation to bypass these systems for "quick maintenance" remains a leading cause of fatalities.
+
+### 2. The Core Issue
+
+When a limit switch fails or a pull cord switch goes out of alignment, the conveyor shuts down. The correct action is to repair the switch. The incorrect—and deadly—action is to place a jumper across the switch terminals in the field, or to "force" the input bit to a 1 inside the PLC program.
+
+- **The Illusion of Control:** When an interlock is bypassed, the control system becomes blind to reality. The PLC believes the safety gate is closed, even when it is wide open.
+- **Forgotten Forces:** Temporary bypasses are notoriously easy to forget. A technician might jumper a switch to run a quick test, get called away to another breakdown, and leave the jumper installed. The next shift, assuming the safety systems are active, enters the hazard zone.
+- **Cascading Failures:** Bypassing a safety device often bypasses the *only* line of defense. If a startup siren sounds while a worker is on a bypassed belt, their only recourse (the pull cord) may also be disabled by the same reckless troubleshooting culture.
+
+### 3. Actionable Takeaways
+
+- **Strict Software Control:** "Forcing" I/O in a PLC must be tightly controlled by procedure. Any forced safety bit must require management authorization, entry into a forced-variable log, and removal before the equipment is returned to operations.
+- **Eliminate Jumper Wires:** Standardize on hardware designs that make field jumpering difficult, such as using dual-channel safety relays with discrepancy monitoring, which detect and trip if someone attempts to jumper a single channel.
+- **Culture of Stoppage:** Empower every worker to invoke "Stop Work Authority" if they discover defeated safety devices. Production targets must never justify a bypassed interlock.

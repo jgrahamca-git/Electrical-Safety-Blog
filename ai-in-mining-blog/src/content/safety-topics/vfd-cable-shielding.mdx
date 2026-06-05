@@ -1,0 +1,36 @@
+---
+title: "VFD Cable Shielding: Preventing Unintended Equipment Operation"
+description: "How proper VFD cable shielding and grounding prevents electromagnetic interference from causing dangerous unintended machine movements."
+pubDate: "2026-06-09"
+category: "safety-topics"
+tags: ["VFD", "Grounding", "EMI", "Controls"]
+image: "./eli-safety-topics-L1-vfd-cable-shielding.jpg"
+criticality: "L1"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "VFD Cable Shielding and EMI Mitigation"
+metaDescription: "Learn why proper VFD cable shielding is critical for preventing electromagnetic interference (EMI) and avoiding dangerous unintended equipment operation."
+primaryKeyword: "VFD cable shielding"
+---
+
+### 1. Introduction & Context
+
+Variable Frequency Drives (VFDs) have revolutionized motor control, offering immense energy savings and precise speed regulation. However, the rapid switching of Insulated Gate Bipolar Transistors (IGBTs) inside the drive generates significant high-frequency noise, or Electromagnetic Interference (EMI). If the cable connecting the VFD to the motor is not properly shielded, this noise will radiate like an antenna, wreaking havoc on nearby low-voltage control systems.
+
+### 2. The Core Issue
+
+When a VFD pulses voltage to the motor, it creates high-frequency currents. Without a proper path back to the drive, these currents will seek the path of least impedance back to the source—often jumping into adjacent control cables, analog instrument loops, or communication networks (like EtherNet/IP or Modbus).
+
+This EMI coupling can lead to dangerous "ghost" signals:
+- **False Starts:** Induced voltage on a 24VDC start circuit can cause a motor or conveyor to start unexpectedly while personnel are working on it.
+- **Erratic Analog Readings:** A 4-20mA pressure transmitter signal can be corrupted, tricking the PLC into believing a tank is empty when it is actually full, leading to an overfill or burst.
+- **Communication Failures:** High-speed network packets drop, causing sudden, uncoordinated halts of complex automated systems.
+
+A proper VFD cable relies on a continuous, low-impedance shield (often a combination of copper tape and braid) to capture this noise and return it directly to the drive, keeping the surrounding electrical environment clean.
+
+### 3. Actionable Takeaways
+
+- **Use Proper Cable:** Never use standard THHN wire in conduit or unshielded tray cable for VFD-to-motor runs. Always specify symmetrical shielded VFD cable.
+- **360-Degree Terminations:** A shield is useless if it's only grounded with a "pigtail." The shield must be terminated using 360-degree grounding clamps at both the drive enclosure and the motor peckerhead.
+- **Physical Separation:** Keep VFD power cables physically separated from low-voltage control and instrumentation cables. If they must cross, ensure they do so at a 90-degree angle to minimize inductive coupling.

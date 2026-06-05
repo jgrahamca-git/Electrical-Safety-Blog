@@ -1,0 +1,34 @@
+---
+title: "Corrosion in Junction Boxes: The Silent Fault Waiting to Happen"
+description: "How undetected corrosion in field junction boxes degrades signals and creates extreme arc flash risks."
+pubDate: "2026-06-16"
+category: "safety-topics"
+tags: ["Maintenance", "Corrosion", "Grounding", "Instrumentation"]
+image: "./eli-safety-topics-L2-junction-box-corrosion.jpg"
+criticality: "L2"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Electrical Junction Box Corrosion Hazards"
+metaDescription: "Discover how hidden corrosion in industrial electrical junction boxes compromises grounding, degrades instrumentation signals, and creates severe safety hazards."
+primaryKeyword: "electrical junction box corrosion"
+---
+
+### 1. Introduction & Context
+
+In the harsh environments of mining, chemical processing, and wastewater treatment, field junction boxes (JBs) are subjected to continuous assaults from acidic vapors, moisture, and extreme temperature swings. Even NEMA 4X stainless steel enclosures can fail if the conduit entries aren't properly sealed. What begins as a minor seal failure slowly evolves into a silent, catastrophic safety hazard hidden behind a bolted cover.
+
+### 2. The Core Issue
+
+Corrosion inside an electrical enclosure attacks every metallic component, fundamentally changing the electrical properties of the circuit.
+
+- **Loss of Grounding:** The most dangerous consequence of corrosion is the degradation of the equipment grounding conductor (EGC). As ground lugs rust and copper wires turn green with verdigris, the resistance to ground skyrockets. If a phase-to-ground fault occurs, the high-impedance path prevents the breaker from tripping quickly, leaving the enclosure energized at lethal voltages or sustaining an arc flash.
+- **Instrumentation Signal Degradation:** For 4-20mA analog loops or RTD temperature sensors, micro-corrosion on terminal blocks adds unintended resistance to the circuit. This artificially skews the readings back at the PLC. For an RTD, the added series resistance is read as a *higher* temperature than what is actually present — so a controller may cut heat to a process that is actually running cold, or mask a genuine over-temperature condition until equipment is damaged.
+- **Galvanic Corrosion:** Mixing incompatible metals (like threading an aluminum conduit into a steel enclosure without anti-seize) accelerates galvanic corrosion, eating away the threads and destroying the mechanical and electrical integrity of the connection.
+
+### 3. Actionable Takeaways
+
+- **Seal Conduit Entries:** The majority of moisture enters JBs through the conduit. Use listed conduit sealing fittings or duct seal putty to block the flow of moist air from warmer indoor areas to colder outdoor JBs.
+- **Implement PM Inspections:** Do not wait for a failure. Implement a Preventative Maintenance (PM) schedule to open, inspect, and clean field JBs, specifically checking the integrity of the ground lugs.
+- **Use Anti-Corrosion Products:** Apply dielectric grease to terminal blocks in high-moisture areas and use oxidation inhibitors (like Noalox) on all aluminum-to-copper or aluminum-to-steel connections to prevent galvanic degradation.
+- **Install Enclosure Heaters:** In environments with extreme temperature swings, install small thermostatic space heaters inside the junction boxes. Keeping the internal temperature slightly above the ambient dew point prevents condensation from forming on the terminals.
