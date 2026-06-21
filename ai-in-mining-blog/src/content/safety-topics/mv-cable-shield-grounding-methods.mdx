@@ -1,0 +1,56 @@
+---
+title: "Medium Voltage Shield Grounding"
+description: "Managing the trade-offs between circulating shield currents and induced shield voltages in medium voltage cables."
+pubDate: "2026-06-30"
+category: "safety-topics"
+tags: ["Grounding", "Bonding", "Cables", "Electrical Safety"]
+criticality: "L1"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "MV Cable Shield Grounding: Single-Point vs Both Ends"
+metaDescription: "Learn the differences between single-point and dual-point shield grounding for medium voltage cables, managing shield heating and voltage hazards."
+primaryKeyword: "mv-cable-shield-grounding-methods"
+---
+
+### 1. Introduction & Context
+
+In medium-voltage (MV) systems (typically rated from 2.4kV to 35kV), shielded power cables are standard. Unlike low-voltage cables, MV cables require a metallic shield (copper tape, wires, or lead sheath) surrounding the conductor insulation. The primary purpose of this shield is to confine the symmetrical radial electric field, prevent corona discharge (which eats away insulation), and provide a safe path for fault current. However, deciding how to ground this metallic shield—whether at a single point or at both ends—presents a challenging engineering trade-off between shield heating and touch potential hazards.
+
+### 2. The Core Issue
+
+When a single-conductor medium-voltage cable carries AC load current, it acts like a transformer secondary. The magnetic field surrounding the conductor induces a voltage along the length of the metallic shield. How the shield is grounded determines what happens next:
+
+- **Single-Point Grounding:** The shield is grounded at only one end of the cable run, and insulated at the other.
+  * **The Benefit:** Since the circuit is open, no current can flow. This eliminates **circulating shield currents**, preventing parasitic heating of the cable and maximizing its current-carrying capacity (ampacity).
+  * **The Hazard:** A voltage is induced at the ungrounded end of the shield. Under heavy loads or short-circuit faults, this induced voltage can rise to hazardous levels (exceeding 50V AC), creating a severe touch-potential shock hazard for technicians opening terminations.
+- **Both-Ends Grounding (Multi-Point):** The shield is grounded at both the source and load ends of the cable.
+  * **The Benefit:** Grounding both ends clamps the shield voltage to zero volts relative to earth at both terminations, eliminating the touch-potential hazard.
+  * **The Hazard:** Because the shield forms a closed loop grounded at both ends, the magnetic field induces continuous circulating AC currents along the shield. This current generates significant heat (I²R losses), which de-rates the power cable's ampacity and accelerates insulation aging.
+
+Determining which method to use depends on the length of the cable run, the load current, and the physical accessibility of the terminations.
+
+### 3. Actionable Takeaways
+
+- **Perform Induced Voltage Calculations:** For cable runs utilizing single-point grounding, calculate the maximum induced shield voltage under full load. If the calculated voltage exceeds 25V to 50V AC, implement both-ends grounding or use a **Sheath Voltage Limiter (SVL)** (a surge arrester that clamps the voltage during faults but keeps it open during normal operation).
+- **Use Symmetrical Cable Layouts:** To minimize induced shield voltages in both-ends grounding setups, install single-conductor cables in a tight trefoil (triangular) layout rather than flat layouts. Symmetrical spacing causes the magnetic fields of the three phases to cancel each other out, reducing induced currents.
+- **Verify Shield Isolation:** On single-point grounded cables, perform an insulation resistance test (Megger) on the cable jacket to verify the shield is completely isolated from earth along the entire run and at the ungrounded termination.
+- **Apply Warning Labels:** For single-point grounded cable enclosures, apply prominent warning labels at the ungrounded termination cabinet warning technicians of potential high voltage on the shield even when the cable is isolated.
+
+{/*
+SEO BLOCK:
+- seoTitle: MV Cable Shield Grounding: Single-Point vs Both Ends
+- metaDescription: Learn the differences between single-point and dual-point shield grounding for medium voltage cables, managing shield heating and voltage hazards.
+- primaryKeyword: mv-cable-shield-grounding-methods
+- longTailKeywords: medium voltage cable shield grounding, circulating shield current heating, induced sheath voltage touch potential, sheath voltage limiter SVL, trefoil cable configuration
+- slug: mv-cable-shield-grounding-methods
+- heroImageAlt: Cross-section diagram of a medium voltage single-conductor cable showing copper tape shield, insulation, and conductor layers.
+
+LINKEDIN POST DRAFT:
+Hook: Grounding both ends of a medium-voltage cable shield seems like the safest choice—but it could be secretly cooking your cable insulation.
+Setup: MV power cables require a metallic shield to equalize electric fields. However, the AC load current induces a voltage along this shield like a transformer secondary.
+Core Failure: Grounding both ends eliminates touch voltage but creates a closed loop, generating continuous circulating currents that heat up the cable. Grounding one end eliminates current but leaves a dangerous shock hazard at the open end.
+Takeaway: You must calculate the induced sheath voltage. If it exceeds 50V under load, you need a Sheath Voltage Limiter (SVL) or trefoil layout to cancel the magnetic fields.
+CTA: Which grounding philosophy does your facility use for MV cables: single-point or dual-point?
+Hashtags: #MediumVoltage #SubstationDesign #CableShielding #GroundingAndBonding #ElectricalSafety #PowerSystems
+*/}

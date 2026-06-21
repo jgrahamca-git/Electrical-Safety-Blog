@@ -2,6 +2,14 @@
 
 *This file stores all previously covered and published blog topics to keep the main ELI Blog Tracker lean. Do not propose these topics again for Daily Safety Topics or RCAs to prevent duplicates.*
 
+- The Safety Limitations of Ground Rods vs. Ground Rings (`safety-limitations-ground-rods-vs-rings.mdx`)
+- Trapped Energy: The Hazards of Power Factor Correction Capacitors (`capacitor-bank-trapped-energy-hazards.mdx`)
+- Shift Handover Failures in Electrical Maintenance (`shift-handover-failures-electrical.mdx`)
+- Network Segmentation (Purdue Model) for OT Systems (`purdue-model-ot-network-segmentation.mdx`)
+- CSA Z462: Energized Electrical Work Permit and Understanding (`csa-z462-energized-electrical-work-permit.mdx`)
+- Touch and Step Potentials in Substation Yards (`touch-and-step-potentials-substations.mdx`)
+- Standard Residential Panel Breakers: What They Actually Protect (`residential-panel-breakers-protection-limits.mdx`)
+- Incident RCA: The 2008 RPC Shower Electrocution (`2008-rpc-shower-electrocution.mdx`)
 - The Invisible Ignition: Static Grounding Failure in a Penstock Recoating (RCA) (`xcel-cabin-creek-static-fire.mdx`)
 - Control System Shield Grounding (`control-system-shield-grounding.mdx`)
 - Safety Relay Logic vs Standard Relay Logic (`safety-relay-logic-methodologies.mdx`)
@@ -75,3 +83,11 @@
 - Confined Space Electrical Safety: Low Voltage Requirements (`confined-space-electrical-safety.mdx`)
 - Motor Control Center (MCC) Remote Racking Safety (`mcc-remote-racking-safety.mdx`)
 - Floating Neutral ATS Failure Mode (RCA) (`floating-neutral-ats-failure-mode.mdx`)
+- Exothermic Welding vs. Mechanical Compression in Ground Grids (`exothermic-welding-vs-mechanical-compression.mdx`)
+- Current-Limiting Fuses vs. Breakers for Arc Flash Mitigation (`current-limiting-fuses-vs-breakers-arc-flash.mdx`)
+- Point-Sensor vs. Fiber-Optic Arc Flash Relays (`point-sensor-vs-fiber-optic-arc-flash-relays.mdx`)
+- The Hazard of "Troubleshooting by Replacement" (`troubleshooting-by-replacement-hazards.mdx`)
+- Spoofing Analog Signals via Open Ports (`spoofing-analog-signals.mdx`)
+- Short-Circuit Current Rating (SCCR) of Industrial Control Panels (`sccr-industrial-control-panels.mdx`)
+- Hazardous Location Wiring: Class I, Div 1 vs. Div 2 (`hazardous-location-wiring-class-1-div-1-vs-div-2.mdx`)
+- Incident RCA: The Speed of Culture (2004 National Lab Arc Flash) (`2004-national-lab-arc-flash.mdx`)

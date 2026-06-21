@@ -2,15 +2,23 @@
 interface Props {
 	question: string;
 	options: string[];
-	correctAnswerIndex: number;
+	correctAnswerIndex?: number;
+	correctAnswer?: string;
 	explanation: string;
 }
 
-const { question, options, correctAnswerIndex, explanation } = Astro.props;
+const { question, options, correctAnswerIndex, correctAnswer, explanation } = Astro.props;
+
+// Dynamically resolve correct answer index if the string property is passed
+let finalCorrectIndex = correctAnswerIndex;
+if (finalCorrectIndex === undefined && correctAnswer !== undefined) {
+	finalCorrectIndex = options.findIndex(opt => opt.trim() === correctAnswer.trim());
+}
+
 const quizId = Math.random().toString(36).substring(7);
 ---
 
-<div class="quiz-container" id={`quiz-${quizId}`} data-correct={correctAnswerIndex}>
+<div class="quiz-container" id={`quiz-${quizId}`} data-correct={finalCorrectIndex}>
 	<div class="quiz-header">
 		<h3 class="quiz-title">
 			<span class="quiz-icon">?</span>
@@ -252,7 +260,7 @@ const quizId = Math.random().toString(36).substring(7);
 </style>
 
 <script>
-	document.addEventListener('astro:page-load', () => {
+	const initQuizzes = () => {
 		const quizContainers = document.querySelectorAll('.quiz-container');
 
 		quizContainers.forEach((container) => {
@@ -302,5 +310,11 @@ const quizId = Math.random().toString(36).substring(7);
 				});
 			});
 		});
-	});
+	};
+
+	// Initialize immediately since Astro module scripts run after DOM is parsed
+	initQuizzes();
+
+	// Support page navigation under view transitions if added later
+	document.addEventListener('astro:page-load', initQuizzes);
 </script>

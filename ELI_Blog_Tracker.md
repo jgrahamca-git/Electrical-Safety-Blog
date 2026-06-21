@@ -49,7 +49,7 @@
 - **LinkedIn:** Bi-weekly cross-posting active
 - **Global Banner:** "Blog Mission" top banner is active and permanently visible. It dynamically swaps its prefix to "May is National Electrical Safety Month" during May (month index 4).
 - **Subscriber count:** [3]
-- **Total posts published:** [32]
+- **Total posts published:** [40]
 - **Brand build plan:** Phases 01 & 02 complete. Phases 03–06 pending.
 
 ### Templates system (locked 2026-04-19, disclaimer added 2026-05-02)
@@ -413,6 +413,58 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
 
+### 2026-06-21 — Phase 2 Batch Review: June 22 – July 12 Content (three weeks)
+
+- progress  | Claude completed Phase 2 editorial review of all 24 files (21 Daily Safety Topics pub June 22–July 12, and 3 weekly Incident RCAs). Checked for technical accuracy, formatting, victim-blaming, and editorial tone; fixes applied directly. No victim-blaming found; terminology locks clean; all 3 RCAs hit the locked 10-part structure.
+- change    | Anonymization (per 2026-05-02 standard): stripped "BP Texas City" from RCA2 SEO fields and "Formosa Plastics" from RCA3 title + SEO + FMEA config name. Per Jason's call, the `.mdx` filenames, slugs, and asset paths were intentionally KEPT to preserve URLs and image/asset references.
+- progress  | MUST FIX — unrendered LaTeX: `ai-in-mining-blog/astro.config.mjs` has no remark-math / rehype-katex, so inline `$...$` never renders (literal `$`, stray italics, JSX-brace parsing). Converted to Unicode/plain across 6 topics: `dga`, `sf6`, `mv-cable`, `hv-testing`, `iec-61511`, `grounding-high-resistivity`. (Handoff had already fixed `bess` and `gfli`.) NOTE: the build passes even with `$...$` present, so a green build does not catch this — grep for `$` every batch.
+- progress  | SHOULD FIX: Formosa code citation now leads with NEC 501.15(B)(2) for the Class I Div 2 boundary (was citing only Div 1 (A)(4)); `sf6` decomposition odor corrected (SO₂ is sharp/pungent, not rotten-egg — that is H₂S); `hv-testing` duplicate word; `ferroresonance` kVA casing; Formosa banner subtitle shortened to fit the right margin.
+- progress  | Built all three incident asset sets from the MDX seed config blocks — re-authored FMEAs to the locked standard because the seeds carried only 5 modes each (expanded to 10). Output: 3 FMEA PNGs (10 modes, 16:9 2750×1546) → `src/assets/`; 3 v4 RCA banners (16:9) → `src/assets/`; 3 lead-magnet PDFs (mandatory disclaimer verified) → `public/downloads/`. RPN spreads: MCC 2C/4H/4M, Splitter 2C/5H/3M, Conduit 2C/5H/3M.
+- milestone | Verified full `npm run build` passes (~12s) — branch is deployable. The three RCAs: *Racking Into Danger: The 480V MCC Arc Flash* (L3, 2026-06-23), *Blinded by the HMI: The Splitter Tower Level Transmitter Failure* (L3, 2026-06-30), and *The Unsealed Conduit: Propane Gas Ignition* (L3, 2026-07-07).
+- blocker   | PAUSED: awaiting Jason's Gate 1 sign-off on the 24 files and 9 assets before Gemini commits the batch to GitHub and deploys.
+
+### 2026-06-20 — Content Generation: June 22 – July 12 Content (three weeks)
+
+- progress  | Drafted all 21 Daily Safety Topics and 3 weekly Incident RCAs (MCC Arc Flash, BP Texas City Level Transmitter, Formosa Plastics Conduit Seal).
+- progress  | Included full Astro frontmatter, SEO blocks, and LinkedIn drafts in all MDX files.
+- change    | Updated Section 5 (Topics Queue) to reflect the 24 new planned articles.
+
+### 2026-06-05 — Deployment to Netlify and GitHub (June 8–21 Content)
+
+- milestone | Successfully staged, committed, and pushed the 14 Daily Safety Topics and 2 Incident RCAs (2015 Substation Arc Flash & Cable Tray Ground Fault Fire) to the `main` branch, triggering the Netlify deployment.
+- progress  | Pushed the 6 newly generated assets (FMEA tables, Banners, Lead Magnet PDFs) to the repository.
+- change    | Fully synced the ELI Blog Tracker between the Ubuntu and Google Drive locations.
+
+### 2026-06-05 — Phase 2 Batch Review: June 8–21 Content (two weeks)
+
+- progress  | Claude completed Phase 2 editorial review of 14 Daily Safety Topics (pub June 8–21) and 2 weekly Incident RCAs. All 16 files checked for technical accuracy, formatting, and editorial tone; fixes applied directly.
+- progress  | MUST FIX edits: removed false "30 days per MSHA/OSHA" citation in `temporary-wiring-mining`; corrected an RTD physics contradiction in `junction-box-corrosion` (series corrosion resistance reads HIGH, not low). SHOULD FIX: `least resistance`→`least impedance` + `EtherNet/IP` + grammar in `vfd-cable-shielding`; softened victim-blame phrasing to a systemic enforcement gap in `2015-substation-arc-flash`. Other 12 topics needed no changes.
+- change    | Corrected RCA `pubDate` to the locked Tuesday cadence (drafts were Wednesday): `2015-substation-arc-flash` 06-10 → **06-09**; `improper-cable-tray-bonding-fire` 06-17 → **06-16**. (Per 2026-04-21 Tuesday decision.)
+- progress  | Built all three incident assets per RCA from the MDX seed config blocks — re-authored to locked standards because the seed blocks supplied only 2–3 modes and mislabeled RPN classes (tagged RPN 180 "critical" vs. locked Critical ≥500). Output: 2 FMEA PNGs (10 modes each, 16:9 2750×1546) → `src/assets/`; 2 v4 RCA banners → `src/assets/`; 2 lead-magnet PDFs (mandatory disclaimer verified) → `public/downloads/`.
+- milestone | Verified full `npm run build` passes (~11s) — branch is deployable. The two RCAs: *Mechanical Betrayal: 4160V Substation Arc Flash* (L3, 2026-06-09) and *The Broken Path: Cable Tray Ground Fault Fire* (L3, 2026-06-16).
+- blocker   | PAUSED: awaiting Jason's Gate 1 sign-off on the 16 files before Gemini commits the batch to GitHub and deploys.
+
+### 2026-05-31 — Deployment to Netlify and GitHub (June 1st Week)
+
+- progress  | Removed all LinkedIn draft blocks from the 7 safety topics.
+- milestone | Verified the Astro build and successfully committed the 7 Daily Safety Topics and the 2004 National Lab Arc Flash RCA to the `main` branch, triggering the Netlify deployment.
+- change    | Fully synced the ELI Blog Tracker and Topics Archive between the Ubuntu and Google Drive locations.
+
+### 2026-05-31 — Phase 2 Editorial Review: 7 Safety Topics (June 1st Week)
+
+- progress  | Claude completed editorial review of all 7 Daily Safety Topics drafted by Gemini for the week of 2026-06-01. Review document saved to `.tmp/safety-topics-review-2026-06-01.md`.
+- progress  | Applied 4 MUST FIX edits: typo (`Metholodical` → `Methodical` in troubleshooting-by-replacement); obsolete PPE Category 0/3 framing replaced with NFPA 70E Table 130.5(G) / 130.7(C)(15)(c) refs in current-limiting-fuses; terminology lock fix (`stray DC currents` → `objectionable DC current per IEEE 142 / CEC 10-208`) in exothermic-welding; `Class 1` → `Class I` in hazardous-location-wiring metadata (filename slug deliberately left as-is to preserve URL).
+- progress  | Applied 8 of 9 SHOULD FIX code citations (1 skipped): IEEE 80 + CEC Section 10 + IEEE 837 (exothermic-welding); NEC 501.15(A)(1) + CEC Section 18 (hazardous-location); IEEE 1584-2018 + IEEE C37.20.7 (point-sensor-vs-fiber); NEC 110.10 + UL 508A SB + CEC 2-024 + CSA C22.2 No. 286 (SCCR — Canadian refs added on review); IEC 62443 + NIST SP 800-82 (spoofing); NFPA 70E 110.5 + CSA Z462 4.1 (troubleshooting-by-replacement). NEC 240.86 (series ratings) in current-limiting-fuses skipped on review.
+- progress  | Pending: residual SHOULD FIX items (`[Blog Link Placeholder]` strings in 7 LinkedIn draft blocks; `reactor` → broader audience wording in spoofing-analog-signals.mdx:27) and nice-to-have voice polish on point-sensor-vs-fiber.
+- progress  | Pending Phase 2 work before Gemini handoff: editorial review of weekly Incident RCA "The Speed of Culture" (2004 National Lab Arc Flash); FMEA table PNG build via `fmea_renderer.py`; RCA banner PNG via `rca_banner_template.py`; lead magnet PDF via `lead_magnet_template.html`.
+- change   | Tracker updated on Ubuntu only — Google Drive sync still required per dual-sync rule.
+
+### 2026-05-31 — Weekly Batch Drafted (June 1st Week)
+
+- progress  | Drafted 7 Daily Safety Topics (Exothermic Welding, Current-Limiting Fuses, Point-Sensor vs Fiber-Optic Relays, Troubleshooting by Replacement, Spoofing Analog Signals, SCCR of Control Panels, Hazardous Location Wiring).
+- progress  | Drafted Incident RCA: The Speed of Culture (2004 National Lab Arc Flash - anonymized) with FMEA and Lead Magnet config blocks.
+- progress  | Moved the May 25th week topics to the Topics Archive and updated the Topics Queue.
+
 ### 2026-05-21 — Weekly Batch Drafted (May 25th Week)
 
 - progress  | Drafted 7 Daily Safety Topics (Ground Rods vs Rings, Trapped Energy in Capacitors, Shift Handovers, Purdue Model OT, CSA Z462 EEWP, Step Potentials, Residential Breaker Limits).
@@ -576,16 +628,35 @@ Paste or upload this entire file at the start of any AI conversation about the E
 
 ## 5. Topics Queue (Upcoming Posts)
 
-These eight topics are drafted for the May 25-31 week and awaiting final editorial sign-off and publishing at Gate 1.
+### Week 1 (June 22 – June 28, 2026)
+- Monday, June 22: *Data Center Grounding: The Signal Reference Grid (SRG)* (`data-center-signal-reference-grid.mdx`) - L0 / safe
+- Tuesday, June 23: *Racking Into Danger: The 480V MCC Arc Flash* (`rca-racking-mcc-arc-flash.mdx`) - L3 / hazard (RCA 1)
+- Tuesday, June 23: *Static Transfer Switch (STS) Failure Modes* (`static-transfer-switch-failures.mdx`) - L1 / hazard
+- Wednesday, June 24: *BESS Arc Flash Calculations* (`bess-dc-arc-flash-calculations.mdx`) - L2 / safe
+- Thursday, June 25: *Neutral-to-Ground Bonds in Sub-Panels* (`neutral-to-ground-subpanel-bonds.mdx`) - L1 / hazard
+- Friday, June 26: *Optical Fiber Temperature Sensing (DTS)* (`optical-fiber-distributed-temperature-sensing.mdx`) - L0 / safe
+- Saturday, June 27: *SIS Proof Testing: Bypass Management* (`sis-proof-testing-bypass-management.mdx`) - L2 / hazard
+- Sunday, June 28: *Substation Main-Tie-Main Interlocking* (`main-tie-main-kirk-key-interlocking.mdx`) - L2 / safe
 
-- The Safety Limitations of Ground Rods vs. Ground Rings (`safety-limitations-ground-rods-vs-rings.mdx`)
-- Trapped Energy: The Hazards of Power Factor Correction Capacitors (`capacitor-bank-trapped-energy-hazards.mdx`)
-- Shift Handover Failures in Electrical Maintenance (`shift-handover-failures-electrical.mdx`)
-- Network Segmentation (Purdue Model) for OT Systems (`purdue-model-ot-network-segmentation.mdx`)
-- CSA Z462: Energized Electrical Work Permit and Understanding (`csa-z462-energized-electrical-work-permit.mdx`)
-- Touch and Step Potentials in Substation Yards (`touch-and-step-potentials-substations.mdx`)
-- Standard Residential Panel Breakers: What They Actually Protect (`residential-panel-breakers-protection-limits.mdx`)
-- Incident RCA: The 2008 RPC Shower Electrocution (`2008-rpc-shower-electrocution.mdx`)
+### Week 2 (June 29 – July 5, 2026)
+- Monday, June 29: *Transformer Buchholz Relay Protection* (`transformer-buchholz-relay-protection.mdx`) - L1 / safe
+- Tuesday, June 30: *Blinded by the HMI: The Splitter Tower Level Transmitter Failure* (`rca-bp-texas-city-level-transmitter.mdx`) - L3 / hazard (RCA 2)
+- Tuesday, June 30: *Medium Voltage Shield Grounding* (`mv-cable-shield-grounding-methods.mdx`) - L1 / safe
+- Wednesday, July 1: *Ferroresonance in Medium Voltage Systems* (`ferroresonance-medium-voltage-hazards.mdx`) - L2 / hazard
+- Thursday, July 2: *Duval's Triangle DGA Diagnostics* (`dga-duvals-triangle-transformer-diagnostics.mdx`) - L0 / safe
+- Friday, July 3: *HV Testing: Safety Grounding & Discharging* (`hv-testing-safety-grounding-discharging.mdx`) - L2 / safe
+- Saturday, July 4: *SF6 Gas Leakage & Decomposition* (`sf6-gas-leakage-decomposition-hazards.mdx`) - L2 / hazard
+- Sunday, July 5: *LOTO of Parallel Generators* (`loto-parallel-generators-isolation.mdx`) - L2 / safe
+
+### Week 3 (July 6 – July 12, 2026)
+- Monday, July 6: *OT Security: Physical PLC Port Guarding* (`ot-security-lockable-usb-scada.mdx`) - L1 / safe
+- Tuesday, July 7: *The Unsealed Conduit: Formosa Plastics Propane Ignition* (`rca-formosa-conduit-seal-explosion.mdx`) - L3 / hazard (RCA 3)
+- Tuesday, July 7: *Grounding in High-Resistivity Soil* (`grounding-high-resistivity-soil-deep-wells.mdx`) - L1 / safe
+- Wednesday, July 8: *VFD Output Filters: Sinusoidal vs. dV/dt* (`vfd-output-sinusoidal-dvdt-filters.mdx`) - L1 / safe
+- Thursday, July 9: *IS Isolators vs. Zener Barriers* (`intrinsic-safety-galvanic-isolators-vs-zener-barriers.mdx`) - L1 / safe
+- Friday, July 10: *The 'Cone of Protection' Myth* (`overhead-line-cone-of-protection-myth.mdx`) - L1 / hazard
+- Saturday, July 11: *GFLI Testing in IT Systems* (`gfli-testing-ungrounded-it-systems.mdx`) - L1 / safe
+- Sunday, July 12: *HAZOP to LOPA Safety Lifecycle* (`iec-61511-hazop-to-lopa-safety-lifecycle.mdx`) - L0 / safe
 
 ---
 

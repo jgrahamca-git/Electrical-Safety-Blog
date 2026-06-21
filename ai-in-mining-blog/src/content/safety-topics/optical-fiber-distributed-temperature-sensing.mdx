@@ -1,0 +1,57 @@
+---
+title: "Optical Fiber Temperature Sensing (DTS)"
+description: "How Distributed Temperature Sensing (DTS) uses laser backscatter to monitor cable temperatures and prevent thermal runaways."
+pubDate: "2026-06-26"
+category: "safety-topics"
+tags: ["Fiber Optics", "Testing", "Cables", "Controls"]
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Distributed Temperature Sensing (DTS) for HV Cables"
+metaDescription: "Discover how Distributed Temperature Sensing (DTS) uses fiber optics and Raman backscattering to monitor high-voltage cable hot spots."
+primaryKeyword: "optical-fiber-distributed-temperature-sensing"
+---
+
+### 1. Introduction & Context
+
+High-voltage power cables routed through underground ducts, trenches, or tunnels are critical lifelines for industrial plants and utility grids. As these cables carry heavy loads, they generate thermal energy. If heat accumulation exceeds the insulation's temperature rating, a thermal runaway can occur, causing insulation degradation, phase-to-phase faults, and catastrophic explosions. Traditional spot-temperature monitoring (like thermal imaging) is impossible inside buried conduits or long trays. To address this, industries utilize **Distributed Temperature Sensing (DTS)**—using standard optical fiber as a continuous, real-time thermometer.
+
+### 2. The Core Issue
+
+Buried or enclosed power cables are subject to variable ambient thermal conditions. Factors like soil moisture resistivity changes, adjacent cable installations, and ventilation failures in cable tunnels create localized "hot spots." A single hot spot along a 5-kilometer cable run can trigger a complete cable failure, even if the rest of the run is operating at normal temperatures.
+
+DTS solves this by using a single-mode or multi-mode optical fiber laid along the entire length of the power cable jacket (or embedded within the cable construction itself). 
+
+Here is how the physics of DTS works:
+- **Laser Pulsing:** The DTS controller injects a high-power laser pulse down the optical fiber.
+- **Raman Backscattering:** As the light travels, it interacts with the silicon dioxide molecules in the glass. This interaction scatters some of the light back toward the source, a phenomenon known as backscattering.
+- **Temperature Dependency:** A portion of the backscattered light, called the **Raman Stokes and Anti-Stokes lines**, is temperature-dependent. The ratio of the intensity of the Stokes and Anti-Stokes signals changes proportionally to the temperature of the glass fiber at that exact location.
+- **Distance Calculation:** By measuring the time-of-flight of the light pulse (Optical Time-Domain Reflectometry, or OTDR), the DTS controller calculates the precise distance along the fiber where the temperature change occurred, providing a continuous temperature profile of the cable every meter.
+
+This allows control systems to map temperature trends, detect localized insulation degradation, and dynamically load the cable based on real-time thermal capacity rather than conservative ratings.
+
+### 3. Actionable Takeaways
+
+- **Specify Embedded Fiber:** When ordering new high-voltage or medium-voltage power feeders for critical runs, specify cables that include embedded optical fibers within the cable jacket or interstitial spaces to simplify DTS integration.
+- **Ensure Proper Physical Contact:** When installing external DTS fiber, ensure the fiber-optic cable is in close physical contact with the power cable. Use high-temperature banding or adhesive to prevent air gaps, which act as thermal insulators and skew readings.
+- **Calibrate the DTS Controller:** Periodically calibrate the DTS system using a reference temperature bath or thermistor at the beginning and end of the fiber run to account for attenuation changes in the glass over time.
+- **Integrate alarms with SCADA:** Connect the DTS temperature profile outputs to the plant SCADA system. Set rate-of-rise and absolute temperature alarms to alert operators to abnormal localized heating before insulation damage occurs.
+
+{/*
+SEO BLOCK:
+- seoTitle: Distributed Temperature Sensing (DTS) for HV Cables
+- metaDescription: Discover how Distributed Temperature Sensing (DTS) uses fiber optics and Raman backscattering to monitor high-voltage cable hot spots.
+- primaryKeyword: optical-fiber-distributed-temperature-sensing
+- longTailKeywords: DTS fiber optic temperature monitoring, Raman backscattering temperature sensor, high voltage cable hot spots, optical time domain reflectometry OTDR, dynamic cable loading SCADA
+- slug: optical-fiber-distributed-temperature-sensing
+- heroImageAlt: Graphic representation of a laser pulse traveling down an optical fiber cable next to a three-phase power cable, with a temperature curve display.
+
+LINKEDIN POST DRAFT:
+Hook: How do you measure the temperature of a high-voltage cable buried under 6 feet of concrete? You turn the cable's own fiber optic core into a thermometer.
+Setup: Buried power cables can develop localized hot spots due to soil variations, overloading, or insulation breakdown. If undetected, these hot spots lead to catastrophic thermal runaways.
+Core Failure: Spot checks and thermal imaging can't see underground. You need continuous, real-time monitoring along the entire cable run.
+Takeaway: Distributed Temperature Sensing (DTS) uses laser pulses and Raman backscattering physics to read the exact temperature of an optical fiber every meter, locating hot spots before they fail.
+CTA: Is your facility using DTS for critical feeders, or do you rely on conservative ampacity de-ratings?
+Hashtags: #FiberOptics #DTS #ElectricalEngineering #CableSafety #AssetManagement #SCADA
+*/}

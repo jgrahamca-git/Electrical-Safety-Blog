@@ -1,0 +1,54 @@
+---
+title: "Neutral-to-Ground Bonds in Sub-Panels"
+description: "Why establishing multiple neutral-to-ground connections downstream of the main service panel creates dangerous objectionable currents."
+pubDate: "2026-06-25"
+category: "safety-topics"
+tags: ["Grounding", "Bonding", "Codes", "Electrical Safety"]
+criticality: "L1"
+conclusion_state: "hazard"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Neutral-to-Ground Bonds in Sub-Panels Explained"
+metaDescription: "Understand why neutral-to-ground bonding is strictly prohibited in downstream sub-panels and how it creates objectionable current hazards."
+primaryKeyword: "neutral-to-ground-subpanel-bonds"
+---
+
+### 1. Introduction & Context
+
+In electrical distribution, there is a fundamental rule that governs safety grounding: the neutral (grounded) conductor and the equipment grounding conductor (EGC) must only be bonded together at a single point—typically the main service disconnect or the source of a separately derived system (such as an isolation transformer). Despite this clear mandate in both the National Electrical Code (NEC) and Canadian Electrical Code (CEC), inspectors and maintenance technicians frequently find "neutral-to-ground" bonds incorrectly installed inside downstream distribution sub-panels.
+
+### 2. The Core Issue
+
+Under normal operating conditions, the neutral wire carries the unbalanced return current of the branch circuits back to the source, while the equipment grounding conductor (EGC) carries zero current. The EGC is strictly a safety path designed to remain at zero volts relative to earth and to carry current only during a fault condition to trip the breaker.
+
+When a technician incorrectly installs the green main bonding jumper screw (or a bonding strap) inside a downstream sub-panel, they connect the neutral bar and the ground bar together. 
+
+This creates a serious safety hazard:
+- **Parallel Return Paths:** Because the neutral bar and ground bar are connected at both the main panel and the sub-panel, the return current splits. It will travel back to the main panel along both the neutral conductor *and* the equipment grounding conductor, as well as any metallic conduits, cable trays, or structural steel bonded to the grounding system.
+- **Objectionable Current:** Current flowing continuously along grounding paths is defined by the code as **objectionable current**. It can cause severe electromagnetic interference (EMI) on sensitive instruments and communications.
+- **Shock Hazard:** Because the metal enclosure of the sub-panel and all connected conduit are now part of the parallel neutral return path, a voltage drop is established across these metal components. If the upstream neutral wire becomes loose or broken, the entire enclosure and conduit system will rise to full line voltage (120V or higher), shocking anyone who touches the metal work.
+
+### 3. Actionable Takeaways
+
+- **Isolate the Bars:** Always ensure that the neutral busbar in any sub-panel is fully isolated (insulated) from the metal enclosure. Keep the ground busbar directly bonded to the enclosure.
+- **Remove the Bonding Screw:** When installing a new sub-panel, proactively remove and discard the green bonding screw or strap that comes pre-packaged with the panel board, unless it is specifically being used as the main service disconnect.
+- **Verify Ground Current:** During commissioning or routine maintenance, use a clamp-on ammeter to measure current on the Equipment Grounding Conductor (EGC) at the sub-panel. Under normal conditions, this reading must be exactly zero. Any measured current indicates a downstream neutral-to-ground bond or fault.
+- **Audit Separately Derived Systems:** Remember that transformers create "separately derived systems" which require their own neutral-to-ground bond at the transformer secondary. However, downstream of that transformer, the neutral and ground must remain isolated.
+
+{/*
+SEO BLOCK:
+- seoTitle: Neutral-to-Ground Bonds in Sub-Panels Explained
+- metaDescription: Understand why neutral-to-ground bonding is strictly prohibited in downstream sub-panels and how it creates objectionable current hazards.
+- primaryKeyword: neutral-to-ground-subpanel-bonds
+- longTailKeywords: subpanel main bonding jumper screw, objectionable current on ground, neutral and ground isolation NEC, separately derived system bonding transformer, electrical shock panel chassis
+- slug: neutral-to-ground-subpanel-bonds
+- heroImageAlt: Close-up of an isolated neutral busbar inside an industrial electrical sub-panel with green bonding screw removed.
+
+LINKEDIN POST DRAFT:
+Hook: Is that green bonding screw left inside your sub-panel? You might have just turned your metal conduits into live neutral return paths.
+Setup: Codes mandate that the neutral and ground conductors are bonded at a single point—the main service. Downstream in sub-panels, they must remain isolated.
+Core Failure: Installing a bonding jumper in a sub-panel parallels the neutral and ground. Unbalanced return current now flows continuously through the ground wire, metal conduit, and enclosures.
+Takeaway: This "objectionable current" creates severe noise on instruments and, worse, a lethal shock hazard if the main neutral wire ever breaks.
+CTA: Do your preventative maintenance PMs include checking grounding conductors for objectionable current?
+Hashtags: #ElectricalSafety #GroundingAndBonding #NationalElectricalCode #Subpanels #JourneymanElectrician
+*/}

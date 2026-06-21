@@ -1,0 +1,75 @@
+---
+title: "Duval's Triangle DGA Diagnostics"
+description: "How maintenance teams use the ratios of dissolved hydrocarbon gases to accurately identify internal transformer faults."
+pubDate: "2026-07-02"
+category: "safety-topics"
+tags: ["Transformers", "Testing", "Controls", "Diagnostics"]
+criticality: "L0"
+conclusion_state: "safe"
+agent_suggested: true
+editor_confirmed: true
+seoTitle: "Duval's Triangle for Transformer DGA Diagnostics"
+metaDescription: "Learn how to use Duval's Triangle to interpret Dissolved Gas Analysis (DGA) results and identify internal transformer fault types."
+primaryKeyword: "dga-duvals-triangle-transformer-diagnostics"
+---
+
+### 1. Introduction & Context
+
+Dissolved Gas Analysis (DGA) is the premier diagnostic tool for checking the internal health of oil-filled power transformers. By extracting a sample of the insulating oil, laboratories can measure the concentrations of various gases dissolved in the liquid. 
+
+However, simply tracking total gas limits is not enough to diagnose a problem. To understand exactly what is failing inside—whether it is paper insulation burning, localized copper overheating, or active high-energy arcing—maintenance teams utilize the industry-standard **Duval's Triangle** method to mathematically pinpoint the specific fault type.
+
+### 2. The Core Issue
+
+When electrical or thermal stresses degrade transformer oil and paper, they generate specific "key gases" at different temperatures. 
+
+- **Low-temperature thermal faults** produce mostly methane (CH₄) and ethane (C₂H₆).
+- **High-temperature arcing faults** generate significant acetylene (C₂H₂) and hydrogen (H₂).
+
+A common mistake in DGA analysis is relying solely on the concentration of a single key gas. For example, finding a high concentration of ethylene might indicate a thermal fault, but without looking at the ratios of other gases, the technician cannot be sure if it is a low-temperature winding hot spot or a high-energy core fault.
+
+Michel Duval developed a graphical diagnostic method based on three specific hydrocarbon gases: **Methane (CH₄)**, **Ethylene (C₂H₄)**, and **Acetylene (C₂H₂)**. 
+
+The percentages of these three gases relative to each other are calculated:
+
+```text
+% CH4 = [CH4 / (CH4 + C2H4 + C2H2)] * 100
+% C2H4 = [C2H4 / (CH4 + C2H4 + C2H2)] * 100
+% C2H2 = [C2H2 / (CH4 + C2H4 + C2H2)] * 100
+```
+
+These three coordinates are plotted on a triangular grid. The triangle is divided into seven distinct diagnostic zones representing specific fault types:
+1. **PD:** Partial Discharge (corona)
+2. **D1:** Low-energy discharge (sparking)
+3. **D2:** High-energy discharge (active arcing)
+4. **T1:** Thermal fault under 300°C (oil/paper degradation)
+5. **T2:** Thermal fault between 300°C and 700°C
+6. **T3:** Thermal fault over 700°C (copper melting)
+7. **DT:** Mixed electrical and thermal fault
+
+By mapping the coordinates to a zone, engineers can confidently determine whether a transformer needs immediate isolation and inspection or can continue running under increased monitoring.
+
+### 3. Actionable Takeaways
+
+- **Only Use Duval's Triangle on Active Outgassing:** Do not attempt to use Duval's Triangle on a healthy transformer with low background gas levels. The method is only mathematically valid when the total key gas levels exceed baseline limits (such as those defined in IEEE C57.104), indicating an active internal fault.
+- **Track Gas Rate of Rise:** Baseline gas levels can accumulate slowly over decades. A sudden spike in the rate of rise (ppm per day) of any key gas is a primary indicator of a developing fault, and should trigger an immediate oil sampling and Duval analysis.
+- **Cross-Reference with Carbon Oxides:** When a thermal fault (T1, T2, or T3) is identified, cross-reference the DGA results with the ratio of Carbon Monoxide (CO) to Carbon Dioxide (CO₂). A low CO₂/CO ratio (typically below 3) indicates that the paper insulation surrounding the copper windings is directly burning, risking a phase-to-ground fault.
+- **Verify Lab Cleanliness:** Always ensure oil samples are taken using clean, dry glass syringes. Moisture ingress or ambient air exposure during sampling can contaminate the sample, leading to false DGA results.
+
+{/*
+SEO BLOCK:
+- seoTitle: Duval's Triangle for Transformer DGA Diagnostics
+- metaDescription: Learn how to use Duval's Triangle to interpret Dissolved Gas Analysis (DGA) results and identify internal transformer fault types.
+- primaryKeyword: dga-duvals-triangle-transformer-diagnostics
+- longTailKeywords: dissolved gas analysis DGA interpretation, Duval's triangle fault zones, key gas ratios transformer, high energy discharge arcing D2, paper insulation carbon oxides CO CO2
+- slug: dga-duvals-triangle-transformer-diagnostics
+- heroImageAlt: Triangular coordinate grid of Duval's Triangle showing the different fault zones: T1, T2, T3, D1, D2, and PD.
+
+LINKEDIN POST DRAFT:
+Hook: Your transformer's oil sample report just came back with elevated gas levels. How do you know if it's a minor hot spot or a ticking arcing bomb?
+Setup: Dissolved Gas Analysis (DGA) is essential, but looking at raw gas numbers won't tell you the root cause. You need to look at the ratios of Methane, Ethylene, and Acetylene.
+Core Failure: Relying on raw thresholds can lead to premature shutdowns of healthy units, or worse, leaving a transformer in service while high-energy arcing is melting copper.
+Takeaway: Plot the key gas ratios on Duval's Triangle. This coordinates-based model maps the exact fault zone—Partial Discharge, thermal overload, or active arcing—so you can make informed maintenance decisions.
+CTA: Does your facility automate DGA tracking, or do you manually calculate Duval's coordinates on spreadsheets?
+Hashtags: #TransformerMaintenance #DGA #DuvalsTriangle #ElectricalTesting #ReliabilityCentredMaintenance #Substations
+*/}
