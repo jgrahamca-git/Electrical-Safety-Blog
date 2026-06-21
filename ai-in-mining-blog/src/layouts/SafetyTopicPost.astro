@@ -198,9 +198,9 @@ const {
         color: var(--eli-white, #F2EDE8);
       }
 
-      .prose h1, .prose h2, .prose h3, .prose h4 { color: var(--eli-white, #F2EDE8) !important; }
+      :global(.prose) h1, :global(.prose) h2, :global(.prose) h3, :global(.prose) h4 { color: var(--eli-white, #F2EDE8) !important; }
 
-      .prose h2 {
+      :global(.prose) h2 {
         font-family: var(--font-sub, 'Rajdhani', sans-serif);
         font-size: 1.4rem;
         font-weight: 700;
@@ -209,19 +209,19 @@ const {
         color: var(--eli-white, #F2EDE8);
         border-left: 3px solid var(--eli-l0-text, #5DD470);
         padding-left: 12px;
-        margin: 2rem 0 1rem 0;
+        margin: 2.25rem 0 1rem 0 !important;
       }
 
-      .prose h3 {
+      :global(.prose) h3 {
         font-family: var(--font-sub, 'Rajdhani', sans-serif);
         font-size: 1.15rem;
         font-weight: 700;
         letter-spacing: 0.04em;
         color: var(--eli-white, #F2EDE8);
-        margin: 1.5rem 0 0.75rem 0;
+        margin: 2rem 0 0.875rem 0 !important;
       }
 
-      .prose p {
+      :global(.prose) p {
         font-family: var(--font-body, 'DM Sans', sans-serif);
         font-size: 0.975rem;
         font-weight: 300;
@@ -230,27 +230,27 @@ const {
         margin: 0 0 1.25rem 0;
       }
 
-      .prose strong {
+      :global(.prose) strong {
         color: var(--eli-white, #F2EDE8);
         font-weight: 500;
       }
 
-      .prose em {
+      :global(.prose) em {
         color: var(--eli-amber, #F0A030);
         font-style: italic;
       }
 
-      .prose a {
+      :global(.prose) a {
         color: var(--eli-l0-text, #5DD470);
         text-decoration: underline;
         text-underline-offset: 3px;
       }
 
-      .prose a:hover {
+      :global(.prose) a:hover {
         color: var(--eli-white, #F2EDE8);
       }
 
-      .prose ul, .prose ol {
+      :global(.prose) ul, :global(.prose) ol {
         font-family: var(--font-body, 'DM Sans', sans-serif);
         font-size: 0.975rem;
         font-weight: 300;
@@ -260,9 +260,17 @@ const {
         margin: 0 0 1.25rem 0;
       }
 
-      .prose li { margin-bottom: 0.4rem; }
+      :global(.prose) ul {
+        list-style-type: disc !important;
+      }
 
-      .prose blockquote {
+      :global(.prose) ol {
+        list-style-type: decimal !important;
+      }
+
+      :global(.prose) li { margin-bottom: 0.4rem; }
+
+      :global(.prose) blockquote {
         border-left: 3px solid var(--eli-l0-text, #5DD470);
         background: var(--eli-panel, #1A1E26);
         padding: 1rem 1.25rem;
@@ -272,7 +280,7 @@ const {
         color: var(--eli-muted, #8A909E);
       }
 
-      .prose code {
+      :global(.prose) code {
         font-family: var(--font-mono, 'Share Tech Mono', monospace);
         font-size: 0.875rem;
         color: var(--eli-l0-text, #5DD470);
@@ -282,7 +290,7 @@ const {
         border: 1px solid var(--eli-border, #2A3040);
       }
 
-      .prose hr {
+      :global(.prose) hr {
         border: none;
         border-top: 1px solid var(--eli-border, #2A3040);
         margin: 2rem 0;
@@ -306,26 +314,26 @@ const {
       }
 
       /* ── FORCE DARK THEME ON ALL PROSE ELEMENTS ── */
-      .prose * { color: inherit; }
-      .prose h1 {
+      :global(.prose) * { color: inherit; }
+      :global(.prose) h1 {
         font-family: var(--font-sub, 'Rajdhani', sans-serif);
         font-size: clamp(1.4rem, 3.5vw, 2rem);
         font-weight: 700;
         color: var(--eli-white, #F2EDE8) !important;
         letter-spacing: 0.03em;
-        margin: 1.5rem 0 0.75rem 0;
+        margin: 2.25rem 0 1rem 0 !important;
         line-height: 1.2;
       }
-      .prose h2 { color: var(--eli-white, #F2EDE8) !important; }
-      .prose h3 { color: var(--eli-white, #F2EDE8) !important; }
-      .prose h4 {
+      :global(.prose) h2 { color: var(--eli-white, #F2EDE8) !important; }
+      :global(.prose) h3 { color: var(--eli-white, #F2EDE8) !important; }
+      :global(.prose) h4 {
         color: var(--eli-l0-text, #5DD470) !important;
         font-family: var(--font-sub, 'Rajdhani', sans-serif);
         font-size: 1rem;
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        margin: 1.25rem 0 0.5rem 0;
+        margin: 1.5rem 0 0.75rem 0 !important;
       }
       article { background: var(--eli-black, #0D0F12); }
     </style>
