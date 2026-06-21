@@ -35,7 +35,7 @@ export async function GET(context) {
 			const imgSrc = typeof post.data.heroImage === 'object' ? post.data.heroImage.src : post.data.heroImage;
 			const fullImgUrl = imgSrc ? `https://safetyblog.eli-intelligence.com${imgSrc.startsWith('/') ? '' : '/'}${imgSrc}` : null;
 			
-			// Safely strip MDX imports, interactive Quiz tags, and MDX comments (config blocks) before compiling
+			// Safely strip MDX imports, interactive Quiz tags, and MDX comments (config blocks) before compiling.
 			let cleanBody = post.body || '';
 			cleanBody = cleanBody.replace(/^import\s+.*?;$/gm, '');
 			cleanBody = cleanBody.replace(/<Quiz[\s\S]*?\/>/g, '');
