@@ -15,7 +15,7 @@
 
 ## 1. Current state snapshot
 
-*Last updated: 2026-05-02*
+*Last updated: 2026-06-21*
 
 ### Project identity
 
@@ -49,7 +49,7 @@
 - **LinkedIn:** Bi-weekly cross-posting active
 - **Global Banner:** "Blog Mission" top banner is active and permanently visible. It dynamically swaps its prefix to "May is National Electrical Safety Month" during May (month index 4).
 - **Subscriber count:** [3]
-- **Total posts published:** [40]
+- **Total posts published:** [64]
 - **Brand build plan:** Phases 01 & 02 complete. Phases 03–06 pending.
 
 ### Templates system (locked 2026-04-19, disclaimer added 2026-05-02)
@@ -421,7 +421,8 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 - progress  | SHOULD FIX: Formosa code citation now leads with NEC 501.15(B)(2) for the Class I Div 2 boundary (was citing only Div 1 (A)(4)); `sf6` decomposition odor corrected (SO₂ is sharp/pungent, not rotten-egg — that is H₂S); `hv-testing` duplicate word; `ferroresonance` kVA casing; Formosa banner subtitle shortened to fit the right margin.
 - progress  | Built all three incident asset sets from the MDX seed config blocks — re-authored FMEAs to the locked standard because the seeds carried only 5 modes each (expanded to 10). Output: 3 FMEA PNGs (10 modes, 16:9 2750×1546) → `src/assets/`; 3 v4 RCA banners (16:9) → `src/assets/`; 3 lead-magnet PDFs (mandatory disclaimer verified) → `public/downloads/`. RPN spreads: MCC 2C/4H/4M, Splitter 2C/5H/3M, Conduit 2C/5H/3M.
 - milestone | Verified full `npm run build` passes (~12s) — branch is deployable. The three RCAs: *Racking Into Danger: The 480V MCC Arc Flash* (L3, 2026-06-23), *Blinded by the HMI: The Splitter Tower Level Transmitter Failure* (L3, 2026-06-30), and *The Unsealed Conduit: Propane Gas Ignition* (L3, 2026-07-07).
-- blocker   | PAUSED: awaiting Jason's Gate 1 sign-off on the 24 files and 9 assets before Gemini commits the batch to GitHub and deploys.
+- progress  | Completed pre-publish gates (Gate A and Gate B), fixed Quiz.astro hydration/props compatibility bugs, resolved CSS scoped selector/spacing leaks, stripped LinkedIn drafts from MDX content, and filtered comments from RSS feeds. Successfully committed and pushed the final batch and layout fixes to remote repository, triggering Netlify deployment.
+- milestone | Batch fully published and pushed to GitHub main branch.
 
 ### 2026-06-20 — Content Generation: June 22 – July 12 Content (three weeks)
 
