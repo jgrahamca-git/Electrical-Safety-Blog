@@ -317,6 +317,12 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 
 *Append new entries at the top. Format: date, decision, rationale, what it replaced.*
 
+### 2026-06-23 — Migrated Daily Build Metronome to GitHub Actions
+
+- **Decision:** Migrated the daily Netlify rebuild trigger from a scheduled Zapier Webhook (5:00 AM Eastern) to a native GitHub Actions scheduled workflow (`daily-build.yml`) set to run daily at 3:00 AM Eastern (07:00 UTC).
+- **Rationale:** Reduces dependencies by removing a Zapier Free tier account from the publishing path. A native GitHub Actions cron run is self-contained in the repository, completely free, and cannot be accidentally disabled. Scheduling it at 3:00 AM Eastern creates a robust 2.5-hour buffer before MailerLite's daily 5:30 AM RSS sweep, avoiding potential race conditions due to scheduled workflow queuing delays.
+- **Replaced:** Zapier Daily Build Schedule Zap.
+
 ### 2026-05-02 — Anonymization standard for incident RCAs
 
 - **Decision:** Incident RCAs do not name the specific facility, owner, or contractor involved. Generic equivalents preserve technical learning value: "a hydroelectric plant" instead of "[Plant name]," "the federal incident investigation" instead of "the [agency]." Year may be retained or stripped at editorial discretion based on identifiability risk.
@@ -412,6 +418,12 @@ Every Incident RCA pairs with a field checklist PDF. Locked structure:
 ## 3. Progress log
 
 *Append new entries at the top. Format: date, event type (milestone/progress/blocker/change), description.*
+
+### 2026-06-23 — Build schedule pipeline fixes & Netlify deploy verification
+
+- change    | Migrated daily build schedule to GitHub Actions at 3:00 AM Eastern (07:00 UTC) to bypass Zapier dependency and prevent MailerLite RSS race conditions. Updated `.github/workflows/daily-build.yml`, `directives/02_automated_deployment.md`, and references.
+- progress  | Resolved build failure/cancellation bugs. Pushed the new configurations to GitHub and successfully triggered/published today's (Tuesday, June 23) posts (*Static Transfer Switch (STS) Failure Modes* and *Racking Into Danger: The 480V MCC Arc Flash*) in the live RSS feed.
+- progress  | Synchronized the updated tracker file to Google Drive (`C:\Users\jgrah\My Drive\01_ELI\ELI_Blog_Tracker.md`).
 
 ### 2026-06-21 — Phase 2 Batch Review: June 22 – July 12 Content (three weeks)
 
