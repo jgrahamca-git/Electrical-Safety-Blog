@@ -36,7 +36,7 @@
 - **Animation:** GSAP already installed — use for Phase 2 nav + card animations
 - **CSS:** Tailwind active + ELI token file. Bear Blog base CSS present — test element overrides carefully.
 - **Email:** MailerLite with RSS automation (hourly polling)
-- **Scheduling:** Zapier free tier — daily 5:00 AM EST build hook to Netlify
+- **Scheduling:** GitHub Actions cron — daily 3:00 AM EST build hook to Netlify
 - **LinkedIn:** Bi-weekly, automated via Zapier RSS integration.
 
 ### Current status
@@ -45,7 +45,7 @@
 - **Daily Safety Topics:** Publishing weekly (7 future-dated posts per Sunday push)
 - **Incident RCAs:** Weekly cadence, **published Tuesdays** (per 2026-04-21 decision)
 - **Email automation:** MailerLite RSS polling active
-- **Zapier metronome:** Daily build hook active (5:00 AM EST)
+- **Build metronome:** GitHub Actions daily build active (3:00 AM EST)
 - **LinkedIn:** Bi-weekly cross-posting active
 - **Global Banner:** "Blog Mission" top banner is active and permanently visible. It dynamically swaps its prefix to "May is National Electrical Safety Month" during May (month index 4).
 - **Subscriber count:** [3]
@@ -88,7 +88,7 @@ Per-RCA workflow: copy `<template>.py` and `<template>.html` (where applicable) 
 6. Jason approves at Gate 1 (content + criticality + conclusion_state fields confirmed, editor_confirmed flipped to true)
 7. Approved .mdx files saved locally
 8. Jason pushes batch to GitHub
-9. Zapier triggers daily Netlify rebuilds → one post unlocks per day
+9. GitHub Actions triggers daily Netlify rebuilds (3:00 AM EST) → one post unlocks per day
 10. MailerLite picks up new post via RSS → emails subscribers
 
 ### Bi-weekly cycle (LinkedIn)
