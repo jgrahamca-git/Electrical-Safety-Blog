@@ -10,7 +10,7 @@ Last updated: 2026-04-26 (FMEA visual rendering standard merged in)
 - **Content AI:** Gemini + Antigravity (research, drafting, image generation, deploys)
 - **Quality + Assets AI:** Claude (editorial, FMEA, banner, lead magnet)
 - **Email:** MailerLite RSS automation (hourly polling)
-- **Scheduling:** Zapier daily 5:00 AM EST build hook → Netlify rebuild
+- **Scheduling:** GitHub Actions daily 3:00 AM EST build hook → Netlify rebuild
 - **LinkedIn:** Bi-weekly via Python scripts (`post_to_linkedin.py`). OAuth token 60-day expiry.
 
 ## Workflow split
@@ -213,7 +213,7 @@ Full rules in `editorial-standards.md`. Core principles:
 - Fatal or near-fatal documented incidents
 - Paired with FMEA + banner + lead magnet
 - Criticality level: typically L2 or L3
-- Publishing cadence: Fridays
+- Publishing cadence: Tuesdays
 
 **LinkedIn cross-posts (bi-weekly)**
 - Hook → Story → Lesson → Link → CTA → Tags
